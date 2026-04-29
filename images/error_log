@@ -1,0 +1,24 @@
+[10-Feb-2022 06:53:58 UTC] TimThumb Debug line 1132 [0.000126 : 0.000000]: Starting new request from 2002:c138:1d74::c138:1d74 to /images/s_img_new.php
+[10-Feb-2022 06:53:58 UTC] TimThumb Debug line 1132 [0.000329 : 0.000186]: Doc root is: /home/u955472412/domains/redbrigade-lucknow.org/public_html
+[10-Feb-2022 06:53:58 UTC] TimThumb Debug line 1132 [0.000397 : 0.000066]: Salt is: 1613408173-73999071
+[10-Feb-2022 06:53:58 UTC] TimThumb Debug line 1132 [0.031966 : 0.031578]: cleanCache() called
+[10-Feb-2022 06:53:58 UTC] TimThumb Debug line 1132 [0.032045 : 0.000068]: File tracking last clean doesn't exist. Creating /home/u955472412/domains/redbrigade-lucknow.org/public_html/images/imagecache/timthumb_cacheLastCleanTime.touch
+[10-Feb-2022 06:53:58 UTC] TimThumb Debug line 1132 [0.032237 : 0.000192]: Adding error message: No image specified
+[18-Feb-2022 02:21:46 UTC] TimThumb Debug line 1132 [0.000121 : 0.000000]: Starting new request from 20.106.149.170 to /images/s_img_new.php
+[18-Feb-2022 02:21:46 UTC] TimThumb Debug line 1132 [0.004505 : 0.004372]: Doc root is: /home/u955472412/domains/redbrigade-lucknow.org/public_html
+[18-Feb-2022 02:21:46 UTC] TimThumb Debug line 1132 [0.004593 : 0.000081]: Salt is: 1613408173-73999071
+[18-Feb-2022 02:21:46 UTC] TimThumb Debug line 1132 [0.004653 : 0.000059]: cleanCache() called
+[18-Feb-2022 02:21:46 UTC] TimThumb Debug line 1132 [0.004691 : 0.000037]: Cache was last cleaned more than 86400 seconds ago. Cleaning now.
+[18-Feb-2022 02:21:46 UTC] TimThumb Debug line 1132 [0.004835 : 0.000144]: Adding error message: No image specified
+[05-May-2022 20:17:09 UTC] TimThumb Debug line 1132 [0.000071 : 0.000000]: Starting new request from 51.161.104.140 to /images/s_img_new.php
+[05-May-2022 20:17:09 UTC] TimThumb Debug line 1132 [0.011695 : 0.011606]: Doc root is: /home/u955472412/domains/redbrigade-lucknow.org/public_html
+[05-May-2022 20:17:09 UTC] TimThumb Debug line 1132 [0.011776 : 0.000074]: Salt is: 1613408173-73999071
+[05-May-2022 20:17:09 UTC] TimThumb Debug line 1132 [0.024095 : 0.012324]: cleanCache() called
+[05-May-2022 20:17:09 UTC] TimThumb Debug line 1132 [0.024166 : 0.000066]: Cache was last cleaned more than 86400 seconds ago. Cleaning now.
+[05-May-2022 20:17:09 UTC] TimThumb Debug line 1132 [0.024319 : 0.000153]: Adding error message: No image specified
+[06-May-2022 04:07:02 UTC] TimThumb Debug line 1132 [0.000124 : 0.000000]: Starting new request from 51.161.104.140 to /images/s_img_new.php
+[06-May-2022 04:07:02 UTC] TimThumb Debug line 1132 [0.025904 : 0.025768]: Doc root is: /home/u955472412/domains/redbrigade-lucknow.org/public_html
+[06-May-2022 04:07:02 UTC] TimThumb Debug line 1132 [0.025999 : 0.000089]: Salt is: 1613408173-73999071
+[06-May-2022 04:07:02 UTC] TimThumb Debug line 1132 [0.026056 : 0.000056]: cleanCache() called
+[06-May-2022 04:07:02 UTC] TimThumb Debug line 1132 [0.026092 : 0.000035]: Cache was cleaned less than 86400 seconds ago so no cleaning needed.
+[06-May-2022 04:07:02 UTC] TimThumb Debug line 1132 [0.026187 : 0.000095]: Adding error message: No image specified

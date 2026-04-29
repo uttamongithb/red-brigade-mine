@@ -1,0 +1,746 @@
+.logo-width{
+    width: 219px;
+}
+ 
+.slider-res{
+    width:100%;
+    height:600px !important;
+    object-fit: cover;
+    object-position: center center;
+}
+.team-box-padding {
+    padding-bottom: 20px;
+}
+
+.team-box {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(145deg, #0b1f3f 0%, #1f4e79 46%, #1ecad3 100%);
+    padding: 34px 28px;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    min-height: 383px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 18px 36px rgba(2, 26, 58, 0.22);
+    backdrop-filter: blur(4px);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.team-box:before {
+    content: "";
+    position: absolute;
+    inset: -40% -10% auto;
+    height: 180px;
+    background: linear-gradient(105deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0));
+    transform: rotate(6deg);
+    pointer-events: none;
+}
+
+.team-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 48px rgba(3, 22, 49, 0.3);
+}
+
+.team-box .team-face img {
+    border-radius: 100%;
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+    display: block;
+    border: 5px solid rgba(255, 255, 255, 0.92);
+    box-shadow: 0 12px 30px rgba(10, 18, 36, 0.34);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.team-box:hover .team-face img {
+    transform: scale(1.04);
+    box-shadow: 0 18px 34px rgba(10, 18, 36, 0.45);
+}
+
+.team-box p {
+    color: #f4f8ff;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 5px;
+    margin-bottom: 0;
+}
+
+.team-box p:first-of-type {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: 0.3px;
+    margin-top: 16px;
+}
+
+.team-box hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.45);
+    margin: 12px auto;
+    width: 70%;
+}
+
+.team-box p:last-of-type {
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(244, 248, 255, 0.95);
+    padding-top: 0;
+}
+
+.ptm-box {
+    background: -webkit-gradient(linear, left bottom, left top, from(#56bdf5), to(#536DFE));
+    background: linear-gradient(to top, #56bdf5, #536DFE);
+ padding: 40px;
+    margin-bottom: 40px;
+    border-radius: 10px; 
+}
+.ptm-box p {
+    color: white; 
+    font-weight: 600; 
+    padding-top: 5px;
+}
+.pypl-box{
+      width: 200px;
+      height:99px;
+    display: block;
+    margin: 0 auto;  
+}
+@media screen and (max-width: 800px) {
+   .slider-res{
+        width:100%;
+        height:250px !important;
+       object-fit: cover;
+       object-position: center center;
+    }
+
+    .team-box {
+        padding: 28px 20px;
+        min-height: 350px;
+        border-radius: 16px;
+    }
+
+    .team-box p:first-of-type {
+        font-size: 19px;
+    }
+
+    .team-box p:last-of-type {
+        font-size: 14px;
+    }
+}
+
+/* =========================
+   Advanced Homepage System
+   ========================= */
+.rb-home {
+    --rb-bg: #f4f7fb;
+    --rb-surface: #ffffff;
+    --rb-ink: #0e2038;
+    --rb-muted: #5f6f85;
+    --rb-brand: #d93f32;
+    --rb-brand-dark: #b83126;
+    --rb-accent: #0b93a1;
+    --rb-radius-lg: 26px;
+    --rb-radius-md: 18px;
+    --rb-shadow-lg: 0 28px 70px rgba(10, 37, 68, 0.2);
+    --rb-shadow-md: 0 18px 40px rgba(15, 39, 69, 0.14);
+    --rb-shadow-sm: 0 10px 26px rgba(15, 39, 69, 0.1);
+    background: radial-gradient(1200px 600px at 5% -15%, rgba(12, 166, 183, 0.13), transparent 55%),
+                radial-gradient(900px 500px at 95% 10%, rgba(231, 76, 60, 0.14), transparent 58%),
+                var(--rb-bg);
+    color: var(--rb-ink);
+}
+
+.rb-home .container {
+    max-width: 1180px;
+}
+
+.rb-home .rb-section {
+    position: relative;
+    z-index: 2;
+}
+
+.rb-home .section-title .title,
+.rb-home .redbrigade-section-heading .main-heading {
+    color: var(--rb-ink);
+    letter-spacing: -0.02em;
+    font-weight: 800;
+}
+
+.rb-home .section-title {
+    margin-bottom: 44px;
+}
+
+.rb-home .section-title .title {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.rb-home .section-title .title:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 74px;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--rb-brand), var(--rb-accent));
+}
+
+.rb-home .section-title p,
+.rb-home .redbrigade-section-heading .sub-heading,
+.rb-home .redbrigade-section-heading .desc {
+    color: var(--rb-muted);
+}
+
+.rb-home .boxed-btn {
+    border-radius: 999px;
+    padding-left: 28px;
+    padding-right: 28px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.rb-home .boxed-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(14, 32, 56, 0.2);
+}
+
+.rb-home .rb-btn-primary {
+    background: linear-gradient(120deg, var(--rb-brand) 0%, var(--rb-brand-dark) 100%);
+    border: none;
+}
+
+.rb-home .rb-btn-secondary {
+    background: #162231;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    animation: rbPulseDonate 2.6s ease-in-out infinite;
+}
+
+.rb-home .rb-hero-shell {
+    position: relative;
+    overflow: hidden;
+}
+
+.rb-home .rb-hero-shell:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(10, 27, 52, 0.72) 0%, rgba(10, 27, 52, 0.42) 34%, rgba(10, 27, 52, 0.14) 68%, rgba(10, 27, 52, 0.5) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.rb-home .rb-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+}
+
+.rb-home .rb-hero-overlay .container {
+    padding-left: 6px;
+    padding-right: 15px;
+}
+
+.rb-home .rb-hero-panel {
+    max-width: 640px;
+    padding: 28px 30px;
+    margin-left: -10px;
+    border-radius: var(--rb-radius-lg);
+    background: linear-gradient(145deg, rgba(13, 31, 53, 0.72), rgba(18, 50, 74, 0.56));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    box-shadow: var(--rb-shadow-lg);
+    animation: rbFadeUp 0.8s ease both;
+}
+
+@media screen and (max-width: 1199px) {
+    .rb-home .rb-hero-panel {
+        max-width: 560px;
+        padding: 24px 26px;
+        margin-left: 0;
+    }
+
+    .rb-home .rb-hero-panel h1 {
+        font-size: clamp(28px, 4vw, 46px);
+    }
+
+    .rb-home .rb-hero-panel p {
+        font-size: 16px;
+        max-width: 520px;
+    }
+
+    .rb-home .rb-hero-actions .boxed-btn {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+.rb-home .rb-hero-kicker {
+    display: inline-block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: #f8f8ff;
+    margin-bottom: 12px;
+}
+
+.rb-home .rb-hero-panel h1 {
+    font-size: clamp(30px, 4vw, 56px);
+    line-height: 1.05;
+    margin: 0 0 14px;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+}
+
+.rb-home .rb-hero-panel p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.94);
+    margin-bottom: 22px;
+    max-width: 580px;
+}
+
+.rb-home .rb-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.rb-home .rb-impact-strip {
+    margin-top: -58px;
+    position: relative;
+    z-index: 4;
+    padding-bottom: 24px;
+}
+
+.rb-home .rb-impact-strip > .container {
+    padding-left: 0;
+    padding-right: 15px;
+}
+
+.rb-home .rb-impact-card {
+    background: linear-gradient(165deg, #ffffff, #f6fbff);
+    border-radius: var(--rb-radius-md);
+    padding: 22px 20px;
+    height: 100%;
+    border: 1px solid rgba(14, 32, 56, 0.08);
+    box-shadow: var(--rb-shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.rb-home .rb-impact-card:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--rb-brand), var(--rb-accent));
+}
+
+.rb-home .rb-impact-card h3 {
+    font-size: 32px;
+    line-height: 1;
+    margin: 0 0 10px;
+    color: var(--rb-ink);
+}
+
+.rb-home .rb-impact-card p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--rb-muted);
+}
+
+.rb-home .rb-about {
+    padding-top: 48px;
+    padding-bottom: 90px;
+}
+
+.rb-home .rb-about-card {
+    background: var(--rb-surface);
+    border-radius: 0;
+    box-shadow: var(--rb-shadow-md);
+    border: 1px solid rgba(16, 34, 57, 0.08);
+    overflow: hidden;
+}
+
+.rb-home .rb-about-grid {
+    display: flex;
+    align-items: stretch;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.rb-home .rb-about-grid > [class*="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.rb-home .rb-about-grid > .rb-about-copy {
+    padding: 38px 34px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.rb-home .rb-about .redbrigade-section-heading {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 68ch;
+    margin: 0;
+    text-align: left;
+}
+
+.rb-home .rb-about .top-heading.heading-bar-bottom {
+    font-size: 14px;
+    letter-spacing: 1.6px;
+    margin-bottom: 10px;
+}
+
+.rb-home .rb-about .main-heading {
+    font-size: clamp(30px, 3vw, 40px);
+    line-height: 1.12;
+    margin-bottom: 16px;
+}
+
+.rb-home .rb-about .sub-heading {
+    font-size: 18px;
+    font-weight: 600;
+    color: #173455;
+    margin-bottom: 16px;
+    max-width: 66ch;
+    line-height: 1.55;
+}
+
+.rb-home .rb-about .desc {
+    max-width: 66ch;
+}
+
+.rb-home .rb-about .about-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 20px;
+    font-size: 16px;
+}
+
+.rb-home .rb-about .about-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 11px;
+    line-height: 1.6;
+    color: var(--rb-muted);
+}
+
+.rb-home .rb-about-media {
+    min-height: 100%;
+}
+
+.rb-home .rb-about-media .about-image {
+    min-height: 100%;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.rb-home .rb-about .about-list li i {
+    color: var(--rb-brand);
+    flex: 0 0 17px;
+    margin-top: 6px;
+    text-align: center;
+}
+
+.rb-home .rb-about .btn-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2px;
+}
+
+.rb-home .rb-about .btn-wrapper .boxed-btn {
+    min-width: 170px;
+    text-align: center;
+}
+
+.rb-home .rb-work,
+.rb-home .rb-blogs,
+.rb-home .rb-testimonial-modern {
+    padding-top: 84px;
+    padding-bottom: 84px;
+}
+
+.rb-home .rb-work .activity-item,
+.rb-home .rb-blogs .campains-box {
+    border-radius: var(--rb-radius-md);
+    overflow: hidden;
+    border: 1px solid rgba(13, 34, 57, 0.08);
+    box-shadow: var(--rb-shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #ffffff;
+}
+
+.rb-home .rb-work .activity-item:hover,
+.rb-home .rb-blogs .campains-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 46px rgba(8, 36, 66, 0.2);
+}
+
+.rb-home .rb-work .activity-ite-img img,
+.rb-home .rb-blogs .campains-media .thumb img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.rb-home .rb-work .activity-ite-text,
+.rb-home .rb-blogs .campains-content {
+    background: #ffffff;
+    padding: 24px;
+}
+
+.rb-home .rb-work .activity-ite-text .title,
+.rb-home .rb-blogs .campains-content .title {
+    color: var(--rb-ink);
+    font-weight: 700;
+}
+
+.rb-home .rb-work .activity-ite-text p,
+.rb-home .rb-blogs .campains-content p {
+    color: var(--rb-muted);
+}
+
+.rb-home .rb-join-modern {
+    position: relative;
+    overflow: hidden;
+    margin-top: 16px;
+    margin-bottom: 18px;
+    background: linear-gradient(130deg, #0f2c52 0%, #1e5075 50%, #0ca6b7 100%);
+}
+
+.rb-home .rb-join-modern:before {
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    right: -120px;
+    top: -140px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0));
+    pointer-events: none;
+}
+
+.rb-home .rb-join-modern .title {
+    color: #ffffff;
+    font-size: clamp(22px, 2.9vw, 36px);
+    line-height: 1.3;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.rb-home .rb-join-modern .btn-wrapper {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.rb-home .rb-testimonial-modern .single-testi {
+    background: #ffffff;
+    border-radius: var(--rb-radius-lg);
+    border: 1px solid rgba(11, 35, 61, 0.08);
+    box-shadow: var(--rb-shadow-md);
+    padding: 30px;
+}
+
+.rb-home .rb-testimonial-modern h6,
+.rb-home .rb-testimonial-modern h3 {
+    text-align: center;
+}
+
+.rb-home .rb-testimonial-modern h6 {
+    color: var(--rb-brand);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+@keyframes rbFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rbPulseDonate {
+    0% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.34);
+    }
+    70% {
+        box-shadow: 0 0 0 12px rgba(231, 76, 60, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .rb-home .rb-hero-shell:before {
+        background: linear-gradient(180deg, rgba(10, 27, 52, 0.74), rgba(10, 27, 52, 0.34));
+    }
+
+    .rb-home .rb-hero-panel {
+        margin-top: 90px;
+        max-width: 100%;
+        padding: 22px 22px 20px;
+    }
+
+    .rb-home .section-title .title:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .rb-home .section-title,
+    .rb-home .rb-work .activity-ite-text,
+    .rb-home .rb-blogs .campains-content {
+        text-align: center;
+    }
+
+    .rb-home .rb-about-card {
+        border-radius: var(--rb-radius-lg);
+    }
+
+    .rb-home .rb-about-grid {
+        display: block;
+    }
+
+    .rb-home .rb-about-grid > .rb-about-copy {
+        padding: 24px 22px 16px;
+        align-items: flex-start;
+    }
+
+    .rb-home .rb-about .redbrigade-section-heading,
+    .rb-home .rb-about .desc {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .rb-home .rb-about .main-heading {
+        font-size: clamp(26px, 4.6vw, 34px);
+        margin-bottom: 14px;
+    }
+
+    .rb-home .rb-about .sub-heading {
+        font-size: 17px;
+    }
+
+    .rb-home .rb-about .about-list {
+        font-size: 15px;
+    }
+
+    .rb-home .rb-about .btn-wrapper {
+        justify-content: flex-start;
+    }
+
+    .rb-home .rb-about-media .about-image {
+        min-height: 360px;
+    }
+
+    .rb-home .rb-impact-strip {
+        margin-top: 18px;
+    }
+
+    .rb-home .rb-work,
+    .rb-home .rb-blogs,
+    .rb-home .rb-testimonial-modern,
+    .rb-home .rb-about {
+        padding-top: 58px;
+        padding-bottom: 58px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .rb-home .rb-hero-overlay {
+        align-items: flex-end;
+        padding-bottom: 16px;
+    }
+
+    .rb-home .rb-hero-overlay .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .rb-home .rb-hero-panel {
+        margin-left: 0;
+    }
+
+    .rb-home .rb-hero-panel h1 {
+        font-size: 29px;
+    }
+
+    .rb-home .rb-hero-panel p {
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+
+    .rb-home .rb-hero-actions {
+        width: 100%;
+    }
+
+    .rb-home .rb-hero-actions .boxed-btn {
+        flex: 1 1 calc(50% - 6px);
+        text-align: center;
+        min-width: 130px;
+    }
+
+    .rb-home .rb-impact-card {
+        margin-bottom: 12px;
+    }
+
+    .rb-home .rb-work .activity-ite-img img,
+    .rb-home .rb-blogs .campains-media .thumb img {
+        height: 210px;
+    }
+
+    .rb-home .rb-work .activity-ite-text,
+    .rb-home .rb-blogs .campains-content,
+    .rb-home .rb-testimonial-modern .single-testi {
+        padding: 18px;
+    }
+
+    .rb-home .rb-about-grid > .rb-about-copy {
+        padding: 16px;
+    }
+
+    .rb-home .rb-about .sub-heading {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+    .rb-home .rb-about .about-list li {
+        gap: 9px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+
+    .rb-home .rb-about .about-list {
+        font-size: 15px;
+        margin-bottom: 16px;
+    }
+
+    .rb-home .rb-about-media .about-image {
+        min-height: 260px;
+    }
+}
