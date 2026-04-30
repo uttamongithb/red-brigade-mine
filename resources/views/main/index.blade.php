@@ -217,60 +217,91 @@ to the public domain the role of women in the national freedom struggle of India
 
 <!-- Activity area start  -->
     
-<section class="activity-area rb-section rb-work">
+<?php
+// Recent Work - reuse blog layout: first event as featured, rest as cards
+$featuredEvent = null;
+$secondaryEvents = [];
+if (!empty($allevent)) {
+    $eventsArr = is_array($allevent) ? $allevent : $allevent->all();
+    $featuredEvent = $eventsArr[0];
+    $secondaryEvents = array_slice($eventsArr, 1, 9);
+}
+?>
+<section class="rb-blogs-modern" id="recent-work-section">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="section-title">
-                    <h2 class="title">Recent Work</h2>
-                    <p> Our events are focused towards the overall empowerment of women and amplifying the
-voice against sexual violence. </p>
-                </div>
+        <!-- Section Header -->
+        <div class="rb-blog-header">
+            <div class="rb-blog-header-left">
+                <span class="rb-blog-kicker">Recent Work</span>
+                <h2 class="rb-blog-title">Our <em class="rb-blog-title-accent">Events</em></h2>
+                <p class="rb-blog-subtitle">Our events are focused on empowerment and amplifying women's voices against sexual violence.</p>
             </div>
+            <a href="<?php echo action('MainController@event')?>" class="rb-blog-view-all">
+                Explore All Events
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
         </div>
 
-        <div class="row">
-		<?php if(!empty($allevent)) { foreach($allevent as $alle) { ?>
-	        <div class="col-lg-4 col-md-6 ">
-                <div class="activity-item">
-                    <div class="activity-ite-img">
-                        <img src="<?php echo asset('uploads/news/'.$alle->image);?>" alt="activity" />
-                        <span class="time"><?php echo $alle->date; ?></span>
-                    </div>
-                    <div class="activity-ite-text">
-                        <h6 class="title"><?php echo ucfirst($alle->name); ?></h6>
-                        <p><?php echo substr($alle->description,0,100); ?></p>
-                        
-                        <div class="read-more-sec">
-                            <button class="btn btn-read"><a href="https://redbrigade-lucknow.org/about">Read More..</a></button>
-                        </div>
+        <!-- Featured Post -->
+        <?php if($featuredEvent) { ?>
+        <a href="#" class="rb-blog-featured-link">
+            <div class="rb-blog-featured">
+                <div class="rb-blog-featured-img">
+                    <img src="<?php echo asset('uploads/news/'.$featuredEvent->image);?>" alt="<?php echo $featuredEvent->name; ?>">
+                </div>
+                <div class="rb-blog-featured-overlay"></div>
+                <div class="rb-blog-featured-content">
+                    <span class="rb-blog-badge">Event</span>
+                    <h3 class="rb-blog-featured-title"><?php echo ucfirst($featuredEvent->name); ?></h3>
+                    <p class="rb-blog-featured-excerpt"><?php echo strip_tags(substr($featuredEvent->description, 0, 200)); ?>...</p>
+                    <div class="rb-blog-featured-meta">
+                        <span class="rb-blog-meta-date"><i class="fas fa-calendar-alt"></i> <?php echo $featuredEvent->date; ?></span>
+                        <span class="rb-blog-read-cta">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
                     </div>
                 </div>
-            </div>	
-		<?php }} ?>
+            </div>
+        </a>
+        <?php } ?>
 
+        <!-- Secondary Posts Grid -->
+        <?php if(!empty($secondaryEvents)) { ?>
+        <div class="rb-blog-grid">
+            <?php foreach($secondaryEvents as $idx => $ev) { ?>
+            <a href="#" class="rb-blog-card-link">
+                <article class="rb-blog-card" style="animation-delay: <?php echo ($idx * 0.08); ?>s;">
+                    <div class="rb-blog-card-img">
+                        <img src="<?php echo asset('uploads/news/'.$ev->image);?>" alt="<?php echo $ev->name; ?>" loading="lazy">
+                        <span class="rb-blog-badge">Event</span>
+                    </div>
+                    <div class="rb-blog-card-body">
+                        <div class="rb-blog-card-meta">
+                            <span><i class="fas fa-calendar-alt"></i> <?php echo $ev->date; ?></span>
+                            <?php if(isset($ev->location) && !empty($ev->location)) { ?>
+                                <span><i class="fas fa-map-marker-alt"></i> <?php echo $ev->location; ?></span>
+                            <?php } ?>
+                        </div>
+                        <h4 class="rb-blog-card-title"><?php echo ucfirst($ev->name); ?></h4>
+                        <p class="rb-blog-card-excerpt"><?php echo strip_tags(substr($ev->description, 0, 120)); ?>...</p>
+                        <span class="rb-blog-card-read">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                    </div>
+                </article>
+            </a>
+            <?php } ?>
+        </div>
+        <?php } ?>
+
+        <!-- Bottom CTA -->
+        <div class="rb-blog-bottom-cta">
+            <a href="<?php echo action('MainController@event'); ?>" class="rb-blog-explore-btn">
+                <span>Explore All Events</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
         </div>
     </div>
 </section>
 <!-- Activity  end -->
 
 
-
-<!-- Join Us area start  -->
-<section class="join-area rb-join-modern">
-    <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <h6 class="title">You can be part of this movement to achieve F.L.O.W. (Fearless Life of Women)</h6> 
-                    <div class="btn-wrapper animated fadeInUp">
-                        <a href="<?php  echo action('MainController@contact')?>" class="boxed-btn donate" role="button">Join Now </a>
-                        <a href="<?php  echo action('MainController@donate')?>" class="boxed-btn " role="button">Donate </a>
-                    </div>
-            </div>
-        </div>
-    </div>
-    <!--End Container-->
-</section>
 
 
 
@@ -286,6 +317,7 @@ voice against sexual violence. </p>
         padding-left: 0;
         padding-right: 0;
     }
+
 
     .rb-blog-header {
         display: flex;
@@ -807,29 +839,168 @@ the world have done research and publications on Red Brigade Lucknow. </p>
  
 
  
-<!-- Testimonial Section start --> 
- 
-<section class="testimonial-section testimonial-bg rb-section rb-testimonial-modern">
+<!-- Start Redesigned Testimonial Section -->
+<style>
+    .rb-testimonial-modern {
+        padding: 80px 0;
+        background-color: #f8f9fa;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .rb-testimonial-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .rb-testimonial-kicker {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #2f8f5b;
+        margin-bottom: 10px;
+    }
+
+    .rb-testimonial-heading {
+        margin: 0 0 40px;
+        font-family: 'Playfair Display', serif;
+        font-size: 42px;
+        line-height: 1.1;
+        color: #1f2f46;
+    }
+
+    .rb-testimonial-accent {
+        color: #e65a32;
+        font-style: normal;
+    }
+
+    .rb-testimonial-quote-box {
+        background: #fff;
+        padding: 45px 50px;
+        border-radius: 0;
+        box-shadow: 0 24px 50px rgba(22, 35, 56, .08);
+        position: relative;
+        border-top: 4px solid #e65a32;
+    }
+
+    .rb-quote-icon {
+        color: rgba(230, 90, 50, 0.15);
+        position: absolute;
+        top: -20px;
+        left: 40px;
+        z-index: 0;
+    }
+
+    .rb-testimonial-text {
+        position: relative;
+        z-index: 1;
+        font-size: 21px;
+        line-height: 1.6;
+        color: #4a5568;
+        font-style: italic;
+        margin-bottom: 30px;
+        font-family: Georgia, serif;
+    }
+
+    .rb-testimonial-author {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .rb-testimonial-author-img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        flex-shrink: 0;
+    }
+
+    .rb-testimonial-author-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .rb-testimonial-author-info {
+        text-align: left;
+    }
+
+    .rb-testimonial-author-info h4 {
+        margin: 0 0 4px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #1f2f46;
+    }
+
+    .rb-testimonial-author-info p {
+        margin: 0;
+        font-size: 14px;
+        color: #718096;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 767px) {
+        .rb-testimonial-modern {
+            padding: 60px 0;
+        }
+        .rb-testimonial-heading {
+            font-size: 34px;
+            margin-bottom: 30px;
+        }
+        .rb-testimonial-quote-box {
+            padding: 35px 20px;
+        }
+        .rb-quote-icon {
+            left: 20px;
+            top: -15px;
+            width: 40px;
+            height: 40px;
+        }
+        .rb-testimonial-text {
+            font-size: 18px;
+        }
+        .rb-testimonial-author {
+            flex-direction: column;
+            text-align: center;
+            gap: 12px;
+        }
+        .rb-testimonial-author-info {
+            text-align: center;
+        }
+    }
+</style>
+
+<section class="rb-testimonial-modern" id="testimonial-section">
     <div class="container">
-        
-        <h6>Testimonial</h6>
-        <h3>Appreciation About Our Work</h3>
-        <div class="single-testi">
-            <div class="single-testi-img">
-                <?php $testimonialImage = 'uploads/testimonial/sunshine-testimonial-176.JPG'; ?>
-                <img src="<?php echo file_exists(base_path($testimonialImage)) ? asset($testimonialImage) : asset('uploads/img/404.png'); ?>" alt="Usha Vishwakarma">
-            </div>
+        <div class="rb-testimonial-wrapper">
+            <span class="rb-testimonial-kicker">Testimonial</span>
+            <h2 class="rb-testimonial-heading">Appreciation About Our <em class="rb-testimonial-accent">Work</em></h2>
             
-            <div class="single-testi-title">
-                <h4>Usha Vishwakarma</h4>
-                <p>Founder, Chief Managing Trustee and Master Trainer of Nishashtra Kala</p>
+            <div class="rb-testimonial-quote-box">
+                <svg class="rb-quote-icon" width="60" height="60" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 21L16.411 14.122C16.634 13.435 16.749 12.721 16.749 11.996V3H23V11.996C23 16.969 19.388 21 14.017 21ZM5.017 21L7.411 14.122C7.634 13.435 7.749 12.721 7.749 11.996V3H14V11.996C14 16.969 10.388 21 5.017 21Z"/></svg>
+                <p class="rb-testimonial-text">"Red Brigade Lucknow has been at the forefront of empowering women and building a society with zero tolerance toward sexual violence. Our mission is to create fearless lives for women, and every step we take is a step toward a safer, more equitable world."</p>
+                <div class="rb-testimonial-author">
+                    <div class="rb-testimonial-author-img">
+                        <?php $testimonialImage = 'uploads/testimonial/sunshine-testimonial-176.JPG'; ?>
+                        <img src="<?php echo file_exists(base_path($testimonialImage)) ? asset($testimonialImage) : asset('uploads/img/404.png'); ?>" alt="Usha Vishwakarma">
+                    </div>
+                    <div class="rb-testimonial-author-info">
+                        <h4>Usha Vishwakarma</h4>
+                        <p>Founder, Chief Managing Trustee and Master Trainer of Nishashtra Kala</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section> 
- 
- 
-<!-- Testimonial Section start -->  
+</section>
+<!-- End Redesigned Testimonial Section -->
  
  
 <!-- Testimonial area start -->
@@ -867,6 +1038,22 @@ the world have done research and publications on Red Brigade Lucknow. </p>
 </section>
 <!-- Testimonial end -->
  
+
+<!-- Join Us area start  -->
+<section class="join-area rb-join-modern">
+    <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h6 class="title">You can be part of this movement to achieve F.L.O.W. (Fearless Life of Women)</h6> 
+                    <div class="btn-wrapper animated fadeInUp">
+                        <a href="<?php  echo action('MainController@contact')?>" class="boxed-btn donate" role="button">Join Now </a>
+                        <a href="<?php  echo action('MainController@donate')?>" class="boxed-btn " role="button">Donate </a>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!--End Container-->
+</section>
 
 @include('includes.footer')
 

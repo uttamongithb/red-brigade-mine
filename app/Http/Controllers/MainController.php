@@ -19,7 +19,7 @@ class MainController extends Controller {
 	public function index()
 	{
 	    	$allslider=DB::table('slider')->orderBy('slider.id','DESC')->get();
-		$allevent=Db::table('news')->orderBy('news.id','DESC')->limit(3)->get();
+		$allevent=Db::table('news')->orderBy('news.id','DESC')->limit(12)->get();
 		$allblog=Db::table('blog')->orderBy('blog.id','DESC')->limit(6)->get();
 		
 		$alltestimonial=Db::table('testimonial')->orderBy('testimonial.id','DESC')->get();
