@@ -32,6 +32,9 @@
                   <th>S.No</th>
                   <th>Name</th>
                   <th>Email</th>
+                  <th>Mobile</th>
+                  <th>State</th>
+                  <th>District</th>
                   <th>Query</th>
                   <th>Date</th>
                   <th>Action</th>
@@ -50,6 +53,9 @@
 				  <td><?php echo $i?></td>
 				  <td><?php echo ucwords($tt->name);?></td>
 				  <td><?php echo $tt->email; ?></td>
+				  <td><?php echo $tt->mobile; ?></td>
+				  <td><?php echo $tt->state; ?></td>
+				  <td><?php echo $tt->district; ?></td>
 				  <td><?php echo $tt->msg; ?></td>
 				  <td><?php echo $tt->created_at;?></td>
 				    <?php $idget = base64_encode(serialize($tt->id)); ?>

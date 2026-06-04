@@ -40,8 +40,6 @@
 								<option value="Activity">Media Coverage</option>
 								<option value="Campains">Video</option>
 								<option value="News">Gallery</option>
-								<option value="Donate">Donate</option>
-									<option value="report">Reports</option>
 							</select>
 						</div>
 						<div class="col-md-8 form-group">
@@ -56,7 +54,6 @@
 							  <?php echo  Form::file('pdfimage',array('name'=>'pdfimage[]','multiple')); ?>
 							</div>
 						</div>
-						report
 						<div class="col-md-8 form-group">
 							<div class="form-group">
 							  <label for="exampleInputEmail1">Video Embeded</label>

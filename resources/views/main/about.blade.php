@@ -87,7 +87,7 @@
     flex: 1;
 }
 .rb-kicker { 
-    color: #e65a32; 
+    color: #E31E24; 
     font-weight: 700; 
     text-transform: uppercase; 
     letter-spacing: 2px; 
@@ -170,7 +170,7 @@
     transform: translate(-50%, -50%);
     width: 80px;
     height: 80px;
-    background: #e65a32;
+    background: #E31E24;
     color: #fff;
     border-radius: 50%;
     font-size: 28px;
@@ -262,7 +262,7 @@
 .rb-btn {
     display: inline-block;
     padding: 15px 35px;
-    background: #e65a32;
+    background: #E31E24;
     color: #fff;
     font-weight: 700;
     border-radius: 50px;
@@ -292,9 +292,9 @@
     .rb-video-wrapper { padding: 30px 20px; }
 }
 .rb-lead-text { font-size: 22px; font-family: 'Playfair Display', serif; color: #1f2f46; margin-bottom: 20px; line-height: 1.4; }
-.rb-mission-quote { font-size: 20px; font-style: italic; color: #e65a32; border-left: 4px solid #e65a32; padding-left: 20px; margin: 30px 0; font-family: 'Playfair Display', serif; line-height: 1.6; }
+.rb-mission-quote { font-size: 20px; font-style: italic; color: #E31E24; border-left: 4px solid #E31E24; padding-left: 20px; margin: 30px 0; font-family: 'Playfair Display', serif; line-height: 1.6; }
 .rb-mission-box { background: #f8fafc; padding: 25px; border-radius: 12px; font-size: 16px; color: #1f2f46; border: 1px solid #e2e8f0; line-height: 1.7; margin-top: 30px; }
-.rb-mission-box strong { color: #e65a32; font-size: 18px; display: block; margin-bottom: 8px; font-family: 'Playfair Display', serif; }
+.rb-mission-box strong { color: #E31E24; font-size: 18px; display: block; margin-bottom: 8px; font-family: 'Playfair Display', serif; }
 </style>
 
 <div class="rb-about-page">
@@ -318,14 +318,20 @@
                 <div class="rb-mission-text">
                     <span class="rb-kicker">Who We Are</span>
                     <h2>The Courage to Fight Back</h2>
-                    <p class="rb-lead-text">In 2011, Usha Vishwakarma, along with a group of 15 girls—most of whom were survivors of sexual assault—made a collective decision: they would no longer live in fear.</p>
-                    <p>Perturbed by her own harrowing experiences and recognizing the vulnerability of young women in her community, Usha realized that while education is a fundamental right, it simply wasn't enough. Women needed the tangible power to physically and mentally defend themselves against violence.</p>
+                    <p class="rb-lead-text">Red Brigade Lucknow is a non-profit organization dedicated to the empowerment of women and girls through self-defense training and awareness programs.</p>
+                    <p>Founded by Usha Vishwakarma, we aim to create a society where women can live without fear. Our primary initiative, NISHATRA, has trained over 3,00,000 women in self-defense, giving them the tools and confidence to protect themselves and stand up against sexual violence.</p>
                     <blockquote class="rb-mission-quote">
-                        "We refused to be defined by what happened to us. We chose to reclaim our streets, our bodies, and our right to live fearlessly."
+                        "Empowerment starts with safety and dignity. We believe every woman has the right to live without fear."
                     </blockquote>
-                    <p>Driven by this profound realization, she formed <strong>Red Brigade Lucknow</strong>. What started in a small room with a few determined individuals has now evolved into a massive grassroots movement. Today, our reach spans hundreds of villages and cities across India, actively transforming the narrative from victimhood to proactive empowerment.</p>
+                    <p>We combine direct action with community education to dismantle the culture of violence. Through dedicated self-defense training, immersive street plays, and unwavering solidarity, we are actively reclaiming our narrative and creating a safer world for all.</p>
                     <div class="rb-mission-box">
-                        <strong>Our Mission:</strong> To continuously empower women and girls through rigorous self-defense education (Nishatra), comprehensive survivor rehabilitation, and relentless community mobilization, ultimately forging a society where every woman lives with complete dignity, respect, and safety.
+                        <strong>Our Key Areas:</strong>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Self-Defense Training (NISHATRA)</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Survivor Support & Rehabilitation</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Awareness Through Street Plays (Nukkad Natak)</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Women Leadership & Advocacy</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -337,17 +343,47 @@
         <div class="container">
             <div class="rb-video-wrapper">
                 <div class="rb-video-text">
-                    <span class="rb-kicker">Discover</span>
-                    <h2>Watch Our Journey</h2>
-                    <p class="rb-lead-text">Witness the profound transformation from fear to unshakeable courage.</p>
-                    <p>See the impact of our work firsthand through the powerful stories of the women who courageously fight back against sexual violence. Our journey is paved with the resilience of survivors who have stepped out of the shadows to become formidable leaders in their own communities.</p>
-                    <p style="margin-top: 15px;">Through dedicated self-defense training, immersive street plays, and unwavering solidarity, we are actively reclaiming our narrative. Hit play to experience the raw energy, the determination, and the unapologetic strength of the Red Brigade movement in action.</p>
+                    <span class="rb-kicker">Resilience</span>
+                    <h2>A Rebuilt Life: Diya's Story</h2>
+                    <p class="rb-lead-text">Rebuilding lives, not merely survived.</p>
+                    <p>At 14, Diya survived an attempted rape in Mistripur, Lucknow, where the perpetrator had powerful connections and her complaint was initially refused registration. Red Brigade took up her case, provided shelter, and supported her through the entire legal process — travelling with her from Mistripur to Lucknow for every single court date. The perpetrator was imprisoned. Today, Diya is married and a mother — a life rebuilt, a testament to what collective support can achieve.</p>
                 </div>
                 <div class="rb-video-thumbnail-container">
-                    <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-694.png'); ?>" alt="Watch Video">
-                    <a href="https://www.youtube.com/watch?v=CzMLuLwuZ00" target="_blank" class="rb-video-btn video mfp-iframe">
-                        <i class="fas fa-play"></i>
-                    </a>
+                    <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-614.jpeg'); ?>" alt="Resilience Story">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Veerangana Vahini -->
+    <section class="rb-mission-section" style="background: #1f2f46; color: #fff; padding: 100px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <span class="rb-kicker" style="color: #E31E24;">The Next Chapter</span>
+                    <h2 style="color: #fff; font-size: 48px; margin-bottom: 30px;">Veerangana Vahini</h2>
+                    <p style="color: #cbd5e0; font-size: 18px;">Growing from the roots of Red Brigade, Veerangana Vahini is a new women's mass organisation launched on 13 February 2024 (National Women's Day) in Lucknow. It is a platform for women to organise across caste and religion, building a new cultural identity grounded in collective strength.</p>
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <h3 style="color: #E31E24; font-size: 32px;">1,000</h3>
+                            <p style="color: #fff; font-size: 14px;">Young women (Avg age 22) from 40 UP districts & 7 states at foundation.</p>
+                        </div>
+                        <div class="col-6">
+                            <h3 style="color: #E31E24; font-size: 32px;">Vision</h3>
+                            <p style="color: #fff; font-size: 14px;">10,000 active leaders and 10,00,000 members nationally within 5 years.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="rb-mission-box" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: #fff; margin-top: 0;">
+                        <strong style="color: #E31E24;">The Road Ahead</strong>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 15px;">
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> <strong>Feb 2026:</strong> First major national conference (10,000 girls) in Lucknow.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> <strong>Member-Led:</strong> Funded by members (min. Rs. 10/month general).</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> <strong>Leadership:</strong> Training from village to city for political consciousness.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> <strong>Non-Partisan:</strong> Not a political party, but a unified platform for voices.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -380,6 +416,136 @@
                     <div class="rb-gallery-overlay">
                         <h4>Activism</h4>
                         <p>Building widespread social movements to dismantle discrimination.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Campaigns -->
+    <section class="rb-campaigns-section" style="padding: 100px 0; background: #fff;">
+        <div class="container">
+            <div class="rb-gallery-header" style="text-align: center; margin-bottom: 60px;">
+                <span class="rb-kicker">Our Active Work</span>
+                <h2 style="font-size: 46px; color: #1f2f46;">Flagship Campaigns</h2>
+            </div>
+
+            <div class="row">
+                <!-- 100 Days 100 Schools / Villages -->
+                <div class="col-md-6 mb-5">
+                    <div class="rb-mission-box" style="height: 100%; margin-top: 0;">
+                        <strong>100 Days 100 Schools / 100 Days 100 Villages</strong>
+                        <p style="margin-top: 15px;">These are intensive outreach campaigns in which the Red Brigade team travels to 100 schools or 100 villages within a 100-day period to deliver NISHASTRA training, awareness sessions, and community dialogues on sexual violence.</p>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Reaching areas with limited institutional support.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Combining self-defense with history of women freedom fighters.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Challenging externally imposed self-doubt.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Raat Ka Ujala -->
+                <div class="col-md-6 mb-5">
+                    <div class="rb-mission-box" style="height: 100%; margin-top: 0;">
+                        <strong>Raat Ka Ujala (Light of the Night)</strong>
+                        <p style="margin-top: 15px;">Held annually from 16 to 29 September in memory of Nirbhaya, Raat Ka Ujala is a night-safety activism campaign. Red Brigade takes to the streets at night to reclaim public spaces for women — a powerful symbolic and practical demonstration of the right to move freely.</p>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Night marches with candles and torches.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Street plays (Nukkad Natak) for public awareness.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Involving schools, colleges, and community groups.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 18 Days Activism -->
+                <div class="col-md-6 mb-5">
+                    <div class="rb-mission-box" style="height: 100%; margin-top: 0;">
+                        <strong>18 Days Activism — National Women's Day</strong>
+                        <p style="margin-top: 15px;">Celebrating India's National Women's Day (13 February), Red Brigade organizes 18 continuous days of activism until 2 March (Sarojini Naidu's passing). This campaign revives the historical memory of women's leadership in India.</p>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Annual Scooty Yatra across all blocks of Lucknow.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Padyatras (foot marches) connecting historical sites.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Women's leadership forums and cultural events.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Hinsa Mukt Jeevan -->
+                <div class="col-md-6 mb-5">
+                    <div class="rb-mission-box" style="height: 100%; margin-top: 0;">
+                        <strong>Hinsa Mukt Jeevan (Violence-Free Life) — 12-Day Activism</strong>
+                        <p style="margin-top: 15px;">Held annually from 21 September to 2 October, this 12-day campaign focuses on mobilising women and girls to pledge for violence-free living. This intensive period of activism transforms communities through collective action and survivor voices.</p>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Large-scale community rallies and public demonstrations.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Powerfully moving survivor testimonials and stories of resilience.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Intensive workshops on legal rights and protection mechanisms.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Pledging ceremonies in schools and colleges across the state.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Fight Against 9 3 6 -->
+                <div class="col-md-6 mb-5">
+                    <div class="rb-mission-box" style="height: 100%; margin-top: 0;">
+                        <strong>Fight Against 9 3 6</strong>
+                        <p style="margin-top: 15px;">A targeted campaign addressing sexual harassment in public spaces. We use creative activism and community reporting to make neighborhoods safer for everyone.</p>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Creative street-level activism and awareness.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Robust community reporting mechanisms for harassment.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Local advocacy for better lighting and safer public design.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Balmanch -->
+                <div class="col-md-6 mb-5">
+                    <div class="rb-mission-box" style="height: 100%; margin-top: 0;">
+                        <strong>Balmanch — Education and Rehabilitation Centre</strong>
+                        <p style="margin-top: 15px;">Based in Madiyaon, Lucknow, Balmanch is our community education centre. It serves as a learning space for children from marginalised communities and a rehabilitation centre for survivors.</p>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Learning space for children from marginalized communities.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Empowerment hub: Victims becoming leaders like trainer Annu.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Coordinated by survivors who once studied at the centre.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Chikankari Empowerment -->
+                <div class="col-md-6 mb-5">
+                    <div class="rb-mission-box" style="height: 100%; margin-top: 0;">
+                        <strong>Chikankari Women's Economic Empowerment</strong>
+                        <p style="margin-top: 15px;">Working directly with the network of women in Lucknow's unorganised Chikankari sector to provide livelihood skill development and economic empowerment.</p>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Livelihood skill development for marginalised women.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Support in negotiating better wages and understanding rights.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Building long-term financial independence for survivors.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Justice Access Support -->
+                <div class="col-md-6 mb-5">
+                    <div class="rb-mission-box" style="height: 100%; margin-top: 0;">
+                        <strong>Justice Access Support</strong>
+                        <p style="margin-top: 15px;">A dedicated team supporting survivors through the entire legal process—from filing an FIR to navigating court proceedings. We ensure no survivor faces the system alone.</p>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> 200+ women supported in registering and prosecuting cases.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Successful convictions secured for survivors of sexual violence.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Comprehensive counselling and legal accompaniment.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Women Freedom Fighters Programme -->
+                <div class="col-md-6 mb-5">
+                    <div class="rb-mission-box" style="height: 100%; margin-top: 0;">
+                        <strong>Women Freedom Fighters Research & Awareness</strong>
+                        <p style="margin-top: 15px;">We have researched and documented approximately 250 unsung women freedom fighters of India's independence struggle (1857-1947), with a focus on 100 primary warriors.</p>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Bringing unsung stories to life as living inspiration for today's girls.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Workshops, conferences, and foot marches celebrating women's history.</li>
+                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Transforming self-identity through the power of historical memory.</li>
+                        </ul>
                     </div>
                 </div>
             </div>

@@ -16,16 +16,16 @@ class Helpers
 	public static function mail_content_section(){
 		$headers = "MIME-Version: 1.0" . "\r\n";
 					$headers.= "Content-type:text/html;charset=UTF-8" . "\r\n";
-					$headers.= "From:doctorsonweb@gmail.com" . "\r\n".
-								"Reply-To:doctorsonweb@gmail.com" . "\r\n";
+					$headers.= "From:info@redbrigadelucknow.org" . "\r\n".
+								"Reply-To:info@redbrigadelucknow.org" . "\r\n";
 								return $headers;
 	}
 	public static function mail_footer_section(){
-		$content='<div style="background:rgb(0,124,157);padding:10px 0px;width:100%;float:left">
+		$content='<div style="background:rgb(227,30,36);padding:10px 0px;width:100%;float:left">
 <div style="width:100%">
 <div style="width:100%;float:left">
 <p style="margin:7px 0px;color:#fff;padding-right:15px;font-size:12px;text-align:center;">
-Consult Best Doctors From Anywhere, Anytime. </p><div class="yj6qo"></div><div class="adL">
+Fearless Life Of Women - Red Brigade Lucknow </p><div class="yj6qo"></div><div class="adL">
 
 </div></div><div class="adL">
 
@@ -36,13 +36,13 @@ Consult Best Doctors From Anywhere, Anytime. </p><div class="yj6qo"></div><div c
 	}
 	public static function mail_header_section(){
 		$content='<div style="width:100%;padding:0px;"><div class="adM">
-</div><div style="width:100%;float:left;background:rgb(200,37,6)">';
-$variable='http://doctorsonweb.in/images/medical-help-header-background-image-4.jpg';
-$content.="<a href='http://doctorsonweb.in/'><div style='background:url(".$variable.");background-size:cover;height:170px;width:100%;float:left'>";
+</div><div style="width:100%;float:left;background:rgb(227,30,36)">';
+$variable=URL::asset('uploads/img/logo.png');
+$content.="<a href='".URL::to('/')."'><div style='background:url(".$variable.");background-size:contain;background-repeat:no-repeat;height:170px;width:100%;float:left'>";
 $content.='<div class="adM">
 </div><div style="padding-top:50px;margin-left:20%;width:66.66666667%;float:left"><div class="adM">
 </div><div style="margin:auto;float:none;width:58.33333333%"><div class="adM">
-</div><a href="http://doctorsonweb.in/" style="font-size:32px;color:#fff;font-weight:700;letter-spacing:-1px;text-align:center"><span class="il">Doctorsonweb.in</span></a>
+</div><a href="'.URL::to('/').'" style="font-size:32px;color:#fff;font-weight:700;letter-spacing:-1px;text-align:center"><span class="il">Red Brigade Lucknow</span></a>
 </div>
 
 </div>
@@ -51,8 +51,8 @@ $content.='<div class="adM">
 	}
 	public static function mail_main_message($message){
 		$content=' <div style="background:#fff;padding:0px 15px 30px;margin-bottom:50px;margin:2%;width: 92%;float:left;">
-<img src="http://doctorsonweb.in/images/medical-help-logo.png" style="left:-25px;width: 22%;position: relative;float:left;">
-<a href="http://doctorsonweb.in/" style="background:rgb(0,124,157);color:white;padding:10px;border-radius:4px;float:right;margin-top:25px;">Go to <span class="il">Doctorsonweb.in</span></a>
+<img src="'.URL::asset('uploads/img/logo.png').'" style="left:-25px;width: 22%;position: relative;float:left;">
+<a href="'.URL::to('/').'" style="background:rgb(227,30,36);color:white;padding:10px;border-radius:4px;float:right;margin-top:25px;">Go to <span class="il">Red Brigade Lucknow</span></a>
 <div style="width: 95%;
 float: left;
 border: 1px solid #ddd;
@@ -73,7 +73,7 @@ padding: 10px;background:rgb(246,246,246);">
 				  <tr>
 				<td style="padding:15px 20px 20px 20px;width:100%">
                   <div style="font-family:Georgia,Arial,Helvetica;font-size:15px;color:#333;font-weight:normal;line-height:1.6;font-style:italic;width:100%">Warm regards,<br>
-					Doctorsonweb.in</div>
+					Red Brigade Lucknow</div>
                 </td>
               </tr>
               <tr>
@@ -92,7 +92,7 @@ padding: 10px;background:rgb(246,246,246);">
     {
 //api code =        VVLcCvhPTEeKU60jght0ew //
 		$apikey = "VVLcCvhPTEeKU60jght0ew";
-		$apisender = "TESTIN";
+		$apisender = "REDBRG";
 		$msg =$msg;
 		$num = $mobile;    // MULTIPLE NUMBER VARIABLE PUT HERE...!                
 		$ms = rawurlencode($msg);   //This for encode your message content                        
@@ -110,11 +110,11 @@ padding: 10px;background:rgb(246,246,246);">
 
 	public static function projectName()
     {
-		 return 'TRAVEL AGENCY';
+		 return 'RED BRIGADE LUCKNOW';
     } 
 	public static function getmainmail()
     {
-		 return 'aanchal.img@gmail.com';
+		 return 'info@redbrigadelucknow.org';
     } 
     public static function getUserNameShow($name,$email){
 		if($name!=""){

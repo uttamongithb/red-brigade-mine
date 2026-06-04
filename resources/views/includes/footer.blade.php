@@ -15,10 +15,10 @@
                             learning environment where girls and women can build confidence through self-defence training.
                         </p>
                         <ul class="footer-social">
-                            <li><a href="https://www.facebook.com/official.redbrigade.lucknow" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="https://mobile.twitter.com/redbrigadel?lang=en" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="https://youtube.com/channel/UCI0YBR8fmF25aw_io3sHecA" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
-                            <li><a href="https://www.instagram.com/redbrigadelucknow/?hl=en" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://www.facebook.com/redbrigade.lucknow" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://twitter.com/redbrigadel" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="https://www.youtube.com/c/RedBrigadeLucknow" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="https://www.instagram.com/redbrigadelucknow" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -39,9 +39,9 @@
                         <h4 class="footer-heading">Contact</h4>
                         <ul>
                             <li>
-                                <a href="https://www.google.com/maps/search/?api=1&query=P-16+Nehru+Enclave+Gomti+Nagar+Lucknow+226010" target="_blank" rel="noopener" aria-label="Open Red Brigade Lucknow address on map">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+1,+Near+Mini+Stadium,+Vinay+Khand-3,+Gomti+Nagar,+Lucknow+-+226010" target="_blank" rel="noopener" aria-label="Open Red Brigade Lucknow address on map">
                                     <i class="fas fa-map-marker-alt"></i>
-                                    <span>P-16 Nehru Enclave Gomti Nagar Lucknow (226010), Uttar Pradesh (India)</span>
+                                    <span>Plot No. 1, Near Mini Stadium, Vinay Khand-3, Gomti Nagar, Lucknow - 226010</span>
                                 </a>
                             </li>
                             <li>
@@ -57,9 +57,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="mailto:redbrigade.lucknow@gmail.com" target="_self" aria-label="Email Red Brigade Lucknow">
+                                <a href="mailto:info@redbrigadelucknow.org" target="_self" aria-label="Email Red Brigade Lucknow">
                                     <i class="fas fa-envelope"></i>
-                                    <span>redbrigade.lucknow@gmail.com</span>
+                                    <span>info@redbrigadelucknow.org</span>
                                 </a>
                             </li>
                         </ul>

@@ -26,13 +26,16 @@ Route::any('/', 'MainController@home');
 Route::any('/', 'MainController@index');
 
 // Compatibility redirects: map legacy admin/login and /admin to real login/dashboard
-Route::any('/main-admin/login', function(){
-	return redirect('/login');
+Route::get('/main-admin/login', function(){
+    return redirect('/login');
 });
+Route::post('/main-admin/login', 'Auth\AuthController@login');
 Route::any('/admin', function(){
 	return redirect('/main-admin/dashboard');
 });
 Route::any('/about', 'MainController@about');
+Route::any('/research', 'MainController@research');
+Route::any('/ethics', 'MainController@ethics');
 Route::any('/ourteam', 'MainController@ourteam');
 Route::any('/achievements', 'MainController@achievements');
 Route::any('/event', 'MainController@event');

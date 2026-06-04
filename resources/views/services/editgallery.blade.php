@@ -42,7 +42,6 @@
 								<option value="Activity" <?php if($thisdata->type=='Activity') { echo "selected"; } ?>>Activity</option>
 								<option value="Campains" <?php if($thisdata->type=='Campains') { echo "selected"; } ?>>Campains</option>
 								<option value="News" <?php if($thisdata->type=='News') { echo "selected"; } ?>>News</option>
-								<option value="Donate" <?php if($thisdata->type=='Donate') { echo "selected"; } ?>>Donate</option>
 							</select>
 						</div>
 						<div class="col-md-8 form-group">

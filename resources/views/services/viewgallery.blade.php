@@ -3,13 +3,13 @@
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        View All Research & Publications
+        View All Gallery & Media
         <small>Preview</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#"> Research & Publications</a></li>
-        <li class="active">View All Research & Publications</li>
+        <li><a href="#"> Gallery & Media</a></li>
+        <li class="active">View All Gallery & Media</li>
       </ol>
     </section>
 	<section class="content">
@@ -25,10 +25,10 @@
 					<div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
 						<div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px;">
 							<a class="btn btn-app pull-left yellowback" href="<?php echo action('ServiceController@viewgallery')?>" style="background:rgb(255,152,0);">
-								<i class="fa fa-barcode"></i> Research & Publications List
+								<i class="fa fa-barcode"></i> Gallery & Media List
 							</a>
 							<a class="btn btn-app pull-left greenback" href="<?php echo action('ServiceController@addgallery')?>">
-								<i class="fa fa-plus-circle"></i> Add New Research & Publications
+								<i class="fa fa-plus-circle"></i> Add New Gallery & Media
 							</a>
 						</div>
 					</div>
@@ -41,7 +41,7 @@
 				<tr>
 
                   <th>S.No</th>
-                  <th>Research & Publications Type</th>
+                  <th>Gallery & Media Type</th>
                   <th>Image</th>
                   <th>Status</th>
                   <th>Action</th>

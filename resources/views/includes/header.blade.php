@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Brigade Lucknow</title>
     <!-- favicon -->
-    <link rel="icon" type="image/jpeg" href="<?php echo URL::asset('uploads/img/download.jpg')?>">
-    <link rel="shortcut icon" type="image/jpeg" href="<?php echo URL::asset('uploads/img/download.jpg')?>">
+    <link rel="icon" type="image/jpeg" href="<?php echo URL::asset('uploads/img/redbrigade-favicon.jpg')?>">
+    <link rel="shortcut icon" type="image/jpeg" href="<?php echo URL::asset('uploads/img/redbrigade-favicon.jpg')?>">
     <!-- bootstrap -->
     <link rel="stylesheet" href="<?php echo URL::asset('css/front/bootstrap.min.css')?>">
     <!-- fontawesome -->
@@ -139,7 +139,7 @@
             justify-content: center;
             flex-direction: row;
             flex-wrap: nowrap;
-            gap: 15px;
+            gap: 45px;
             margin: 0;
             padding: 0;
             width: 100%;
@@ -157,15 +157,15 @@
         }
 
         .navbar-area .navbar-collapse .navbar-nav .nav-item.active > .nav-link {
-            color: #e74c3c;
+            color: #000000;
         }
 
         .navbar-area .navbar-collapse .navbar-nav .nav-item .nav-link {
-            font-size: 16px !important;
-            font-weight: 500 !important;
+            font-size: 18px !important;
+            font-weight: 700 !important;
             padding: 0 !important;
             margin: 0 !important;
-            color: #282828;
+            color: #E31E24;
             letter-spacing: 0.2px;
             transition: all 0.3s ease;
             position: relative;
@@ -173,42 +173,51 @@
         }
 
         .navbar-area .navbar-collapse .navbar-nav .nav-item .nav-link:hover {
-            color: #e74c3c;
+            color: #1f2f46;
         }
 
         /* Zone 3: Donate Button - RIGHT - Fixed at End */
-        .navbar-area .navbar-collapse .navbar-nav .donate-nav-item {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding: 0 !important;
-            gap: 0;
-            flex: 0 0 auto;
-            white-space: nowrap;
-            list-style: none;
-        }
-
         .navbar-area .navbar-donate-wrap {
             grid-column: 3;
-            flex: 0 0 auto;
             display: flex;
             align-items: center;
-            margin-left: 30px;
-            justify-self: end;
+            justify-content: flex-end;
         }
 
-        .navbar-area .navbar-collapse .navbar-nav .donate-nav-item .donate-btn {
-            margin-top: 0 !important;
-            margin: 0 !important;
+        .navbar-area .navbar-donate-wrap .donate-btn {
+            font-size: 16px !important;
+            font-weight: 700 !important;
+            color: #ffffff !important;
+            background-color: #E31E24;
+            padding: 0 30px !important;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(227, 30, 36, 0.2);
+            border: 2px solid #E31E24;
             white-space: nowrap;
+            text-decoration: none;
+            line-height: 1;
+        }
+
+        .navbar-area .navbar-donate-wrap .donate-btn:hover {
+            background-color: #ffffff;
+            color: #E31E24 !important;
+            box-shadow: 0 5px 15px rgba(227, 30, 36, 0.1);
         }
 
         @media (min-width: 1367px) and (max-width: 1599px) {
             .navbar-area .navbar-collapse .navbar-nav {
-                gap: 10px;
+                gap: 20px;
             }
 
             .navbar-area .navbar-collapse .navbar-nav .nav-item .nav-link {
-                font-size: 14px !important;
+                font-size: 16px !important;
             }
 
             .navbar-area .navbar-donate-wrap {
@@ -458,20 +467,22 @@
                                 <li class="nav-item <?php echo Request::is('about') ? 'active' : '' ?>">
                                         <a class="nav-link" href="<?php  echo action('MainController@about')?>">About Us</a>
                                 </li>
-                                <li class="nav-item <?php echo Request::is('ourteam') ? 'active' : '' ?>">
-                                        <a class="nav-link" href="<?php  echo action('MainController@ourteam')?>">Our Team</a>
+                                <li class="nav-item <?php echo Request::is('research') ? 'active' : '' ?>">
+                                        <a class="nav-link" href="<?php  echo action('MainController@research')?>">Research</a>
+                                </li>
+                                <li class="nav-item <?php echo Request::is('gallery') ? 'active' : '' ?>">
+                                        <a class="nav-link" href="<?php  echo action('MainController@gallery')?>">Gallery</a>
                                 </li>
                                 <li class="nav-item <?php echo Request::is('blog') ? 'active' : '' ?>">
-                    <a class="nav-link" href="<?php  echo action('MainController@blog')?>">Our Work</a>
-                </li>
-                 <li class="nav-item <?php echo Request::is('achievements') ? 'active' : '' ?>">
+                                        <a class="nav-link" href="<?php  echo action('MainController@blog')?>">Blog</a>
+                                </li>
+                                <li class="nav-item <?php echo Request::is('ethics') ? 'active' : '' ?>">
+                                        <a class="nav-link" href="<?php  echo action('MainController@ethics')?>">Vision & Ethics</a>
+                                </li>
+                                <li class="nav-item <?php echo Request::is('achievements') ? 'active' : '' ?>">
                     <a class="nav-link" href="<?php  echo action('MainController@achievements')?>">Achievements</a>
                 </li> 
-                <li class="nav-item <?php echo Request::is('gallery') ? 'active' : '' ?>">
-                    <a class="nav-link" href="<?php  echo action('MainController@gallery')?>">Research & Publications </a>
-                </li>
-                
-               <li class="nav-item <?php echo Request::is('contact') ? 'active' : '' ?>">
+                <li class="nav-item <?php echo Request::is('contact') ? 'active' : '' ?>">
                     <a class="nav-link" href="<?php  echo action('MainController@contact')?>">Contact us</a>
                 </li>
             </ul>

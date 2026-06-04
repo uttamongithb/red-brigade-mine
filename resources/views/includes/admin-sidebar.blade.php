@@ -47,35 +47,13 @@
         </li>
 		<li class="treeview">
           <a href="#">
-            <i class="fa fa-cubes" style="color:#800000;"></i> <span>Our Team</span>
+            <i class="fa fa-cubes" style="color:#800000;"></i> <span>Gallery & Media</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-double-left pull-right faffff"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-           <li><a href="<?php echo action('ServiceController@viewtestimonial')?>"><i class="fa fa-cubes"></i> View Team</a></li>
-          </ul>
-        </li>
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-cubes" style="color:#800000;"></i> <span>Research & Publications</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-double-left pull-right faffff"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-           <li><a href="<?php echo action('ServiceController@viewgallery')?>"><i class="fa fa-cubes"></i> ViewResearch & Publications</a></li>
-          </ul>
-        </li> 
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-cubes" style="color:#800000;"></i> <span> Events</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-double-left pull-right faffff"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-           <li><a href="<?php echo action('ServiceController@viewnews')?>"><i class="fa fa-cubes"></i> View  Events</a></li>
+           <li><a href="<?php echo action('ServiceController@viewgallery')?>"><i class="fa fa-cubes"></i> View Gallery & Media</a></li>
           </ul>
         </li> 
 		<li class="treeview">

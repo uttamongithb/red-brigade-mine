@@ -1,9 +1,9 @@
 @include('includes.header')
 
 <style>
-/* Reset & Base - Consistent Design Language */
+/* Reset & Base - Consistent Sharp Design Language */
 .rb-donate-page {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: #4a4a4a;
     line-height: 1.6;
     background-color: #fff;
@@ -37,7 +37,7 @@
 .rb-donate-hero::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    inset: 0;
     background: linear-gradient(to bottom, rgba(17, 26, 40, 0.7) 0%, rgba(17, 26, 40, 0.9) 100%);
 }
 .rb-donate-hero .container { position: relative; z-index: 2; }
@@ -56,7 +56,7 @@
 }
 
 .rb-kicker { 
-    color: #e65a32; 
+    color: #E31E24; 
     font-weight: 700; 
     text-transform: uppercase; 
     letter-spacing: 2px; 
@@ -73,13 +73,12 @@
 .rb-donation-grid {
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 80px;
 }
 
-/* PayPal Box */
+/* PayPal Box (Sharp edges) */
 .rb-paypal-box {
     background: #f8fafc;
-    border-radius: 24px;
     padding: 60px;
     text-align: center;
     border: 1px solid #e2e8f0;
@@ -88,32 +87,43 @@
 .rb-paypal-logo {
     display: inline-block;
     background: #fff;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 20px 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     margin-bottom: 30px;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s ease;
+}
+.rb-paypal-logo:hover {
+    transform: translateY(-5px);
+    border-color: #E31E24;
 }
 .rb-paypal-logo img {
-    max-width: 250px;
+    max-width: 200px;
 }
 
-/* Bank Grid */
+/* Bank Grid (Sharp edges) */
 .rb-bank-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 40px;
 }
 .rb-bank-card {
     background: #fff;
-    padding: 40px;
-    border-radius: 24px;
+    padding: 50px;
     border: 1px solid #eef2f6;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+}
+.rb-bank-card:hover {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-color: #E31E24;
 }
 .rb-bank-card h3 {
     font-size: 28px;
     color: #1f2f46;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f1f5f9;
 }
 .rb-bank-list {
     list-style: none;
@@ -121,16 +131,16 @@
     margin: 0;
 }
 .rb-bank-list li {
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #f1f5f9;
-    font-size: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #f1f5f9;
+    font-size: 16px;
     display: flex;
     justify-content: space-between;
 }
-.rb-bank-list li:last-child { border: none; }
-.rb-bank-list li strong { color: #1f2f46; }
-.rb-bank-list li span { color: #64748b; }
+.rb-bank-list li:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+.rb-bank-list li strong { color: #1f2f46; font-weight: 600; }
+.rb-bank-list li span { color: #4a5568; font-family: monospace; font-size: 15px; }
 
 @media (max-width: 991px) {
     .rb-bank-grid { grid-template-columns: 1fr; }
@@ -140,6 +150,8 @@
     .rb-donate-hero h1 { font-size: 42px; }
     .rb-donate-hero p { font-size: 18px; }
     .rb-paypal-box { padding: 40px 20px; }
+    .rb-bank-card { padding: 30px; }
+    .rb-bank-list li { flex-direction: column; gap: 5px; }
 }
 </style>
 
@@ -148,7 +160,7 @@
     <section class="rb-donate-hero">
         <div class="container">
             <span class="rb-kicker" style="color: #ff8a00;">Make an Impact</span>
-            <h1>Donate with Trust</h1>
+            <h1>Support the Movement</h1>
             <p>Your contribution directly supports our mission to provide self-defense training and rehabilitation for survivors.</p>
         </div>
     </section>
@@ -167,15 +179,15 @@
                     <a href="https://www.paypal.me/MissVishwakarma" target="_blank" class="rb-paypal-logo">
                         <img src="<?php echo URL::asset('uploads/gallery/paypal.png');?>" alt="PayPal Donation">
                     </a>
-                    <p style="margin-top: 10px; font-weight: 600; color: #1f2f46;">Tap above to open PayPal</p>
+                    <p style="margin-top: 10px; font-weight: 600; color: #1f2f46;">Click the logo to open PayPal</p>
                 </div>
 
                 <!-- Bank Transfers -->
                 <div class="rb-bank-section">
                     <div style="text-align: center; margin-bottom: 60px;">
                         <span class="rb-kicker">Direct Support</span>
-                        <h2 style="font-size: 42px;">Bank Transfer</h2>
-                        <p style="font-size: 18px; color: #64748b;">For Indian citizens, you can donate via direct bank transfer using the details below.</p>
+                        <h2 style="font-size: 42px;">Bank Transfer Details</h2>
+                        <p style="font-size: 18px; color: #64748b;">For Indian citizens, you can donate via direct bank transfer using the verified account details below.</p>
                     </div>
 
                     <div class="rb-bank-grid">
@@ -213,13 +225,12 @@
     </section>
 
     <!-- Final Message -->
-    <section class="rb-donation-content" style="padding-top: 0; padding-bottom: 120px;">
-        <div class="container text-center">
-            <div style="background: #1f2f46; border-radius: 24px; padding: 60px; color: #fff;">
-                <h2 style="color: #fff; font-size: 36px; margin-bottom: 20px;">Every Contribution Counts</h2>
-                <p style="color: #e2e8f0; font-size: 18px; max-width: 700px; margin: 0 auto 40px;">Whether it is a small monthly gift or a one-time donation, your support enables us to reach more villages and train more girls in self-defense.</p>
-                <a href="<?php echo action('MainController@contact'); ?>" style="display: inline-block; padding: 16px 40px; background: #e65a32; color: #fff; font-weight: 700; border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.backgroundColor='#fff'; this.style.color='#1f2f46'" onmouseout="this.style.backgroundColor='#e65a32'; this.style.color='#fff'">Contact Us for Queries</a>
-            </div>
+    <section class="rb-join-section" style="padding: 100px 0; background: #fff; text-align: center; border-top: 1px solid #eef2f6;">
+        <div class="container">
+            <span class="rb-kicker" style="color: #E31E24; letter-spacing: 3px; font-size: 12px; margin-bottom: 10px;">Every Contribution Counts</span>
+            <h2 style="color: #1f2f46; font-size: 36px; margin: 0 0 20px; font-family: 'Playfair Display', serif;">Empower the Change</h2>
+            <p style="color: #64748b; font-size: 18px; max-width: 650px; margin: 0 auto 35px; font-weight: 400; line-height: 1.6;">Whether it is a small monthly gift or a one-time donation, your support enables us to reach more villages and train more girls in self-defense.</p>
+            <a href="<?php echo action('MainController@contact'); ?>" class="rb-btn" style="display: inline-block; padding: 14px 40px; background: #E31E24; color: #fff; font-weight: 700; border-radius: 4px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.backgroundColor='#1f2f46'" onmouseout="this.style.backgroundColor='#E31E24'">Contact Us for Queries</a>
         </div>
     </section>
 </div>

@@ -18,66 +18,25 @@ use Illuminate\Support\Facades\Input;
 class MainController extends Controller {
 	public function index()
 	{
-	    	$allslider=DB::table('slider')->orderBy('slider.id','DESC')->get();
+	    $allslider=DB::table('slider')->where('status', 1)->orderBy('slider.id','DESC')->get();
 		$allevent=Db::table('news')->orderBy('news.id','DESC')->limit(12)->get();
 		$allblog=Db::table('blog')->orderBy('blog.id','DESC')->limit(6)->get();
 		
 		$alltestimonial=Db::table('testimonial')->orderBy('testimonial.id','DESC')->get();
 	 
-		
-		$allgallery=Db::table('gallery')->orderBy('gallery.id','DESC')->limit(1)->get();
 		$allactivity=Db::table('gallery')->where('type','Activity')->orderBy('gallery.id','DESC')->limit(6)->get();
 		$allcampains=Db::table('gallery')->where('type','Campains')->orderBy('gallery.id','DESC')->limit(6)->get();
 		$allnews=Db::table('gallery')->where('type','News')->orderBy('gallery.id','DESC')->limit(6)->get();
 		$alldonate=Db::table('gallery')->where('type','Donate')->orderBy('gallery.id','DESC')->limit(6)->get();
-		return view('main.index',compact('allslider','allevent','allblog','allgallery','allactivity','allcampains','allnews','alldonate','alltestimonial'));
+		return view('main.index',compact('allslider','allevent','allblog','allactivity','allcampains','allnews','alldonate','alltestimonial'));
 	}
-	public function about()
-	{
-		
-	   return view('main.about');
-	} 
 
-	public function ourteam()
-	{
-	  // Support both old dumps (no `type`) and newer schema with team categories.
-	   $hasTypeColumn = !empty(DB::select("SHOW COLUMNS FROM testimonial LIKE 'type'"));
-
-	   if ($hasTypeColumn) {
-	   	$alltestimonial=Db::table('testimonial')->where('type','Executive')->orderBy('testimonial.id','ASC')->get();
-	   	$allAdvisory=Db::table('testimonial')->where('type','Advisory')->orderBy('testimonial.id','ASC')->get();
-	   	$alllegal=Db::table('testimonial')->where('type','Legal')->orderBy('testimonial.id','ASC')->get(); 
-	   	$board=Db::table('testimonial')->where('type','Board')->orderBy('testimonial.id','ASC')->get();
-	   } else {
-	   	$alltestimonial=Db::table('testimonial')->orderBy('testimonial.id','ASC')->get();
-	   	$allAdvisory=collect();
-	   	$alllegal=collect();
-	   	$board=collect();
-	   }
-
-	   return view('main.ourteam',compact('alltestimonial','allAdvisory','alllegal','board'));
-// 		$$board=Db::table('testimonial')->orderBy('testimonial.id','DESC')->get();
-		//return view('main.ourteam',compact('alltestimonial')); 
-	}
-		public function achievements()
-	{
-	    return view('main.achievements');
-	} 
-	public function event()
-	{
-		$allevent=Db::table('news')->orderBy('news.id','DESC')->get();
-		return view('main.event',compact('allevent'));
-	}
 	public function gallery()
 	{
-		$allgallery=Db::table('gallery')->orderBy('gallery.id','DESC')->get();
-		
-		$allactivity=Db::table('gallery')->where('type','Activity')->orderBy('gallery.id','DESC')->get();
-			$report=Db::table('gallery')->where('type','report')->orderBy('gallery.id','DESC')->get();
-		$allcampains=Db::table('gallery')->where('type','Campains')->orderBy('gallery.id','DESC')->get();
-		$allnews=Db::table('gallery')->where('type','News')->orderBy('gallery.id','DESC')->get();
-		$alldonate=Db::table('gallery')->where('type','Donate')->orderBy('gallery.id','DESC')->get();
-		return view('main.gallery',compact('allgallery','allactivity','allcampains','allnews','alldonate','report'));
+		$photos=Db::table('gallery')->whereIn('type', ['Activity', 'News'])->orderBy('gallery.id','DESC')->get();
+		$videos=Db::table('gallery')->where('type', 'Campains')->orderBy('gallery.id','DESC')->get();
+
+		return view('main.gallery',compact('photos', 'videos'));
 	}
 	public function blog()
 	{
@@ -137,10 +96,11 @@ class MainController extends Controller {
 		{
 				 $rules = array(
 				'name' => 'required',
-				'lastname' => 'required',
-				'email' => 'required',
-				'msg'	=> 'required',
+				'email' => 'required|email',
 				'mobile'	=> 'required',
+				'state' => 'required',
+				'district' => 'required',
+				'msg'	=> 'required',
 				);
 				 $validator = Validator::make(Input::all(), $rules);
 				if($validator->fails()){
@@ -148,7 +108,7 @@ class MainController extends Controller {
 						->withErrors($validator)
 						 ->withInput(Input::except('password'));
 				} else{
-					$input = $request->only(['name','lastname','email','msg','mobile']);
+					$input = $request->only(['name','email','mobile','state','district','msg']);
 					Db:: table('contact')->insert($input);
 
 		

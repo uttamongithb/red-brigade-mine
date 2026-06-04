@@ -56,7 +56,7 @@
 }
 
 .rb-kicker { 
-    color: #e65a32; 
+    color: #E31E24; 
     font-weight: 700; 
     text-transform: uppercase; 
     letter-spacing: 2px; 
@@ -110,7 +110,7 @@
 }
 .rb-input-field:focus {
     outline: none;
-    border-color: #e65a32;
+    border-color: #E31E24;
     background: #fff;
     box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.1);
 }
@@ -122,7 +122,7 @@
     width: 100%;
     padding: 18px;
     border-radius: 50px;
-    background: #e65a32;
+    background: #E31E24;
     color: #fff;
     font-weight: 700;
     border: none;
@@ -149,14 +149,14 @@
     transition: all 0.3s ease;
 }
 .rb-info-card:hover {
-    border-color: #e65a32;
+    border-color: #E31E24;
     background: #fff;
     transform: translateX(10px);
 }
 .rb-info-icon {
     width: 50px;
     height: 50px;
-    background: #e65a32;
+    background: #E31E24;
     color: #fff;
     border-radius: 12px;
     display: flex;
@@ -177,7 +177,7 @@
     text-decoration: none;
 }
 .rb-info-content a:hover {
-    color: #e65a32;
+    color: #E31E24;
 }
 
 /* Map Section */
@@ -213,7 +213,7 @@
     display: inline-block;
 }
 .rb-direction-btn:hover {
-    background: #e65a32;
+    background: #E31E24;
     color: #fff;
 }
 
@@ -279,14 +279,9 @@
                         {{ Form::open(array('action' => 'MainController@contact','files' => true)) }}
                             {{ csrf_field() }}
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-12">
                                     <div class="rb-input-group">
-                                        <input required type="text" name="name" placeholder="First Name" class="rb-input-field">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="rb-input-group">
-                                        <input required type="text" name="lastname" placeholder="Last Name" class="rb-input-field">
+                                        <input required type="text" name="name" placeholder="Full Name" class="rb-input-field">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -297,6 +292,16 @@
                                 <div class="col-md-6">
                                     <div class="rb-input-group">
                                         <input required type="tel" name="mobile" placeholder="Phone Number" class="rb-input-field">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="rb-input-group">
+                                        <input required type="text" name="state" placeholder="State" class="rb-input-field">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="rb-input-group">
+                                        <input required type="text" name="district" placeholder="District" class="rb-input-field">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -319,6 +324,7 @@
                         <div class="rb-info-content">
                             <h4>Call Us</h4>
                             <p><a href="tel:+919455025746">+91-9455025746</a></p>
+                            <p><a href="tel:+917985463006">+91-7985463006</a></p>
                         </div>
                     </div>
 
@@ -326,7 +332,7 @@
                         <div class="rb-info-icon"><i class="fas fa-envelope"></i></div>
                         <div class="rb-info-content">
                             <h4>Email Us</h4>
-                            <p><a href="mailto:redbrigade.lucknow@gmail.com">redbrigade.lucknow@gmail.com</a></p>
+                            <p><a href="mailto:info@redbrigadelucknow.org">info@redbrigadelucknow.org</a></p>
                         </div>
                     </div>
 
@@ -334,16 +340,7 @@
                         <div class="rb-info-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="rb-info-content">
                             <h4>Locate Us</h4>
-                            <p>P-16 Nehru Enclave Gomti Nagar Lucknow (226010), Uttar Pradesh (India)</p>
-                        </div>
-                    </div>
-
-                    <div class="rb-info-card" style="background: #1f2f46; color: #fff;">
-                        <div class="rb-info-icon" style="background: #fff; color: #1f2f46;"><i class="fas fa-clock"></i></div>
-                        <div class="rb-info-content">
-                            <h4 style="color: #fff;">Working Hours</h4>
-                            <p style="color: #cbd5e0;">Mon - Sat: 10:00 AM - 6:00 PM</p>
-                            <p style="color: #cbd5e0;">Sunday: Closed</p>
+                            <p>Plot No. 1, Near Mini Stadium, Vinay Khand-3, Gomti Nagar, Lucknow - 226010</p>
                         </div>
                     </div>
                 </div>
@@ -357,13 +354,13 @@
             <div class="rb-map-wrapper">
                 <iframe
                     class="rb-map-iframe"
-                    src="https://www.google.com/maps?q=26.8613138,80.981621&z=18&output=embed"
+                    src="https://www.google.com/maps?q=26.8532,80.9984&z=18&output=embed"
                     loading="lazy"
                     allowfullscreen
                     referrerpolicy="no-referrer-when-downgrade"
                     title="Red Brigade Lucknow Location"></iframe>
                 <div class="rb-map-overlay">
-                    <a class="rb-direction-btn" href="https://www.google.com/maps/@26.8613138,80.981621,18.19z" target="_blank">Get Directions</a>
+                    <a class="rb-direction-btn" href="https://www.google.com/maps/@26.8532,80.9984,18z" target="_blank">Get Directions</a>
                 </div>
             </div>
         </div>

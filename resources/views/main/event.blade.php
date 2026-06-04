@@ -56,7 +56,7 @@
 }
 
 .rb-kicker { 
-    color: #e65a32; 
+    color: #E31E24; 
     font-weight: 700; 
     text-transform: uppercase; 
     letter-spacing: 2px; 
@@ -144,7 +144,7 @@
     gap: 8px;
 }
 .rb-event-meta li i {
-    color: #e65a32;
+    color: #E31E24;
     width: 16px;
 }
 
@@ -205,7 +205,7 @@
             <div style="background: #1f2f46; border-radius: 24px; padding: 60px; color: #fff;">
                 <h2 style="color: #fff; font-size: 36px; margin-bottom: 20px;">Want to Organize an Event?</h2>
                 <p style="color: #e2e8f0; font-size: 18px; max-width: 700px; margin: 0 auto 40px;">If you would like to collaborate or host a Red Brigade self-defense workshop at your institution, please get in touch with us.</p>
-                <a href="<?php echo action('MainController@contact'); ?>" style="display: inline-block; padding: 16px 40px; background: #e65a32; color: #fff; font-weight: 700; border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.backgroundColor='#fff'; this.style.color='#1f2f46'" onmouseout="this.style.backgroundColor='#e65a32'; this.style.color='#fff'">Contact Us Today</a>
+                <a href="<?php echo action('MainController@contact'); ?>" style="display: inline-block; padding: 16px 40px; background: #E31E24; color: #fff; font-weight: 700; border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.backgroundColor='#fff'; this.style.color='#1f2f46'" onmouseout="this.style.backgroundColor='#E31E24'; this.style.color='#fff'">Contact Us Today</a>
             </div>
         </div>
     </section>

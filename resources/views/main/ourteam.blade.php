@@ -60,7 +60,7 @@
 
 /* Kicker Style */
 .rb-kicker { 
-    color: #e65a32; 
+    color: #E31E24; 
     font-weight: 700; 
     text-transform: uppercase; 
     letter-spacing: 2px; 
@@ -90,7 +90,7 @@
 }
 .rb-metric-card:hover {
     transform: translateY(-5px);
-    border-color: #e65a32;
+    border-color: #E31E24;
 }
 .rb-metric-number {
     display: block;
@@ -175,7 +175,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #e65a32;
+    color: #E31E24;
     margin-bottom: 10px;
 }
 .rb-member-name {
@@ -399,7 +399,7 @@
         <div class="container text-center">
             <h2 style="font-size: 42px; margin-bottom: 20px;">Join Our Mission</h2>
             <p style="font-size: 18px; color: #4a5568; max-width: 600px; margin: 0 auto 40px;">Whether as a volunteer, supporter, or ally, you can be part of the change we are building together.</p>
-            <a href="<?php echo action('MainController@contact'); ?>" style="display: inline-block; padding: 16px 40px; background: #e65a32; color: #fff; font-weight: 700; border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.backgroundColor='#1f2f46'" onmouseout="this.style.backgroundColor='#e65a32'">Get Involved</a>
+            <a href="<?php echo action('MainController@contact'); ?>" style="display: inline-block; padding: 16px 40px; background: #E31E24; color: #fff; font-weight: 700; border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.backgroundColor='#1f2f46'" onmouseout="this.style.backgroundColor='#E31E24'">Get Involved</a>
         </div>
     </section>
 </div>

@@ -1,4 +1,4 @@
-			@include('includes.header')
+@include('includes.header')
 <!-- header area start  -->
 
 <div class="rb-home">
@@ -7,66 +7,83 @@
     <?php
         $heroSlides = [];
 
-        // Curated mission-relevant hero images that visually fit the homepage hero dimensions.
-        $relevantHeroCandidates = [
-            'uploads/slider/sunshine-slider-892.png',
-            'uploads/slider/sunshine-slider-437.png',
-            'uploads/slider/sunshine-slider-694.png'
-        ];
-
-        foreach ($relevantHeroCandidates as $heroImage) {
-            if (file_exists(base_path($heroImage))) {
-                $heroSlides[] = URL::asset($heroImage);
-            }
-        }
-
-        if (empty($heroSlides) && !empty($allslider)) {
+        // If admin has uploaded sliders, use them FIRST
+        if (!empty($allslider) && count($allslider) > 0) {
             foreach ($allslider as $alle) {
                 $sliderImage = 'uploads/slider/'.$alle->image;
                 $sliderSrc = file_exists(base_path($sliderImage)) ? URL::asset($sliderImage) : '';
                 if (!empty($sliderSrc)) {
-                    $heroSlides[] = $sliderSrc;
+                    $heroSlides[] = [
+                        'src' => $sliderSrc,
+                        'name' => !empty($alle->name) ? $alle->name : 'Stand With Red Brigade Lucknow',
+                        'desc' => !empty($alle->description) ? strip_tags($alle->description) : 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
+                    ];
                 }
             }
         }
 
+        // Fallback: If no admin sliders exist, use curated mission-relevant images
         if (empty($heroSlides)) {
-            $heroSlides[] = URL::asset('uploads/img/404.png');
+            $relevantHeroCandidates = [
+                'uploads/slider/Redbrigade-lucknow.jpg',
+                'uploads/slider/Redbrigade-lucknow-428.jpeg',
+                'uploads/slider/Redbrigade-lucknow-552.jpeg',
+                'uploads/slider/Redbrigade-lucknow-614.jpeg'
+            ];
+
+            foreach ($relevantHeroCandidates as $heroImage) {
+                if (file_exists(base_path($heroImage))) {
+                    $heroSlides[] = [
+                        'src' => URL::asset($heroImage),
+                        'name' => 'Stand With Red Brigade Lucknow',
+                        'desc' => 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
+                    ];
+                }
+            }
+        }
+
+        // Final Fallback: 404 image
+        if (empty($heroSlides)) {
+            $heroSlides[] = [
+                'src' => URL::asset('uploads/img/404.png'),
+                'name' => 'Stand With Red Brigade Lucknow',
+                'desc' => 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
+            ];
         }
     ?>
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000" data-pause="false" data-wrap="true">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="4000" data-pause="false" data-wrap="true">
           <ol class="carousel-indicators">
-            <?php foreach($heroSlides as $key => $slideSrc) { ?>
+            <?php foreach($heroSlides as $key => $slide) { ?>
                 <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $key; ?>" class="<?php echo $key == 0 ? 'active' : ''; ?>"></li>
             <?php } ?>
           </ol>
           
-            <div class="carousel-inner">
-                <?php foreach($heroSlides as $key => $slideSrc) { ?>
-                    <div class="carousel-item {{ $key == 0 ? ' active' : '' }}">
-                         <img class="d-block w-100 slider-res" src="<?php echo $slideSrc;?>" alt="Hero slide <?php echo ($key + 1); ?>">
+          <div class="carousel-inner">
+                <?php foreach($heroSlides as $key => $slide) { ?>
+                    <div class="carousel-item <?php echo $key == 0 ? ' active' : ''; ?>">
+                         <img class="d-block w-100 slider-res" src="<?php echo $slide['src'];?>" alt="<?php echo $slide['name']; ?>">
                     </div>
                 <?php } ?>
-                   
           </div>
           
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="z-index: 10;">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="z-index: 10;">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
-        </div>
+    </div>
 
-    <div class="rb-hero-overlay">
+    <!-- Fixed Overlay -->
+    <div class="rb-hero-overlay" style="position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; pointer-events: none;">
         <div class="container">
-            <div class="rb-hero-panel" style="margin-left:-10px;">
+            <div class="rb-hero-panel" style="margin-left:-10px; pointer-events: auto;">
                 <span class="rb-hero-kicker">Fearless Life Of Women</span>
-                <h1>Stand With Red Brigade Lucknow</h1>
-                <p>Building courage, dignity, and leadership through self-defense, survivor support, and community action.</p>
+                <h1 id="dynamic-slider-title"><?php echo $heroSlides[0]['name']; ?></h1>
+                <p id="dynamic-slider-desc"><?php echo $heroSlides[0]['desc']; ?></p>
                 <div class="rb-hero-actions">
                     <a href="<?php  echo action('MainController@contact')?>" class="boxed-btn donate rb-btn-primary" role="button">Join Now</a>
                     <a href="<?php  echo action('MainController@donate')?>" class="boxed-btn rb-btn-secondary" role="button">Donate</a>
@@ -84,8 +101,18 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
+    var slideData = <?php echo json_encode($heroSlides); ?>;
+    
+    window.jQuery(slider).on('slide.bs.carousel', function (e) {
+        var nextIndex = e.to;
+        if(slideData[nextIndex]) {
+            document.getElementById('dynamic-slider-title').innerText = slideData[nextIndex].name;
+            document.getElementById('dynamic-slider-desc').innerText = slideData[nextIndex].desc;
+        }
+    });
+
     window.jQuery(slider).carousel({
-        interval: 3000,
+        interval: 4000,
         pause: false,
         wrap: true
     });
@@ -144,13 +171,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         <li><i class="fas fa-check"></i> Supporting survivors through rehabilitation of more than 200 sexual violence survivors, including rape victims.</li>
                         <li><i class="fas fa-check"></i> Bringing women’s role in India’s freedom struggle into public awareness through National Women’s Day initiatives.</li>
                         <li><i class="fas fa-check"></i> Advancing economic self-sufficiency with skill development programs for 300+ women.</li>
-                        <li><i class="fas fa-check"></i> Conducting research-based programs to strengthen women’s honor, dignity, and safety.</li>
-                        <li><i class="fas fa-check"></i> Intervening in crisis situations, including COVID-19 relief support for about 20,000 people.</li>
-                        <li><i class="fas fa-check"></i> Supporting education for girls by mobilizing financial support from the community.</li>
-                        <li><i class="fas fa-check"></i> Working with 300+ schools and colleges around Lucknow and across 200 villages.</li>
                     </ul>
                     <div class="btn-wrapper">
-                        <a href="<?php echo action('MainController@blog')?>" class="boxed-btn">Learn More</a>
+                        <a href="<?php echo action('MainController@about')?>" class="boxed-btn">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -166,56 +189,66 @@ document.addEventListener('DOMContentLoaded', function () {
     
 </section>
 
-<!-- End About us Section  -->
-
-<!-- Start About us area  -->
-<section class="about_us_area " style="margin-top:80px; display:none;">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 remove-col-padding" style="padding:0px">
-                <div class="about-image"></div>
+<!-- Flagship Campaigns Summary -->
+<section class="rb-campaign-summary" style="padding: 80px 0; background: #f8fafc;">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <span class="rb-blog-kicker">Our Core Initiatives</span>
+                <h2 class="rb-blog-title">Flagship <em class="rb-blog-title-accent">Campaigns</em></h2>
             </div>
-            <div class="col-lg-6 remove-col-padding">
-                <div class="about-area-right">
-                    <span class="title" style="font-size:32px !important">WE ARE REDBRIGADE LUCKNOW</span>
-                    <h5 class="subtitle">Fight against Sexual -Violence - Trained 1,57,000 Women with NISHATRA (Self-Defense).</h5>
-                    <!-- <p >It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
-                    layout. The point of using Lorem Ipsum is that it has a more-or-less normal letters, as opposed to
-                    using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web.</p> -->
-                    
-                    <ul class="about-list " style="font-size:14px;">
-                            <li><i class="fas fa-check"></i>  Raising powerful voice against Sexual-Violence- Performed over 700 Nukkad-Naatak (Street Play)
-and 225 Seminars. To create an engaging platform involving several institutions and organizations.</li>
-                            <li><i class="fas fa-check"></i> To Create Women Leadership.
-</li>
-                            <li><i class="fas fa-check"></i> Survivor Support- Rehabilitated more than 200 Sexual Violence Survivors including 5 Rape Victims</li> 
-                            <li><i class="fas fa-check"></i>To bring to the fore the power of women in shaping the history – National Women’s Day and bring
-to the public domain the role of women in the national freedom struggle of India.</li>
-                            <li><i class="fas fa-check"></i>Economic self-sufficiency of Women – Skill development of more than 300 women</li>
-                       <li><i class="fas fa-check"></i>Research – Conducted different programmes for the honour and safety of women.</li>
-                       <li><i class="fas fa-check"></i>Intervention in COVID-19 crisis: Distributed Ration Kit & daily use items to about 20000 people. </li>
-                        <li><i class="fas fa-check"></i>Educational Support to poor Girls: We have been mobilizing people to extend financial support for education of poor girls. </li>
-                        </ul>
-                    <div class="btn-wrapper">
-                        <a href="<?php echo action('MainController@blog')?>" class="boxed-btn">Learn More</a>
-                    </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="rb-award-card h-100" style="padding: 30px; text-align: center;">
+                    <div class="rb-award-icon" style="font-size: 32px; color: #E31E24;"><i class="fas fa-school"></i></div>
+                    <h4 style="font-size: 18px; margin: 15px 0;">100 Days 100 Schools</h4>
+                    <p style="font-size: 14px;">Intensive outreach delivering training and awareness across 100 locations in 100 days.</p>
                 </div>
             </div>
-            
+            <div class="col-md-4 mb-4">
+                <div class="rb-award-card h-100" style="padding: 30px; text-align: center;">
+                    <div class="rb-award-icon" style="font-size: 32px; color: #E31E24;"><i class="fas fa-moon"></i></div>
+                    <h4 style="font-size: 18px; margin: 15px 0;">Raat Ka Ujala</h4>
+                    <p style="font-size: 14px;">Night-safety activism reclaiming public spaces for women through symbolic marches.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="rb-award-card h-100" style="padding: 30px; text-align: center;">
+                    <div class="rb-award-icon" style="font-size: 32px; color: #E31E24;"><i class="fas fa-female"></i></div>
+                    <h4 style="font-size: 18px; margin: 15px 0;">18 Days Activism</h4>
+                    <p style="font-size: 14px;">Celebrating National Women's Day with marathons of leadership and advocacy.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="rb-award-card h-100" style="padding: 30px; text-align: center;">
+                    <div class="rb-award-icon" style="font-size: 32px; color: #E31E24;"><i class="fas fa-dove"></i></div>
+                    <h4 style="font-size: 18px; margin: 15px 0;">Hinsa Mukt Jeevan</h4>
+                    <p style="font-size: 14px;">Focusing on non-violence and dignity during a 12-day intensive community dialogue.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="rb-award-card h-100" style="padding: 30px; text-align: center;">
+                    <div class="rb-award-icon" style="font-size: 32px; color: #E31E24;"><i class="fas fa-bullhorn"></i></div>
+                    <h4 style="font-size: 18px; margin: 15px 0;">Fight Against 9 3 6</h4>
+                    <p style="font-size: 14px;">Creative activism addressing sexual harassment in public spaces through community reporting.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="rb-award-card h-100" style="padding: 30px; text-align: center;">
+                    <div class="rb-award-icon" style="font-size: 32px; color: #E31E24;"><i class="fas fa-university"></i></div>
+                    <h4 style="font-size: 18px; margin: 15px 0;">Balmanch Centre</h4>
+                    <p style="font-size: 14px;">Education and rehabilitation centre where victims transform into fearless leaders.</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="<?php echo action('MainController@about')?>#campaigns" class="rb-blog-view-all">See Full Campaign Details <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
 </section>
-<!-- End About Us area  -->
 
-
-
-
-
-
-
-
-
-<!-- Activity area start  -->
+<!-- Recent Work area start  -->
     
 <?php
 // Recent Work - reuse blog layout: first event as featured, rest as cards
@@ -238,7 +271,7 @@ if (!empty($allevent)) {
             </div>
             <a href="<?php echo action('MainController@event')?>" class="rb-blog-view-all">
                 Explore All Events
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14 Jur"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
         </div>
 
@@ -302,9 +335,6 @@ if (!empty($allevent)) {
 <!-- Activity  end -->
 
 
-
-
-
 <!-- Start Redesigned Blog Section -->
 <style>
     .rb-blogs-modern {
@@ -346,7 +376,7 @@ if (!empty($allevent)) {
     }
 
     .rb-blog-title-accent {
-        color: #e65a32;
+        color: #E31E24;
         font-style: normal;
     }
 
@@ -366,8 +396,7 @@ if (!empty($allevent)) {
         font-weight: 600;
     }
 
-    .rb-blog-featured-link,
-    .rb-blog-card-link {
+    .rb-blog-featured-link,\n    .rb-blog-card-link {
         color: inherit;
         text-decoration: none;
     }
@@ -435,8 +464,7 @@ if (!empty($allevent)) {
         color: rgba(255, 255, 255, .92);
     }
 
-    .rb-blog-featured-meta,
-    .rb-blog-card-meta {
+    .rb-blog-featured-meta,\n    .rb-blog-card-meta {
         display: flex;
         align-items: center;
         gap: 16px;
@@ -445,13 +473,11 @@ if (!empty($allevent)) {
         font-weight: 600;
     }
 
-    .rb-blog-featured-meta i,
-    .rb-blog-card-meta i {
+    .rb-blog-featured-meta i,\n    .rb-blog-card-meta i {
         margin-right: 5px;
     }
 
-    .rb-blog-read-cta,
-    .rb-blog-card-read {
+    .rb-blog-read-cta,\n    .rb-blog-card-read {
         display: inline-flex;
         align-items: center;
         gap: 6px;
@@ -537,8 +563,7 @@ if (!empty($allevent)) {
     }
 
     @media (max-width: 1199px) {
-        .rb-blog-featured,
-        .rb-blog-grid {
+        .rb-blog-featured,\n        .rb-blog-grid {
             width: 100%;
         }
 
@@ -569,8 +594,7 @@ if (!empty($allevent)) {
             font-size: 32px;
         }
 
-        .rb-blog-featured-img img,
-        .rb-blog-featured {
+        .rb-blog-featured-img img,\n        .rb-blog-featured {
             height: 380px;
             min-height: 380px;
         }
@@ -625,6 +649,7 @@ if (!empty($allevent)) {
 </style>
 <?php
 // Helper: assign category based on blog title keywords
+if (!function_exists('getBlogCategory')) {
 function getBlogCategory($title) {
     $t = strtolower($title);
     if (strpos($t, 'self-defense') !== false || strpos($t, 'nishatra') !== false) return ['Self-Defense', 'rb-cat-defense'];
@@ -635,11 +660,14 @@ function getBlogCategory($title) {
     if (strpos($t, 'leader') !== false || strpos($t, 'change-maker') !== false) return ['Leadership', 'rb-cat-leadership'];
     return ['Impact', 'rb-cat-impact'];
 }
+}
 // Helper: estimate reading time
+if (!function_exists('getReadingTime')) {
 function getReadingTime($text) {
     $words = str_word_count(strip_tags($text));
     $minutes = max(1, ceil($words / 200));
     return $minutes . ' min read';
+}
 }
 // Split blogs: first = featured, rest = grid
 $featured = null;
@@ -727,118 +755,6 @@ $fCat = $featured ? getBlogCategory($featured->name) : ['Impact', 'rb-cat-impact
 <!-- End Redesigned Blog Section -->
 
 
-
-
-
-
-<!-- End Join Us Area -->
-
-<!-- Gallery area start  -->
-<section class="gallery-area" id="gallery-area" style="display:none;">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="section-title">
-                    <h2 class="title">Research & Publications</h2>
-                    <span class="separator"></span>
-                    <p>Red Brigade conducts research programs centering around women
-safety, honor and their role in the freedom movement of India. Several prestigious institutions across
-the world have done research and publications on Red Brigade Lucknow. </p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="our-gallery-menu clearfix">
-                    <ul class="filterizr__controls list-unstyled list-inline filter-tabs">
-                        <li class="active filter" data-role="button" data-filter="all"> All</li>
-                        <li class="filter" data-role="button" data-filter="activity">Media Coverage</li>
-                        <li class="filter" data-role="button" data-filter="campains">Video</li>
-                        <li class="filter" data-role="button" data-filter="news">Gallery</li>
-                      <!--  <li class="filter" data-role="button" data-filter="donate">Donate</li>-->
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-                <div class="filterizr__elements">
-				<?php if(!empty($allgallery)) { foreach($allgallery as $allg) { ?>
-	               <div class="filtr-item col-md-6 col-lg-4" data-category="activity">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="<?php echo asset('uploads/gallery/'.$allg->image);?>" alt="">
-                            </div>
-                            <div class="img-overlay">
-                                <div class="view-button text-center">
-                                    <a href="<?php echo asset('uploads/gallery/'.$allg->image);?>" class="imagepopup"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>			
-				<?php } } ?>
-				<?php if(!empty($allactivity)) { foreach($allactivity as $allg) { ?>
-	               <div class="filtr-item col-md-6 col-lg-4" data-category="activity">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="<?php echo asset('uploads/gallery/'.$allg->image);?>" alt="">
-                            </div>
-                            <div class="img-overlay">
-                                <div class="view-button text-center">
-                                    <a href="<?php echo asset('uploads/gallery/'.$allg->image);?>" class="imagepopup"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>			
-				<?php } } ?>
-    				<?php if(!empty($allcampains)) { foreach($allcampains as $allg) { ?>
-	               <div class="filtr-item col-md-6 col-lg-4" data-category="campains">
-                        <div class="inner-box">
-                            <div class="image">
-                                  <div><?php echo ucfirst(isset($allg->embed) ? $allg->embed : ''); ?></div>
-                            </div> 
-                        </div>
-                    </div>			
-				<?php } } ?>
-				<?php if(!empty($allnews)) { foreach($allnews as $allg) { ?>
-	               <div class="filtr-item col-md-6 col-lg-4" data-category="news">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="<?php echo asset('uploads/gallery/'.$allg->image);?>" alt="">
-                            </div>
-                            <div class="img-overlay">
-                                <div class="view-button text-center">
-                                    <a href="<?php echo asset('uploads/gallery/'.$allg->image);?>" class="imagepopup"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>			
-				<?php } } ?>
-			<!--	<?php if(!empty($alldonate)) { foreach($alldonate as $allg) { ?>
-	               <div class="filtr-item col-md-6 col-lg-4" data-category="donate">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="<?php echo asset('uploads/gallery/'.$allg->image);?>" alt="">
-                            </div>
-                            <div class="img-overlay">
-                                <div class="view-button text-center">
-                                    <a href="<?php echo asset('uploads/gallery/'.$allg->image);?>" class="imagepopup"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>			
-				<?php } } ?>-->
-
-                </div>
-            </div>
-    </div>
-
-</section>
-
-<!-- Gallery area end -->
- 
- 
-
- 
 <!-- Start Redesigned Testimonial Section -->
 <style>
     .rb-testimonial-modern {
@@ -873,7 +789,7 @@ the world have done research and publications on Red Brigade Lucknow. </p>
     }
 
     .rb-testimonial-accent {
-        color: #e65a32;
+        color: #E31E24;
         font-style: normal;
     }
 
@@ -883,7 +799,7 @@ the world have done research and publications on Red Brigade Lucknow. </p>
         border-radius: 0;
         box-shadow: 0 24px 50px rgba(22, 35, 56, .08);
         position: relative;
-        border-top: 4px solid #e65a32;
+        border-top: 4px solid #E31E24;
     }
 
     .rb-quote-icon {
@@ -1001,43 +917,6 @@ the world have done research and publications on Red Brigade Lucknow. </p>
     </div>
 </section>
 <!-- End Redesigned Testimonial Section -->
- 
- 
-<!-- Testimonial area start -->
-<section class="testimonial-area testimonial-bg" style="display:none;">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="section-title">
-                    <h2 class="title">Our Team </h2>
-                    <span class="separator"></span>
-                   <!-- <p>Use off agreeable law unwilling sir deficient curiosity instantly. Easy mind life fact with see has bore
-                        ten.text of the printing and typesetting industry. </p> -->
-                </div>
-            </div>
-        </div>
-       
-        <div class="row">
-             <div class="testimonial-carousel owl-theme" >
-                    	<?php if(!empty($alltestimonial)){ foreach($alltestimonial as $allt) { ?> 
-                            <div class="team-box-padding col-lg-12">
-                                <div class="team-box col-lg-10 offset-lg-1">
-                                    <div class="team-face">
-                                    <img src="<?php echo asset('uploads/testimonial/'.$allt->image);?>" alt="">
-                                    </div>
-                                    <p><?php echo ucfirst($allt->name); ?></p>
-                                    <hr>
-                                <p><?php echo ucfirst($allt->description); ?> </p>
-                                </div>
-                        </div>
-                	<?php } } ?> 
-                	</div>
-                </div>
-    </div>
-</section>
-<!-- Testimonial end -->
- 
 
 <!-- Join Us area start  -->
 <section class="join-area rb-join-modern">
