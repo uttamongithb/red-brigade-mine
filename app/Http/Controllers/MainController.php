@@ -28,10 +28,50 @@ class MainController extends Controller {
 		$allcampains=Db::table('gallery')->where('type','Campains')->orderBy('gallery.id','DESC')->limit(6)->get();
 		$allnews=Db::table('gallery')->where('type','News')->orderBy('gallery.id','DESC')->limit(6)->get();
 		$alldonate=Db::table('gallery')->where('type','Donate')->orderBy('gallery.id','DESC')->limit(6)->get();
-		return view('main.index',compact('allslider','allevent','allblog','allactivity','allcampains','allnews','alldonate','alltestimonial'));
-	}
+		return view('main.index',compact('allslider','allevent','allblog','allgallery','allactivity','allcampains','allnews','alldonate','alltestimonial'));
+		}
 
-	public function gallery()
+		public function about()
+		{
+		return view('main.about');
+		} 
+
+		public function research()
+		{
+		return view('main.research');
+		} 
+
+		public function ethics()
+		{
+		return view('main.ethics');
+		} 
+
+		public function ourteam()
+		{
+		// Support both old dumps (no `type`) and newer schema with team categories.
+		$hasTypeColumn = !empty(DB::select("SHOW COLUMNS FROM testimonial LIKE 'type'"));
+
+		if ($hasTypeColumn) {
+		$alltestimonial=Db::table('testimonial')->where('type','Executive')->orderBy('testimonial.id','ASC')->get();
+		$allAdvisory=Db::table('testimonial')->where('type','Advisory')->orderBy('testimonial.id','ASC')->get();
+		$alllegal=Db::table('testimonial')->where('type','Legal')->orderBy('testimonial.id','ASC')->get(); 
+		$board=Db::table('testimonial')->where('type','Board')->orderBy('testimonial.id','ASC')->get();
+		} else {
+		$alltestimonial=Db::table('testimonial')->orderBy('testimonial.id','ASC')->get();
+		$allAdvisory=collect();
+		$alllegal=collect();
+		$board=collect();
+		}
+
+		return view('main.ourteam',compact('alltestimonial','allAdvisory','alllegal','board'));
+		}
+
+		public function achievements()
+		{
+		return view('main.achievements');
+		} 
+
+		public function gallery()
 	{
 		$photos=Db::table('gallery')->whereIn('type', ['Activity', 'News'])->orderBy('gallery.id','DESC')->get();
 		$videos=Db::table('gallery')->where('type', 'Campains')->orderBy('gallery.id','DESC')->get();

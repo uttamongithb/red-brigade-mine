@@ -47,13 +47,13 @@
         </li>
 		<li class="treeview">
           <a href="#">
-            <i class="fa fa-cubes" style="color:#800000;"></i> <span>Gallery & Media</span>
+            <i class="fa fa-cubes" style="color:#800000;"></i> <span>Gallery</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-double-left pull-right faffff"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-           <li><a href="<?php echo action('ServiceController@viewgallery')?>"><i class="fa fa-cubes"></i> View Gallery & Media</a></li>
+           <li><a href="<?php echo action('ServiceController@viewgallery')?>"><i class="fa fa-cubes"></i> View Gallery</a></li>
           </ul>
         </li> 
 		<li class="treeview">

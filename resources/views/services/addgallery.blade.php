@@ -14,9 +14,6 @@
 <section class="content">
       <div class="row">
 	    <div class="col-md-12">
-			<a class="btn btn-app pull-right" href="<?php echo action('ServiceController@viewgallery')?>">
-				<i class="fa fa-barcode"></i> Gallery List
-		  </a>
 		  </div>
 		    <div class="col-md-12">
 		 <div class="box box-primary">

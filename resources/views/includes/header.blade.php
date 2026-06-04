@@ -467,6 +467,12 @@
                                 <li class="nav-item <?php echo Request::is('about') ? 'active' : '' ?>">
                                         <a class="nav-link" href="<?php  echo action('MainController@about')?>">About Us</a>
                                 </li>
+                                <li class="nav-item <?php echo Request::is('event') ? 'active' : '' ?>">
+                                        <a class="nav-link" href="<?php  echo action('MainController@event')?>">Our Work</a>
+                                </li>
+                                <li class="nav-item <?php echo Request::is('ourteam') ? 'active' : '' ?>">
+                                        <a class="nav-link" href="<?php  echo action('MainController@ourteam')?>">Our Team</a>
+                                </li>
                                 <li class="nav-item <?php echo Request::is('research') ? 'active' : '' ?>">
                                         <a class="nav-link" href="<?php  echo action('MainController@research')?>">Research</a>
                                 </li>
