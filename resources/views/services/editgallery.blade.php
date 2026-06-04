@@ -31,20 +31,30 @@
 					<?php echo Helpers::errormessage($errors);?>
 					<?php echo Helpers::flashMessage();?>
                     <div class="col-md-12 create">
-		
 						<div class="col-md-8 form-group">
 							<label for="SAMStudId">Gallery Type</label>
 							<select name="type"  class="form-control" >
 								<option value="">Select Gallery Type</option>
-								<option value="Activity" <?php if($thisdata->type=='Activity') { echo "selected"; } ?>>Activity</option>
-								<option value="Campains" <?php if($thisdata->type=='Campains') { echo "selected"; } ?>>Campains</option>
-								<option value="News" <?php if($thisdata->type=='News') { echo "selected"; } ?>>News</option>
+								<option value="Photo" <?php if($thisdata->type=='Photo') { echo "selected"; } ?>>Photo</option>
+								<option value="Video" <?php if($thisdata->type=='Video') { echo "selected"; } ?>>Video</option>
 							</select>
+						</div>
+						<div class="col-md-8 form-group">
+							<div class="form-group">
+							  <label for="exampleInputEmail1">Title/Name*</label>
+							  <input required type="text" name="name" class="form-control" value="<?php echo $thisdata->name; ?>" placeholder="Enter title for image/video" />
+							</div>
 						</div>
 						<div class="col-md-8 form-group">
 							<div class="form-group">
 							  <label for="exampleInputEmail1">Image</label>
 							  <?php echo  Form::file('image',array('name'=>'image[]','multiple')); ?>
+							</div>
+						</div>
+						<div class="col-md-8 form-group">
+							<div class="form-group">
+							  <label for="exampleInputEmail1">Video Embeded (For Video Type Only)</label>
+							 <input type="text" name="embed" class="form-control" value="<?php echo $thisdata->embed; ?>" placeholder="Paste iframe or video link here" />
 							</div>
 						</div>
 						<div class="col-md-12 text-left" style="pUpdateing-right:15px;margin-bottom:20px;">

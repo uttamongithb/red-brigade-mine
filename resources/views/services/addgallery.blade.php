@@ -34,27 +34,26 @@
 							<label for="SAMStudId">Gallery Type</label>
 							<select name="type"  class="form-control" required>
 								<option value="">Select Gallery Type</option>
-								<option value="Activity">Media Coverage</option>
-								<option value="Campains">Video</option>
-								<option value="News">Gallery</option>
+								<option value="Photo">Photo</option>
+								<option value="Video">Video</option>
 							</select>
 						</div>
 						<div class="col-md-8 form-group">
 							<div class="form-group">
-							  <label for="exampleInputEmail1">Image/Thumbnail/pdf*</label>
+							  <label for="exampleInputEmail1">Title/Name*</label>
+							  <input required type="text" name="name" class="form-control" placeholder="Enter title for image/video" />
+							</div>
+						</div>
+						<div class="col-md-8 form-group">
+							<div class="form-group">
+							  <label for="exampleInputEmail1">Image/Thumbnail*</label>
 							  <?php echo  Form::file('image',array('name'=>'image[]','multiple')); ?>
 							</div>
 						</div>
 						<div class="col-md-8 form-group">
 							<div class="form-group">
-							  <label for="exampleInputEmail1">Pdf Image*</label>
-							  <?php echo  Form::file('pdfimage',array('name'=>'pdfimage[]','multiple')); ?>
-							</div>
-						</div>
-						<div class="col-md-8 form-group">
-							<div class="form-group">
-							  <label for="exampleInputEmail1">Video Embeded</label>
-							 <input required type="text" name="embed" class="form-control"  />
+							  <label for="exampleInputEmail1">Video Embeded (For Video Type Only)</label>
+							 <input type="text" name="embed" class="form-control" placeholder="Paste iframe or video link here" />
 							</div>
 						</div>
 						<div class="col-md-12 text-left" style="padding-right:15px;margin-bottom:20px;">

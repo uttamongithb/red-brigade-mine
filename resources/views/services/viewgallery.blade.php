@@ -38,6 +38,7 @@
 				<tr>
 
                   <th>S.No</th>
+                  <th>Title</th>
                   <th>Gallery Type</th>
                   <th>Image</th>
                   <th>Status</th>
@@ -54,6 +55,7 @@
 				?>
                 <tr>
 				  <td><?php echo $i?></td>
+				  <td><?php echo $tt->name; ?></td>
 				  <td><?php echo ucwords($tt->type);?></td>
 				  <td><img style="width:75px;height:75px;" class="img-responsive" src="<?php echo URL::asset('uploads/gallery/'.$tt->image)?>"/></td>
 

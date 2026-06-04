@@ -158,10 +158,10 @@
                 <?php if(!empty($photos)) { foreach($photos as $allg) { ?>
                     <a href="<?php echo URL::asset('uploads/gallery/'.$allg->image);?>" class="rb-media-card image-popup">
                         <div class="rb-media-thumbnail">
-                            <img src="<?php echo URL::asset('uploads/gallery/'.$allg->image);?>" alt="Movement Photo" loading="lazy">
+                            <img src="<?php echo URL::asset('uploads/gallery/'.$allg->image);?>" alt="<?php echo $allg->name; ?>" loading="lazy">
                         </div>
                         <div class="rb-media-info">
-                            <h4><?php echo ($allg->type == 'Activity') ? 'Training Session' : 'Event Documentation'; ?></h4>
+                            <h4><?php echo !empty($allg->name) ? $allg->name : 'Movement Documentation'; ?></h4>
                         </div>
                     </a>			
                 <?php } } else { ?>
@@ -180,7 +180,9 @@
                                 <?php echo isset($allg->embed) ? $allg->embed : ''; ?>
                             </div>
                         </div>
-                        <div class="rb-media-info"><h4>Campaign Documentary</h4></div>
+                        <div class="rb-media-info">
+                            <h4><?php echo !empty($allg->name) ? $allg->name : 'Campaign Documentary'; ?></h4>
+                        </div>
                     </div>			
                 <?php } } else { ?>
                     <div class="col-12 text-center" style="grid-column: 1 / -1; padding: 40px;">
