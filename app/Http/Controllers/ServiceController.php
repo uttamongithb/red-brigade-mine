@@ -58,6 +58,8 @@ class ServiceController extends Controller {
 					$input['image'] = Helpers::imageUpload($file, 'uploads/news', 'sunshine-work');
 				}
 				$input['type'] = 'event'; // Unified type
+				$input['time_interval'] = '';
+				$input['city'] = '';
 				DB::table('news')->insert($input);
 				Session::flash('message', 'Successfully Added Work!');
 				return Redirect::back();
@@ -77,6 +79,8 @@ class ServiceController extends Controller {
 				$input['image'] = Helpers::imageUpload($file, 'uploads/news', 'sunshine-work');
 			}
 			$input['type'] = 'event';
+			$input['time_interval'] = '';
+			$input['city'] = '';
 			DB::table('news')->where('id', $id)->update($input);
 			Session::flash('message', 'Successfully Updated Work!');
 			return Redirect::back();

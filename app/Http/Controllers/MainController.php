@@ -91,6 +91,15 @@ class MainController extends Controller {
 		return view('main.singleblog',compact('thisblog'));
 	}
 
+	public function singlework($id)
+	{
+		$thiswork=Db::table('news')->where('id',$id)->first();
+		if (!$thiswork) {
+			return redirect()->action('MainController@event');
+		}
+		return view('main.singlework',compact('thiswork'));
+	}
+
 	public function ourworkpdf() 
 	{ 
 		 return view('main.ourworkpdf');

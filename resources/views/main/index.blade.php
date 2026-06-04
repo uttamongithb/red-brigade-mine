@@ -277,7 +277,7 @@ if (!empty($allevent)) {
 
         <!-- Featured Post -->
         <?php if($featuredEvent) { ?>
-        <a href="#" class="rb-blog-featured-link">
+        <a href="<?php echo action('MainController@singlework', $featuredEvent->id); ?>" class="rb-blog-featured-link">
             <div class="rb-blog-featured">
                 <div class="rb-blog-featured-img">
                     <img src="<?php echo asset('uploads/news/'.$featuredEvent->image);?>" alt="<?php echo $featuredEvent->name; ?>">
@@ -300,7 +300,7 @@ if (!empty($allevent)) {
         <?php if(!empty($secondaryEvents)) { ?>
         <div class="rb-blog-grid">
             <?php foreach($secondaryEvents as $idx => $ev) { ?>
-            <a href="#" class="rb-blog-card-link">
+            <a href="<?php echo action('MainController@singlework', $ev->id); ?>" class="rb-blog-card-link">
                 <article class="rb-blog-card" style="animation-delay: <?php echo ($idx * 0.08); ?>s;">
                     <div class="rb-blog-card-img">
                         <img src="<?php echo asset('uploads/news/'.$ev->image);?>" alt="<?php echo $ev->name; ?>" loading="lazy">

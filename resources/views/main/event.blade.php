@@ -171,15 +171,9 @@
                 <?php if(!empty($allevent)) { foreach($allevent as $item) { ?>
                     <article class="rb-event-card">
                         <?php 
-                            if($item->type == 'blog') {
-                                $imgPath = !empty($item->image) ? 'uploads/news/'.$item->image : 'uploads/img/logo.png';
-                                $link = action('MainController@singleblog', $item->slug);
-                                $label = "STORY";
-                            } else {
-                                $imgPath = !empty($item->image) ? 'uploads/news/'.$item->image : 'uploads/img/logo.png';
-                                $link = '#'; // or action for single event if exists
-                                $label = "EVENT";
-                            }
+                            $imgPath = !empty($item->image) ? 'uploads/news/'.$item->image : 'uploads/img/logo.png';
+                            $link = action('MainController@singlework', $item->id);
+                            $label = ($item->type == 'blog') ? "STORY" : "EVENT";
                         ?>
                         <a href="{{ $link }}" class="rb-event-thumb">
                             <img src="<?php echo URL::asset($imgPath);?>" alt="{{ $item->name }}" loading="lazy">
@@ -190,11 +184,7 @@
                             <div class="rb-event-excerpt">
                                 <?php echo substr(strip_tags($item->description), 0, 120); ?>...
                             </div>
-                            <?php if($item->type == 'blog') { ?>
-                                <a href="{{ $link }}" class="rb-read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
-                            <?php } else { ?>
-                                <span class="rb-read-more" style="color: #64748b;"><?php echo $label; ?></span>
-                            <?php } ?>
+                            <a href="{{ $link }}" class="rb-read-more">Read More <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
                 <?php }} ?>

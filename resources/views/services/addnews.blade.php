@@ -48,14 +48,6 @@
 							<input required type="text" id="date" name="date" class="form-control"  />
 						</div>
 						<div class="col-md-8 form-group">
-							<label for="SAMStudId">Time Interval</label>
-							<input type="text" id="time_interval" name="time_interval" class="form-control"  />
-						</div>
-						<div class="col-md-8 form-group">
-							<label for="SAMStudId">City</label>
-							<input type="text" id="city" name="city" class="form-control"  />
-						</div>
-						<div class="col-md-8 form-group">
 							<div class="form-group" style="margin-top:20px;">
 							  <label for="exampleInputEmail1">Description*</label>
 							  <textarea class="form-control ckeditor" name="description" required></textarea>

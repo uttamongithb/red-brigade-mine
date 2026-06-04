@@ -42,6 +42,7 @@ Route::any('/event', 'MainController@event');
 Route::any('/gallery', 'MainController@gallery');
 Route::any('/blog', 'MainController@blog');
 Route::any('/singleblog/{slug}', 'MainController@singleblog');
+Route::any('/singlework/{id}', 'MainController@singlework');
 Route::any('/singleproduct/{slug}', 'MainController@singleproduct');
 Route::any('/singleservice/{slug}', 'MainController@singleservice');
 Route::any('/ourworkpdf', 'MainController@ourworkpdf');
