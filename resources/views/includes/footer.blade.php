@@ -68,8 +68,11 @@
             </div>
             <div class="footer-divider"></div>
             <div class="row footer-bottom-row">
-                <div class="col-lg-12">
+                <div class="col-md-6 col-sm-6">
                     <p class="footer-copyright">&copy; <?php echo date('Y')?> Red Brigade Lucknow. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 col-sm-6 text-right">
+                    <p class="footer-credit" style="color:#ffffff;margin:0;">website develop and designed by uttam and anubhav</p>
                 </div>
             </div>
         </div>

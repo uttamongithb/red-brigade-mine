@@ -32,7 +32,7 @@
 .rb-about-hero {
     position: relative;
     background: url('<?php echo URL::asset("uploads/slider/sunshine-slider-892.png"); ?>') no-repeat center center/cover;
-    padding: 200px 0 150px;
+    padding: 180px 0 120px;
     text-align: center;
     color: #fff;
 }
@@ -40,17 +40,17 @@
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(to bottom, rgba(17, 26, 40, 0.6) 0%, rgba(17, 26, 40, 0.9) 100%);
+    background: linear-gradient(to bottom, rgba(17, 26, 40, 0.7) 0%, rgba(17, 26, 40, 0.9) 100%);
 }
 .rb-about-hero .container { position: relative; z-index: 2; }
 .rb-about-hero h1 {
-    font-size: 72px;
+    font-size: 64px;
     color: #fff;
     margin-bottom: 20px;
     font-weight: 700;
 }
 .rb-about-hero p {
-    font-size: 24px;
+    font-size: 22px;
     max-width: 800px;
     margin: 0 auto;
     color: #e2e8f0;

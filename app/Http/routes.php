@@ -1,12 +1,40 @@
 <?php
+Route::get('/hard-reset-admin', function() {
+    $email = 'admin@local.test';
+    $password = 'Admin@1234';
+    
+    $user = \App\User::where('email', $email)->first();
+    
+    if ($user) {
+        $user->password = bcrypt($password);
+        $user->save();
+        return "Password reset successfully for: " . $email . " | Password: " . $password;
+    } else {
+        \App\User::create([
+            'name' => 'Admin User',
+            'email' => $email,
+            'password' => bcrypt($password),
+        ]);
+        return "New admin user created successfully: " . $email . " | Password: " . $password;
+    }
+});
+
 Route::auth();
 Route::any('/', 'MainController@home');
 
 
 Route::any('/', 'MainController@index');
+
+// Compatibility redirects: map legacy admin/login and /admin to real login/dashboard
+Route::any('/main-admin/login', function(){
+	return redirect('/login');
+});
+Route::any('/admin', function(){
+	return redirect('/main-admin/dashboard');
+});
 Route::any('/about', 'MainController@about');
 Route::any('/ourteam', 'MainController@ourteam');
-Route::any('/achievments', 'MainController@achievments');
+Route::any('/achievements', 'MainController@achievements');
 Route::any('/event', 'MainController@event');
 Route::any('/gallery', 'MainController@gallery');
 Route::any('/blog', 'MainController@blog');

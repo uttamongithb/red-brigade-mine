@@ -74,13 +74,15 @@
     top: 12px;
     right: 12px;
     z-index: 3;
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
     border: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.72);
     color: #ffffff;
-    font-size: 28px;
+    font-size: 30px;
     line-height: 1;
     display: inline-flex;
     align-items: center;
@@ -240,6 +242,13 @@
         height: 88vh;
     }
 
+    .rb-close-btn {
+        top: 14px;
+        right: 14px;
+        background: rgba(0, 0, 0, 0.84);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+    }
+
     .rb-program-modal-row {
         height: 100%;
     }
@@ -267,6 +276,7 @@
 (function () {
     var modalId = 'selfDefenseModal';
     var showDelay = 2000;
+    var storageKey = 'rb_modal_shown'; // Key to track if modal was shown in this session
 
     function hideModal(modalElement) {
         modalElement.classList.remove('show');
@@ -280,10 +290,18 @@
     }
 
     function runModal() {
+        // Check if modal was already shown in this session to prevent re-appearance during navigation
+        if (sessionStorage.getItem(storageKey)) {
+            return;
+        }
+
         var modalElement = document.getElementById(modalId);
         if (!modalElement) {
             return;
         }
+
+        // Set the flag immediately so it doesn't trigger on multiple simultaneous page loads if they occur
+        sessionStorage.setItem(storageKey, 'true');
 
         if (window.bootstrap && typeof window.bootstrap.Modal === 'function') {
             var bs5Modal = new window.bootstrap.Modal(modalElement, {

@@ -150,7 +150,8 @@
 }
 
 .rb-home .container {
-    max-width: 1180px;
+    width: 90%;
+    max-width: none;
 }
 
 .rb-home .rb-section {

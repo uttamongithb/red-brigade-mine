@@ -1,267 +1,268 @@
 @include('includes.header')
-<!-- Breadcumb area start  -->
-<section class="breadcumb-area breadcrumb-bg extra">
-    <div class="container">
-        <div class="row ">
-            <div class="col-lg-12">
-                <div class="breadcumb-inner">
-                    <h2 class="title">Research & Publications</h2>
-                    <ul class="page-list">
-                        <li><a href="<?php  echo action('MainController@index')?>">Home</a></li>
-                        <li>Research & Publications</li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Breadcumb area end  -->
-
-<!-- Gallery area start  -->
-<section class="gallery-area rp-page" id="gallery-area">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="section-title rp-section-title">
-                    <h2 class="title">Research & Publications Archive</h2>
-                    <span class="separator"></span>
-                    <p> Red Brigade conducts research programs centering around women safety, honor and their role in the freedom movement of India. Several prestigious institutions across the world have done research and publications on Red Brigade Lucknow</p>
-
-                    <div class="rp-stats" aria-label="Research and publication summary">
-                        <div class="rp-stat-card">
-                            <span class="rp-stat-value"><?php echo count($allactivity); ?></span>
-                            <span class="rp-stat-label">Media Coverage</span>
-                        </div>
-                        <div class="rp-stat-card">
-                            <span class="rp-stat-value"><?php echo count($allcampains); ?></span>
-                            <span class="rp-stat-label">Videos</span>
-                        </div>
-                        <div class="rp-stat-card">
-                            <span class="rp-stat-value"><?php echo count($allnews); ?></span>
-                            <span class="rp-stat-label">Gallery</span>
-                        </div>
-                        <div class="rp-stat-card">
-                            <span class="rp-stat-value"><?php echo count($report); ?></span>
-                            <span class="rp-stat-label">Reports</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="filterizr__elements">
-				<?php if(!empty($allgallery)) { foreach($allgallery as $allg) { ?>
-	               <div class="filtr-item col-md-6 col-lg-4" data-category="activity" data-search="media coverage archive image research publication">
-                        <div class="inner-box rp-card">
-                            <div class="image">
-                                <img src="<?php echo URL::asset('uploads/gallery/'.$allg->image);?>" alt="Media Coverage Image" loading="lazy">
-                            </div>
-                        </div>
-                    </div>			
-				<?php } } ?>
-				<?php if(!empty($allactivity)) { foreach($allactivity as $allg) { ?>
-	               <div class="filtr-item col-md-6 col-lg-4" data-category="activity" data-search="media coverage image research publication">
-                        <div class="inner-box rp-card">
-                            <div class="image">
-                                <img src="<?php echo URL::asset('uploads/gallery/'.$allg->image);?>" alt="Media Coverage Image" loading="lazy">
-                            </div>
-                        </div>
-                    </div>			
-				<?php } } ?>
-    				<?php if(!empty($allcampains)) { foreach($allcampains as $allg) { ?>
-	               <div class="filtr-item col-md-6 col-lg-4" data-category="campains" data-search="video campaign research publication">
-                        <div class="inner-box rp-card rp-video-card">
-                            <div class="image rp-video-shell">
-                               <div><?php echo ucfirst(isset($allg->embed) ? $allg->embed : ''); ?></div>
-                            </div>
-                        </div>
-                    </div>			
-				<?php } } ?>
-				<?php if(!empty($allnews)) { foreach($allnews as $allg) { ?>
-	               <div class="filtr-item col-md-6 col-lg-4" data-category="news" data-search="gallery photo research publication">
-                        <div class="inner-box rp-card">
-                            <div class="image">
-                               <img src="<?php echo URL::asset('uploads/gallery/'.$allg->image);?>" alt="Gallery Image" loading="lazy">
-                            </div>
-                        </div>
-                    </div>			
-				<?php } } ?>
-		 	<?php if(!empty($report)) { foreach($report as $allg) { ?>
-	               <div class="filtr-item col-md-6 col-lg-4" data-category="donate" data-search="report publication document pdf">
-                        <div class="inner-box rp-card">
-                            <div class="image">
-                                <?php $reportImage = isset($allg->pdfimage) && !empty($allg->pdfimage) ? $allg->pdfimage : '404.png'; ?>
-                                <img src="<?php echo URL::asset('uploads/gallery/'.$reportImage);?>" alt="Report Thumbnail" loading="lazy">
-                            </div>
-                        </div>
-                    </div>			
-				<?php } } ?>  
-            </div>
-            </div>
-    </div>
-</section>
-<!-- Gallery area end -->
 
 <style>
-.rp-page {
-    --rp-bg: #f5f7f1;
-    --rp-surface: #ffffff;
-    --rp-text: #182032;
-    --rp-muted: #5c6577;
-    --rp-primary: #b40f1d;
-    --rp-accent: #ff8a00;
-    --rp-outline: #dbe0d4;
-    background: radial-gradient(circle at 10% 10%, #eef5df 0%, var(--rp-bg) 40%, #f9fbf6 100%);
+/* Reset & Base - Consistent Design Language */
+.rb-research-page {
+    font-family: 'Open Sans', sans-serif;
+    color: #4a4a4a;
+    line-height: 1.6;
+    background-color: #fff;
+}
+.rb-research-page h1, .rb-research-page h2, .rb-research-page h3, .rb-research-page h4 {
+    font-family: 'Playfair Display', serif;
+    color: #1a1a1a;
 }
 
-.rp-page .container {
-    width: 86vw;
-    max-width: 86vw;
+/* Consistent Container Width (90%) */
+.rb-research-page .container {
+    width: 90%;
+    max-width: none;
+}
+@media (max-width: 767px) {
+    .rb-research-page .container {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }
 
-.rp-page .rp-section-title {
-    margin-bottom: 28px;
+/* Modern Hero Section */
+.rb-research-hero {
+    position: relative;
+    background: url('<?php echo URL::asset("uploads/slider/sunshine-slider-151.png"); ?>') no-repeat center center/cover;
+    padding: 180px 0 120px;
+    text-align: center;
+    color: #fff;
+}
+.rb-research-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(17, 26, 40, 0.7) 0%, rgba(17, 26, 40, 0.9) 100%);
+}
+.rb-research-hero .container { position: relative; z-index: 2; }
+.rb-research-hero h1 {
+    font-size: 64px;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.rb-research-hero p {
+    font-size: 22px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #e2e8f0;
+    font-weight: 300;
 }
 
-.rp-page .rp-section-title .title {
-    color: var(--rp-text);
-    font-weight: 800;
+.rb-kicker { 
+    color: #e65a32; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-size: 14px; 
+    display: block; 
+    margin-bottom: 15px; 
 }
 
-.rp-page .rp-section-title p {
-    color: var(--rp-muted);
-    font-size: 16px;
-    line-height: 1.75;
+/* Stats Section */
+.rb-stats-section {
+    padding: 80px 0 40px;
+    background: #fff;
 }
-
-.rp-page .rp-stats {
-    margin-top: 22px;
+.rb-stats-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 40px;
 }
-
-.rp-page .rp-stat-card {
-    background: var(--rp-surface);
-    border: 1px solid var(--rp-outline);
-    border-radius: 14px;
-    padding: 14px 16px;
-    text-align: left;
-    box-shadow: 0 8px 26px rgba(20, 24, 18, 0.06);
+.rb-stat-card {
+    background: #f8fafc;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s ease;
 }
-
-.rp-page .rp-stat-value {
+.rb-stat-card:hover {
+    transform: translateY(-5px);
+    border-color: #e65a32;
+}
+.rb-stat-value {
     display: block;
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--rp-primary);
-    line-height: 1;
+    font-size: 42px;
+    font-weight: 700;
+    color: #1f2f46;
+    margin-bottom: 5px;
+    font-family: 'Playfair Display', serif;
+}
+.rb-stat-label {
+    font-size: 14px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.rp-page .rp-stat-label {
-    display: block;
-    margin-top: 6px;
-    font-size: 13px;
-    color: var(--rp-muted);
-    letter-spacing: 0.25px;
+/* Grid Area */
+.rb-archive-section {
+    padding: 60px 0 100px;
+    background: #f8fafc;
 }
-
-.rp-page .filterizr__elements .filtr-item {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    display: flex;
+.rb-archive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
 }
-
-.rp-page .rp-card {
-    background: var(--rp-surface);
-    border: 1px solid #e7edde;
-    border-radius: 0;
+.rb-archive-item {
+    background: #fff;
+    border-radius: 16px;
     overflow: hidden;
-    margin-bottom: 22px;
-    box-shadow: 0 12px 26px rgba(20, 24, 18, 0.08);
-    transition: transform 0.28s ease, box-shadow 0.28s ease;
-    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #eef2f6;
     height: 100%;
-    display: flex;
-    flex-direction: column;
 }
-
-.rp-page .rp-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 28px rgba(20, 24, 18, 0.12);
+.rb-archive-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
-
-.rp-page .rp-card .image {
-    aspect-ratio: 4 / 3;
+.rb-media-wrap {
+    aspect-ratio: 4/3;
     overflow: hidden;
-    background: #dde6cd;
-    border-radius: 0 !important;
-}
-
-.rp-page .rp-card .image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 0 !important;
-}
-
-.rp-page .rp-video-card .rp-video-shell {
-    padding: 0;
     background: #111a2b;
     position: relative;
 }
-
-.rp-page .rp-video-card .rp-video-shell > div {
+.rb-media-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.rb-video-shell {
     width: 100%;
     height: 100%;
 }
-
-.rp-page .rp-video-card .rp-video-shell iframe,
-.rp-page .rp-video-card .rp-video-shell video,
-.rp-page .rp-video-card .rp-video-shell embed {
+.rb-video-shell iframe, .rb-video-shell video, .rb-video-shell embed {
     width: 100% !important;
     height: 100% !important;
-    min-height: 0;
     border: 0;
-    display: block;
 }
 
-@media (max-width: 991px) {
-    .rp-page .container {
-        width: 90vw;
-        max-width: 90vw;
-    }
-
-    .rp-page .rp-stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
+/* Responsive */
+@media (max-width: 1100px) {
+    .rb-archive-grid { grid-template-columns: repeat(2, 1fr); }
+    .rb-stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
-@media (max-width: 575px) {
-    .rp-page {
-        padding-top: 45px;
-        padding-bottom: 45px;
-    }
-
-    .rp-page .container {
-        width: 94vw;
-        max-width: 94vw;
-    }
-
-    .rp-page .rp-stats {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
+@media (max-width: 768px) {
+    .rb-research-hero h1 { font-size: 42px; }
+    .rb-archive-grid { grid-template-columns: 1fr; }
+    .rb-stats-grid { grid-template-columns: 1fr; }
 }
 </style>
-    
-<!-- partners area start -->
- 
-<!-- partners area end  -->
-<!-- footer area start -->
+
+<div class="rb-research-page">
+    <!-- Hero Section -->
+    <section class="rb-research-hero">
+        <div class="container">
+            <span class="rb-kicker" style="color: #ff8a00;">Knowledge & Evidence</span>
+            <h1>Research & Publications</h1>
+            <p>Exploring the multi-dimensional impact of the Red Brigade movement through academic studies and media archives.</p>
+        </div>
+    </section>
+
+    <!-- Archive Intro & Stats -->
+    <section class="rb-stats-section">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10">
+                    <span class="rb-kicker">Global Archive</span>
+                    <h2 style="font-size: 42px; margin-bottom: 20px;">Insights from the Movement</h2>
+                    <p style="font-size: 18px; color: #64748b;">Red Brigade conducts research programs centering around women’s safety, honor, and their historical role in India. Prestigious institutions worldwide have documented our journey through academic papers and publications.</p>
+                </div>
+            </div>
+
+            <div class="rb-stats-grid">
+                <div class="rb-stat-card">
+                    <span class="rb-stat-value"><?php echo count($allactivity); ?></span>
+                    <span class="rb-stat-label">Media Coverage</span>
+                </div>
+                <div class="rb-stat-card">
+                    <span class="rb-stat-value"><?php echo count($allcampains); ?></span>
+                    <span class="rb-stat-label">Videos</span>
+                </div>
+                <div class="rb-stat-card">
+                    <span class="rb-stat-value"><?php echo count($allnews); ?></span>
+                    <span class="rb-stat-label">Gallery</span>
+                </div>
+                <div class="rb-stat-card">
+                    <span class="rb-stat-value"><?php echo count($report); ?></span>
+                    <span class="rb-stat-label">Reports</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Archive Grid -->
+    <section class="rb-archive-section">
+        <div class="container">
+            <div class="rb-archive-grid">
+                <!-- Media/Activity Items -->
+                <?php if(!empty($allgallery)) { foreach($allgallery as $allg) { ?>
+                    <div class="rb-archive-item">
+                        <div class="rb-media-wrap">
+                            <img src="<?php echo URL::asset('uploads/gallery/'.$allg->image);?>" alt="Media Coverage" loading="lazy">
+                        </div>
+                    </div>			
+                <?php } } ?>
+
+                <?php if(!empty($allactivity)) { foreach($allactivity as $allg) { ?>
+                    <div class="rb-archive-item">
+                        <div class="rb-media-wrap">
+                            <img src="<?php echo URL::asset('uploads/gallery/'.$allg->image);?>" alt="Media Activity" loading="lazy">
+                        </div>
+                    </div>			
+                <?php } } ?>
+
+                <!-- Video Items -->
+                <?php if(!empty($allcampains)) { foreach($allcampains as $allg) { ?>
+                    <div class="rb-archive-item">
+                        <div class="rb-media-wrap">
+                            <div class="rb-video-shell">
+                                <?php echo ucfirst(isset($allg->embed) ? $allg->embed : ''); ?>
+                            </div>
+                        </div>
+                    </div>			
+                <?php } } ?>
+
+                <!-- News Items -->
+                <?php if(!empty($allnews)) { foreach($allnews as $allg) { ?>
+                    <div class="rb-archive-item">
+                        <div class="rb-media-wrap">
+                            <img src="<?php echo URL::asset('uploads/gallery/'.$allg->image);?>" alt="Gallery News" loading="lazy">
+                        </div>
+                    </div>			
+                <?php } } ?>
+
+                <!-- Report Items -->
+                <?php if(!empty($report)) { foreach($report as $allg) { ?>
+                    <div class="rb-archive-item">
+                        <div class="rb-media-wrap">
+                            <?php $reportImage = isset($allg->pdfimage) && !empty($allg->pdfimage) ? $allg->pdfimage : '404.png'; ?>
+                            <img src="<?php echo URL::asset('uploads/gallery/'.$reportImage);?>" alt="Report" loading="lazy">
+                        </div>
+                    </div>			
+                <?php } } ?>  
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="rb-stats-section" style="padding: 100px 0; border-top: 1px solid #eef2f6;">
+        <div class="container text-center">
+            <h2 style="font-size: 36px; margin-bottom: 20px;">Academic Inquiries</h2>
+            <p style="font-size: 18px; color: #4a5568; max-width: 600px; margin: 0 auto 40px;">If you are an academic researcher or journalist seeking access to our full archive or to conduct a study, please reach out.</p>
+            <a href="<?php echo action('MainController@contact'); ?>" style="display: inline-block; padding: 16px 40px; background: #e65a32; color: #fff; font-weight: 700; border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.backgroundColor='#1f2f46'" onmouseout="this.style.backgroundColor='#e65a32'">Get in Touch</a>
+        </div>
+    </section>
+</div>
+
 @include('includes.footer')

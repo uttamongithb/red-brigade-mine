@@ -1,393 +1,227 @@
 @include('includes.header')
+
 <style>
-.donation-page-content-area {
-    padding: 72px 0 92px;
-    background:
-        radial-gradient(circle at top left, rgba(230, 57, 70, 0.08), transparent 32%),
-        radial-gradient(circle at top right, rgba(255, 127, 2, 0.08), transparent 28%),
-        linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
-}
-
-.donation-page-content-area .donate-hero {
-    margin-top: -22px;
-    margin-bottom: 26px;
-    padding: 34px 30px;
-    border-radius: 28px;
-    background: linear-gradient(135deg, #1D3557 0%, #172945 55%, #191717 100%);
-    color: #ffffff;
-    box-shadow: 0 20px 44px rgba(29, 53, 87, 0.18);
-    position: relative;
-    overflow: hidden;
-}
-
-.donation-page-content-area .donate-hero:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, rgba(255, 127, 2, 0.12) 0%, transparent 42%, rgba(230, 57, 70, 0.16) 100%);
-    pointer-events: none;
-}
-
-.donation-page-content-area .donate-hero .section-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 12px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.12);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-.donation-page-content-area .donate-hero h1 {
-    margin: 14px 0 10px;
-    font-size: 42px;
-    line-height: 1.12;
-    font-weight: 800;
-    position: relative;
-    z-index: 1;
-}
-
-.donation-page-content-area .donate-hero p {
-    max-width: 720px;
-    margin: 0;
-    font-size: 17px;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.88);
-    position: relative;
-    z-index: 1;
-}
-
-.donation-page-content-area .donation-grid {
-    margin-top: 10px;
-}
-
-.donation-page-content-area .donation-card {
-    height: 100%;
-    padding: 26px 24px;
-    border-radius: 24px;
-    background: #ffffff;
-    border: 1px solid rgba(29, 53, 87, 0.08);
-    box-shadow: 0 14px 34px rgba(29, 53, 87, 0.08);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.donation-page-content-area .donation-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 42px rgba(29, 53, 87, 0.12);
-    border-color: rgba(230, 57, 70, 0.24);
-}
-
-.donation-page-content-area .donation-card .card-eyebrow {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: rgba(230, 57, 70, 0.1);
-    color: #E63946;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-}
-
-.donation-page-content-area .donation-card h3,
-.donation-page-content-area .donation-card h5,
-.donation-page-content-area .donation-card .subtitle {
-    color: #1D3557 !important;
-    margin-bottom: 12px;
-    font-weight: 800;
-}
-
-.donation-page-content-area .donation-card .subtitle {
-    font-size: 24px !important;
-    text-align: left !important;
-}
-
-.donation-page-content-area .donation-card .about-list {
-    margin: 16px 0 0;
-    padding-left: 18px;
-}
-
-.donation-page-content-area .donation-card .about-list li {
-    margin-bottom: 10px;
-    color: #44546a;
+/* Reset & Base - Consistent Design Language */
+.rb-donate-page {
+    font-family: 'Open Sans', sans-serif;
+    color: #4a4a4a;
     line-height: 1.6;
+    background-color: #fff;
+}
+.rb-donate-page h1, .rb-donate-page h2, .rb-donate-page h3, .rb-donate-page h4, .rb-donate-page h5 {
+    font-family: 'Playfair Display', serif;
+    color: #1a1a1a;
 }
 
-.donation-page-content-area .paypal-card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 260px;
-    background:
-        radial-gradient(circle at top right, rgba(0, 48, 135, 0.14), transparent 26%),
-        radial-gradient(circle at bottom left, rgba(230, 57, 70, 0.10), transparent 30%),
-        linear-gradient(180deg, #ffffff 0%, #f6faff 100%);
+/* Consistent Container Width (90%) */
+.rb-donate-page .container {
+    width: 90%;
+    max-width: none;
+}
+@media (max-width: 767px) {
+    .rb-donate-page .container {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+/* Modern Hero Section */
+.rb-donate-hero {
     position: relative;
-    overflow: hidden;
-}
-
-.donation-page-content-area .paypal-card:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(29, 53, 87, 0.03), rgba(255, 127, 2, 0.05));
-    pointer-events: none;
-}
-
-.donation-page-content-area .paypal-inner {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-}
-
-.donation-page-content-area .paypal-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 14px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #0d47a1 0%, #1d3557 100%);
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-.donation-page-content-area .paypal-badge i {
-    font-size: 13px;
-}
-
-.donation-page-content-area .paypal-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 14px;
-}
-
-.donation-page-content-area .paypal-logo img {
-    width: 100%;
-    max-width: 290px;
-    display: block;
-    border-radius: 22px;
-    box-shadow: 0 18px 36px rgba(29, 53, 87, 0.14);
-    border: 1px solid rgba(29, 53, 87, 0.08);
-    background: #ffffff;
-}
-
-.donation-page-content-area .paypal-note {
-    margin: 0 auto;
-    max-width: 310px;
-    padding: 10px 14px;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(29, 53, 87, 0.08);
-    color: #44546a;
-    font-size: 14px;
-    line-height: 1.55;
-}
-
-.donation-page-content-area .paypal-note strong {
-    color: #1D3557;
-}
-
-.donation-page-content-area .bank-divider {
-    height: 1px;
-    margin: 28px 0;
-    background: linear-gradient(90deg, transparent, rgba(230, 57, 70, 0.38), transparent);
-}
-
-.donation-page-content-area .bank-card {
-    position: relative;
-}
-
-.donation-page-content-area .bank-card .bank-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #e63946 0%, #ff7f02 100%);
+    background: url('<?php echo URL::asset("uploads/slider/sunshine-slider-552.jpeg"); ?>') no-repeat center center/cover;
+    padding: 180px 0 120px;
+    text-align: center;
     color: #fff;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
+}
+.rb-donate-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(17, 26, 40, 0.7) 0%, rgba(17, 26, 40, 0.9) 100%);
+}
+.rb-donate-hero .container { position: relative; z-index: 2; }
+.rb-donate-hero h1 {
+    font-size: 64px;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.rb-donate-hero p {
+    font-size: 22px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #e2e8f0;
+    font-weight: 300;
+}
+
+.rb-kicker { 
+    color: #e65a32; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-size: 14px; 
+    display: block; 
+    margin-bottom: 15px; 
+}
+
+/* Donation Content */
+.rb-donation-content {
+    padding: 100px 0;
+    background: #fff;
+}
+.rb-donation-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* PayPal Box */
+.rb-paypal-box {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 60px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+.rb-paypal-logo {
+    display: inline-block;
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+.rb-paypal-logo img {
+    max-width: 250px;
+}
+
+/* Bank Grid */
+.rb-bank-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+.rb-bank-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid #eef2f6;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.rb-bank-card h3 {
+    font-size: 28px;
+    color: #1f2f46;
+    margin-bottom: 20px;
+}
+.rb-bank-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.rb-bank-list li {
     margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
 }
-
-.donation-page-content-area .bank-card .bank-badge i {
-    font-size: 13px;
-}
-
-.donation-page-content-area .bank-card .account-summary {
-    margin-top: 12px;
-    padding: 14px 16px;
-    border-radius: 16px;
-    background: linear-gradient(135deg, rgba(29, 53, 87, 0.06), rgba(230, 57, 70, 0.05));
-    border: 1px solid rgba(29, 53, 87, 0.08);
-    color: #44546a;
-    font-size: 14px;
-    line-height: 1.65;
-}
-
-.donation-page-content-area .bank-card .account-summary strong {
-    color: #1D3557;
-}
+.rb-bank-list li:last-child { border: none; }
+.rb-bank-list li strong { color: #1f2f46; }
+.rb-bank-list li span { color: #64748b; }
 
 @media (max-width: 991px) {
-    .donation-page-content-area {
-        padding: 54px 0 76px;
-    }
-
-    .donation-page-content-area .donate-hero h1 {
-        font-size: 34px;
-    }
-
-    .donation-page-content-area .donate-hero p {
-        font-size: 16px;
-    }
+    .rb-bank-grid { grid-template-columns: 1fr; }
+    .rb-donate-hero h1 { font-size: 52px; }
 }
-
-@media (max-width: 575px) {
-    .donation-page-content-area {
-        padding: 38px 0 64px;
-    }
-
-    .donation-page-content-area .donate-hero {
-        padding: 24px 18px;
-        border-radius: 20px;
-    }
-
-    .donation-page-content-area .donate-hero h1 {
-        font-size: 28px;
-    }
-
-    .donation-page-content-area .donate-hero p {
-        font-size: 15px;
-    }
-
-    .donation-page-content-area .donation-card {
-        padding: 20px 16px;
-        border-radius: 18px;
-    }
-
-    .donation-page-content-area .donation-card .subtitle {
-        font-size: 20px !important;
-    }
-
-    .donation-page-content-area .paypal-card {
-        min-height: 230px;
-    }
-
-    .donation-page-content-area .paypal-logo img {
-        max-width: 250px;
-    }
+@media (max-width: 768px) {
+    .rb-donate-hero h1 { font-size: 42px; }
+    .rb-donate-hero p { font-size: 18px; }
+    .rb-paypal-box { padding: 40px 20px; }
 }
 </style>
-<!-- Breadcumb area start  -->
-<section class="breadcumb-area breadcrumb-bg activist-page">
-    <div class="container">
-        <div class="row ">
-            <div class="col-lg-12">
-                <div class="breadcumb-inner">
-                    <h2 class="title">Donation</h2>
-                    <ul class="page-list">
-                        <li><a href="index-2.html">Home</a></li>
-                        <li>Donation</li>
-                    </ul>
+
+<div class="rb-donate-page">
+    <!-- Hero Section -->
+    <section class="rb-donate-hero">
+        <div class="container">
+            <span class="rb-kicker" style="color: #ff8a00;">Make an Impact</span>
+            <h1>Donate with Trust</h1>
+            <p>Your contribution directly supports our mission to provide self-defense training and rehabilitation for survivors.</p>
+        </div>
+    </section>
+
+    <!-- Donation Content -->
+    <section class="rb-donation-content">
+        <div class="container">
+            <div class="rb-donation-grid">
+                
+                <!-- Online Donation -->
+                <div class="rb-paypal-box">
+                    <span class="rb-kicker">Digital Contribution</span>
+                    <h2 style="font-size: 42px; margin-bottom: 20px;">International & Online</h2>
+                    <p style="font-size: 18px; color: #64748b; max-width: 600px; margin: 0 auto 40px;">For international supporters and quick digital transfers, you can donate securely via PayPal.</p>
+                    
+                    <a href="https://www.paypal.me/MissVishwakarma" target="_blank" class="rb-paypal-logo">
+                        <img src="<?php echo URL::asset('uploads/gallery/paypal.png');?>" alt="PayPal Donation">
+                    </a>
+                    <p style="margin-top: 10px; font-weight: 600; color: #1f2f46;">Tap above to open PayPal</p>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<div class="donation-page-content-area">
-    <div class="container">
-        <div class="donate-hero">
-            <span class="section-label"><i class="fas fa-heart"></i> Support our mission</span>
-            <h1>Donate with trust and make a real impact</h1>
-            <p>Your contribution helps Red Brigade Lucknow continue self-defence training, survivor support, and women empowerment work across communities.</p>
-        </div>
+                <!-- Bank Transfers -->
+                <div class="rb-bank-section">
+                    <div style="text-align: center; margin-bottom: 60px;">
+                        <span class="rb-kicker">Direct Support</span>
+                        <h2 style="font-size: 42px;">Bank Transfer</h2>
+                        <p style="font-size: 18px; color: #64748b;">For Indian citizens, you can donate via direct bank transfer using the details below.</p>
+                    </div>
 
-        <div class="row donation-grid justify-content-center">
-            <div class="col-lg-6 col-md-8 mb-4">
-                <div class="donation-card paypal-card text-center">
-                    <div class="paypal-inner">
-                        <span class="paypal-badge"><i class="fab fa-paypal"></i> Secure Online Donation</span>
-                        <div class="paypal-logo">
-                            <a href="https://www.paypal.me/MissVishwakarma" target="_blank" rel="noopener noreferrer" aria-label="Donate via PayPal">
-                                <img src="<?php echo URL::asset('uploads/gallery/paypal.png');?>" class="pypl-box" alt="PayPal donation">
-                            </a>
+                    <div class="rb-bank-grid">
+                        <!-- Red Brigade Account -->
+                        <div class="rb-bank-card">
+                            <h3>Red Brigade Lucknow</h3>
+                            <ul class="rb-bank-list">
+                                <li><strong>Trust Name</strong> <span>Red Brigade Lucknow</span></li>
+                                <li><strong>Bank Name</strong> <span>Panjab & Sind Bank</span></li>
+                                <li><strong>Account No.</strong> <span>08021000012625</span></li>
+                                <li><strong>Account Type</strong> <span>Saving</span></li>
+                                <li><strong>IFSC Code</strong> <span>PSIB0000802</span></li>
+                                <li><strong>PAN Number</strong> <span>AACTR9516J</span></li>
+                                <li><strong>Branch</strong> <span>Indira Nagar, Lucknow</span></li>
+                            </ul>
                         </div>
-                        <div class="paypal-note"><strong>Fast & simple:</strong> Tap the PayPal card to donate instantly from anywhere.</div>
+
+                        <!-- Usha's Account -->
+                        <div class="rb-bank-card">
+                            <h3>Usha Vishwakarma</h3>
+                            <ul class="rb-bank-list">
+                                <li><strong>Account Holder</strong> <span>Usha Vishwakarma</span></li>
+                                <li><strong>Bank Name</strong> <span>State Bank of India</span></li>
+                                <li><strong>Account No.</strong> <span>30261158308</span></li>
+                                <li><strong>IFSC Code</strong> <span>SBIN0008189</span></li>
+                                <li><strong>Branch</strong> <span>Mahanagar, Lucknow</span></li>
+                                <li><strong>Pin Code</strong> <span>226006</span></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-12">
-                <div class="bank-divider"></div>
-            </div>
-
-            <div class="col-lg-12 about-box pt-2 pb-2 text-center">
-                <h3 class="subtitle" style="font-size:32px !important;">BANK TRANSFER</h3>
-                <p style="text-align:center; max-width: 760px; margin: 0 auto; color:#5f6d7e;">For Indian citizens, you can donate by direct transfer to the RB bank account or to Usha Vishwakarma’s account.</p>
-            </div>
-
-            <div class="col-lg-6 col-md-6 mb-4">
-                <div class="donation-card bank-card">
-                    <span class="bank-badge"><i class="fas fa-university"></i> For Indian Citizens</span>
-                    <h5 class="subtitle">Red Brigade Lucknow</h5>
-                    <?php
-                        $rbQrText = "Red Brigade Lucknow\nTrust Name: Red Brigade Lucknow\nBank Name: Panjab & Sind Bank\nAccount Number: 08021000012625\nIFSC: PSIB0000802\nPAN: AACTR9516J";
-                        $rbQrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=12&data=' . rawurlencode($rbQrText);
-                    ?>
-                    <ul class="about-list">
-                       <li>Trust Name : Red Brigade Lucknow</li>
-                       <li>Bank Name : Panjab & Sind Bank.</li>
-                       <li>Bank Account Name : Red Brigade Lucknow</li>
-                       <li>Account Number : 08021000012625</li>
-                       <li>Account Type : Saving</li>
-                       <li>Branch Address : Indira Nagar, Lucknow, INDIA.</li>
-                       <li>Branch Code : 000802</li>
-                       <li>IFSC Code : PSIB0000802</li>
-                       <li>PAN Number : AACTR9516J</li>
-                    </ul>
-                    <div class="account-summary">
-                        <strong>Tip:</strong> Use the account number exactly as listed and mention “Donation” in your transfer note when possible.
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 col-md-6 mb-4">
-                <div class="donation-card bank-card">
-                    <span class="bank-badge"><i class="fas fa-hands-helping"></i> Usha's Account</span>
-                    <h5 class="subtitle">You can donate on Usha's bank account</h5>
-                    <ul class="about-list">
-                       <li>Account holder's Name : Usha Vishwakarma</li>
-                       <li>Account Number : 30261158308</li>
-                       <li>Account holder's Address: Near Ramlila Ground, Naubasta Khurd, Madiyav, District Lucknow, Uttar Pradesh (India)</li>
-                       <li>Bank Name : State bank of india</li>
-                       <li>Branch Address : MAHANAGAR,M-5, GOLE MARKET, MAHANAGAR</li>
-                       <li>Pin Code : 226006.</li>
-                       <li>City : Lucknow, State : Uttar-Pradesh</li>
-                       <li>Branch Code : 691000</li>
-                       <li>Branch IFSC Code : SBIN0008189</li>
-                    </ul>
-                    <div class="account-summary">
-                        <strong>Note:</strong> This account is available for supporters who prefer a direct individual transfer route.
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- donation page content area end -->
+    </section>
 
-<!-- footer area start -->
+    <!-- Final Message -->
+    <section class="rb-donation-content" style="padding-top: 0; padding-bottom: 120px;">
+        <div class="container text-center">
+            <div style="background: #1f2f46; border-radius: 24px; padding: 60px; color: #fff;">
+                <h2 style="color: #fff; font-size: 36px; margin-bottom: 20px;">Every Contribution Counts</h2>
+                <p style="color: #e2e8f0; font-size: 18px; max-width: 700px; margin: 0 auto 40px;">Whether it is a small monthly gift or a one-time donation, your support enables us to reach more villages and train more girls in self-defense.</p>
+                <a href="<?php echo action('MainController@contact'); ?>" style="display: inline-block; padding: 16px 40px; background: #e65a32; color: #fff; font-weight: 700; border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.backgroundColor='#fff'; this.style.color='#1f2f46'" onmouseout="this.style.backgroundColor='#e65a32'; this.style.color='#fff'">Contact Us for Queries</a>
+            </div>
+        </div>
+    </section>
+</div>
+
 @include('includes.footer')

@@ -59,9 +59,9 @@ class MainController extends Controller {
 // 		$$board=Db::table('testimonial')->orderBy('testimonial.id','DESC')->get();
 		//return view('main.ourteam',compact('alltestimonial')); 
 	}
-		public function achievments()
+		public function achievements()
 	{
-	    return view('main.achievments');
+	    return view('main.achievements');
 	} 
 	public function event()
 	{

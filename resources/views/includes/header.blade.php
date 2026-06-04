@@ -452,26 +452,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-center-wrap">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item <?php echo Request::is('/') ? 'active' : '' ?>">
                     <a class="nav-link" href="<?php  echo action('MainController@index')?>">Home <span class="sr-only">(current)</span></a>
                 </li> 
-                                <li class="nav-item">
+                                <li class="nav-item <?php echo Request::is('about') ? 'active' : '' ?>">
                                         <a class="nav-link" href="<?php  echo action('MainController@about')?>">About Us</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item <?php echo Request::is('ourteam') ? 'active' : '' ?>">
                                         <a class="nav-link" href="<?php  echo action('MainController@ourteam')?>">Our Team</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item <?php echo Request::is('blog') ? 'active' : '' ?>">
                     <a class="nav-link" href="<?php  echo action('MainController@blog')?>">Our Work</a>
                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="<?php  echo action('MainController@achievments')?>">Achievements</a>
+                 <li class="nav-item <?php echo Request::is('achievements') ? 'active' : '' ?>">
+                    <a class="nav-link" href="<?php  echo action('MainController@achievements')?>">Achievements</a>
                 </li> 
-                <li class="nav-item">
+                <li class="nav-item <?php echo Request::is('gallery') ? 'active' : '' ?>">
                     <a class="nav-link" href="<?php  echo action('MainController@gallery')?>">Research & Publications </a>
                 </li>
                 
-               <li class="nav-item">
+               <li class="nav-item <?php echo Request::is('contact') ? 'active' : '' ?>">
                     <a class="nav-link" href="<?php  echo action('MainController@contact')?>">Contact us</a>
                 </li>
             </ul>
