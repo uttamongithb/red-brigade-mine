@@ -8,6 +8,16 @@
     object-fit: cover;
     object-position: center center;
 }
+@media screen and (max-width: 767px) {
+    .slider-res {
+        height: 500px !important;
+    }
+}
+@media screen and (max-width: 480px) {
+    .slider-res {
+        height: 420px !important;
+    }
+}
 .team-box-padding {
     padding-bottom: 20px;
 }
@@ -107,7 +117,6 @@
 @media screen and (max-width: 800px) {
    .slider-res{
         width:100%;
-        height:250px !important;
        object-fit: cover;
        object-position: center center;
     }
@@ -597,9 +606,33 @@
     }
 }
 
+@media screen and (max-width: 995px) {
+    .rb-home .rb-hero-overlay {
+        display: none !important;
+    }
+}
+
 @media screen and (max-width: 992px) {
     .rb-home .rb-hero-shell:before {
         background: linear-gradient(180deg, rgba(10, 27, 52, 0.74), rgba(10, 27, 52, 0.34));
+    }
+
+    /* Target the 768px - 992px range for About Section */
+    .rb-home .rb-about-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rb-home .rb-about-grid > .rb-about-copy {
+        width: 100%;
+        padding: 40px 30px;
+        order: 1;
+    }
+
+    .rb-home .rb-about-media {
+        width: 100%;
+        min-height: 400px;
+        order: 2;
     }
 
     .rb-home .rb-hero-panel {
@@ -621,15 +654,6 @@
 
     .rb-home .rb-about-card {
         border-radius: var(--rb-radius-lg);
-    }
-
-    .rb-home .rb-about-grid {
-        display: block;
-    }
-
-    .rb-home .rb-about-grid > .rb-about-copy {
-        padding: 24px 22px 16px;
-        align-items: flex-start;
     }
 
     .rb-home .rb-about .redbrigade-section-heading,
@@ -655,10 +679,6 @@
         justify-content: flex-start;
     }
 
-    .rb-home .rb-about-media .about-image {
-        min-height: 360px;
-    }
-
     .rb-home .rb-impact-strip {
         margin-top: 18px;
     }
@@ -674,36 +694,16 @@
 
 @media screen and (max-width: 767px) {
     .rb-home .rb-hero-overlay {
-        align-items: flex-end;
-        padding-bottom: 16px;
+        display: none !important; /* Hide text card on mobile as requested */
+    }
+
+    .slider-res {
+        height: 550px !important; /* Increased height on mobile as requested */
     }
 
     .rb-home .rb-hero-overlay .container {
         padding-left: 15px;
         padding-right: 15px;
-    }
-
-    .rb-home .rb-hero-panel {
-        margin-left: 0;
-    }
-
-    .rb-home .rb-hero-panel h1 {
-        font-size: 29px;
-    }
-
-    .rb-home .rb-hero-panel p {
-        font-size: 14px;
-        margin-bottom: 14px;
-    }
-
-    .rb-home .rb-hero-actions {
-        width: 100%;
-    }
-
-    .rb-home .rb-hero-actions .boxed-btn {
-        flex: 1 1 calc(50% - 6px);
-        text-align: center;
-        min-width: 130px;
     }
 
     .rb-home .rb-impact-card {
@@ -722,11 +722,15 @@
     }
 
     .rb-home .rb-about-grid > .rb-about-copy {
-        padding: 16px;
+        padding: 30px 20px;
+    }
+
+    .rb-home .rb-about .main-heading {
+        font-size: 28px;
     }
 
     .rb-home .rb-about .sub-heading {
-        font-size: 17px;
+        font-size: 16px;
         line-height: 1.5;
     }
 
@@ -737,11 +741,11 @@
     }
 
     .rb-home .rb-about .about-list {
-        font-size: 15px;
+        font-size: 14px;
         margin-bottom: 16px;
     }
 
     .rb-home .rb-about-media .about-image {
-        min-height: 260px;
+        min-height: 300px;
     }
 }

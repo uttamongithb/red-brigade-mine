@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Brigade Lucknow</title>
     <!-- favicon -->
-    <link rel="icon" type="image/jpeg" href="<?php echo URL::asset('uploads/img/redbrigade-favicon.jpg')?>">
-    <link rel="shortcut icon" type="image/jpeg" href="<?php echo URL::asset('uploads/img/redbrigade-favicon.jpg')?>">
+    <link rel="icon" type="image/png" href="<?php echo URL::asset('uploads/img/logo.png')?>">
+    <link rel="shortcut icon" type="image/png" href="<?php echo URL::asset('uploads/img/logo.png')?>">
     <!-- bootstrap -->
     <link rel="stylesheet" href="<?php echo URL::asset('css/front/bootstrap.min.css')?>">
     <!-- fontawesome -->
@@ -76,6 +76,11 @@
             width: 100%;
             padding: 0;
             margin: 0;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         
         /* Navbar Container - Three Zone Layout */
@@ -103,12 +108,22 @@
             padding: 0 !important;
             display: inline-block;
         }
+        
+        .navbar-area .logo-width {
+            width: 219px;
+            height: auto;
+        }
 
         /* Toggle Button */
         .navbar-area .navbar-toggler {
             display: none;
             margin-left: auto;
             margin-right: 0;
+            border: none;
+            background: #f8f9fb;
+            padding: 10px;
+            border-radius: 8px;
+            z-index: 1002;
         }
 
         /* Zone 2: Navigation Menu - CENTER - Flex Grow */
@@ -157,7 +172,7 @@
         }
 
         .navbar-area .navbar-collapse .navbar-nav .nav-item.active > .nav-link {
-            color: #000000;
+            color: #1f2f46;
         }
 
         .navbar-area .navbar-collapse .navbar-nav .nav-item .nav-link {
@@ -211,228 +226,134 @@
             box-shadow: 0 5px 15px rgba(227, 30, 36, 0.1);
         }
 
-        @media (min-width: 1367px) and (max-width: 1599px) {
-            .navbar-area .navbar-collapse .navbar-nav {
-                gap: 20px;
-            }
-
-            .navbar-area .navbar-collapse .navbar-nav .nav-item .nav-link {
-                font-size: 16px !important;
-            }
-
-            .navbar-area .navbar-donate-wrap {
-                margin-left: 18px;
-            }
-        }
-
+        /* RIGHT SIDE MOBILE DRAWER SYSTEM */
         @media (max-width: 1366px) {
             .navbar-area .nav-container {
                 display: flex !important;
-                flex-wrap: wrap;
-                align-items: center;
+                justify-content: space-between;
                 padding: 12px 16px !important;
-                column-gap: 0;
-                position: relative;
-                z-index: 30;
-            }
-
-            .navbar-area .navbar-header {
-                grid-column: auto;
-                flex: 0 0 auto;
             }
 
             .navbar-area .navbar-toggler {
-                display: block;
-                margin-left: auto;
+                display: block !important;
             }
 
             .navbar-area .navbar-collapse {
-                grid-column: auto;
-                order: 3;
-                width: 100% !important;
-                flex-basis: 100%;
-                margin-top: 10px;
-                padding: 14px 16px 16px !important;
-                border: none !important;
-                clear: both;
+                position: fixed;
+                top: 0;
+                right: -320px; /* Hide off-canvas right */
+                width: 300px;
+                height: 100vh;
                 background: #ffffff;
-                border-top: 1px solid #e7edf5 !important;
-                border-radius: 0 0 18px 18px;
-                box-shadow: 0 18px 36px rgba(15, 39, 69, 0.12);
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                z-index: 25;
+                flex-direction: column;
+                justify-content: flex-start !important;
+                padding: 100px 30px 40px;
+                box-shadow: -15px 0 50px rgba(0,0,0,0.1);
+                transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+                z-index: 1001;
+                display: flex !important;
+                overflow-y: auto;
             }
 
-            .navbar-area .navbar-collapse.collapse {
-                display: none !important;
-            }
-
-            .navbar-area .navbar-collapse.collapse.in {
-                display: block !important;
-            }
-
-            .navbar-area .navbar-collapse.collapsing {
-                display: block !important;
-                height: auto;
-                overflow: hidden;
-            }
-
-            .navbar-area .navbar-collapse.in,
             .navbar-area .navbar-collapse.show {
-                display: block !important;
-            }
-
-            .navbar-area .navbar-collapse:not(.in):not(.show) {
-                display: none !important;
+                right: 0; /* Slide in from right */
             }
 
             .navbar-area .navbar-center-wrap {
                 display: block;
                 width: 100%;
-                overflow: visible;
-            }
-
-            .navbar-area .navbar-collapse .navbar-nav,
-            .navbar-area .navbar-collapse .navbar-donate-wrap {
-                max-width: 540px;
-                margin-left: auto;
-                margin-right: auto;
             }
 
             .navbar-area .navbar-collapse .navbar-nav {
                 display: block !important;
                 width: 100%;
-                padding: 0 !important;
-                margin: 0;
+                gap: 0;
             }
 
             .navbar-area .navbar-collapse .navbar-nav .nav-item {
                 display: block;
-                margin: 0 0 10px 0 !important;
+                margin-bottom: 10px !important;
             }
 
             .navbar-area .navbar-collapse .navbar-nav .nav-item .nav-link {
                 display: block;
-                padding: 10px 0 !important;
-                font-size: 15px !important;
-            }
-
-            .navbar-area .navbar-donate-wrap {
-                display: block;
-                margin: 12px 0 0 0;
-                justify-self: auto;
-            }
-
-            .navbar-area .navbar-donate-wrap .donate-btn {
-                display: inline-block;
-            }
-        }
-
-        @media (max-width: 991px) {
-            .navbar-area {
-                padding: 10px 0;
-            }
-
-            .navbar-area .nav-container {
-                padding: 10px 14px !important;
-            }
-
-            .navbar-area .navbar-toggler {
-                display: inline-flex !important;
-                align-items: center;
-                justify-content: center;
-                width: 44px;
-                height: 40px;
-                padding: 0;
-                border-radius: 8px;
-                border: 1px solid rgba(40, 40, 40, 0.12);
-                background: #ffffff;
-                box-shadow: 0 6px 16px rgba(15, 39, 69, 0.08);
-            }
-
-            .navbar-area .navbar-toggler-icon {
-                width: 1.2em;
-                height: 1.2em;
-            }
-
-            .navbar-area .navbar-collapse {
-                position: absolute;
-                top: calc(100% + 8px);
-                left: 12px;
-                right: 12px;
-                width: auto !important;
-                margin-top: 0;
-                padding: 16px !important;
-                border-radius: 16px;
-                box-shadow: 0 20px 40px rgba(15, 39, 69, 0.16);
-                z-index: 99;
-            }
-
-            .navbar-area .navbar-center-wrap {
-                width: 100%;
-            }
-
-            .navbar-area .navbar-collapse .navbar-nav {
-                max-width: none;
-            }
-
-            .navbar-area .navbar-collapse .navbar-nav .nav-item {
-                margin: 0 !important;
-            }
-
-            .navbar-area .navbar-collapse .navbar-nav .nav-item .nav-link {
                 padding: 12px 0 !important;
-                font-size: 15px !important;
-                border-bottom: 1px solid #edf1f7;
+                font-size: 16px !important;
+                border-bottom: 1px solid #f0f3f7;
                 width: 100%;
-            }
-
-            .navbar-area .navbar-collapse .navbar-nav .nav-item:last-child .nav-link {
-                border-bottom: 0;
             }
 
             .navbar-area .navbar-donate-wrap {
-                display: block;
-                margin: 16px 0 0 0;
                 width: 100%;
+                margin-top: 20px;
+                justify-content: center;
             }
 
             .navbar-area .navbar-donate-wrap .donate-btn {
                 width: 100%;
-                text-align: center;
             }
         }
 
         @media (max-width: 575px) {
-            .navbar-area .nav-container {
-                padding: 8px 12px !important;
-            }
-
-            .navbar-area .navbar-brand.logo img,
             .navbar-area .logo-width {
-                max-width: 150px;
-                height: auto;
+                width: 160px;
             }
-
             .navbar-area .navbar-collapse {
-                left: 10px;
-                right: 10px;
-                padding: 14px !important;
-            }
-
-            .navbar-area .navbar-collapse .navbar-nav .nav-item .nav-link {
-                font-size: 14px !important;
-                padding: 10px 0 !important;
-            }
-
-            .navbar-area .navbar-donate-wrap .donate-btn {
-                padding: 10px 14px;
+                width: 280px;
             }
         }
+
+        /* Dark Overlay with Perfect Blur */
+        .nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 26, 42, 0.6); /* Slightly darker for better focus */
+            backdrop-filter: blur(10px); /* Increased blur for a perfect effect */
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        body.menu-open { overflow: hidden; }
     </style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggler = document.querySelector('.navbar-toggler');
+        const menu = document.querySelector('#navbarSupportedContent');
+        const overlay = document.createElement('div');
+        overlay.className = 'nav-overlay';
+        document.body.appendChild(overlay);
+
+        function toggleMenu() {
+            if (!menu) return;
+            menu.classList.toggle('show');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        }
+
+        if (toggler) {
+            toggler.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleMenu();
+            });
+        }
+
+        overlay.addEventListener('click', toggleMenu);
+
+        // Auto-close on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1366 && menu.classList.contains('show')) {
+                toggleMenu();
+            }
+        });
+    });
+    </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVQ5M6KB1N"></script>
 <script>
@@ -446,56 +367,63 @@
 
 <body>
 
-    <!-- ============Start Navigation ===== -->
+    <!-- ============ NAVIGATION ===== -->
     <nav class="navbar navbar-area navbar-expand-lg navbar-light">
-        <div class="container-fluid nav-container" style="padding:0px;">
-        <div class="navbar-header">
-            <a class="navbar-brand logo" href="<?php  echo action('MainController@index')?>" >
-                <img src="<?php echo URL::asset('uploads/img/logo.png')?>" alt="logo image" class="logo-width" >
-            </a>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="navbar-center-wrap">
-            <ul class="navbar-nav">
-                <li class="nav-item <?php echo Request::is('/') ? 'active' : '' ?>">
-                    <a class="nav-link" href="<?php  echo action('MainController@index')?>">Home <span class="sr-only">(current)</span></a>
-                </li> 
-                                <li class="nav-item <?php echo Request::is('about') ? 'active' : '' ?>">
-                                        <a class="nav-link" href="<?php  echo action('MainController@about')?>">About Us</a>
-                                </li>
-                                <li class="nav-item <?php echo Request::is('event') ? 'active' : '' ?>">
-                                        <a class="nav-link" href="<?php  echo action('MainController@event')?>">Our Work</a>
-                                </li>
-                                <li class="nav-item <?php echo Request::is('blog') ? 'active' : '' ?>">
-                                        <a class="nav-link" href="<?php  echo action('MainController@blog')?>">Blog</a>
-                                </li>
-                                <li class="nav-item <?php echo Request::is('ourteam') ? 'active' : '' ?>">
-                                        <a class="nav-link" href="<?php  echo action('MainController@ourteam')?>">Our Team</a>
-                                </li>
-                                <li class="nav-item <?php echo Request::is('research') ? 'active' : '' ?>">
-                                        <a class="nav-link" href="<?php  echo action('MainController@research')?>">Research</a>
-                                </li>
-                                <li class="nav-item <?php echo Request::is('gallery') ? 'active' : '' ?>">
-                                        <a class="nav-link" href="<?php  echo action('MainController@gallery')?>">Gallery</a>
-                                </li>
-                                <li class="nav-item <?php echo Request::is('ethics') ? 'active' : '' ?>">
-                                        <a class="nav-link" href="<?php  echo action('MainController@ethics')?>">Vision & Ethics</a>
-                                </li>
-                                <li class="nav-item <?php echo Request::is('achievements') ? 'active' : '' ?>">
-                    <a class="nav-link" href="<?php  echo action('MainController@achievements')?>">Achievements</a>
-                </li> 
-                <li class="nav-item <?php echo Request::is('contact') ? 'active' : '' ?>">
-                    <a class="nav-link" href="<?php  echo action('MainController@contact')?>">Contact us</a>
-                </li>
-            </ul>
+        <div class="nav-container">
+            <!-- Zone 1: Logo Section -->
+            <div class="navbar-header">
+                <a class="navbar-brand logo" href="<?php echo action('MainController@index'); ?>">
+                    <img src="<?php echo URL::asset('uploads/img/logo.png'); ?>" alt="Red Brigade" class="logo-width">
+                </a>
             </div>
-            <div class="navbar-donate-wrap">
-                <a class="donate-btn" href="<?php  echo action('MainController@donate')?>">Donate</a>
+
+            <!-- Mobile Toggler -->
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Zone 2: Navigation Links & Zone 3: Donate Button -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-center-wrap">
+                    <ul class="navbar-nav">
+                        <li class="nav-item <?php echo Request::is('/') ? 'active' : ''; ?>">
+                            <a class="nav-link" href="<?php echo action('MainController@index'); ?>">Home</a>
+                        </li>
+                        <li class="nav-item <?php echo Request::is('about') ? 'active' : ''; ?>">
+                            <a class="nav-link" href="<?php echo action('MainController@about'); ?>">About Us</a>
+                        </li>
+                        <li class="nav-item <?php echo Request::is('event') ? 'active' : ''; ?>">
+                            <a class="nav-link" href="<?php echo action('MainController@event'); ?>">Our Work</a>
+                        </li>
+                        <li class="nav-item <?php echo Request::is('blog') ? 'active' : ''; ?>">
+                            <a class="nav-link" href="<?php echo action('MainController@blog'); ?>">Blog</a>
+                        </li>
+                        <li class="nav-item <?php echo Request::is('ourteam') ? 'active' : ''; ?>">
+                            <a class="nav-link" href="<?php echo action('MainController@ourteam'); ?>">Our Team</a>
+                        </li>
+                        <li class="nav-item <?php echo Request::is('research') ? 'active' : ''; ?>">
+                            <a class="nav-link" href="<?php echo action('MainController@research'); ?>">Research</a>
+                        </li>
+                        <li class="nav-item <?php echo Request::is('gallery') ? 'active' : ''; ?>">
+                            <a class="nav-link" href="<?php echo action('MainController@gallery'); ?>">Gallery</a>
+                        </li>
+                        <li class="nav-item <?php echo Request::is('ethics') ? 'active' : ''; ?>">
+                            <a class="nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Ethics</a>
+                        </li>
+                        <li class="nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
+                            <a class="nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>
+                        </li>
+                        <li class="nav-item <?php echo Request::is('contact') ? 'active' : ''; ?>">
+                            <a class="nav-link" href="<?php echo action('MainController@contact'); ?>">Contact us</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="navbar-donate-wrap">
+                    <a class="donate-btn" href="<?php echo action('MainController@donate'); ?>">Donate</a>
+                </div>
             </div>
         </div>
-        </div>
-    </nav> 
+    </nav>
+</body>
+</html>
