@@ -65,6 +65,7 @@ Route::any('/admin/editblog/{id}', 'ServiceController@editblog')->middleware('au
 Route::any('/admin/addnews', 'ServiceController@addnews')->middleware('auth');
 Route::any('/admin/viewnews', 'ServiceController@viewnews')->middleware('auth');
 Route::any('/admin/editnews/{id}', 'ServiceController@editnews')->middleware('auth');
+Route::any('/admin/deletenews/{id}', 'ServiceController@deletenews')->middleware('auth');
 														
 /*News*/
 

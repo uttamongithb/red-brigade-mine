@@ -64,6 +64,9 @@
 							<a href="<?php  echo action('ServiceController@editnews',$idget)?>" title="Edit" class="actionbtn btn-info">
 								<i class="fa fa-edit"></i>
 							</a>
+							<a href="<?php  echo action('ServiceController@deletenews',$idget)?>" title="Delete" class="actionbtn btn-danger" onclick="return confirm('Are you sure you want to delete this work?')">
+								<i class="fa fa-trash"></i>
+							</a>
 					  </td>
 				</tr>
 					<?php } ?>
