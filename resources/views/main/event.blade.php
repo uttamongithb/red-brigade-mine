@@ -171,7 +171,7 @@
                 <?php if(!empty($allevent)) { foreach($allevent as $item) { ?>
                     <article class="rb-event-card">
                         <?php 
-                            $imgPath = !empty($item->image) ? 'uploads/news/'.$item->image : 'uploads/img/logo.png';
+                            $imgPath = !empty($item->image) ? 'uploads/news/'.trim($item->image) : 'uploads/img/logo.png';
                             $link = action('MainController@singlework', $item->id);
                             $label = ($item->type == 'blog') ? "STORY" : "EVENT";
                         ?>

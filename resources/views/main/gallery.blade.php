@@ -156,9 +156,9 @@
             <!-- Photos Tab -->
             <div id="photos" class="rb-tab-content rb-gallery-grid active">
                 <?php if(!empty($photos)) { foreach($photos as $allg) { ?>
-                    <a href="<?php echo URL::asset('uploads/gallery/'.$allg->image);?>" class="rb-media-card image-popup">
+                    <a href="<?php echo URL::asset('uploads/gallery/'.trim($allg->image));?>" class="rb-media-card image-popup">
                         <div class="rb-media-thumbnail">
-                            <img src="<?php echo URL::asset('uploads/gallery/'.$allg->image);?>" alt="<?php echo $allg->name; ?>" loading="lazy">
+                            <img src="<?php echo URL::asset('uploads/gallery/'.trim($allg->image));?>" alt="<?php echo $allg->name; ?>" loading="lazy">
                         </div>
                         <div class="rb-media-info">
                             <h4><?php echo !empty($allg->name) ? $allg->name : 'Movement Documentation'; ?></h4>

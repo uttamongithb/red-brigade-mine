@@ -66,7 +66,7 @@
 				<td><?php echo $tt->title;?></td>
 
                 <td><?php echo $tt->url;?></td>
-				<?php $idget = base64_encode(serialize($tt->id));?>
+				<?php $idget = $tt->id;?>
 				 
 				  <td>
 					<a href="<?php echo action('PopupsController@edit',$idget)?>" class="actionbtn btn-info">

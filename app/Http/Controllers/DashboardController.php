@@ -39,7 +39,7 @@ class DashboardController extends Controller {
 			$dataupdate['address'] = $input['address'];
 			$dataupdate['number'] = $input['number'];
 			Session::put('mim_messagetrue','Your profile updated successfully');
-			DB::table('users')->where('id',$input['id'])->update($dataupdate);
+			DB::table('users')->where('id',$getid)->update($dataupdate);
 			return redirect()->action('DashboardController@editprofile');
 			
 		}else{
@@ -56,7 +56,7 @@ class DashboardController extends Controller {
 		return view('dashboards.allenquiry',compact('findllmemebers'));
 	}
     public function topuser($id){
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		$status['userid'] = $decodeid;
 		$topusers = DB::table('topusers')->where('userid',$decodeid)->first();
 		if(!empty($topusers)){
@@ -70,14 +70,14 @@ class DashboardController extends Controller {
 		}
 	}
 	public function blockuser($id){
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		$status['activation_status'] = 'blocked';
 		DB::table('registerusers')->where('id',$decodeid)->update($status);
 		Session::flash('message', 'user has been blocked successfully!');
 		return Redirect::back();
 	}
 	public function activateuser($id){
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		$status['activation_status'] = 'activated';
 		DB::table('registerusers')->where('id',$decodeid)->update($status);
 		Session::flash('message', 'user has been activated successfully!');
@@ -88,21 +88,21 @@ class DashboardController extends Controller {
 		return view('dashboards.expertslisting',compact('findllmemebers'));
 	}
 	public function blockpost($id){
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		$status['status'] = 'blocked';
 		DB::table('posts')->where('id',$decodeid)->update($status);
 		Session::flash('message', 'Expertise listing has been blocked successfully!');
 		return Redirect::back();
 	}
 	public function activatepost($id){
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		$status['status'] = 'active';
 		DB::table('posts')->where('id',$decodeid)->update($status);
 		Session::flash('message', 'Expertise listing has been activated successfully!');
 		return Redirect::back();
 	}
 	public function deletepost($id){
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		$findpost = DB::table('posts')->where('id',$decodeid)->first();
 		$destinationPaths = 'uploads/posts';
 		if($findpost->image!=""){
@@ -114,14 +114,14 @@ class DashboardController extends Controller {
 		return Redirect::back();
 	}
 	public function featuredpost($id,$status){
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		$dstatus['featured'] = $status;
 		DB::table('posts')->where('id',$decodeid)->update($dstatus);
 		Session::flash('message', 'Featured status of expertise listing has been changed successfully.');
 		return Redirect::back();
 	}
 	public function popularpost($id,$status){
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		$dstatus['popular'] = $status;
 		DB::table('posts')->where('id',$decodeid)->update($dstatus);
 		Session::flash('message', 'Popular status of expertise listing has been changed successfully.');
@@ -136,21 +136,21 @@ class DashboardController extends Controller {
 		return view('dashboards.allquestions',compact('findallquestions'));
 	}
 	public function blockquestion($id){
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		$dstatus['status'] = 'blocked';
 		DB::table('questions')->where('id',$decodeid)->update($dstatus);
 		Session::flash('message', 'Blocked Successfully.');
 		return Redirect::back();
 	}
 	public function activatequestion($id){
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		$dstatus['status'] = 'activated';
 		DB::table('questions')->where('id',$decodeid)->update($dstatus);
 		Session::flash('message', 'Activate Successfully.');
 		return Redirect::back();
 	}
 	public function viewquestion($id){
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		$sinlgequestion = DB::table('questions')->join('registerusers','registerusers.id','=','questions.userid')->select('questions.id as quid','questions.*','registerusers.fname','registerusers.lname')->where('questions.id',$decodeid)->first();
 		return view('dashboards.viewquestion',compact('sinlgequestion'));
 	}

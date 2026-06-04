@@ -72,7 +72,7 @@
 					  <img src="<?php echo URL::asset('uploads/location/'.$tt->icon)?>" style="width:50px;margin:auto;">
 					  <?php
 				  }?></td>
-				  <?php $idget = base64_encode(serialize($tt->id));?>
+				  <?php $idget = $tt->id;?>
 				   <td>
 					<?php if($tt->popular==0){ ?>
 						  <a class="actionbtn btn-info" href="<?php echo action('ServiceController@popularplace',[$idget,1])?>"><i class="fa fa-star-o"></i></a>

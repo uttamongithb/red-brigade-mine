@@ -27,7 +27,7 @@
             <!-- /.box-header -->
             <!-- form start -->
 			<?php
-				$getid = base64_encode(serialize($categories->id));
+				$getid = $categories->id;
 			?>
 			{{ Form::model($categories, array('action' => array('PopupsController@edit', $getid), 'method' => 'POST','files'=>true)) }}
 			{{ csrf_field() }}

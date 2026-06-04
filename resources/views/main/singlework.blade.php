@@ -130,7 +130,7 @@
     <!-- Featured Image -->
     <?php if(!empty($thiswork->image)): ?>
     <div class="rb-post-featured-image container">
-        <img src="<?php echo URL::asset('uploads/news/'.$thiswork->image);?>" alt="<?php echo $thiswork->name; ?>">
+        <img src="<?php echo URL::asset('uploads/news/'.trim($thiswork->image));?>" alt="<?php echo $thiswork->name; ?>">
     </div>
     <?php else: ?>
     <div style="height: 60px;"></div>

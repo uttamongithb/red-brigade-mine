@@ -349,7 +349,7 @@
                     <p>At 14, Diya survived an attempted rape in Mistripur, Lucknow, where the perpetrator had powerful connections and her complaint was initially refused registration. Red Brigade took up her case, provided shelter, and supported her through the entire legal process — travelling with her from Mistripur to Lucknow for every single court date. The perpetrator was imprisoned. Today, Diya is married and a mother — a life rebuilt, a testament to what collective support can achieve.</p>
                 </div>
                 <div class="rb-video-thumbnail-container">
-                    <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-614.jpeg'); ?>" alt="Resilience Story">
+                    <img src="<?php echo URL::asset('uploads/slider/Redbrigade-lucknow-614.jpeg'); ?>" alt="Resilience Story">
                 </div>
             </div>
         </div>

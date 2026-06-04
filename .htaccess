@@ -1,21 +1,11 @@
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews
-    </IfModule>
-
     RewriteEngine On
 
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)/$ /$1 [L,R=301]
+    # Protect sensitive files
+    RewriteRule ^(\.env|composer\.json|composer\.lock|package\.json|package-lock\.json|nirvana\.sql|mariadb\.err\.log|mariadb\.out\.log)$ - [F,L]
+    RewriteRule ^(app|bootstrap|config|database|resources|scripts|storage|tests|vendor)/.*$ - [F,L]
 
-    # Handle Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
-
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    # Redirect all traffic to the public directory
+    RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
 

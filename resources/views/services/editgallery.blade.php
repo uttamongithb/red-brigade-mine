@@ -24,7 +24,7 @@
             <!-- /.box-header -->
             <!-- form start -->
 			
-					<?php $getid = base64_encode(serialize($thisdata->id)); ?>
+					<?php $getid = $thisdata->id; ?>
 			{{ Form::open(array('action' => array('ServiceController@editgallery',$getid),'files' => true)) }}
 			  {{ csrf_field() }}
               <div class="box-body">

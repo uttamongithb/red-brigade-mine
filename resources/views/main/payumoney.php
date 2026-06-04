@@ -8,17 +8,15 @@
 // Test Expiry: May 2020
 //
 $rootserver="http://". $_SERVER['SERVER_NAME'];
-$MERCHANT_KEY = "gtKFFx";
-$SALT = "eCwWELxi";
+$MERCHANT_KEY = config('services.payu.merchant_key');
+$SALT = config('services.payu.salt');
 $txnid=$userdata->transId;
 $name=$userdata->fast_name;
 $email=$userdata->email;
 $amount=$userdata->amount;
 $phone=$userdata->mobile;
-// $surl=$rootserver."/paysuccess?order=".$txnid;
-// $furl=$rootserver."/failure?order=".$txnid;
-$surl="http://redbrigade-lucknow.org/paysuccess?order=".$txnid;
-$furl="http://redbrigade-lucknow.org/failure?order=".$txnid;
+$surl=$rootserver."/paysuccess?order=".$txnid;
+$furl=$rootserver."/failure?order=".$txnid;
 $productInfo="xyzabc"; 
 $hashSequence = "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10";
 $hashString=$MERCHANT_KEY."|".$txnid."|".$amount."|".$productInfo."|".$name."|".$email."|||||||||||".$SALT;

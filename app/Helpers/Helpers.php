@@ -154,7 +154,7 @@ padding: 10px;background:rgb(246,246,246);">
 			$class="";
 			$class = Session::get('alert-class');
 			$message = Session::get('message');
-			$content='<div class="alert '.$class.'">'.$message.'</div>';
+			$content='<div class="alert '.htmlspecialchars($class, ENT_QUOTES, 'UTF-8').'">'.htmlspecialchars($message, ENT_QUOTES, 'UTF-8').'</div>';
 			return $content;
 		}
 		else{
@@ -185,20 +185,20 @@ padding: 10px;background:rgb(246,246,246);">
 	public static function imageUpload($file,$destinationPath,$fileName){
 		$array=array();
 		foreach($file as $fileimage){
+				if(!self::imageExtension($fileimage)){
+					continue;
+				}
 				$filename = $fileimage->getClientOriginalName();
 					$extension = $fileimage->getClientOriginalExtension();
-					$ext = array('jpg','JPG','jpeg', 'gif', 'png');
 					$newfilename = $fileName.'.'.$extension;
-					if(file_exists($destinationPath.'/'.$newfilename)){
+					$fullDestinationPath = public_path($destinationPath);
+					if(file_exists($fullDestinationPath.'/'.$newfilename)){
 						$info=pathinfo($newfilename);
 						$imageNamee=$info['filename'].'-'.rand(100,999);
 						$newfilename=$imageNamee.".".$info['extension'];
 					}
 					$array[]=$newfilename;
-					$upload_success = $fileimage->move($destinationPath, $newfilename);
-					$resi = $destinationPath .'/'. $newfilename;
-					// $resizeimage=Helpers::resize_image($resi);
-					// $resizeimage=Helpers::compress_image($resi,80);
+					$upload_success = $fileimage->move($fullDestinationPath, $newfilename);
 			 }
 			  $imageNames = implode('{$}',$array);
 			  return $imageNames;

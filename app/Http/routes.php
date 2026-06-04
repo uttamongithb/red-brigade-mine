@@ -1,24 +1,4 @@
 <?php
-Route::get('/hard-reset-admin', function() {
-    $email = 'admin@local.test';
-    $password = 'Admin@1234';
-    
-    $user = \App\User::where('email', $email)->first();
-    
-    if ($user) {
-        $user->password = bcrypt($password);
-        $user->save();
-        return "Password reset successfully for: " . $email . " | Password: " . $password;
-    } else {
-        \App\User::create([
-            'name' => 'Admin User',
-            'email' => $email,
-            'password' => bcrypt($password),
-        ]);
-        return "New admin user created successfully: " . $email . " | Password: " . $password;
-    }
-});
-
 Route::auth();
 Route::any('/', 'MainController@home');
 
@@ -100,7 +80,7 @@ Route::any('/admin/viewslider', 'ServiceController@viewslider')->middleware('aut
 Route::any('/admin/popularslider/{id}/{status}', 'ServiceController@popularslider')->middleware('auth');
 Route::any('/admin/editslider/{id}', 'ServiceController@editslider')->middleware('auth');
 Route::any('/admin/deleteslider/{id}', 'ServiceController@deleteslider')->middleware('auth');
-Route::any('/admin/multiSlider', 'ServiceController@multiSlider');
+Route::any('/admin/multiSlider', 'ServiceController@multiSlider')->middleware('auth');
 /* Slider+*/
 
 /* Services+*/
@@ -109,7 +89,7 @@ Route::any('/admin/viewservice', 'ServiceController@viewservice')->middleware('a
 Route::any('/admin/popularservice/{id}/{status}', 'ServiceController@popularservice')->middleware('auth');
 Route::any('/admin/editservice/{id}', 'ServiceController@editservice')->middleware('auth');
 Route::any('/admin/deleteservice/{id}', 'ServiceController@deleteservice')->middleware('auth');
-Route::any('/admin/multiServices', 'ServiceController@multiServices');
+Route::any('/admin/multiServices', 'ServiceController@multiServices')->middleware('auth');
 
 /* Services+*/
 
@@ -119,7 +99,7 @@ Route::any('/admin/viewproduct', 'ServiceController@viewproduct')->middleware('a
 Route::any('/admin/popularproduct/{id}/{status}', 'ServiceController@popularproduct')->middleware('auth');
 Route::any('/admin/editproduct/{id}', 'ServiceController@editproduct')->middleware('auth');
 Route::any('/admin/deleteproduct/{id}', 'ServiceController@deleteproduct')->middleware('auth');
-Route::any('/admin/multiProduct', 'ServiceController@multiProduct');
+Route::any('/admin/multiProduct', 'ServiceController@multiProduct')->middleware('auth');
 
 /* Product+*/
 
@@ -129,7 +109,7 @@ Route::any('/admin/viewtestimonial', 'ServiceController@viewtestimonial')->middl
 Route::any('/admin/populartestimonial/{id}/{status}', 'ServiceController@populartestimonial')->middleware('auth');
 Route::any('/admin/edittestimonial/{id}', 'ServiceController@edittestimonial')->middleware('auth');
 Route::any('/admin/deletetestimonial/{id}', 'ServiceController@deletetestimonial')->middleware('auth');
-Route::any('/admin/multiTestimonial', 'ServiceController@multiTestimonial');
+Route::any('/admin/multiTestimonial', 'ServiceController@multiTestimonial')->middleware('auth');
 
 
 
@@ -145,6 +125,6 @@ Route::any('/admin/populargallery/{id}/{status}', 'ServiceController@populargall
 Route::any('/admin/editgallery/{id}', 'ServiceController@editgallery')->middleware('auth');
 Route::any('/admin/deletegallery/{id}', 'ServiceController@deletegallery')->middleware('auth');
 Route::any('/admin/deleteblog/{id}', 'ServiceController@deleteblog')->middleware('auth');
-Route::any('/admin/multiGallery', 'ServiceController@multiGallery');																
+Route::any('/admin/multiGallery', 'ServiceController@multiGallery')->middleware('auth');																
 /*Gallery*/																
 ?>

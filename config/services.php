@@ -54,5 +54,9 @@ return [
 		'client_secret' => 'tMxDbozu1JLl4a7J',
 		'redirect' => 'http://demoimg.com/mimessay-demo/linkedin/callback'
 	],
+	'payu' => [
+		'merchant_key' => env('PAYU_MERCHANT_KEY'),
+		'salt' => env('PAYU_SALT'),
+	],
 
 ];

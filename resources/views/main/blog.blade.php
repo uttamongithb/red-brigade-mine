@@ -171,7 +171,7 @@
                 <?php if(!empty($allblog)) { foreach($allblog as $post) { ?>
                     <article class="rb-blog-card">
                         <a href="<?php echo action('MainController@singleblog', $post->slug); ?>" class="rb-blog-thumbnail">
-                            <?php $imagePath = !empty($post->image) ? 'uploads/news/'.$post->image : 'uploads/img/logo.png'; ?>
+                            <?php $imagePath = !empty($post->image) ? 'uploads/news/'.trim($post->image) : 'uploads/img/logo.png'; ?>
                             <img src="<?php echo URL::asset($imagePath); ?>" alt="<?php echo $post->name; ?>">
                         </a>
                         <div class="rb-blog-content">

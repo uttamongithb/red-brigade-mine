@@ -119,7 +119,7 @@ class MainController extends Controller {
 				$input['transId']=$rand.$getid;
 			}
 			Db:: table('donate')->insert($input);
-			$idget = base64_encode(serialize($input['transId']));
+			$idget = $input['transId'];
 			return redirect()->action('MainController@payumoney',$idget);
 		}
 		return view('main.donate');
@@ -127,22 +127,26 @@ class MainController extends Controller {
 
 	public function payumoney($id,Request $request)
 	{
-		$transId = unserialize(base64_decode($id));
+		$transId = $id;
 		$userdata=Db::table('donate')->where('transId',$transId)->where('status',0)->first();
 		return view('main.payumoney',compact('userdata'));
 	}
 
-	public function paysuccess()
+	public function paysuccess(Request $request)
 	{
-		$data['status']=1;
-		Db::table('donate')->where('transId',$id)->update($data);
-		Session::flash('message', 'Successfully Payment Submit Order No.'.$_GET['order']);
+		$id = $request->input('order');
+		if ($id) {
+			$data['status']=1;
+			Db::table('donate')->where('transId',$id)->update($data);
+		}
+		Session::flash('message', 'Successfully Payment Submit Order No. '.htmlspecialchars($id, ENT_QUOTES, 'UTF-8'));
 		return view('fronts.paysuccess');
 	}
 
-	public function failure()
+	public function failure(Request $request)
 	{
-			Session::flash('message', 'Your Payment are failed Please Try again.'.$_GET['order']);
+			$id = $request->input('order');
+			Session::flash('message', 'Your Payment are failed Please Try again. Order No. '.htmlspecialchars($id, ENT_QUOTES, 'UTF-8'));
 			return view('fronts.failure');
 	}
 

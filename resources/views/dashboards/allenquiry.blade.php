@@ -77,7 +77,7 @@
                   <td><?php echo $member->number;?></td>
                   <td><?php echo $member->message;?></td>
                   <td><?php echo $member->created_at;?></td>
-				  <?php $idget = base64_encode(serialize($member->id));?>
+				  <?php $idget = $member->id;?>
 				  
                  </tr>
 					<?php } ?>

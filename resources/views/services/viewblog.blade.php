@@ -63,7 +63,7 @@
 				  <td><img style="width:75px;height:75px;" class="img-responsive" src="<?php echo URL::asset('uploads/Blog/'.$tt->image)?>"/></td>
 				  <td><?php echo $tt->date;?></td>
 				  <td><?php echo ucwords($tt->description);?></td>
-				    <?php $idget = base64_encode(serialize($tt->id)); ?>
+				    <?php $idget = $tt->id; ?>
 					  <td style="width:200px;">
 							<a href="<?php  echo action('ServiceController@editblog',$idget)?>" title="Edit" class="actionbtn btn-info">
 								<i class="fa fa-edit"></i>

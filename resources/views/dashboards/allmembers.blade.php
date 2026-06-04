@@ -75,7 +75,7 @@
                   <td><?php echo $member->email;?></td>
                   <td><?php echo $member->created_at;?></td>
                   <td><?php echo $member->activation_status;?></td>
-				  <?php $idget = base64_encode(serialize($member->id));?>
+				  <?php $idget = $member->id;?>
 				  <td>
 				  <?php
 					if($member->activation_status=='activated'){

@@ -10,15 +10,12 @@
         // If admin has uploaded sliders, use them FIRST
         if (!empty($allslider) && count($allslider) > 0) {
             foreach ($allslider as $alle) {
-                $sliderImage = 'uploads/slider/'.$alle->image;
-                $sliderSrc = file_exists(base_path($sliderImage)) ? URL::asset($sliderImage) : '';
-                if (!empty($sliderSrc)) {
-                    $heroSlides[] = [
-                        'src' => $sliderSrc,
-                        'name' => !empty($alle->name) ? $alle->name : 'Stand With Red Brigade Lucknow',
-                        'desc' => !empty($alle->description) ? strip_tags($alle->description) : 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
-                    ];
-                }
+                $trimmedImage = trim($alle->image);
+                $heroSlides[] = [
+                    'src' => URL::asset('uploads/slider/'.$trimmedImage),
+                    'name' => !empty($alle->name) ? $alle->name : 'Stand With Red Brigade Lucknow',
+                    'desc' => !empty($alle->description) ? strip_tags($alle->description) : 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
+                ];
             }
         }
 
@@ -32,13 +29,11 @@
             ];
 
             foreach ($relevantHeroCandidates as $heroImage) {
-                if (file_exists(base_path($heroImage))) {
-                    $heroSlides[] = [
-                        'src' => URL::asset($heroImage),
-                        'name' => 'Stand With Red Brigade Lucknow',
-                        'desc' => 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
-                    ];
-                }
+                $heroSlides[] = [
+                    'src' => URL::asset($heroImage),
+                    'name' => 'Stand With Red Brigade Lucknow',
+                    'desc' => 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
+                ];
             }
         }
 
@@ -280,7 +275,7 @@ if (!empty($allevent)) {
         <a href="<?php echo action('MainController@singlework', $featuredEvent->id); ?>" class="rb-blog-featured-link">
             <div class="rb-blog-featured">
                 <div class="rb-blog-featured-img">
-                    <img src="<?php echo asset('uploads/news/'.$featuredEvent->image);?>" alt="<?php echo $featuredEvent->name; ?>">
+                    <img src="<?php echo asset('uploads/news/'.trim($featuredEvent->image));?>" alt="<?php echo $featuredEvent->name; ?>">
                 </div>
                 <div class="rb-blog-featured-overlay"></div>
                 <div class="rb-blog-featured-content">
@@ -303,7 +298,7 @@ if (!empty($allevent)) {
             <a href="<?php echo action('MainController@singlework', $ev->id); ?>" class="rb-blog-card-link">
                 <article class="rb-blog-card" style="animation-delay: <?php echo ($idx * 0.08); ?>s;">
                     <div class="rb-blog-card-img">
-                        <img src="<?php echo asset('uploads/news/'.$ev->image);?>" alt="<?php echo $ev->name; ?>" loading="lazy">
+                        <img src="<?php echo asset('uploads/news/'.trim($ev->image));?>" alt="<?php echo $ev->name; ?>" loading="lazy">
                         <span class="rb-blog-badge">Event</span>
                     </div>
                     <div class="rb-blog-card-body">
@@ -797,7 +792,7 @@ if (!empty($allevent)) {
                 <div class="rb-testimonial-author">
                     <div class="rb-testimonial-author-img">
                         <?php $testimonialImage = 'uploads/testimonial/sunshine-testimonial-176.JPG'; ?>
-                        <img src="<?php echo file_exists(base_path($testimonialImage)) ? asset($testimonialImage) : asset('uploads/img/404.png'); ?>" alt="Usha Vishwakarma">
+                        <img src="<?php echo asset($testimonialImage); ?>" alt="Usha Vishwakarma">
                     </div>
                     <div class="rb-testimonial-author-info">
                         <h4>Usha Vishwakarma</h4>

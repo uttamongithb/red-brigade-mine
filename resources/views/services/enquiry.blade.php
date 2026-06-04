@@ -58,7 +58,7 @@
 				  <td><?php echo $tt->district; ?></td>
 				  <td><?php echo $tt->msg; ?></td>
 				  <td><?php echo $tt->created_at;?></td>
-				    <?php $idget = base64_encode(serialize($tt->id)); ?>
+				    <?php $idget = $tt->id; ?>
 					  <td style="width:200px;">
 							<a href="<?php echo action('ServiceController@deleteEnquiry',$idget)?>" title="Delete" class="actionbtn btn-danger">
 								<i class="fa fa-trash-o"></i>

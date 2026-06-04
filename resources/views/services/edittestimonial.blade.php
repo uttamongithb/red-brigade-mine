@@ -23,7 +23,7 @@
             <div class="widget-title"> <span class="icon"> <i class="fa fa-plus-circle"></i> </span>
             <h5>Update  Our Team</h5>
           </div>
-					<?php $getid = base64_encode(serialize($thisdata->id)); ?>
+					<?php $getid = $thisdata->id; ?>
 			{{ Form::open(array('action' => array('ServiceController@edittestimonial',$getid),'files' => true)) }}
 			  {{ csrf_field() }}
               <div class="box-body">

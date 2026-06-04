@@ -27,7 +27,7 @@ class ServiceController extends Controller {
 
 	public function deleteEnquiry($id)
 	{
-		$id = unserialize(base64_decode($id));
+		$id = $id;
 		DB::table('contact')->where('id', $id)->delete();
 		Session::flash('message', 'Successfully deleted enquiry!');                                                
 		return Redirect::back();
@@ -70,7 +70,7 @@ class ServiceController extends Controller {
 
 	public function editnews($id, Request $request)
 	{
-		$id = unserialize(base64_decode($id));
+		$id = $id;
 		$thisdata = DB::table('news')->where('id', $id)->first();
 		if ($request->isMethod('post')) {
 			$input = $request->except(['_token', 'image']);
@@ -90,7 +90,7 @@ class ServiceController extends Controller {
 
 	public function deletenews($id)
 	{
-		$id = unserialize(base64_decode($id));
+		$id = $id;
 		DB::table('news')->where('id', $id)->delete();
 		Session::flash('message', 'Successfully deleted work!');                                                
 		return Redirect::back();
@@ -127,7 +127,7 @@ class ServiceController extends Controller {
 
 	public function editblog($id, Request $request)
 	{
-		$id = unserialize(base64_decode($id));
+		$id = $id;
 		$thisdata = DB::table('blog')->where('id', $id)->first();
 		if ($request->isMethod('post')) {
 			$input = $request->except(['_token', 'image']);
@@ -145,7 +145,7 @@ class ServiceController extends Controller {
 
 	public function deleteblog($id)
 	{
-		$id = unserialize(base64_decode($id));
+		$id = $id;
 		DB::table('blog')->where('id', $id)->delete();
 		Session::flash('message', 'Successfully deleted blog story!');                                                
 		return Redirect::back();
@@ -175,7 +175,7 @@ class ServiceController extends Controller {
 
 	public function editgallery($id, Request $request)
 	{
-		$id = unserialize(base64_decode($id));
+		$id = $id;
 		$thisdata = DB::table('gallery')->where('id', $id)->first();
 		if ($request->isMethod('post')) {
 			$input = $request->except(['_token', 'image']);
@@ -192,7 +192,7 @@ class ServiceController extends Controller {
 
 	public function deletegallery($id)
 	{
-		$id = unserialize(base64_decode($id));
+		$id = $id;
 		DB::table('gallery')->where('id', $id)->delete();
 		Session::flash('message', 'Successfully deleted gallery item!');                                                
 		return Redirect::back();
@@ -228,7 +228,7 @@ class ServiceController extends Controller {
 
 	public function edittestimonial($id, Request $request)
 	{
-		$id = unserialize(base64_decode($id));
+		$id = $id;
 		$thisdata = DB::table('testimonial')->where('id', $id)->first();
 		if ($request->isMethod('post')) {
 			$input = $request->except(['_token', 'image']);
@@ -245,7 +245,7 @@ class ServiceController extends Controller {
 
 	public function deletetestimonial($id)
 	{
-		$id = unserialize(base64_decode($id));
+		$id = $id;
 		DB::table('testimonial')->where('id', $id)->delete();
 		Session::flash('message', 'Successfully deleted team member!');                                                
 		return Redirect::back();
@@ -275,7 +275,7 @@ class ServiceController extends Controller {
 
 	public function editslider($id, Request $request)
 	{
-		$id = unserialize(base64_decode($id));
+		$id = $id;
 		$thisdata = DB::table('slider')->where('id', $id)->first();
 		if ($request->isMethod('post')) {
 			$input = $request->except(['_token', 'image']);
@@ -292,7 +292,7 @@ class ServiceController extends Controller {
 
 	public function deleteslider($id)
 	{
-		$id = unserialize(base64_decode($id));
+		$id = $id;
 		DB::table('slider')->where('id', $id)->delete();
 		Session::flash('message', 'Successfully deleted slider!');                                                
 		return Redirect::back();
@@ -301,21 +301,21 @@ class ServiceController extends Controller {
 	// --- Status Toggles ---
 	public function populargallery($id, $status)
 	{
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		DB::table('gallery')->where('id', $decodeid)->update(['status' => $status]);
 		return Redirect::back();
 	}
 
 	public function populartestimonial($id, $status)
 	{
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		DB::table('testimonial')->where('id', $decodeid)->update(['status' => $status]);
 		return Redirect::back();		
 	}
 
 	public function popularslider($id, $status)
 	{
-		$decodeid = unserialize(base64_decode($id));
+		$decodeid = $id;
 		DB::table('slider')->where('id', $decodeid)->update(['status' => $status]);
 		return Redirect::back();
 	}

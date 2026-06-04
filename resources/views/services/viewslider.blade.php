@@ -65,7 +65,7 @@
 				  <td><?php echo ucwords($tt->name);?></td>
 				  <td><img style="width:75px;height:75px;" class="img-responsive" src="<?php echo URL::asset('uploads/slider/'.$tt->image)?>"/></td>
 
-				    <?php $idget = base64_encode(serialize($tt->id)); ?>
+				    <?php $idget = $tt->id; ?>
 					 <td>
 						<?php if($tt->status==0){ ?>
 							  <a class="actionbtn btn-info" href="<?php  echo action('ServiceController@popularslider',[$idget,1])?>"><i class="fa fa-star-o"></i></a>
