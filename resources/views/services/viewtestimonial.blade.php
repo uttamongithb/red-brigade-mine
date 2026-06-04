@@ -43,6 +43,7 @@
 
                   <th>S.No</th>
                   <th>Name</th>
+                  <th>Type</th>
                   <th>Image</th>
                   <th>Description</th>
                   <th>Status</th>
@@ -60,7 +61,8 @@
                 <tr>
 				  <td><?php echo $i?></td>
 				  <td><?php echo ucwords($tt->name);?></td>
-				  <td><img style="width:75px;height:75px;" class="img-responsive" src="<?php echo URL::asset('uploads/Testimonial/'.$tt->image)?>"/></td>
+				  <td><span class="label label-primary"><?php echo $tt->type; ?></span></td>
+				  <td><img style="width:75px;height:75px;" class="img-responsive" src="<?php echo URL::asset('uploads/testimonial/'.$tt->image)?>"/></td>
 				  <td><?php echo ucwords($tt->description);?></td>
 				    <?php $idget = base64_encode(serialize($tt->id)); ?>
 					 <td>

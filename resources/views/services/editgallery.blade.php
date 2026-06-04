@@ -33,7 +33,7 @@
                     <div class="col-md-12 create">
 						<div class="col-md-8 form-group">
 							<label for="SAMStudId">Gallery Type</label>
-							<select name="type"  class="form-control" >
+							<select name="type" id="gallery-type" class="form-control" >
 								<option value="">Select Gallery Type</option>
 								<option value="Photo" <?php if($thisdata->type=='Photo') { echo "selected"; } ?>>Photo</option>
 								<option value="Video" <?php if($thisdata->type=='Video') { echo "selected"; } ?>>Video</option>
@@ -47,14 +47,14 @@
 						</div>
 						<div class="col-md-8 form-group">
 							<div class="form-group">
-							  <label for="exampleInputEmail1">Image</label>
+							  <label for="exampleInputEmail1" id="image-label">Image</label>
 							  <?php echo  Form::file('image',array('name'=>'image[]','multiple')); ?>
 							</div>
 						</div>
-						<div class="col-md-8 form-group">
+						<div class="col-md-8 form-group" id="video-link-group" style="display:none;">
 							<div class="form-group">
-							  <label for="exampleInputEmail1">Video Embeded (For Video Type Only)</label>
-							 <input type="text" name="embed" class="form-control" value="<?php echo $thisdata->embed; ?>" placeholder="Paste iframe or video link here" />
+							  <label for="exampleInputEmail1">Video Embeded/Link*</label>
+							 <input type="text" id="video-embed-input" name="embed" class="form-control" value="<?php echo $thisdata->embed; ?>" placeholder="Paste iframe or video link here" />
 							</div>
 						</div>
 						<div class="col-md-12 text-left" style="pUpdateing-right:15px;margin-bottom:20px;">
@@ -67,6 +67,30 @@
 	  </div>
 </section>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const typeSelect = document.getElementById('gallery-type');
+    const videoGroup = document.getElementById('video-link-group');
+    const videoInput = document.getElementById('video-embed-input');
+    const imageLabel = document.getElementById('image-label');
+
+    function toggleFields() {
+        if (typeSelect.value === 'Video') {
+            videoGroup.style.display = 'block';
+            videoInput.setAttribute('required', 'required');
+            imageLabel.innerText = 'Video Thumbnail';
+        } else {
+            videoGroup.style.display = 'none';
+            videoInput.removeAttribute('required');
+            imageLabel.innerText = 'Image';
+        }
+    }
+
+    typeSelect.addEventListener('change', toggleFields);
+    toggleFields(); // Initial call to set correct state
+});
+</script>
 
 
 

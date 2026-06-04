@@ -19,8 +19,12 @@ class MainController extends Controller {
 	public function index()
 	{
 	    $allslider=DB::table('slider')->where('status', 1)->orderBy('slider.id','DESC')->get();
-		$allevent=Db::table('news')->orderBy('news.id','DESC')->limit(12)->get();
-		$allblog=Db::table('blog')->orderBy('blog.id','DESC')->limit(6)->get();
+		
+		// For Homepage Recent Work: show both events and blogs
+		$allevent=Db::table('news')->orderBy('date','DESC')->orderBy('id','DESC')->limit(12)->get();
+		
+		// Featured stories on homepage: show only blogs
+		$allblog=Db::table('news')->where('type', 'blog')->orderBy('date','DESC')->orderBy('id','DESC')->limit(6)->get();
 		
 		$alltestimonial=Db::table('testimonial')->orderBy('testimonial.id','DESC')->get();
 	 
@@ -28,76 +32,70 @@ class MainController extends Controller {
 		$allcampains=Db::table('gallery')->where('type','Campains')->orderBy('gallery.id','DESC')->limit(6)->get();
 		$allnews=Db::table('gallery')->where('type','News')->orderBy('gallery.id','DESC')->limit(6)->get();
 		$alldonate=Db::table('gallery')->where('type','Donate')->orderBy('gallery.id','DESC')->limit(6)->get();
-		return view('main.index',compact('allslider','allevent','allblog','allgallery','allactivity','allcampains','allnews','alldonate','alltestimonial'));
-		}
+		
+		return view('main.index',compact('allslider','allevent','allblog','allactivity','allcampains','allnews','alldonate','alltestimonial'));
+	}
 
-		public function about()
-		{
-		return view('main.about');
-		} 
+	public function about()
+	{
+	   return view('main.about');
+	} 
 
-		public function research()
-		{
-		return view('main.research');
-		} 
+	public function research()
+	{
+	   return view('main.research');
+	} 
 
-		public function ethics()
-		{
-		return view('main.ethics');
-		} 
+	public function ethics()
+	{
+	   return view('main.ethics');
+	} 
 
-		public function ourteam()
-		{
-		// Support both old dumps (no `type`) and newer schema with team categories.
-		$hasTypeColumn = !empty(DB::select("SHOW COLUMNS FROM testimonial LIKE 'type'"));
-
-		if ($hasTypeColumn) {
-		$alltestimonial=Db::table('testimonial')->where('type','Executive')->orderBy('testimonial.id','ASC')->get();
-		$allAdvisory=Db::table('testimonial')->where('type','Advisory')->orderBy('testimonial.id','ASC')->get();
-		$alllegal=Db::table('testimonial')->where('type','Legal')->orderBy('testimonial.id','ASC')->get(); 
-		$board=Db::table('testimonial')->where('type','Board')->orderBy('testimonial.id','ASC')->get();
-		} else {
+	public function ourteam()
+	{
 		$alltestimonial=Db::table('testimonial')->orderBy('testimonial.id','ASC')->get();
-		$allAdvisory=collect();
-		$alllegal=collect();
-		$board=collect();
-		}
+		return view('main.ourteam',compact('alltestimonial'));
+	}
 
-		return view('main.ourteam',compact('alltestimonial','allAdvisory','alllegal','board'));
-		}
+	public function achievements()
+	{
+	    return view('main.achievements');
+	} 
 
-		public function achievements()
-		{
-		return view('main.achievements');
-		} 
+	public function event()
+	{
+		// Our Work page: show BOTH events and blogs
+		$allevent=Db::table('news')->orderBy('date','DESC')->orderBy('id','DESC')->get();
+		return view('main.event',compact('allevent'));
+	}
 
-		public function event()
-		{
-			$allevent=Db::table('news')->orderBy('news.id','DESC')->get();
-			return view('main.event',compact('allevent'));
-		}
-
-		public function gallery()
+	public function gallery()
 	{
 		$photos=Db::table('gallery')->where('type', 'Photo')->orderBy('gallery.id','DESC')->get();
 		$videos=Db::table('gallery')->where('type', 'Video')->orderBy('gallery.id','DESC')->get();
-
 		return view('main.gallery',compact('photos', 'videos'));
 	}
+
 	public function blog()
 	{
-		$allblog=Db::table('blog')->orderBy('blog.id','DESC')->orderBy('blog.id','DESC')->get();
+		$allblog=Db::table('blog')->orderBy('blog.id','DESC')->get();
 		return view('main.blog',compact('allblog'));
 	}
-	 public function singleblog($slug)
+	
+	public function singleblog($slug)
 	{
 		$thisblog=Db::table('blog')->where('slug',$slug)->first();
+		if (!$thisblog) {
+			return redirect()->action('MainController@blog');
+		}
 		return view('main.singleblog',compact('thisblog'));
 	}
+
 	public function ourworkpdf() 
 	{ 
 		 return view('main.ourworkpdf');
 	}
+
 	public function donate(Request $request)
 	{
 		if($request->isMethod('post'))
@@ -117,12 +115,14 @@ class MainController extends Controller {
 		}
 		return view('main.donate');
 	}
+
 	public function payumoney($id,Request $request)
 	{
-	$transId = unserialize(base64_decode($id));
+		$transId = unserialize(base64_decode($id));
 		$userdata=Db::table('donate')->where('transId',$transId)->where('status',0)->first();
 		return view('main.payumoney',compact('userdata'));
 	}
+
 	public function paysuccess()
 	{
 		$data['status']=1;
@@ -130,12 +130,13 @@ class MainController extends Controller {
 		Session::flash('message', 'Successfully Payment Submit Order No.'.$_GET['order']);
 		return view('fronts.paysuccess');
 	}
+
 	public function failure()
 	{
-
 			Session::flash('message', 'Your Payment are failed Please Try again.'.$_GET['order']);
 			return view('fronts.failure');
 	}
+
 	public function contact(Request $request)
 	{
 		if($request->isMethod('post'))
@@ -156,26 +157,24 @@ class MainController extends Controller {
 				} else{
 					$input = $request->only(['name','email','mobile','state','district','msg']);
 					Db:: table('contact')->insert($input);
-
-		
-							Session::flash('message', 'Successfully Submit Enquiry!');
-							return Redirect::back();
-						
+					Session::flash('message', 'Successfully Submit Enquiry!');
+					return Redirect::back();
 				 }	
 		}
 	  return view('main.contact');
 	}
 
- 
 	public function enquiry()
 	{
 	  return view('main.enquiry');
 	} 	 
+
 	public function product()
 	{
 		$allproduct = DB::table('product')->where('status',1)->orderBy("product.id",'DESC')->get();
 		return view('main.product',compact('allproduct'));
 	}
+
 	public function singleproduct($slug)
 	{
 		$thisproduct=DB::table('product')->where('slug',$slug)->first();
@@ -185,11 +184,12 @@ class MainController extends Controller {
 	  return view('main.singleproduct',compact('thisproduct'));
 	}
 	
-		public function service()
+	public function service()
 	{
 		$allservice = DB::table('service')->where('status',1)->orderby("service.id",'DESC')->get();
 	  return view('main.service',compact('allservice'));
 	}
+
 	public function singleservice($slug)
 	{
 		$thisservice=DB::table('service')->where('slug',$slug)->first();
@@ -200,10 +200,9 @@ class MainController extends Controller {
 		
 	  return view('main.singleservice',compact('thisservice','thisproduct'));
 	}
+
 	public function productrepairing()
 	{
 	  return view('main.productrepairing');
 	}
-	
-	
-}	
+}

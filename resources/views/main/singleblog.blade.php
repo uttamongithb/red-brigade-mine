@@ -124,7 +124,7 @@
     <!-- Featured Image -->
     <?php if(!empty($thisblog->image)): ?>
     <div class="rb-post-featured-image container">
-        <img src="<?php echo URL::asset('uploads/blog/'.$thisblog->image);?>" alt="<?php echo $thisblog->name; ?>">
+        <img src="<?php echo URL::asset('uploads/news/'.$thisblog->image);?>" alt="<?php echo $thisblog->name; ?>">
     </div>
     <?php else: ?>
     <div style="height: 60px;"></div>

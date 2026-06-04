@@ -470,6 +470,9 @@
                                 <li class="nav-item <?php echo Request::is('event') ? 'active' : '' ?>">
                                         <a class="nav-link" href="<?php  echo action('MainController@event')?>">Our Work</a>
                                 </li>
+                                <li class="nav-item <?php echo Request::is('blog') ? 'active' : '' ?>">
+                                        <a class="nav-link" href="<?php  echo action('MainController@blog')?>">Blog</a>
+                                </li>
                                 <li class="nav-item <?php echo Request::is('ourteam') ? 'active' : '' ?>">
                                         <a class="nav-link" href="<?php  echo action('MainController@ourteam')?>">Our Team</a>
                                 </li>
@@ -478,9 +481,6 @@
                                 </li>
                                 <li class="nav-item <?php echo Request::is('gallery') ? 'active' : '' ?>">
                                         <a class="nav-link" href="<?php  echo action('MainController@gallery')?>">Gallery</a>
-                                </li>
-                                <li class="nav-item <?php echo Request::is('blog') ? 'active' : '' ?>">
-                                        <a class="nav-link" href="<?php  echo action('MainController@blog')?>">Blog</a>
                                 </li>
                                 <li class="nav-item <?php echo Request::is('ethics') ? 'active' : '' ?>">
                                         <a class="nav-link" href="<?php  echo action('MainController@ethics')?>">Vision & Ethics</a>

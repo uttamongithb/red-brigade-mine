@@ -2,26 +2,26 @@
  <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Add News
+        Add Work
         <small>Preview</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">News</a></li>
-        <li class="active">Add News</li>
+        <li><a href="#">Work</a></li>
+        <li class="active">Add Work</li>
       </ol>
     </section>
 <section class="content">
       <div class="row">
 	    <div class="col-md-12">
 			<a class="btn btn-app pull-right" href="<?php echo action('ServiceController@viewnews')?>">
-				<i class="fa fa-barcode"></i> News List
+				<i class="fa fa-barcode"></i> Work List
 		  </a>
 		  </div>
 		    <div class="col-md-12">
 		 <div class="box box-primary">
             <div class="widget-title"> <span class="icon"> <i class="fa fa-plus-circle"></i> </span>
-            <h5>Add News</h5>
+            <h5>Add Work</h5>
           </div>
 			
             <!-- /.box-header -->
@@ -34,26 +34,37 @@
 					<?php echo Helpers::flashMessage();?>
                     <div class="col-md-12 create">
 						<div class="col-md-8 form-group">
-							<label for="SAMStudId">News Name</label>
-							<input required type="text" name="name" class="form-control"  />
+							<label for="SAMStudId">Work Type</label>
+							<select name="type" id="work-type" class="form-control" required>
+								<option value="event">Work/Event</option>
+								<option value="blog">Blog/Story</option>
+							</select>
+						</div>
+						<div class="col-md-8 form-group">
+							<label for="SAMStudId">Title/Name*</label>
+							<input required type="text" name="name" id="work-name" class="form-control"  />
+						</div>
+						<div class="col-md-8 form-group" id="slug-group" style="display:none;">
+							<label for="SAMStudId">Slug (URL)*</label>
+							<input type="text" name="slug" id="work-slug" class="form-control"  />
 						</div>
 						<div class="col-md-8 form-group">
 							<div class="form-group">
-							  <label for="exampleInputEmail1">Image</label>
+							  <label for="exampleInputEmail1">Image/Thumbnail*</label>
 							  <?php echo  Form::file('image',array('required','name'=>'image[]','multiple','required')); ?>
 							</div>
 						</div>
 						<div class="col-md-8 form-group">
-							<label for="SAMStudId">News Date</label>
+							<label for="SAMStudId">Date*</label>
 							<input required type="text" id="date" name="date" class="form-control"  />
 						</div>
-						<div class="col-md-8 form-group">
+						<div class="col-md-8 form-group event-only">
 							<label for="SAMStudId">Time Interval</label>
-							<input required type="text" id="time_interval" name="time_interval" class="form-control"  />
+							<input type="text" id="time_interval" name="time_interval" class="form-control"  />
 						</div>
-						<div class="col-md-8 form-group">
+						<div class="col-md-8 form-group event-only">
 							<label for="SAMStudId">City</label>
-							<input required type="text" id="city" name="city" class="form-control"  />
+							<input type="text" id="city" name="city" class="form-control"  />
 						</div>
 						<div class="col-md-8 form-group">
 							<div class="form-group" style="margin-top:20px;">
@@ -71,6 +82,43 @@
 	  </div>
 </section>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const typeSelect = document.getElementById('work-type');
+    const eventFields = document.querySelectorAll('.event-only');
+    const slugGroup = document.getElementById('slug-group');
+    const nameInput = document.getElementById('work-name');
+    const slugInput = document.getElementById('work-slug');
+
+    function toggleFields() {
+        if (typeSelect.value === 'blog') {
+            eventFields.forEach(el => el.style.display = 'none');
+            slugGroup.style.display = 'block';
+            slugInput.setAttribute('required', 'required');
+        } else {
+            eventFields.forEach(el => el.style.display = 'block');
+            slugGroup.style.display = 'none';
+            slugInput.removeAttribute('required');
+        }
+    }
+
+    function generateSlug(text) {
+        return text.toLowerCase()
+            .replace(/[^\w ]+/g, '')
+            .replace(/ +/g, '-');
+    }
+
+    nameInput.addEventListener('input', () => {
+        if (typeSelect.value === 'blog' && !slugInput.value) {
+            slugInput.value = generateSlug(nameInput.value);
+        }
+    });
+
+    typeSelect.addEventListener('change', toggleFields);
+    toggleFields();
+});
+</script>
 
 
 

@@ -3,13 +3,13 @@
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        View All Our Events
+        View All Our Work
         <small>Preview</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#"> Our Events</a></li>
-        <li class="active">View All Our Events</li>
+        <li><a href="#"> Our Work</a></li>
+        <li class="active">View All Our Work</li>
       </ol>
     </section>
 	<section class="content">
@@ -26,10 +26,10 @@
 						<div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px;">
 
 							<a class="btn btn-app pull-left yellowback" href="<?php echo action('ServiceController@viewnews')?>" style="background:rgb(255,152,0);">
-								<i class="fa fa-barcode"></i> Our Events List
+								<i class="fa fa-barcode"></i> Our Work List
 							</a>
 							<a class="btn btn-app pull-left greenback" href="<?php echo action('ServiceController@addnews')?>">
-								<i class="fa fa-plus-circle"></i> Add New Our Events
+								<i class="fa fa-plus-circle"></i> Add New Our Work
 							</a>
 						</div>
 					</div>
@@ -41,12 +41,10 @@
                 <thead>
 				<tr>
                   <th>S.No</th>
+                  <th>Type</th>
                   <th>Title</th>
                   <th>Image</th>
                   <th>Date</th>
-                  <th>Time Interval</th>
-                  <th>City</th>
-                  <th>Description</th>
                   <th>Action</th>
                 </tr>
 				</thead>
@@ -59,12 +57,10 @@
 				?>
                 <tr>
 				  <td><?php echo $i?></td>
+				  <td><span class="label label-<?php echo ($tt->type == 'blog') ? 'success' : 'primary'; ?>"><?php echo ucfirst($tt->type); ?></span></td>
 				  <td><?php echo ucwords($tt->name);?></td>
 				  <td><img style="width:75px;height:75px;" class="img-responsive" src="<?php echo URL::asset('uploads/news/'.$tt->image)?>"/></td>
 				  <td><?php echo $tt->date;?></td>
-				  <td><?php echo ucwords($tt->time_interval);?></td>
-				  <td><?php echo ucwords($tt->city);?></td>
-				  <td><?php echo ucwords($tt->description);?></td>
 				    <?php $idget = base64_encode(serialize($tt->id)); ?>
 					  <td style="width:200px;">
 							<a href="<?php  echo action('ServiceController@editnews',$idget)?>" title="Edit" class="actionbtn btn-info">

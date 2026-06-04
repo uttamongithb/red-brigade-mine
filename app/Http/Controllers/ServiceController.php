@@ -97,6 +97,45 @@ class ServiceController extends Controller {
 		$allblog=DB::table('blog')->orderBy('blog.id','DESC')->get();	
 		return view('services.viewblog',compact('allblog'));
 	}
+	public function addnews(Request $request)
+	{
+		if($request->isMethod('post'))
+		{
+			 $rules = array(
+			 'name' => 'required',
+			 'description' => 'required',
+			 'date' => 'required',
+			 'type' => 'required',
+			);
+			 $validator = Validator::make(Input::all(), $rules);
+			if($validator->fails()){
+				return Redirect::back()
+					->withErrors($validator)
+					 ->withInput(Input::except('password'));
+			} else {
+					$inputt = Input::all();	
+					$input = $request->input();
+						  unset($input['_token']);
+						   $file = $inputt['image'];
+						   if(!empty($inputt['image'])){
+								if(!empty($file)){
+								   $destinationPath = 'uploads/news'; 
+								   $fileName = 'diitedu-news';
+								   $imageName = Helpers::imageUpload($file,$destinationPath,$fileName);
+								   $input['image'] = $imageName;
+								}
+							}
+							if($input['type'] == 'blog' && empty($input['slug'])){
+								$input['slug'] = strtolower(str_slug($input['name'], '-'));
+							}
+							Db:: table('news')->insert($input);
+							Session::flash('message', 'Successfully Added Work!');
+							return Redirect::back();
+				} 
+		}
+		return view('services.addnews');	
+	}
+
 	public function editnews($id,Request $request)
 	{
 		date_default_timezone_set('Asia/Kolkata');
@@ -117,47 +156,16 @@ class ServiceController extends Controller {
 					   $input['image'] = $imageName;
 					}
 				}
+				if($input['type'] == 'blog' && empty($input['slug'])){
+					$input['slug'] = strtolower(str_slug($input['name'], '-'));
+				}
 
 					$rowCOllection = DB::table('news')->where('id',$id)->update($input);
-					Session::flash('message', 'Successfully Updated News!');
+					Session::flash('message', 'Successfully Updated Work!');
 					return Redirect::back();
 		}
 		return view('services.editnews',compact('thisdata'));
 		
-	}
-	public function addnews(Request $request)
-	{
-		if($request->isMethod('post'))
-		{
-			 $rules = array(
-			 'name' => 'required',
-			 'description' => 'required',
-			 'date' => 'required',
-			);
-			 $validator = Validator::make(Input::all(), $rules);
-			if($validator->fails()){
-				return Redirect::back()
-					->withErrors($validator)
-					 ->withInput(Input::except('password'));
-			} else {
-					$inputt = Input::all();	
-					$input = $request->input();
-						  unset($input['_token']);
-						   $file = $inputt['image'];
-						   if(!empty($inputt['image'])){
-								if(!empty($file)){
-								   $destinationPath = 'uploads/news'; 
-								   $fileName = 'diitedu-news';
-								   $imageName = Helpers::imageUpload($file,$destinationPath,$fileName);
-								   $input['image'] = $imageName;
-								}
-							}
-							Db:: table('news')->insert($input);
-							Session::flash('message', 'Successfully Added News!');
-							return Redirect::back();
-				} 
-		}
-		return view('services.addnews');	
 	}
 	
 	public function addtestimonial(Request $request)

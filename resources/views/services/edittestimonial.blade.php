@@ -34,9 +34,10 @@
 							<label for="SAMStudId">Team Type</label>
 							<select name="type"  class="form-control" required>
 								<option value="">Select Team Type</option>
-								<option value="Executive">Executive Team</option>
-								<option value="Advisory">Advisory</option>
-								<option value="Legal">Legal Cell</option> 
+								<option value="Executive" <?php if($thisdata->type=='Executive') { echo "selected"; } ?>>Executive Team</option>
+								<option value="Advisory" <?php if($thisdata->type=='Advisory') { echo "selected"; } ?>>Advisory</option>
+								<option value="Legal" <?php if($thisdata->type=='Legal') { echo "selected"; } ?>>Legal Cell</option> 
+								<option value="Board" <?php if($thisdata->type=='Board') { echo "selected"; } ?>>Board Member</option> 
 							</select>
 						</div>
 						<div class="col-md-8 form-group">
