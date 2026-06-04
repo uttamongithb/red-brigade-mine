@@ -30,35 +30,25 @@
 					<?php echo Helpers::errormessage($errors);?>
 					<?php echo Helpers::flashMessage();?>
                     <div class="col-md-12 create">
-                        <div class="col-md-8 form-group">
-							<label for="SAMStudId">Team Type</label>
-							<select name="type"  class="form-control" required>
-								<option value="">Select Team Type</option>
-								<option value="Executive" <?php if($thisdata->type=='Executive') { echo "selected"; } ?>>Executive Team</option>
-								<option value="Advisory" <?php if($thisdata->type=='Advisory') { echo "selected"; } ?>>Advisory</option>
-								<option value="Legal" <?php if($thisdata->type=='Legal') { echo "selected"; } ?>>Legal Cell</option> 
-								<option value="Board" <?php if($thisdata->type=='Board') { echo "selected"; } ?>>Board Member</option> 
-							</select>
-						</div>
-						<div class="col-md-8 form-group">
-							<label for="SAMStudId">Team Name</label>
-							<input type="text" value="<?php echo $thisdata->name; ?>" name="name" class="form-control"  />
-						</div>
-						<div class="col-md-8 form-group">
-							<div class="form-group">
-							  <label for="exampleInputEmail1">Image</label>
-							  <?php echo  Form::file('image',array('name'=>'image[]','multiple')); ?>
-							</div>
-						</div>
-						<div class="col-md-8 form-group">
-							<div class="form-group" style="margin-top:20px;">
-							  <label for="exampleInputEmail1">Description*</label>
-							  <textarea class="form-control ckeditor" name="description" required><?php echo $thisdata->description; ?></textarea>
-							</div>
-						</div>
-						<div class="col-md-12 text-left" style="pUpdateing-right:15px;margin-bottom:20px;">
-							<input type="submit" class="btn btn-sqr" value="Submit" title="Submit"  />
-						</div>
+                    <div class="col-md-8 form-group">
+                    <label for="SAMStudId">Title/Name*</label>
+                    <input  type="text" value="<?php echo $thisdata->name; ?>" name="name" class="form-control"  />
+                    </div>
+                    <div class="col-md-8 form-group">
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">Image</label>
+                    <?php echo  Form::file('image',array('name'=>'image[]','multiple')); ?>
+                    </div>
+                    </div>
+                    <div class="col-md-8 form-group">
+                    <div class="form-group" style="margin-top:20px;">
+                    <label for="exampleInputEmail1">Description*</label>
+                    <textarea class="form-control ckeditor" name="description" required><?php echo $thisdata->description; ?></textarea>
+                    </div>
+                    </div>
+                    <div class="col-md-12 text-left" style="pUpdateing-right:15px;margin-bottom:20px;">
+                    <input type="submit" class="btn btn-sqr" value="Submit" title="Submit"  />
+                    </div>
                     </div>
 				</div>
 			</form>

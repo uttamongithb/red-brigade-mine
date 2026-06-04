@@ -33,16 +33,6 @@
 					<?php echo Helpers::errormessage($errors);?>
 					<?php echo Helpers::flashMessage();?>
                     <div class="col-md-12 create">
-                        <div class="col-md-8 form-group">
-							<label for="SAMStudId">Team Type</label>
-							<select name="type"  class="form-control" required>
-								<option value="">Select Team Type</option>
-								<option value="Executive">Executive Team</option>
-								<option value="Advisory">Advisory</option>
-								<option value="Legal">Legal Cell</option> 
-									<option value="Board">Board Member</option> 
-							</select>
-						</div>
 						<div class="col-md-8 form-group">
 							<label for="SAMStudId">Team Name</label>
 							<input required type="text" name="name" class="form-control"  />

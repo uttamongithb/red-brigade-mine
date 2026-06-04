@@ -45,6 +45,19 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if ($e instanceof \Illuminate\Session\TokenMismatchException) {
+            // Check if the POST content length exceeds the limit (which causes empty POST and CSRF failure)
+            if ($request->isMethod('POST') && empty($request->all())) {
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors(['error' => 'The file you are trying to upload is too large. Please upload an image smaller than 8MB.']);
+            }
+            
+            return redirect()->back()
+                ->withInput($request->except('password'))
+                ->withErrors(['error' => 'Your session has expired or the security token is invalid. Please try again.']);
+        }
+
         return parent::render($request, $e);
     }
 }

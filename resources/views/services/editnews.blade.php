@@ -34,19 +34,8 @@
 					<?php echo Helpers::flashMessage();?>
                     <div class="col-md-12 create">
 						<div class="col-md-8 form-group">
-							<label for="SAMStudId">Work Type</label>
-							<select name="type" id="work-type" class="form-control" required>
-								<option value="event" <?php echo ($thisdata->type == 'event') ? 'selected' : ''; ?>>Work/Event</option>
-								<option value="blog" <?php echo ($thisdata->type == 'blog') ? 'selected' : ''; ?>>Blog/Story</option>
-							</select>
-						</div>
-						<div class="col-md-8 form-group">
 							<label for="SAMStudId">Title/Name*</label>
-							<input  type="text" value="<?php echo $thisdata->name; ?>" name="name" id="work-name" class="form-control"  />
-						</div>
-						<div class="col-md-8 form-group" id="slug-group" style="display:<?php echo ($thisdata->type == 'blog') ? 'block' : 'none'; ?>;">
-							<label for="SAMStudId">Slug (URL)*</label>
-							<input type="text" name="slug" id="work-slug" value="<?php echo $thisdata->slug; ?>" class="form-control"  />
+							<input  type="text" value="<?php echo $thisdata->name; ?>" name="name" class="form-control"  />
 						</div>
 						<div class="col-md-8 form-group">
 							<div class="form-group">
@@ -58,11 +47,11 @@
 							<label for="SAMStudId">Work Date</label>
 							<input required type="text" value="<?php echo $thisdata->date; ?>" id="date" name="date" class="form-control"  />
 						</div>
-						<div class="col-md-8 form-group event-only" style="display:<?php echo ($thisdata->type == 'event') ? 'block' : 'none'; ?>;">
+						<div class="col-md-8 form-group">
 							<label for="SAMStudId">Time Interval</label>
 							<input type="text" id="time_interval" name="time_interval" value="<?php echo $thisdata->time_interval; ?>" class="form-control"  />
 						</div>
-						<div class="col-md-8 form-group event-only" style="display:<?php echo ($thisdata->type == 'event') ? 'block' : 'none'; ?>;">
+						<div class="col-md-8 form-group">
 							<label for="SAMStudId">City</label>
 							<input type="text" id="city" name="city"  value="<?php echo $thisdata->city; ?>"class="form-control"  />
 						</div>
@@ -82,29 +71,6 @@
 	  </div>
 </section>
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const typeSelect = document.getElementById('work-type');
-    const eventFields = document.querySelectorAll('.event-only');
-    const slugGroup = document.getElementById('slug-group');
-    const slugInput = document.getElementById('work-slug');
-
-    function toggleFields() {
-        if (typeSelect.value === 'blog') {
-            eventFields.forEach(el => el.style.display = 'none');
-            slugGroup.style.display = 'block';
-            slugInput.setAttribute('required', 'required');
-        } else {
-            eventFields.forEach(el => el.style.display = 'block');
-            slugGroup.style.display = 'none';
-            slugInput.removeAttribute('required');
-        }
-    }
-
-    typeSelect.addEventListener('change', toggleFields);
-});
-</script>
 
 
 

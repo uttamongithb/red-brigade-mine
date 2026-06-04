@@ -169,15 +169,6 @@
     flex-direction: column;
     justify-content: center;
 }
-.rb-member-badge {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #E31E24;
-    margin-bottom: 10px;
-}
 .rb-member-name {
     font-size: 22px;
     margin-bottom: 8px;
@@ -218,7 +209,7 @@
         URL::asset('uploads/testimonial/sunshine-testimonial-393.jpg'),
     ];
 
-    $normalizeTeamMembers = function ($members, $type) use ($teamPlaceholder, $teamImagePool) {
+    $normalizeTeamMembers = function ($members) use ($teamPlaceholder, $teamImagePool) {
         $items = [];
         if (empty($members)) return $items;
 
@@ -233,17 +224,12 @@
                 $image = preg_match('/^https?:\/\//', $member->image) ? $member->image : URL::asset('uploads/testimonial/'.$member->image);
             }
 
-            $items[] = ['name' => $name, 'role' => $role, 'image' => $image, 'type' => $type];
+            $items[] = ['name' => $name, 'role' => $role, 'image' => $image];
         }
         return $items;
     };
 
-    $allMembers = array_merge(
-        $normalizeTeamMembers($alltestimonial ?? [], 'Executive'),
-        $normalizeTeamMembers($allAdvisory ?? [], 'Advisory'),
-        $normalizeTeamMembers($alllegal ?? [], 'Legal'),
-        $normalizeTeamMembers($board ?? [], 'Board')
-    );
+    $allMembers = $normalizeTeamMembers($alltestimonial ?? []);
 @endphp
 
 <div class="rb-team-page-modern">
@@ -266,7 +252,6 @@
                             <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
                         </div>
                         <div class="rb-member-info">
-                            <span class="rb-member-badge">{{ $member['type'] }}</span>
                             <h4 class="rb-member-name">{{ $member['name'] }}</h4>
                             <p class="rb-member-role">{{ $member['role'] }}</p>
                         </div>

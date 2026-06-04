@@ -41,7 +41,6 @@
                 <thead>
 				<tr>
                   <th>S.No</th>
-                  <th>Type</th>
                   <th>Title</th>
                   <th>Image</th>
                   <th>Date</th>
@@ -57,7 +56,6 @@
 				?>
                 <tr>
 				  <td><?php echo $i?></td>
-				  <td><span class="label label-<?php echo ($tt->type == 'blog') ? 'success' : 'primary'; ?>"><?php echo ucfirst($tt->type); ?></span></td>
 				  <td><?php echo ucwords($tt->name);?></td>
 				  <td><img style="width:75px;height:75px;" class="img-responsive" src="<?php echo URL::asset('uploads/news/'.$tt->image)?>"/></td>
 				  <td><?php echo $tt->date;?></td>
