@@ -71,6 +71,12 @@ class MainController extends Controller {
 		return view('main.achievements');
 		} 
 
+		public function event()
+		{
+			$allevent=Db::table('news')->orderBy('news.id','DESC')->get();
+			return view('main.event',compact('allevent'));
+		}
+
 		public function gallery()
 	{
 		$photos=Db::table('gallery')->whereIn('type', ['Activity', 'News'])->orderBy('gallery.id','DESC')->get();

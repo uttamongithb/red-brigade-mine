@@ -218,7 +218,7 @@
         URL::asset('uploads/testimonial/sunshine-testimonial-393.jpg'),
     ];
 
-    $normalizeTeamMembers = function ($members) use ($teamPlaceholder, $teamImagePool) {
+    $normalizeTeamMembers = function ($members, $type) use ($teamPlaceholder, $teamImagePool) {
         $items = [];
         if (empty($members)) return $items;
 
@@ -233,76 +233,40 @@
                 $image = preg_match('/^https?:\/\//', $member->image) ? $member->image : URL::asset('uploads/testimonial/'.$member->image);
             }
 
-            $items[] = ['name' => $name, 'role' => $role, 'image' => $image];
+            $items[] = ['name' => $name, 'role' => $role, 'image' => $image, 'type' => $type];
         }
         return $items;
     };
 
-    $executiveTeam = (isset($alltestimonial) && count($alltestimonial)) ? $normalizeTeamMembers($alltestimonial) : [];
-    $advisoryTeam = (isset($allAdvisory) && count($allAdvisory)) ? $normalizeTeamMembers($allAdvisory) : [];
-    $legalTeam = (isset($alllegal) && count($alllegal)) ? $normalizeTeamMembers($alllegal) : [];
-    $boardTeam = (isset($board) && count($board)) ? $normalizeTeamMembers($board) : [];
+    $allMembers = array_merge(
+        $normalizeTeamMembers($alltestimonial ?? [], 'Executive'),
+        $normalizeTeamMembers($allAdvisory ?? [], 'Advisory'),
+        $normalizeTeamMembers($alllegal ?? [], 'Legal'),
+        $normalizeTeamMembers($board ?? [], 'Board')
+    );
 @endphp
 
 <div class="rb-team-page-modern">
     <!-- Hero Section -->
     <section class="rb-team-hero">
         <div class="container">
-            <span class="rb-kicker" style="color: #ff8a00;">Our People</span>
-            <h1>Leadership with Purpose</h1>
-            <p>A dedicated collective of organizers, advisors, and advocates working together for a safer society.</p>
+            <span class="rb-kicker" style="color: #ff8a00;">Our Collective</span>
+            <h1>Our Dedicated Team</h1>
+            <p>A unified force of survivors, advocates, and leaders working together for a safer society.</p>
         </div>
     </section>
 
-    <!-- Intro & Metrics -->
-    <section class="rb-team-intro">
-        <div class="container">
-            <div class="row justify-content-center text-center">
-                <div class="col-lg-8">
-                    <span class="rb-kicker">Collaborative Force</span>
-                    <h2 style="font-size: 42px; margin-bottom: 20px;">United for Change</h2>
-                    <p style="font-size: 18px; color: #64748b;">Our team brings together diverse expertise in social activism, legal defense, and community leadership to fulfill the mission of Red Brigade Lucknow.</p>
-                </div>
-            </div>
-
-            <div class="rb-metrics-grid">
-                <div class="rb-metric-card">
-                    <span class="rb-metric-number">{{ count($executiveTeam) }}</span>
-                    <span class="rb-metric-label">Executive members leading day-to-day operations</span>
-                </div>
-                <div class="rb-metric-card">
-                    <span class="rb-metric-number">{{ count($advisoryTeam) }}</span>
-                    <span class="rb-metric-label">Advisors shaping strategic direction</span>
-                </div>
-                <div class="rb-metric-card">
-                    <span class="rb-metric-number">{{ count($legalTeam) }}</span>
-                    <span class="rb-metric-label">Legal advocates supporting rights & safety</span>
-                </div>
-                <div class="rb-metric-card">
-                    <span class="rb-metric-number">{{ count($boardTeam) }}</span>
-                    <span class="rb-metric-label">Board members ensuring governance & oversight</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Executive Team -->
-    @if(!empty($executiveTeam))
+    <!-- Main Team Grid -->
     <section class="rb-team-section">
         <div class="container">
-            <div class="rb-section-header">
-                <span class="rb-kicker">The Core</span>
-                <h2>Executive Leadership</h2>
-                <p>The visionaries responsible for coordination and the daily execution of our grassroots programs.</p>
-            </div>
             <div class="rb-member-grid">
-                @foreach ($executiveTeam as $member)
+                @foreach ($allMembers as $member)
                     <article class="rb-member-card">
                         <div class="rb-member-image">
                             <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
                         </div>
                         <div class="rb-member-info">
-                            <span class="rb-member-badge">Executive</span>
+                            <span class="rb-member-badge">{{ $member['type'] }}</span>
                             <h4 class="rb-member-name">{{ $member['name'] }}</h4>
                             <p class="rb-member-role">{{ $member['role'] }}</p>
                         </div>
@@ -311,88 +275,6 @@
             </div>
         </div>
     </section>
-    @endif
-
-    <!-- Advisory Team -->
-    @if(!empty($advisoryTeam))
-    <section class="rb-team-section">
-        <div class="container">
-            <div class="rb-section-header">
-                <span class="rb-kicker">Perspective</span>
-                <h2>Advisory Team</h2>
-                <p>Specialists and allies who bring diverse partnerships and subject-matter guidance to our movement.</p>
-            </div>
-            <div class="rb-member-grid">
-                @foreach ($advisoryTeam as $member)
-                    <article class="rb-member-card">
-                        <div class="rb-member-image">
-                            <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
-                        </div>
-                        <div class="rb-member-info">
-                            <span class="rb-member-badge">Advisor</span>
-                            <h4 class="rb-member-name">{{ $member['name'] }}</h4>
-                            <p class="rb-member-role">{{ $member['role'] }}</p>
-                        </div>
-                    </article>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    @endif
-
-    <!-- Legal Team -->
-    @if(!empty($legalTeam))
-    <section class="rb-team-section">
-        <div class="container">
-            <div class="rb-section-header">
-                <span class="rb-kicker">Protection</span>
-                <h2>Legal Cell</h2>
-                <p>Ensuring rights, escalation pathways, and formal support for those in need of legal intervention.</p>
-            </div>
-            <div class="rb-member-grid">
-                @foreach ($legalTeam as $member)
-                    <article class="rb-member-card">
-                        <div class="rb-member-image">
-                            <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
-                        </div>
-                        <div class="rb-member-info">
-                            <span class="rb-member-badge">Legal</span>
-                            <h4 class="rb-member-name">{{ $member['name'] }}</h4>
-                            <p class="rb-member-role">{{ $member['role'] }}</p>
-                        </div>
-                    </article>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    @endif
-
-    <!-- Board Members -->
-    @if (!empty($boardTeam))
-    <section class="rb-team-section">
-        <div class="container">
-            <div class="rb-section-header">
-                <span class="rb-kicker">Governance</span>
-                <h2>Board Members</h2>
-                <p>Stewardship members who help keep the organization accountable, transparent, and future-ready.</p>
-            </div>
-            <div class="rb-member-grid">
-                @foreach ($boardTeam as $member)
-                    <article class="rb-member-card">
-                        <div class="rb-member-image">
-                            <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
-                        </div>
-                        <div class="rb-member-info">
-                            <span class="rb-member-badge">Board</span>
-                            <h4 class="rb-member-name">{{ $member['name'] }}</h4>
-                            <p class="rb-member-role">{{ $member['role'] }}</p>
-                        </div>
-                    </article>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    @endif
 
     <!-- Call to Action -->
     <section class="rb-team-intro" style="padding: 100px 0; border-top: 1px solid #eef2f6;">
