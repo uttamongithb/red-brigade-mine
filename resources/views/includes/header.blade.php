@@ -61,7 +61,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-    /* ============= SMART RESPONSIVE NAVBAR SYSTEM ============= */
+    /* ============= DEFINITIVE NAVBAR STYLING RESTORATION ============= */
     body {
         font-family: 'Open Sans', sans-serif !important;
         -webkit-font-smoothing: antialiased;
@@ -105,7 +105,7 @@
         height: auto;
     }
 
-    /* Zone 2: Links - Screen Centered */
+    /* Zone 2: Navigation Links */
     .navbar-area .navbar-collapse-desktop {
         position: absolute;
         left: 50%;
@@ -123,14 +123,14 @@
         margin: 0;
         padding: 0;
         list-style: none;
-        gap: 35px;
+        gap: 30px;
         pointer-events: auto;
     }
 
     .navbar-area .nav-item .nav-link {
-        color: #282828 !important; 
-        font-size: 14px !important; 
-        font-weight: 600 !important;
+        color: #E31E24 !important; /* Items in RED color as requested */
+        font-size: 16px !important; /* Increased font size a little */
+        font-weight: 700 !important;
         text-transform: capitalize !important;
         transition: 0.3s ease;
         padding: 25px 0;
@@ -138,12 +138,13 @@
         letter-spacing: 0.2px;
     }
 
-    .navbar-area .nav-item:hover .nav-link,
-    .navbar-area .nav-item.active .nav-link {
-        color: #E31E24 !important;
+    /* User in which page is that should be black color */
+    .navbar-area .nav-item.active .nav-link,
+    .navbar-area .nav-item .nav-link:hover {
+        color: #000000 !important; 
     }
 
-    /* Zone 3: Donate Button */
+    /* Zone 3: Donate Button Section */
     .navbar-area .navbar-donate-wrap {
         flex: 0 0 auto;
         display: flex;
@@ -151,6 +152,7 @@
         justify-content: flex-end;
     }
 
+    /* Donate button in RED color & Hover RED */
     .navbar-area .donate-btn {
         display: inline-block;
         text-align: center;
@@ -158,8 +160,8 @@
         line-height: 50px;
         font-size: 14px;
         border-radius: 30px;
-        color: #fff !important;
-        background-color: #212529 !important; 
+        color: #ffffff !important;
+        background-color: #E31E24 !important; /* RED Donate button */
         padding: 0px 30px;
         text-transform: uppercase;
         font-weight: 700;
@@ -167,32 +169,33 @@
         transition: 0.3s ease;
         box-shadow: 0 10px 20px rgba(227, 30, 36, 0.2);
         border: 2px solid #E31E24;
-        white-space: nowrap;
     }
 
     .navbar-area .donate-btn:hover {
-        background-color: #ffffff;
-        color: #E31E24 !important;
+        color: #ffffff !important;
+        background-color: #E31E24 !important; /* Hover remains RED */
+        transform: translateY(-1px);
+        box-shadow: 0 12px 25px rgba(227, 30, 36, 0.3);
     }
 
     /* Mobile Toggler */
     .navbar-area .navbar-toggler {
         display: none !important;
-        border: 2px solid #1f2f46;
+        border: 2px solid #E31E24;
         padding: 8px 12px;
-        background: #f8f9fb;
+        background: #fff;
         border-radius: 8px;
         cursor: pointer;
         outline: none;
     }
-    .navbar-area .navbar-toggler i { color: #1f2f46; font-size: 20px; }
+    .navbar-area .navbar-toggler i { color: #E31E24; font-size: 20px; }
 
-    /* MOBILE DRAWER - STRICTLY HIDDEN ON BIG SCREENS */
+    /* MOBILE DRAWER - HIDDEN ON BIG SCREENS */
     .rb-mobile-drawer {
         display: none !important;
     }
 
-    /* SMART RESPONSIVE BREAKPOINT */
+    /* BREAKPOINT */
     @media (max-width: 1400px) {
         .navbar-area .navbar-collapse-desktop,
         .navbar-area .navbar-donate-wrap.desktop-donate {
@@ -208,7 +211,7 @@
         }
 
         .rb-mobile-drawer {
-            display: flex !important; /* Show ONLY when screen is small */
+            display: flex !important; 
             position: fixed;
             top: 0;
             right: -340px;
@@ -234,6 +237,7 @@
             padding: 20px 25px;
             border-bottom: 1px solid #eee;
             background: #fafbfc;
+            flex-shrink: 0;
         }
 
         .sidebar-close {
@@ -256,14 +260,16 @@
         .sidebar-nav-link {
             display: block;
             padding: 12px 25px !important;
-            font-size: 16px !important;
-            font-weight: 600 !important;
-            color: #282828 !important;
+            font-size: 17px !important;
+            font-weight: 700 !important;
+            color: #E31E24 !important; /* Sidebar links also RED */
             border-bottom: 1px solid #f9f9f9;
         }
 
+        /* Active sidebar link also BLACK */
         .sidebar-nav-link:hover, .sidebar-nav-item.active .sidebar-nav-link {
-            color: #E31E24 !important;
+            color: #000000 !important;
+            background: #fff5f5;
         }
 
         .sidebar-footer {
@@ -276,6 +282,8 @@
         .sidebar-footer .donate-btn {
             width: 100%;
             margin-left: 0;
+            background-color: #E31E24 !important;
+            color: #fff !important;
         }
     }
 
@@ -284,7 +292,7 @@
         .rb-mobile-drawer { width: 100% !important; }
     }
 
-    /* Light Overlay */
+    /* Overlay */
     .nav-overlay {
         position: fixed;
         inset: 0;
