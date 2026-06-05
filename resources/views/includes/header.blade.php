@@ -359,7 +359,7 @@
             <!-- Zone 1: Logo -->
             <div class="navbar-header">
                 <a href="<?php echo action('MainController@index'); ?>">
-                    <img src="<?php echo URL::asset('uploads/img/logo.png'); ?>" alt="Red Brigade" class="logo-width">
+                    <img src="<?php echo URL::asset('uploads/img/logo.png'); ?>" alt="Red Brigade" class="logo-width" width="219" height="auto">
                 </a>
             </div>
 

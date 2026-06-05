@@ -67,12 +67,12 @@
                 </div>
             </div>
             <div class="footer-divider"></div>
-            <div class="row footer-bottom-row">
-                <div class="col-md-6 col-sm-6">
-                    <p class="footer-copyright">&copy; <?php echo date('Y')?> Red Brigade Lucknow. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 col-sm-6 text-right">
-                    <p class="footer-credit" style="color:#ffffff;margin:0;">website develop and designed by uttam and anubhav</p>
+            <div class="row footer-bottom-row" style="text-align: center;">
+                <div class="col-12">
+                    <p class="footer-copyright" style="margin-bottom: 5px;">&copy; <?php echo date('Y')?> Red Brigade Lucknow. All rights reserved.</p>
+                    <p class="footer-credit" style="color:rgba(255,255,255,0.7); margin:0; font-size: 14px;">
+                        Website developed and designed by <a href="https://uttambhartiya.in/" target="_blank" style="color: #E31E24; font-weight: 700;">Uttam</a> and <span style="color: #E31E24; font-weight: 700;">Anubhav</span>
+                    </p>
                 </div>
             </div>
         </div>
