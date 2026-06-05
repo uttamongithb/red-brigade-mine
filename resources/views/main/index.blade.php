@@ -76,7 +76,6 @@
     <div class="rb-hero-overlay" style="position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; pointer-events: none;">
         <div class="container">
             <div class="rb-hero-panel" style="margin-left:-10px; pointer-events: auto;">
-                <span class="rb-hero-kicker">Fearless Life Of Women</span>
                 <h1 id="dynamic-slider-title"><?php echo $heroSlides[0]['name']; ?></h1>
                 <p id="dynamic-slider-desc"><?php echo $heroSlides[0]['desc']; ?></p>
                 <div class="rb-hero-actions">
@@ -121,25 +120,21 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="col-sm-6 col-lg-3">
                 <div class="rb-impact-card">
                     <h3>3,00,000+</h3>
-                    <p>Women trained with self-defense initiatives</p>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3">
                 <div class="rb-impact-card">
                     <h3>700+</h3>
-                    <p>Street plays raising voice against violence</p>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3">
                 <div class="rb-impact-card">
                     <h3>200+</h3>
-                    <p>Survivors supported through rehabilitation</p>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3">
                 <div class="rb-impact-card">
                     <h3>20,000+</h3>
-                    <p>People supported during crisis interventions</p>
                 </div>
             </div>
         </div>

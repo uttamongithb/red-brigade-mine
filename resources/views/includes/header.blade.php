@@ -61,7 +61,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-    /* ============= DEFINITIVE NAVBAR STYLING RESTORATION ============= */
+    /* ============= PERFECT BRANDED NAVIGATION SYSTEM ============= */
     body {
         font-family: 'Open Sans', sans-serif !important;
         -webkit-font-smoothing: antialiased;
@@ -73,10 +73,10 @@
         transition: 0.5s ease-in;
         position: sticky;
         top: 0;
-        z-index: 5000;
+        z-index: 10000; /* Priority One */
         box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         padding: 0;
-        min-height: 90px;
+        min-height: 95px;
         display: flex;
         align-items: center;
         width: 100%;
@@ -88,12 +88,12 @@
         width: 100% !important; 
         max-width: none !important; 
         margin: 0 !important;
-        padding: 0 40px !important; 
+        padding: 0 50px !important; /* Maximized spread */
         justify-content: space-between;
         position: relative; 
     }
 
-    /* Zone 1: Logo */
+    /* Zone 1: Logo (Absolute Left) */
     .navbar-area .navbar-header {
         flex: 0 0 auto;
         display: flex;
@@ -105,15 +105,17 @@
         height: auto;
     }
 
-    /* Zone 2: Navigation Links */
+    /* Zone 2: Links (Absolute Center) */
     .navbar-area .navbar-collapse-desktop {
         position: absolute;
         left: 50%;
-        transform: translateX(-50%);
+        top: 50%;
+        transform: translate(-50%, -50%);
         display: flex !important;
         align-items: center;
         justify-content: center;
-        pointer-events: none;
+        width: auto;
+        pointer-events: none; /* Container doesn't block background */
     }
 
     .navbar-area .navbar-nav {
@@ -123,28 +125,28 @@
         margin: 0;
         padding: 0;
         list-style: none;
-        gap: 30px;
-        pointer-events: auto;
+        gap: clamp(15px, 2.5vw, 35px);
+        pointer-events: auto; /* Links ARE clickable */
     }
 
     .navbar-area .nav-item .nav-link {
-        color: #E31E24 !important; /* Items in RED color as requested */
-        font-size: 16px !important; /* Increased font size a little */
+        color: #E31E24 !important; /* Default Red */
+        font-size: 18px !important; /* Prominent Size */
         font-weight: 700 !important;
         text-transform: capitalize !important;
-        transition: 0.3s ease;
-        padding: 25px 0;
+        transition: all 0.3s ease;
+        padding: 10px 0;
         white-space: nowrap;
         letter-spacing: 0.2px;
     }
 
-    /* User in which page is that should be black color */
+    /* Active & Hover: Black */
     .navbar-area .nav-item.active .nav-link,
     .navbar-area .nav-item .nav-link:hover {
         color: #000000 !important; 
     }
 
-    /* Zone 3: Donate Button Section */
+    /* Zone 3: Donate Button (Absolute Right) */
     .navbar-area .navbar-donate-wrap {
         flex: 0 0 auto;
         display: flex;
@@ -152,29 +154,28 @@
         justify-content: flex-end;
     }
 
-    /* Donate button in RED color & Hover RED */
     .navbar-area .donate-btn {
         display: inline-block;
         text-align: center;
         height: 50px;
         line-height: 50px;
-        font-size: 14px;
+        font-size: 15px;
         border-radius: 30px;
         color: #ffffff !important;
-        background-color: #E31E24 !important; /* RED Donate button */
-        padding: 0px 30px;
+        background-color: #E31E24 !important; /* Permanent Red */
+        padding: 0px 35px;
         text-transform: uppercase;
-        font-weight: 700;
+        font-weight: 800;
         width: 160px;
-        transition: 0.3s ease;
-        box-shadow: 0 10px 20px rgba(227, 30, 36, 0.2);
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 15px rgba(227, 30, 36, 0.2);
         border: 2px solid #E31E24;
     }
 
     .navbar-area .donate-btn:hover {
         color: #ffffff !important;
-        background-color: #E31E24 !important; /* Hover remains RED */
-        transform: translateY(-1px);
+        background-color: #E31E24 !important; /* Stays Red */
+        transform: translateY(-2px);
         box-shadow: 0 12px 25px rgba(227, 30, 36, 0.3);
     }
 
@@ -182,20 +183,21 @@
     .navbar-area .navbar-toggler {
         display: none !important;
         border: 2px solid #E31E24;
-        padding: 8px 12px;
+        padding: 10px 14px;
         background: #fff;
         border-radius: 8px;
         cursor: pointer;
         outline: none;
+        z-index: 10001;
     }
-    .navbar-area .navbar-toggler i { color: #E31E24; font-size: 20px; }
+    .navbar-area .navbar-toggler i { color: #E31E24; font-size: 22px; }
 
-    /* MOBILE DRAWER - HIDDEN ON BIG SCREENS */
+    /* MOBILE DRAWER - TOTAL ISOLATION */
     .rb-mobile-drawer {
         display: none !important;
     }
 
-    /* BREAKPOINT */
+    /* BREAKPOINT FOR MOBILE SWITCH (1400px to ensure centered links don't hit logo) */
     @media (max-width: 1400px) {
         .navbar-area .navbar-collapse-desktop,
         .navbar-area .navbar-donate-wrap.desktop-donate {
@@ -211,17 +213,17 @@
         }
 
         .rb-mobile-drawer {
-            display: flex !important; 
+            display: flex !important; /* Show ONLY on small screens */
             position: fixed;
             top: 0;
-            right: -340px;
+            right: -350px;
             width: 320px;
             height: 100vh;
             background: #ffffff;
             flex-direction: column;
-            z-index: 10000;
-            box-shadow: -15px 0 50px rgba(0,0,0,0.15);
-            transition: right 0.4s ease;
+            z-index: 99999; /* Absolute highest */
+            box-shadow: -15px 0 50px rgba(0,0,0,0.2);
+            transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
             overflow-y: auto;
             padding: 0;
         }
@@ -234,56 +236,58 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px 25px;
-            border-bottom: 1px solid #eee;
+            padding: 25px;
+            border-bottom: 2px solid #f5f5f5;
             background: #fafbfc;
             flex-shrink: 0;
         }
 
         .sidebar-close {
-            font-size: 32px;
+            font-size: 36px;
             color: #E31E24;
             cursor: pointer;
             line-height: 1;
             font-weight: bold;
+            padding: 5px;
         }
 
         .sidebar-nav-list {
             display: flex;
             flex-direction: column;
             width: 100%;
-            padding: 10px 0;
+            padding: 15px 0;
             list-style: none;
             margin: 0;
         }
 
         .sidebar-nav-link {
             display: block;
-            padding: 12px 25px !important;
-            font-size: 17px !important;
+            padding: 16px 30px !important; /* Balanced 8px vertical space (approx 16px total between texts) */
+            font-size: 18px !important;
             font-weight: 700 !important;
-            color: #E31E24 !important; /* Sidebar links also RED */
+            color: #E31E24 !important; /* Sidebar Links Red */
             border-bottom: 1px solid #f9f9f9;
+            transition: all 0.3s ease;
         }
 
-        /* Active sidebar link also BLACK */
+        /* Active Sidebar: Black */
         .sidebar-nav-link:hover, .sidebar-nav-item.active .sidebar-nav-link {
             color: #000000 !important;
-            background: #fff5f5;
+            background: #fffafa;
+            padding-left: 35px !important;
         }
 
         .sidebar-footer {
             width: 100%;
-            padding: 20px 25px 40px;
+            padding: 30px 25px 50px;
             margin-top: auto;
-            border-top: 1px solid #f0f0f0;
+            border-top: 1px solid #eee;
         }
 
         .sidebar-footer .donate-btn {
             width: 100%;
             margin-left: 0;
             background-color: #E31E24 !important;
-            color: #fff !important;
         }
     }
 
@@ -292,12 +296,12 @@
         .rb-mobile-drawer { width: 100% !important; }
     }
 
-    /* Overlay */
+    /* Light Overlay */
     .nav-overlay {
         position: fixed;
         inset: 0;
-        background: rgba(10, 27, 52, 0.25);
-        z-index: 9000;
+        background: rgba(10, 27, 52, 0.2);
+        z-index: 90000;
         display: none;
     }
     .nav-overlay.active { display: block; }
@@ -322,17 +326,19 @@
         if (toggler) {
             toggler.addEventListener('click', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 toggleMenu();
             });
         }
 
+        // Close on overlay or X
         document.addEventListener('click', function(e) {
             if (e.target.classList.contains('sidebar-close') || e.target.classList.contains('nav-overlay')) {
                 toggleMenu();
             }
         });
 
-        // Close on resize
+        // Ensure links are fully functional - NO JS INTERFERENCE
         window.addEventListener('resize', () => {
             if (window.innerWidth > 1400 && drawer && drawer.classList.contains('active')) {
                 toggleMenu();
@@ -363,7 +369,7 @@
                 </a>
             </div>
 
-            <!-- Zone 2: Navigation Links -->
+            <!-- Zone 2: Navigation Links (Center) -->
             <div class="navbar-collapse-desktop">
                 <ul class="navbar-nav">
                     <li class="nav-item <?php echo Request::is('/') ? 'active' : ''; ?>">
@@ -414,7 +420,7 @@
     <!-- ============ MOBILE DRAWER ===== -->
     <div class="rb-mobile-drawer">
         <div class="sidebar-header">
-            <img src="<?php echo URL::asset('uploads/img/logo.png'); ?>" alt="Red Brigade" style="width: 130px; height: auto;">
+            <img src="<?php echo URL::asset('uploads/img/logo.png'); ?>" alt="Red Brigade" style="width: 140px; height: auto;">
             <div class="sidebar-close">&times;</div>
         </div>
         
