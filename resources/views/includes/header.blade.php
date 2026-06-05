@@ -58,169 +58,123 @@
         });
     </script>
    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+    /* ============= DEFINITIVE EDGE-TO-EDGE NAVBAR RESTORATION ============= */
     body {
-        font-family: 'Inter', sans-serif !important;
+        font-family: 'Open Sans', sans-serif !important;
         -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
     }
-    a {
-        text-decoration: none !important; 
-    }
-    
-    /* ============= RESTORED ORIGINAL NAVBAR LAYOUT (AS IT WAS) ============= */
-    
-    /* Navbar Area - Full Width Container */
+    a { text-decoration: none !important; }
+
     .navbar-area {
-        display: flex !important;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        background: #fff;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        background-color: #fff !important;
+        transition: 0.5s ease-in;
         position: sticky;
         top: 0;
-        z-index: 10000; /* Extremely high to be above overlay */
-    }
-    
-    /* Navbar Container - Three Zone Layout */
-    .navbar-area .nav-container {
-        display: grid !important;
-        grid-template-columns: auto minmax(0, 1fr) auto;
+        z-index: 5000;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        padding: 0;
+        min-height: 90px;
+        display: flex;
         align-items: center;
-        width: 94% !important;
-        max-width: 1440px;
-        margin: 0 auto !important;
-        padding: 0 !important;
-        column-gap: 30px;
-        flex: 0 0 100%;
+        width: 100%; /* Full screen width */
     }
 
-    /* Zone 1: Logo Section - LEFT */
-    .navbar-area .navbar-header {
-        grid-column: 1;
-        justify-self: start;
+    /* Outer Container - Maximizing the spread */
+    .navbar-area .nav-container {
+        display: flex !important;
+        align-items: center;
+        width: 100% !important; /* Forces 100% width */
+        max-width: none !important; /* Removes constraints */
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 0 40px !important; /* Professional edge padding */
+        justify-content: space-between;
+        position: relative; /* Base for absolute centered links */
+    }
+
+    /* Zone 1: Logo Section (Pinned to absolute left padding) */
+    .navbar-area .navbar-header {
+        flex: 0 0 auto;
         display: flex;
         align-items: center;
     }
 
-    .navbar-area .navbar-brand.logo {
-        margin: 0 !important;
-        padding: 0 !important;
-        display: inline-block;
-    }
-    
     .navbar-area .logo-width {
         width: 219px;
         height: auto;
     }
 
-    /* Zone 2: Navigation Menu - CENTER */
-    .navbar-area .navbar-collapse {
-        grid-column: 2;
+    /* Zone 2: Navigation Links (Perfectly Screen-Centered) */
+    .navbar-area .navbar-collapse-desktop {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
         display: flex !important;
         align-items: center;
         justify-content: center;
-        min-width: 0;
-        padding: 0 !important;
-        border: none !important;
-        width: 100%;
-        overflow: visible;
+        pointer-events: none; /* Let clicks through the transparent absolute box */
     }
 
-    .navbar-area .navbar-center-wrap {
-        width: 100%;
-        min-width: 0;
+    .navbar-area .navbar-nav {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-    }
-
-    .navbar-area .navbar-collapse .navbar-nav {
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
         flex-direction: row;
-        flex-wrap: nowrap;
-        gap: 45px;
+        align-items: center;
         margin: 0;
         padding: 0;
-        width: 100%;
-        min-width: 0;
-        overflow: visible;
         list-style: none;
+        gap: 35px;
+        pointer-events: auto; /* Re-enable clicks for the actual links */
     }
 
-    /* Individual Navigation Items */
-    .navbar-area .navbar-collapse .navbar-nav .nav-item {
-        margin: 0 !important;
-        padding: 0 !important;
-        flex: 0 0 auto;
+    .navbar-area .nav-item .nav-link {
+        color: #282828 !important; 
+        font-size: 14px !important; 
+        font-weight: 600 !important;
+        text-transform: capitalize !important;
+        transition: 0.3s ease;
+        padding: 25px 0;
         white-space: nowrap;
-    }
-
-    .navbar-area .navbar-collapse .navbar-nav .nav-item.active > .nav-link {
-        color: #1f2f46 !important;
-    }
-
-    .navbar-area .navbar-collapse .navbar-nav .nav-item .nav-link {
-        font-size: 18px !important;
-        font-weight: 700 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        color: #E31E24 !important;
         letter-spacing: 0.2px;
-        transition: all 0.3s ease;
-        position: relative;
-        display: inline-block;
-        text-transform: none;
     }
 
-    .navbar-area .navbar-collapse .navbar-nav .nav-item .nav-link:hover {
-        color: #1f2f46 !important;
+    .navbar-area .nav-item:hover .nav-link,
+    .navbar-area .nav-item.active .nav-link {
+        color: #E31E24 !important;
     }
 
-    /* Zone 3: Donate Button - RIGHT */
+    /* Zone 3: Donate Button (Pinned to absolute right padding) */
     .navbar-area .navbar-donate-wrap {
-        grid-column: 3;
+        flex: 0 0 auto;
         display: flex;
         align-items: center;
         justify-content: flex-end;
     }
 
-    .navbar-area .navbar-donate-wrap .donate-btn {
-        font-size: 16px !important;
-        font-weight: 700 !important;
-        color: #ffffff !important;
-        background-color: #E31E24;
-        padding: 0 30px !important;
+    .navbar-area .donate-btn {
+        display: inline-block;
+        text-align: center;
         height: 50px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50px;
+        line-height: 50px;
+        font-size: 14px;
+        border-radius: 30px;
+        color: #fff !important;
+        background-color: #212529 !important; 
+        padding: 0px 30px;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 20px rgba(227, 30, 36, 0.2);
-        border: 2px solid #E31E24;
-        white-space: nowrap;
-        text-decoration: none;
-        line-height: 1;
+        font-weight: 700;
+        width: 160px;
+        transition: 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
-    .navbar-area .navbar-donate-wrap .donate-btn:hover {
-        background-color: #ffffff;
-        color: #E31E24 !important;
-        box-shadow: 0 5px 15px rgba(227, 30, 36, 0.1);
+    .navbar-area .donate-btn:hover {
+        color: black !important;
+        background-color: #E31E24 !important;
     }
 
-    /* Toggle Button */
+    /* Mobile Toggler */
     .navbar-area .navbar-toggler {
         display: none !important;
         border: none;
@@ -230,126 +184,97 @@
         cursor: pointer;
     }
 
-    /* RIGHT SIDE MOBILE DRAWER SYSTEM */
-    @media (max-width: 1366px) {
-        .navbar-area .nav-container {
-            display: flex !important;
-            justify-content: space-between;
-            padding: 12px 16px !important;
+    /* MOBILE DRAWER - STRICTLY ISOLATED */
+    .rb-mobile-drawer {
+        display: none !important;
+    }
+
+    @media (max-width: 1300px) {
+        .navbar-area .navbar-collapse-desktop {
+            display: none !important;
         }
 
         .navbar-area .navbar-toggler {
-            display: flex !important;
+            display: block !important;
         }
 
-        /* Fixed Sidebar Position */
-        .navbar-area .navbar-collapse {
-            position: fixed !important;
-            top: 0 !important;
-            right: -340px !important;
-            width: 330px;
+        .navbar-area .nav-container {
+            padding: 0 15px !important;
+        }
+
+        .rb-mobile-drawer {
+            display: flex !important; 
+            position: fixed;
+            top: 0;
+            right: -340px;
+            width: 320px;
             height: 100vh;
-            background: #ffffff !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: stretch !important;
-            justify-content: flex-start !important;
-            z-index: 11000 !important; /* Above everything */
-            box-shadow: -15px 0 50px rgba(0,0,0,0.15) !important;
-            transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1) !important;
-            padding: 0 !important;
-            overflow-y: auto !important;
-            visibility: hidden !important;
+            background: #ffffff;
+            flex-direction: column;
+            z-index: 10000;
+            box-shadow: -15px 0 50px rgba(0,0,0,0.15);
+            transition: right 0.4s ease;
+            overflow-y: auto;
         }
 
-        .navbar-area .navbar-collapse.show {
-            right: 0 !important;
-            visibility: visible !important;
+        .rb-mobile-drawer.active {
+            right: 0;
         }
 
-        /* Sidebar Header */
         .sidebar-header {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            padding: 25px !important;
-            border-bottom: 2px solid #f0f0f0 !important;
-            background: #fafbfc !important;
-            flex-shrink: 0 !important;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 25px;
+            border-bottom: 1px solid #eee;
+            background: #fafbfc;
         }
 
         .sidebar-close {
-            font-size: 32px !important;
-            color: #E31E24 !important;
-            cursor: pointer !important;
-            line-height: 1 !important;
-            font-weight: bold !important;
-            padding: 8px !important;
+            font-size: 32px;
+            color: #E31E24;
+            cursor: pointer;
+            line-height: 1;
+            font-weight: bold;
         }
 
-        .navbar-area .navbar-center-wrap {
-            width: 100% !important;
-            padding: 0 !important; 
-            display: block !important;
+        .sidebar-nav-list {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 10px 0;
+            list-style: none;
+            margin: 0;
         }
 
-        .navbar-area .navbar-nav {
-            display: flex !important;
-            flex-direction: column !important;
-            width: 100% !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            gap: 0 !important;
+        .sidebar-nav-link {
+            display: block;
+            padding: 8px 25px !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            color: #282828 !important;
+            border-bottom: 1px solid #f9f9f9;
         }
 
-        .navbar-area .navbar-nav .nav-item {
-            display: block !important;
-            width: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        .navbar-area .navbar-nav .nav-item .nav-link {
-            display: block !important;
-            padding: 20px 25px !important; /* Increased space as requested */
-            font-size: 18px !important; 
-            font-weight: 700 !important;
-            color: #1f2f46 !important;
-            border-bottom: 1px solid #f8f9fa !important;
-            transition: all 0.3s ease !important;
-            margin: 0 !important;
-            pointer-events: auto !important;
-        }
-
-        .navbar-area .navbar-nav .nav-item.active .nav-link,
-        .navbar-area .navbar-nav .nav-item .nav-link:hover {
-            background: #fff5f5 !important;
+        .sidebar-nav-link:hover, .sidebar-nav-item.active .sidebar-nav-link {
             color: #E31E24 !important;
         }
 
-        /* Sidebar Donate Button */
-        .navbar-area .navbar-donate-wrap {
-            width: 100% !important;
-            padding: 30px 25px 50px !important; /* Increased spacing */
-            margin-top: auto !important;
-            border-top: 1px solid #f0f0f0 !important;
-            display: block !important;
+        .sidebar-footer {
+            width: 100%;
+            padding: 20px 25px 40px;
+            margin-top: auto;
         }
 
-        .navbar-area .navbar-donate-wrap .donate-btn {
-            width: 100% !important;
-            height: 55px !important;
-            font-size: 17px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            pointer-events: auto !important;
+        .sidebar-footer .donate-btn {
+            width: 100%;
+            margin-left: 0;
         }
     }
 
     @media (max-width: 580px) {
         .navbar-area .logo-width { width: 160px; }
-        .navbar-area .navbar-collapse { width: 100% !important; }
+        .rb-mobile-drawer { width: 100% !important; }
     }
 
     /* Light Overlay */
@@ -357,29 +282,24 @@
         position: fixed;
         inset: 0;
         background: rgba(10, 27, 52, 0.25); 
-        z-index: 9000; /* Below the Navbar and Sidebar */
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease;
+        z-index: 9000;
+        display: none;
     }
-    .nav-overlay.active {
-        opacity: 1;
-        visibility: visible;
-    }
+    .nav-overlay.active { display: block; }
     body.menu-open { overflow: hidden; }
     </style>
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         const toggler = document.querySelector('.navbar-toggler');
-        const menu = document.querySelector('.navbar-collapse');
+        const drawer = document.querySelector('.rb-mobile-drawer');
         const overlay = document.createElement('div');
         overlay.className = 'nav-overlay';
         document.body.appendChild(overlay);
 
         function toggleMenu() {
-            if (!menu) return;
-            menu.classList.toggle('show');
+            if (!drawer) return;
+            drawer.classList.toggle('active');
             overlay.classList.toggle('active');
             document.body.classList.toggle('menu-open');
         }
@@ -387,31 +307,31 @@
         if (toggler) {
             toggler.addEventListener('click', (e) => {
                 e.preventDefault();
-                e.stopPropagation();
                 toggleMenu();
             });
         }
 
-        // Handle clicks on overlay or close button
         document.addEventListener('click', function(e) {
             if (e.target.classList.contains('sidebar-close') || e.target.classList.contains('nav-overlay')) {
                 toggleMenu();
             }
         });
 
-        // Ensure links work correctly
-        document.querySelectorAll('.navbar-nav .nav-link, .donate-btn').forEach(link => {
-            link.addEventListener('click', function(e) {
-                // If menu is open, close it, but allow the link to proceed
-                if (menu && menu.classList.contains('show')) {
-                    // We let the default action happen naturally
+        // Close logic for links
+        document.querySelectorAll('.sidebar-nav-link, .sidebar-footer .donate-btn').forEach(link => {
+            link.addEventListener('click', function() {
+                if (drawer && drawer.classList.contains('active')) {
+                    setTimeout(() => {
+                        drawer.classList.remove('active');
+                        overlay.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    }, 100);
                 }
             });
         });
 
-        // Resize protection
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 1366 && menu && menu.classList.contains('show')) {
+            if (window.innerWidth > 1300 && drawer && drawer.classList.contains('active')) {
                 toggleMenu();
             }
         });
@@ -431,68 +351,106 @@
 <body>
 
     <!-- ============ NAVIGATION ===== -->
-    <nav class="navbar navbar-area navbar-expand-lg navbar-light">
+    <nav class="navbar-area">
         <div class="nav-container">
-            <!-- Logo Section -->
+            <!-- Zone 1: Logo (Completely in Left) -->
             <div class="navbar-header">
-                <a class="navbar-brand logo" href="<?php echo action('MainController@index'); ?>">
+                <a href="<?php echo action('MainController@index'); ?>">
                     <img src="<?php echo URL::asset('uploads/img/logo.png'); ?>" alt="Red Brigade" class="logo-width">
                 </a>
             </div>
 
-            <!-- Mobile Toggler -->
-            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Navigation content -->
-            <div class="navbar-collapse" id="navbarSupportedContent">
-                <!-- Mobile Header (Logo + Close Button) -->
-                <div class="sidebar-header d-lg-none">
-                    <img src="<?php echo URL::asset('uploads/img/logo.png'); ?>" alt="Red Brigade" style="width: 140px; height: auto;">
-                    <div class="sidebar-close">&times;</div>
-                </div>
-
-                <div class="navbar-center-wrap">
-                    <ul class="navbar-nav">
-                        <li class="nav-item <?php echo Request::is('/') ? 'active' : ''; ?>">
-                            <a class="nav-link" href="<?php echo action('MainController@index'); ?>">Home</a>
-                        </li>
-                        <li class="nav-item <?php echo Request::is('about') ? 'active' : ''; ?>">
-                            <a class="nav-link" href="<?php echo action('MainController@about'); ?>">About Us</a>
-                        </li>
-                        <li class="nav-item <?php echo Request::is('event') ? 'active' : ''; ?>">
-                            <a class="nav-link" href="<?php echo action('MainController@event'); ?>">Our Work</a>
-                        </li>
-                        <li class="nav-item <?php echo Request::is('blog') ? 'active' : ''; ?>">
-                            <a class="nav-link" href="<?php echo action('MainController@blog'); ?>">Blog</a>
-                        </li>
-                        <li class="nav-item <?php echo Request::is('ourteam') ? 'active' : ''; ?>">
-                            <a class="nav-link" href="<?php echo action('MainController@ourteam'); ?>">Our Team</a>
-                        </li>
-                        <li class="nav-item <?php echo Request::is('research') ? 'active' : ''; ?>">
-                            <a class="nav-link" href="<?php echo action('MainController@research'); ?>">Research</a>
-                        </li>
-                        <li class="nav-item <?php echo Request::is('gallery') ? 'active' : ''; ?>">
-                            <a class="nav-link" href="<?php echo action('MainController@gallery'); ?>">Gallery</a>
-                        </li>
-                        <li class="nav-item <?php echo Request::is('ethics') ? 'active' : ''; ?>">
-                            <a class="nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Ethics</a>
-                        </li>
-                        <li class="nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
-                            <a class="nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>
-                        </li>
-                        <li class="nav-item <?php echo Request::is('contact') ? 'active' : ''; ?>">
-                            <a class="nav-link" href="<?php echo action('MainController@contact'); ?>">Contact us</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="navbar-donate-wrap">
-                    <a class="donate-btn" href="<?php echo action('MainController@donate'); ?>">Donate</a>
-                </div>
+            <!-- Zone 2: Navigation Links (Exactly in Center) -->
+            <div class="navbar-collapse-desktop">
+                <ul class="navbar-nav">
+                    <li class="nav-item <?php echo Request::is('/') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo action('MainController@index'); ?>">Home</a>
+                    </li>
+                    <li class="nav-item <?php echo Request::is('about') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo action('MainController@about'); ?>">About Us</a>
+                    </li>
+                    <li class="nav-item <?php echo Request::is('event') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo action('MainController@event'); ?>">Our Work</a>
+                    </li>
+                    <li class="nav-item <?php echo Request::is('blog') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo action('MainController@blog'); ?>">Blog</a>
+                    </li>
+                    <li class="nav-item <?php echo Request::is('ourteam') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo action('MainController@ourteam'); ?>">Our Team</a>
+                    </li>
+                    <li class="nav-item <?php echo Request::is('research') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo action('MainController@research'); ?>">Research</a>
+                    </li>
+                    <li class="nav-item <?php echo Request::is('gallery') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo action('MainController@gallery'); ?>">Gallery</a>
+                    </li>
+                    <li class="nav-item <?php echo Request::is('ethics') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Ethics</a>
+                    </li>
+                    <li class="nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>
+                    </li>
+                    <li class="nav-item <?php echo Request::is('contact') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo action('MainController@contact'); ?>">Contact us</a>
+                    </li>
+                </ul>
             </div>
+
+            <!-- Zone 3: Donate Button (Completely in Right) -->
+            <div class="navbar-donate-wrap">
+                <a class="donate-btn" href="<?php echo action('MainController@donate'); ?>">Donate</a>
+            </div>
+
+            <!-- Mobile Toggler -->
+            <button class="navbar-toggler" type="button">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
+
+    <!-- ============ MOBILE DRAWER ===== -->
+    <div class="rb-mobile-drawer">
+        <div class="sidebar-header">
+            <img src="<?php echo URL::asset('uploads/img/logo.png'); ?>" alt="Red Brigade" style="width: 130px; height: auto;">
+            <div class="sidebar-close">&times;</div>
+        </div>
+        
+        <ul class="sidebar-nav-list">
+            <li class="sidebar-nav-item <?php echo Request::is('/') ? 'active' : ''; ?>">
+                <a class="sidebar-nav-link" href="<?php echo action('MainController@index'); ?>">Home</a>
+            </li>
+            <li class="sidebar-nav-item <?php echo Request::is('about') ? 'active' : ''; ?>">
+                <a class="sidebar-nav-link" href="<?php echo action('MainController@about'); ?>">About Us</a>
+            </li>
+            <li class="sidebar-nav-item <?php echo Request::is('event') ? 'active' : ''; ?>">
+                <a class="sidebar-nav-link" href="<?php echo action('MainController@event'); ?>">Our Work</a>
+            </li>
+            <li class="sidebar-nav-item <?php echo Request::is('blog') ? 'active' : ''; ?>">
+                <a class="sidebar-nav-link" href="<?php echo action('MainController@blog'); ?>">Blog</a>
+            </li>
+            <li class="sidebar-nav-item <?php echo Request::is('ourteam') ? 'active' : ''; ?>">
+                <a class="sidebar-nav-link" href="<?php echo action('MainController@ourteam'); ?>">Our Team</a>
+            </li>
+            <li class="sidebar-nav-item <?php echo Request::is('research') ? 'active' : ''; ?>">
+                <a class="sidebar-nav-link" href="<?php echo action('MainController@research'); ?>">Research</a>
+            </li>
+            <li class="sidebar-nav-item <?php echo Request::is('gallery') ? 'active' : ''; ?>">
+                <a class="sidebar-nav-link" href="<?php echo action('MainController@gallery'); ?>">Gallery</a>
+            </li>
+            <li class="sidebar-nav-item <?php echo Request::is('ethics') ? 'active' : ''; ?>">
+                <a class="sidebar-nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Ethics</a>
+            </li>
+            <li class="sidebar-nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
+                <a class="sidebar-nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>
+            </li>
+            <li class="sidebar-nav-item <?php echo Request::is('contact') ? 'active' : ''; ?>">
+                <a class="sidebar-nav-link" href="<?php echo action('MainController@contact'); ?>">Contact us</a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <a class="donate-btn" href="<?php echo action('MainController@donate'); ?>">Donate</a>
+        </div>
+    </div>
 </body>
 </html>
