@@ -4,6 +4,9 @@
   <title>REDBRIGADE LUCKNOW</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="<?php echo URL::asset('favicon.png')?>">
+  <link rel="shortcut icon" type="image/png" href="<?php echo URL::asset('favicon.png')?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL::asset('css/admin/bootstrap.css')?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL::asset('css/admin/select2.min.css')?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL::asset('css/admin/AdminLTE.css')?>">
