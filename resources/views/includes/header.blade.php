@@ -61,7 +61,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-    /* ============= DEFINITIVE EDGE-TO-EDGE NAVBAR RESTORATION ============= */
+    /* ============= SMART RESPONSIVE NAVBAR SYSTEM ============= */
     body {
         font-family: 'Open Sans', sans-serif !important;
         -webkit-font-smoothing: antialiased;
@@ -79,22 +79,21 @@
         min-height: 90px;
         display: flex;
         align-items: center;
-        width: 100%; /* Full screen width */
+        width: 100%;
     }
 
-    /* Outer Container - Maximizing the spread */
     .navbar-area .nav-container {
         display: flex !important;
         align-items: center;
-        width: 100% !important; /* Forces 100% width */
-        max-width: none !important; /* Removes constraints */
+        width: 100% !important; 
+        max-width: none !important; 
         margin: 0 !important;
-        padding: 0 40px !important; /* Professional edge padding */
+        padding: 0 40px !important; 
         justify-content: space-between;
-        position: relative; /* Base for absolute centered links */
+        position: relative; 
     }
 
-    /* Zone 1: Logo Section (Pinned to absolute left padding) */
+    /* Zone 1: Logo */
     .navbar-area .navbar-header {
         flex: 0 0 auto;
         display: flex;
@@ -106,7 +105,7 @@
         height: auto;
     }
 
-    /* Zone 2: Navigation Links (Perfectly Screen-Centered) */
+    /* Zone 2: Links - Screen Centered */
     .navbar-area .navbar-collapse-desktop {
         position: absolute;
         left: 50%;
@@ -114,7 +113,7 @@
         display: flex !important;
         align-items: center;
         justify-content: center;
-        pointer-events: none; /* Let clicks through the transparent absolute box */
+        pointer-events: none;
     }
 
     .navbar-area .navbar-nav {
@@ -125,7 +124,7 @@
         padding: 0;
         list-style: none;
         gap: 35px;
-        pointer-events: auto; /* Re-enable clicks for the actual links */
+        pointer-events: auto;
     }
 
     .navbar-area .nav-item .nav-link {
@@ -144,7 +143,7 @@
         color: #E31E24 !important;
     }
 
-    /* Zone 3: Donate Button (Pinned to absolute right padding) */
+    /* Zone 3: Donate Button */
     .navbar-area .navbar-donate-wrap {
         flex: 0 0 auto;
         display: flex;
@@ -166,44 +165,50 @@
         font-weight: 700;
         width: 160px;
         transition: 0.3s ease;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 20px rgba(227, 30, 36, 0.2);
+        border: 2px solid #E31E24;
+        white-space: nowrap;
     }
 
     .navbar-area .donate-btn:hover {
-        color: black !important;
-        background-color: #E31E24 !important;
+        background-color: #ffffff;
+        color: #E31E24 !important;
     }
 
     /* Mobile Toggler */
     .navbar-area .navbar-toggler {
         display: none !important;
-        border: none;
-        padding: 10px;
+        border: 2px solid #1f2f46;
+        padding: 8px 12px;
         background: #f8f9fb;
-        border-radius: 12px;
+        border-radius: 8px;
         cursor: pointer;
+        outline: none;
     }
+    .navbar-area .navbar-toggler i { color: #1f2f46; font-size: 20px; }
 
-    /* MOBILE DRAWER - STRICTLY ISOLATED */
+    /* MOBILE DRAWER - STRICTLY HIDDEN ON BIG SCREENS */
     .rb-mobile-drawer {
         display: none !important;
     }
 
-    @media (max-width: 1300px) {
-        .navbar-area .navbar-collapse-desktop {
-            display: none !important;
+    /* SMART RESPONSIVE BREAKPOINT */
+    @media (max-width: 1400px) {
+        .navbar-area .navbar-collapse-desktop,
+        .navbar-area .navbar-donate-wrap.desktop-donate {
+            display: none !important; 
         }
 
         .navbar-area .navbar-toggler {
-            display: block !important;
+            display: block !important; 
         }
 
         .navbar-area .nav-container {
-            padding: 0 15px !important;
+            padding: 0 20px !important;
         }
 
         .rb-mobile-drawer {
-            display: flex !important; 
+            display: flex !important; /* Show ONLY when screen is small */
             position: fixed;
             top: 0;
             right: -340px;
@@ -215,6 +220,7 @@
             box-shadow: -15px 0 50px rgba(0,0,0,0.15);
             transition: right 0.4s ease;
             overflow-y: auto;
+            padding: 0;
         }
 
         .rb-mobile-drawer.active {
@@ -249,7 +255,7 @@
 
         .sidebar-nav-link {
             display: block;
-            padding: 8px 25px !important;
+            padding: 12px 25px !important;
             font-size: 16px !important;
             font-weight: 600 !important;
             color: #282828 !important;
@@ -264,6 +270,7 @@
             width: 100%;
             padding: 20px 25px 40px;
             margin-top: auto;
+            border-top: 1px solid #f0f0f0;
         }
 
         .sidebar-footer .donate-btn {
@@ -281,7 +288,7 @@
     .nav-overlay {
         position: fixed;
         inset: 0;
-        background: rgba(10, 27, 52, 0.25); 
+        background: rgba(10, 27, 52, 0.25);
         z-index: 9000;
         display: none;
     }
@@ -317,21 +324,9 @@
             }
         });
 
-        // Close logic for links
-        document.querySelectorAll('.sidebar-nav-link, .sidebar-footer .donate-btn').forEach(link => {
-            link.addEventListener('click', function() {
-                if (drawer && drawer.classList.contains('active')) {
-                    setTimeout(() => {
-                        drawer.classList.remove('active');
-                        overlay.classList.remove('active');
-                        document.body.classList.remove('menu-open');
-                    }, 100);
-                }
-            });
-        });
-
+        // Close on resize
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 1300 && drawer && drawer.classList.contains('active')) {
+            if (window.innerWidth > 1400 && drawer && drawer.classList.contains('active')) {
                 toggleMenu();
             }
         });
@@ -351,16 +346,16 @@
 <body>
 
     <!-- ============ NAVIGATION ===== -->
-    <nav class="navbar-area">
+    <nav class="navbar navbar-area">
         <div class="nav-container">
-            <!-- Zone 1: Logo (Completely in Left) -->
+            <!-- Zone 1: Logo -->
             <div class="navbar-header">
                 <a href="<?php echo action('MainController@index'); ?>">
                     <img src="<?php echo URL::asset('uploads/img/logo.png'); ?>" alt="Red Brigade" class="logo-width">
                 </a>
             </div>
 
-            <!-- Zone 2: Navigation Links (Exactly in Center) -->
+            <!-- Zone 2: Navigation Links -->
             <div class="navbar-collapse-desktop">
                 <ul class="navbar-nav">
                     <li class="nav-item <?php echo Request::is('/') ? 'active' : ''; ?>">
@@ -396,8 +391,8 @@
                 </ul>
             </div>
 
-            <!-- Zone 3: Donate Button (Completely in Right) -->
-            <div class="navbar-donate-wrap">
+            <!-- Zone 3: Donate Button -->
+            <div class="navbar-donate-wrap desktop-donate">
                 <a class="donate-btn" href="<?php echo action('MainController@donate'); ?>">Donate</a>
             </div>
 
