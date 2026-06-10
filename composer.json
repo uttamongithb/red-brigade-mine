@@ -12,7 +12,8 @@
         "intervention/imagecache": "^2.3",
         "barryvdh/laravel-debugbar": "^2.3",
         "chencha/share": "^5.2",
-		"elibyy/tcpdf-laravel": "5.2.*"
+		"elibyy/tcpdf-laravel": "5.2.*",
+        "doctrine/dbal": "2.5"
 		
     },
     "require-dev": {

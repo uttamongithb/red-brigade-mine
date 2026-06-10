@@ -63,6 +63,9 @@ return [
             'prefix' => '',
             'strict' => false,
             'engine' => null,
+            'options' => [
+                PDO::ATTR_CASE => PDO::CASE_LOWER,
+            ],
         ],
         'pgsql' => [
             'driver' => 'pgsql',

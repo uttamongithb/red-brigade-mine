@@ -12,22 +12,29 @@ class HardenDatabaseSchema extends Migration
      */
     public function up()
     {
+        // Helper to check if index exists
+        $indexExists = function ($table, $index) {
+            $conn = DB::connection();
+            $db = $conn->getDatabaseName();
+            $results = DB::select("SELECT * FROM information_schema.statistics WHERE table_schema = '$db' AND table_name = '$table' AND index_name = '$index'");
+            return count($results) > 0;
+        };
+
         // 1. Fix 'news' table (Our Work / Events)
         if (Schema::hasTable('news')) {
-            Schema::table('news', function (Blueprint $table) {
-                // Change date to a sortable type if possible, or add a timestamp
+            Schema::table('news', function (Blueprint $table) use ($indexExists) {
                 if (!Schema::hasColumn('news', 'created_at')) {
                     $table->timestamps();
                 }
-                // Index common search columns
-                $table->index('type');
+                if (!$indexExists('news', 'news_type_index')) {
+                    $table->index('type');
+                }
             });
         }
 
         // 2. Fix 'registerusers' table
         if (Schema::hasTable('registerusers')) {
             Schema::table('registerusers', function (Blueprint $table) {
-                // Convert numeric mobile to string to preserve leading zeros
                 if (Schema::hasColumn('registerusers', 'number')) {
                     $table->string('number', 20)->change();
                 }
@@ -42,11 +49,16 @@ class HardenDatabaseSchema extends Migration
 
         // 3. Fix 'blog' table
         if (Schema::hasTable('blog')) {
-            Schema::table('blog', function (Blueprint $table) {
+            Schema::table('blog', function (Blueprint $table) use ($indexExists) {
+                if (Schema::hasColumn('blog', 'slug')) {
+                    $table->string('slug', 255)->change();
+                }
                 if (!Schema::hasColumn('blog', 'created_at')) {
                     $table->timestamps();
                 }
-                $table->index('slug');
+                if (!$indexExists('blog', 'blog_slug_index')) {
+                    $table->index('slug');
+                }
             });
         }
 
@@ -54,9 +66,11 @@ class HardenDatabaseSchema extends Migration
         $simpleTables = ['slider', 'testimonial', 'gallery', 'service', 'product'];
         foreach ($simpleTables as $tableName) {
             if (Schema::hasTable($tableName)) {
-                Schema::table($tableName, function (Blueprint $table) use ($tableName) {
+                Schema::table($tableName, function (Blueprint $table) use ($tableName, $indexExists) {
                     if (Schema::hasColumn($tableName, 'status')) {
-                        $table->index('status');
+                        if (!$indexExists($tableName, "{$tableName}_status_index")) {
+                            $table->index('status');
+                        }
                     }
                     if (!Schema::hasColumn($tableName, 'created_at')) {
                         $table->timestamps();
