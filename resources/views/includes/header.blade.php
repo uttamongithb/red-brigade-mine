@@ -70,10 +70,10 @@
 
     .navbar-area {
         background-color: #fff !important;
-        transition: 0.5s ease-in;
+        transition: 0.3s ease;
         position: sticky;
         top: 0;
-        z-index: 10000; /* Priority One */
+        z-index: 10000;
         box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         padding: 0;
         min-height: 95px;
@@ -88,34 +88,33 @@
         width: 100% !important; 
         max-width: none !important; 
         margin: 0 !important;
-        padding: 0 50px !important; /* Maximized spread */
+        padding: 0 5% !important; /* Percentage padding for more flexibility */
         justify-content: space-between;
         position: relative; 
     }
 
-    /* Zone 1: Logo (Absolute Left) */
+    /* Zone 1: Logo (Left) */
     .navbar-area .navbar-header {
-        flex: 0 0 auto;
+        flex: 0 1 auto; /* Allow logo to shrink slightly if pushed */
         display: flex;
         align-items: center;
+        z-index: 10;
+        min-width: 150px;
     }
 
     .navbar-area .logo-width {
-        width: 219px;
+        width: clamp(140px, 15vw, 190px);
         height: auto;
     }
 
-    /* Zone 2: Links (Absolute Center) */
+    /* Zone 2: Links (Center) */
     .navbar-area .navbar-collapse-desktop {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        flex: 1 1 auto;
         display: flex !important;
         align-items: center;
         justify-content: center;
-        width: auto;
-        pointer-events: none; /* Container doesn't block background */
+        margin: 0 15px;
+        overflow: hidden; /* Hide overflow if screen is extremely weird */
     }
 
     .navbar-area .navbar-nav {
@@ -125,19 +124,18 @@
         margin: 0;
         padding: 0;
         list-style: none;
-        gap: clamp(15px, 2.5vw, 35px);
-        pointer-events: auto; /* Links ARE clickable */
+        gap: clamp(8px, 1.2vw, 22px); /* Tightened gaps for better fit */
     }
 
     .navbar-area .nav-item .nav-link {
-        color: #E31E24 !important; /* Default Red */
-        font-size: 18px !important; /* Prominent Size */
+        color: #E31E24 !important;
+        font-size: clamp(14px, 1vw, 16px) !important; /* Adaptive font size */
         font-weight: 700 !important;
         text-transform: capitalize !important;
-        transition: all 0.3s ease;
+        transition: color 0.3s ease;
         padding: 10px 0;
         white-space: nowrap;
-        letter-spacing: 0.2px;
+        letter-spacing: 0.1px;
     }
 
     /* Active & Hover: Black */
@@ -146,59 +144,56 @@
         color: #000000 !important; 
     }
 
-    /* Zone 3: Donate Button (Absolute Right) */
+    /* Zone 3: Donate Button (Right) */
     .navbar-area .navbar-donate-wrap {
         flex: 0 0 auto;
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        z-index: 10;
     }
 
     .navbar-area .donate-btn {
         display: inline-block;
         text-align: center;
-        height: 50px;
-        line-height: 50px;
-        font-size: 15px;
-        border-radius: 30px;
+        height: 44px;
+        line-height: 40px;
+        font-size: 13px;
+        border-radius: 4px;
         color: #ffffff !important;
-        background-color: #E31E24 !important; /* Permanent Red */
-        padding: 0px 35px;
+        background-color: #E31E24 !important;
+        padding: 0px 20px;
         text-transform: uppercase;
         font-weight: 800;
-        width: 160px;
         transition: all 0.3s ease;
-        box-shadow: 0 8px 15px rgba(227, 30, 36, 0.2);
         border: 2px solid #E31E24;
     }
 
     .navbar-area .donate-btn:hover {
-        color: #ffffff !important;
-        background-color: #E31E24 !important; /* Stays Red */
-        transform: translateY(-2px);
-        box-shadow: 0 12px 25px rgba(227, 30, 36, 0.3);
+        background-color: #000 !important;
+        border-color: #000 !important;
+        color: #fff !important;
     }
 
     /* Mobile Toggler */
     .navbar-area .navbar-toggler {
         display: none !important;
-        border: 2px solid #E31E24;
-        padding: 10px 14px;
-        background: #fff;
-        border-radius: 8px;
+        border: none;
+        padding: 10px;
+        background: transparent;
         cursor: pointer;
         outline: none;
-        z-index: 10001;
+        margin-left: 15px;
     }
-    .navbar-area .navbar-toggler i { color: #E31E24; font-size: 22px; }
+    .navbar-area .navbar-toggler i { color: #E31E24; font-size: 24px; }
 
-    /* MOBILE DRAWER - TOTAL ISOLATION */
+    /* MOBILE DRAWER */
     .rb-mobile-drawer {
         display: none !important;
     }
 
-    /* BREAKPOINT FOR MOBILE SWITCH (1400px to ensure centered links don't hit logo) */
-    @media (max-width: 1400px) {
+    /* BREAKPOINT FOR MOBILE SWITCH - Set to 1280px to safely avoid overlaps */
+    @media (max-width: 1280px) {
         .navbar-area .navbar-collapse-desktop,
         .navbar-area .navbar-donate-wrap.desktop-donate {
             display: none !important; 
@@ -210,22 +205,11 @@
 
         .navbar-area .nav-container {
             padding: 0 20px !important;
+            min-height: 80px;
         }
 
-        .rb-mobile-drawer {
-            display: flex !important; /* Show ONLY on small screens */
-            position: fixed;
-            top: 0;
-            right: -350px;
-            width: 320px;
-            height: 100vh;
-            background: #ffffff;
-            flex-direction: column;
-            z-index: 99999; /* Absolute highest */
-            box-shadow: -15px 0 50px rgba(0,0,0,0.2);
-            transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-            overflow-y: auto;
-            padding: 0;
+        .navbar-area .logo-width {
+            width: 150px;
         }
 
         .rb-mobile-drawer.active {
