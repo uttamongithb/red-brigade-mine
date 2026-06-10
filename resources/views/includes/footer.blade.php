@@ -7,8 +7,7 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="footer-about">
                         <div class="footer-brand-wrap">
-                            <img src="<?php echo URL::asset('uploads/img/logo.png')?>" alt="Red Brigade Logo" class="footer-brand-logo">
-                            <h3 class="footer-brand-title">Red Brigade Lucknow</h3>
+                            <img src="<?php echo URL::asset('uploads/img/logo.png')?>" alt="Red Brigade Logo" class="footer-brand-logo" style="width: 250px; height: auto;">
                         </div>
                         <p class="footer-about-text">
                             Red Brigade Lucknow is dedicated to providing a safe, empowering, and action-focused
