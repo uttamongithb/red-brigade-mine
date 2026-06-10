@@ -179,65 +179,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
 </section>
 
-<!-- Flagship Campaigns Summary -->
-<section class="rb-campaign-summary" style="padding: 80px 0; background: #f8fafc;">
-    <div class="container">
-        <div class="row text-center mb-5">
-            <div class="col-12">
-                <span class="rb-blog-kicker">Our Core Initiatives</span>
-                <h2 class="rb-blog-title">Flagship <em class="rb-blog-title-accent">Campaigns</em></h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="rb-award-card h-100" style="padding: 30px; text-align: center;">
-                    <div class="rb-award-icon" style="font-size: 32px; color: #E31E24;"><i class="fas fa-school"></i></div>
-                    <h4 style="font-size: 18px; margin: 15px 0;">100 Days 100 Schools</h4>
-                    <p style="font-size: 14px;">Intensive outreach delivering training and awareness across 100 locations in 100 days.</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="rb-award-card h-100" style="padding: 30px; text-align: center;">
-                    <div class="rb-award-icon" style="font-size: 32px; color: #E31E24;"><i class="fas fa-moon"></i></div>
-                    <h4 style="font-size: 18px; margin: 15px 0;">Raat Ka Ujala</h4>
-                    <p style="font-size: 14px;">Night-safety activism reclaiming public spaces for women through symbolic marches.</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="rb-award-card h-100" style="padding: 30px; text-align: center;">
-                    <div class="rb-award-icon" style="font-size: 32px; color: #E31E24;"><i class="fas fa-female"></i></div>
-                    <h4 style="font-size: 18px; margin: 15px 0;">18 Days Activism</h4>
-                    <p style="font-size: 14px;">Celebrating National Women's Day with marathons of leadership and advocacy.</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="rb-award-card h-100" style="padding: 30px; text-align: center;">
-                    <div class="rb-award-icon" style="font-size: 32px; color: #E31E24;"><i class="fas fa-dove"></i></div>
-                    <h4 style="font-size: 18px; margin: 15px 0;">Hinsa Mukt Jeevan</h4>
-                    <p style="font-size: 14px;">Focusing on non-violence and dignity during a 12-day intensive community dialogue.</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="rb-award-card h-100" style="padding: 30px; text-align: center;">
-                    <div class="rb-award-icon" style="font-size: 32px; color: #E31E24;"><i class="fas fa-bullhorn"></i></div>
-                    <h4 style="font-size: 18px; margin: 15px 0;">Fight Against 9 3 6</h4>
-                    <p style="font-size: 14px;">Creative activism addressing sexual harassment in public spaces through community reporting.</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="rb-award-card h-100" style="padding: 30px; text-align: center;">
-                    <div class="rb-award-icon" style="font-size: 32px; color: #E31E24;"><i class="fas fa-university"></i></div>
-                    <h4 style="font-size: 18px; margin: 15px 0;">Balmanch Centre</h4>
-                    <p style="font-size: 14px;">Education and rehabilitation centre where victims transform into fearless leaders.</p>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-4">
-            <a href="<?php echo action('MainController@about')?>#campaigns" class="rb-blog-view-all">See Full Campaign Details <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
-</section>
-
 <!-- Recent Work area start  -->
     
 <?php
