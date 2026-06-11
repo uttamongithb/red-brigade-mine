@@ -14,10 +14,10 @@
                             learning environment where girls and women can build confidence through self-defence training.
                         </p>
                         <ul class="footer-social">
-                            <li><a href="https://www.facebook.com/redbrigade.lucknow" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="https://twitter.com/redbrigadel" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="https://www.youtube.com/c/RedBrigadeLucknow" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
-                            <li><a href="https://www.instagram.com/redbrigadelucknow" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://www.facebook.com/redbrigade.lucknow" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://twitter.com/redbrigadel" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="https://www.youtube.com/c/RedBrigadeLucknow" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="https://www.instagram.com/redbrigadelucknow" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -62,6 +62,33 @@
                                 </a>
                             </li>
                         </ul>
+                        <style>
+                            .footer-area .donate-btn {
+                                display: inline-block;
+                                text-align: center;
+                                height: 44px;
+                                line-height: 40px;
+                                font-size: 15px;
+                                border-radius: 4px;
+                                color: #ffffff !important;
+                                background-color: #E31E24 !important;
+                                padding: 0px 35px;
+                                text-transform: uppercase;
+                                font-weight: 800;
+                                transition: all 0.3s ease;
+                                border: 2px solid #E31E24;
+                                margin-top: 25px;
+                                letter-spacing: 0.5px;
+                            }
+                            .footer-area .donate-btn:hover {
+                                background-color: #ffffff !important;
+                                border-color: #ffffff !important;
+                                color: #E31E24 !important;
+                                transform: translateY(-2px);
+                                box-shadow: 0 5px 15px rgba(227, 30, 36, 0.3);
+                            }
+                        </style>
+                        <a class="donate-btn" href="<?php echo action('MainController@donate'); ?>">Donate</a>
                     </div>
                 </div>
             </div>

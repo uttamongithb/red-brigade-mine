@@ -94,7 +94,7 @@
     <section class="rb-ethics-hero">
         <div class="container">
             <span class="rb-kicker" style="color:#ff8a00;">Lived Philosophy</span>
-            <h1>Our Ethics & Mission</h1>
+            <h1>Our Vision & Image</h1>
             <p>Built with the courage, tears, and determination of thousands of survivors.</p>
         </div>
     </section>

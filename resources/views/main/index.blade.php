@@ -120,21 +120,25 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="col-sm-6 col-lg-3">
                 <div class="rb-impact-card">
                     <h3>3,00,000+</h3>
+                    <p>Women Trained in NISHASTRA</p>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3">
                 <div class="rb-impact-card">
                     <h3>700+</h3>
+                    <p>Street Plays Performed</p>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3">
                 <div class="rb-impact-card">
                     <h3>200+</h3>
+                    <p>Survivors Rehabilitated</p>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3">
                 <div class="rb-impact-card">
                     <h3>20,000+</h3>
+                    <p>Lives Impacted Through Balmanch</p>
                 </div>
             </div>
         </div>

@@ -243,6 +243,54 @@
     margin: 0;
 }
 
+/* Skills Section */
+.rb-skills-section {
+    padding: 100px 0;
+    background: #fff;
+}
+.rb-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+.rb-skill-card {
+    background: #f8fafc;
+    padding: 40px 30px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+.rb-skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    border-color: #E31E24;
+}
+.rb-skill-icon {
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    color: #E31E24;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 25px;
+    box-shadow: 0 10px 20px rgba(227, 30, 36, 0.1);
+}
+.rb-skill-card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #1f2f46;
+}
+.rb-skill-card p {
+    font-size: 16px;
+    color: #4a5568;
+    margin: 0;
+}
+
 /* Join Section */
 .rb-join-section {
     padding: 100px 0;
@@ -364,25 +412,67 @@
             </div>
             <div class="rb-gallery-grid">
                 <div class="rb-gallery-item">
-                    <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-133.png');?>" alt="Self Defense">
+                    <img src="<?php echo URL::asset('uploads/news/rb-self-defense.png');?>" alt="Self Defense">
                     <div class="rb-gallery-overlay">
                         <h4>Self-Defense</h4>
                         <p>Empowering women with critical, real-world self-defense skills (Nishatra).</p>
                     </div>
                 </div>
                 <div class="rb-gallery-item">
-                    <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-144.png');?>" alt="Feminist Leadership">
+                    <img src="<?php echo URL::asset('uploads/news/rb-women-leadership.png');?>" alt="Feminist Leadership">
                     <div class="rb-gallery-overlay">
                         <h4>Leadership</h4>
                         <p>Creating the next generation of fearless feminist leadership.</p>
                     </div>
                 </div>
                 <div class="rb-gallery-item">
-                    <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-151.png');?>" alt="Activism">
+                    <img src="<?php echo URL::asset('uploads/news/rb-skill-dev.png');?>" alt="Activism">
                     <div class="rb-gallery-overlay">
                         <h4>Activism</h4>
                         <p>Building widespread social movements to dismantle discrimination.</p>
                     </div>
+                </div>
+                <div class="rb-gallery-item">
+                    <img src="<?php echo URL::asset('uploads/news/rb-street-play.png');?>" alt="Nukkad Natak">
+                    <div class="rb-gallery-overlay">
+                        <h4>Nukkad Natak</h4>
+                        <p>700+ street plays performed to spread vital awareness against sexual violence.</p>
+                    </div>
+                </div>
+                <div class="rb-gallery-item">
+                    <img src="<?php echo URL::asset('uploads/news/rb-education.png');?>" alt="Educational Aid">
+                    <div class="rb-gallery-overlay">
+                        <h4>Balmanch</h4>
+                        <p>Providing educational support to children in marginalized communities (Educational Aid).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artisan Skills Section -->
+    <section class="rb-skills-section">
+        <div class="container">
+            <div class="rb-gallery-header">
+                <span class="rb-kicker">Economic Empowerment</span>
+                <h2>Artisan Skills & Craftsmanship</h2>
+                <p>We provide vocational training in traditional crafts to ensure survivors and women from marginalized communities achieve financial independence.</p>
+            </div>
+            <div class="rb-skills-grid">
+                <div class="rb-skill-card">
+                    <div class="rb-skill-icon"><i class="fas fa-cut"></i></div>
+                    <h3>Chikankari</h3>
+                    <p>Training in the world-renowned traditional embroidery of Lucknow, preserving heritage while creating livelihoods.</p>
+                </div>
+                <div class="rb-skill-card">
+                    <div class="rb-skill-icon"><i class="fas fa-th"></i></div>
+                    <h3>Crosia (Crochet)</h3>
+                    <p>Mastering crochet techniques to create intricate designs and high-quality handmade products for modern markets.</p>
+                </div>
+                <div class="rb-skill-card">
+                    <div class="rb-skill-icon"><i class="fas fa-ellipsis-h"></i></div>
+                    <h3>Making Jhalar</h3>
+                    <p>Learning the art of creating traditional fringes and decorative hangings (Jhalar), essential for textile ornamentation.</p>
                 </div>
             </div>
         </div>

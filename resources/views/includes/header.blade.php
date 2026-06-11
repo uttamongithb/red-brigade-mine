@@ -144,37 +144,6 @@
         color: #000000 !important; 
     }
 
-    /* Zone 3: Donate Button (Right) */
-    .navbar-area .navbar-donate-wrap {
-        flex: 0 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        z-index: 10;
-    }
-
-    .navbar-area .donate-btn {
-        display: inline-block;
-        text-align: center;
-        height: 44px;
-        line-height: 40px;
-        font-size: 13px;
-        border-radius: 4px;
-        color: #ffffff !important;
-        background-color: #E31E24 !important;
-        padding: 0px 20px;
-        text-transform: uppercase;
-        font-weight: 800;
-        transition: all 0.3s ease;
-        border: 2px solid #E31E24;
-    }
-
-    .navbar-area .donate-btn:hover {
-        background-color: #000 !important;
-        border-color: #000 !important;
-        color: #fff !important;
-    }
-
     /* Mobile Toggler */
     .navbar-area .navbar-toggler {
         display: none !important;
@@ -194,8 +163,7 @@
 
     /* BREAKPOINT FOR MOBILE SWITCH - Set to 1280px to safely avoid overlaps */
     @media (max-width: 1280px) {
-        .navbar-area .navbar-collapse-desktop,
-        .navbar-area .navbar-donate-wrap.desktop-donate {
+        .navbar-area .navbar-collapse-desktop {
             display: none !important; 
         }
 
@@ -259,19 +227,6 @@
             color: #000000 !important;
             background: #fffafa;
             padding-left: 35px !important;
-        }
-
-        .sidebar-footer {
-            width: 100%;
-            padding: 30px 25px 50px;
-            margin-top: auto;
-            border-top: 1px solid #eee;
-        }
-
-        .sidebar-footer .donate-btn {
-            width: 100%;
-            margin-left: 0;
-            background-color: #E31E24 !important;
         }
     }
 
@@ -378,7 +333,7 @@
                         <a class="nav-link" href="<?php echo action('MainController@gallery'); ?>">Gallery</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('ethics') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Ethics</a>
+                        <a class="nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Image</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
                         <a class="nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>
@@ -387,11 +342,6 @@
                         <a class="nav-link" href="<?php echo action('MainController@contact'); ?>">Contact us</a>
                     </li>
                 </ul>
-            </div>
-
-            <!-- Zone 3: Donate Button -->
-            <div class="navbar-donate-wrap desktop-donate">
-                <a class="donate-btn" href="<?php echo action('MainController@donate'); ?>">Donate</a>
             </div>
 
             <!-- Mobile Toggler -->
@@ -431,7 +381,7 @@
                 <a class="sidebar-nav-link" href="<?php echo action('MainController@gallery'); ?>">Gallery</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('ethics') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Ethics</a>
+                <a class="sidebar-nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Image</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
                 <a class="sidebar-nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>
@@ -441,9 +391,6 @@
             </li>
         </ul>
 
-        <div class="sidebar-footer">
-            <a class="donate-btn" href="<?php echo action('MainController@donate'); ?>">Donate</a>
-        </div>
     </div>
 </body>
 </html>
