@@ -78,11 +78,29 @@
 .rb-principle-card h4 { color: #E31E24; font-size: 22px; margin-bottom: 15px; }
 .rb-principle-card p { color: #cbd5e0; font-size: 15px; }
 
+/* Impact Section */
+.rb-impact-section { padding: 80px 0; background: #fff; }
+.rb-impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.rb-impact-stat-card {
+    background: #fff;
+    padding: 40px 20px;
+    border-radius: 30px; /* Highly rounded as requested */
+    text-align: center;
+    border: 1px solid #eef2f6;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+.rb-impact-stat-card:hover { transform: translateY(-5px); }
+.rb-impact-stat-card h3 { font-size: 36px; color: #E31E24; font-weight: 800; margin-bottom: 10px; }
+.rb-impact-stat-card p { font-size: 15px; color: #4a5568; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.3; }
+
 @media (max-width: 991px) {
+    .rb-impact-grid { grid-template-columns: repeat(2, 1fr); }
     .rb-mission-grid, .rb-principles-grid { grid-template-columns: repeat(2, 1fr); }
     .rb-tree-grid { flex-direction: column; }
 }
 @media (max-width: 767px) {
+    .rb-impact-grid { grid-template-columns: 1fr; }
     .rb-mission-grid, .rb-principles-grid { grid-template-columns: 1fr; }
     .rb-vision-card { padding: 30px; }
     .rb-vision-card h2 { font-size: 32px; }
@@ -94,18 +112,41 @@
     <section class="rb-ethics-hero">
         <div class="container">
             <span class="rb-kicker" style="color:#ff8a00;">Lived Philosophy</span>
-            <h1>Our Vision & Image</h1>
+            <h1>Our Vision & Mission</h1>
             <p>Built with the courage, tears, and determination of thousands of survivors.</p>
         </div>
     </section>
 
     <!-- Vision -->
-    <section class="rb-vision-section">
+    <section class="rb-vision-section" style="padding-bottom: 40px;">
         <div class="container">
             <div class="rb-vision-card">
                 <span class="rb-kicker">Our Vision</span>
-                <h2>Zero Tolerance</h2>
-                <p>"A safe society with zero tolerance for sexual violence."</p>
+                <p style="font-style: normal; max-width: 900px;">The vision of Red Brigade Lucknow is to build a society where women live fearlessly with dignity, equality, justice, and freedom. The organization seeks to create a gender-just and socially harmonious society where women are recognized as leaders in shaping social transformation and nation-building.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="rb-impact-section">
+        <div class="container">
+            <div class="rb-impact-grid">
+                <div class="rb-impact-stat-card">
+                    <h3>3,00,000+</h3>
+                    <p>Women Trained in NISHASTRA</p>
+                </div>
+                <div class="rb-impact-stat-card">
+                    <h3>700+</h3>
+                    <p>Street Plays Performed</p>
+                </div>
+                <div class="rb-impact-stat-card">
+                    <h3>200+</h3>
+                    <p>Survivors Rehabilitated</p>
+                </div>
+                <div class="rb-impact-stat-card">
+                    <h3>20,000+</h3>
+                    <p>Lives Impacted Through Balmanch</p>
+                </div>
             </div>
         </div>
     </section>
@@ -115,7 +156,7 @@
         <div class="container">
             <div class="rb-gallery-header" style="text-align:center; margin-bottom:60px;">
                 <span class="rb-kicker">Our Purpose</span>
-                <h2>The Mission (Uddesh)</h2>
+                <h2>Mission</h2>
             </div>
             <div class="rb-mission-grid">
                 <div class="rb-mission-item">
@@ -203,12 +244,12 @@
             <h2>Our Ethical Commitments</h2>
             <div class="rb-principles-grid">
                 <div class="rb-principle-card">
-                    <h4>1. Survivor-Led Always</h4>
+                    <h4>1. Women-Led Always</h4>
                     <p>Red Brigade is not a service provider. It is a movement where survivors are the decision-makers, programme designers, trainers, and public faces. Every policy is developed with survivors at the center. This is non-negotiable.</p>
                 </div>
                 <div class="rb-principle-card">
                     <h4>2. Rejection of the Victim Mindset</h4>
-                    <p>We do not see the women and girls we work with as victims. We see survivors and leaders in formation. Our work is about recognising and unleashing the power every woman already carries within her.</p>
+                    <p>We do not see the women and girls we work with as survivors. We see survivors and leaders in formation. Our work is about recognising and unleashing the power every woman already carries within her.</p>
                 </div>
                 <div class="rb-principle-card">
                     <h4>3. Dignity & Confidentiality</h4>
@@ -220,7 +261,7 @@
                 </div>
                 <div class="rb-principle-card">
                     <h4>5. Collective Decision-Making</h4>
-                    <p>Re-registered in 2016 as an independent, survivor-led body after rejecting patriarchal control. Decision-making authority is held by the survivors and marginalised women who are our members.</p>
+                    <p>Registered in 2016 as an independent, survivor-led body after rejecting patriarchal control. Decision-making authority is held by the survivors and marginalised women who are our members.</p>
                 </div>
                 <div class="rb-principle-card">
                     <h4>6. Prevention Over Punishment</h4>

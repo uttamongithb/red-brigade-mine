@@ -333,7 +333,7 @@
                         <a class="nav-link" href="<?php echo action('MainController@gallery'); ?>">Gallery</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('ethics') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Image</a>
+                        <a class="nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Mission</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
                         <a class="nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>
@@ -381,7 +381,7 @@
                 <a class="sidebar-nav-link" href="<?php echo action('MainController@gallery'); ?>">Gallery</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('ethics') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Image</a>
+                <a class="sidebar-nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Mission</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
                 <a class="sidebar-nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>

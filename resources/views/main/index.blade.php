@@ -72,116 +72,450 @@
           </a>
     </div>
 
-    <!-- Fixed Overlay -->
-    <div class="rb-hero-overlay" style="position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; pointer-events: none;">
+    <!-- Impact Cards as Overlay -->
+    <section class="rb-impact-strip">
         <div class="container">
-            <div class="rb-hero-panel" style="margin-left:-10px; pointer-events: auto;">
-                <h1 id="dynamic-slider-title"><?php echo $heroSlides[0]['name']; ?></h1>
-                <p id="dynamic-slider-desc"><?php echo $heroSlides[0]['desc']; ?></p>
-                <div class="rb-hero-actions">
-                    <a href="<?php  echo action('MainController@contact')?>" class="boxed-btn donate rb-btn-primary" role="button">Join Now</a>
-                    <a href="<?php  echo action('MainController@donate')?>" class="boxed-btn rb-btn-secondary" role="button">Donate</a>
+            <div class="row justify-content-center">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="rb-impact-card">
+                        <h3>3,00,000+</h3>
+                        <p>Women Trained in NISHASTRA</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    
-</header>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    var slider = document.getElementById('carouselExampleIndicators');
-    if (!slider || typeof window.jQuery === 'undefined') {
-        return;
-    }
-
-    var slideData = <?php echo json_encode($heroSlides); ?>;
-    
-    window.jQuery(slider).on('slide.bs.carousel', function (e) {
-        var nextIndex = e.to;
-        if(slideData[nextIndex]) {
-            document.getElementById('dynamic-slider-title').innerText = slideData[nextIndex].name;
-            document.getElementById('dynamic-slider-desc').innerText = slideData[nextIndex].desc;
-        }
-    });
-
-    window.jQuery(slider).carousel({
-        interval: 4000,
-        pause: false,
-        wrap: true
-    });
-});
-</script>
-<!-- header area end  -->
-
-<section class="rb-impact-strip">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-lg-3">
-                <div class="rb-impact-card">
-                    <h3>3,00,000+</h3>
-                    <p>Women Trained in NISHASTRA</p>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="rb-impact-card">
+                        <h3>700+</h3>
+                        <p>Street Plays Performed</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="rb-impact-card">
-                    <h3>700+</h3>
-                    <p>Street Plays Performed</p>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="rb-impact-card">
+                        <h3>200+</h3>
+                        <p>Survivors Rehabilitated</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="rb-impact-card">
-                    <h3>200+</h3>
-                    <p>Survivors Rehabilitated</p>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="rb-impact-card">
+                        <h3>20,000+</h3>
+                        <p>Lives Impacted Through Balmanch</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="rb-impact-card">
-                    <h3>20,000+</h3>
-                    <p>Lives Impacted Through Balmanch</p>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="rb-impact-card">
+                        <h3>500+</h3>
+                        <p>Institutions (Schools + Colleges)</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- Start About us Section  -->
-
-<section class="about_us_section rb-section rb-about">
-    <div class="container-fluid">
-        <div class="rb-about-card">
-        <div class="row rb-about-grid">
-            <div class="col-md-6 rb-about-copy">
-                <div class="redbrigade-section-heading">
-                <h5 class="top-heading heading-bar-bottom">About us</h5>
-                <h2 class="main-heading">WE ARE REDBRIGADE LUCKNOW</h2>
-                <div class="sub-heading">Fight against sexual violence and train women in self-defense through NISHATRA.</div>
-                <div class="desc">
-                    <ul class="about-list">
-                        <li><i class="fas fa-check"></i> Red Brigade Lucknow is committed to FLOW (Fearless Life Of Women) and to building a society with zero tolerance toward sexual violence.</li>
-                        <li><i class="fas fa-check"></i> Creating women leadership through training, confidence building, and sustained public action.</li>
-                        <li><i class="fas fa-check"></i> Raising a strong voice against sexual violence through 700+ street plays and 225 seminars across institutions.</li>
-                        <li><i class="fas fa-check"></i> Supporting survivors through rehabilitation of more than 200 sexual violence survivors, including rape victims.</li>
-                        <li><i class="fas fa-check"></i> Bringing women’s role in India’s freedom struggle into public awareness through National Women’s Day initiatives.</li>
-                        <li><i class="fas fa-check"></i> Advancing economic self-sufficiency with skill development programs for 300+ women.</li>
-                    </ul>
-                    <div class="btn-wrapper">
-                        <a href="<?php echo action('MainController@about')?>" class="boxed-btn">Learn More</a>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="rb-impact-card">
+                        <h3>500+</h3>
+                        <p>Villages Covered</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="rb-impact-card">
+                        <h3>20+</h3>
+                        <p>States Reached</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="rb-impact-card">
+                        <h3>2000+</h3>
+                        <p>Seminars & Workshops Conducted</p>
                     </div>
                 </div>
             </div>
-            </div>
-            
-            <div class="col-md-6 rb-about-media">
-                <div class="about-image"></div>
-            </div>
-
         </div>
+    </section>
+    
+</header>
+
+<!-- Start Vision & Mission Section -->
+<style>
+    .rb-vision-mission-modern {
+        padding: 80px 0 30px;
+        position: relative;
+        z-index: 5;
+    }
+
+    .rb-vm-card {
+        background: #ffffff;
+        border-radius: var(--rb-radius-lg);
+        padding: 50px 45px;
+        height: 100%;
+        box-shadow: var(--rb-shadow-md);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(14, 32, 56, 0.04);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        z-index: 1;
+    }
+
+    .rb-vm-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--rb-shadow-lg);
+    }
+
+    .rb-vm-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        z-index: 2;
+    }
+
+    .rb-vm-card.mission-card::before {
+        background: linear-gradient(90deg, #111827, #374151);
+    }
+
+    .rb-vm-card.vision-card::before {
+        background: linear-gradient(90deg, var(--rb-brand), var(--rb-brand-dark));
+    }
+
+    .rb-vm-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        margin-bottom: 26px;
+    }
+
+    .mission-card .rb-vm-icon {
+        color: #111827;
+        background: #f3f4f6;
+    }
+
+    .vision-card .rb-vm-icon {
+        color: var(--rb-brand);
+        background: #fff5f5;
+    }
+
+    .rb-vm-kicker {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--rb-muted);
+        margin-bottom: 10px;
+    }
+
+    .rb-vm-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 40px;
+        margin-bottom: 22px;
+        color: var(--rb-ink);
+        line-height: 1.15;
+    }
+
+    .rb-vm-accent {
+        font-style: normal;
+    }
+
+    .mission-card .rb-vm-accent {
+        color: #111827;
+    }
+
+    .vision-card .rb-vm-accent {
+        color: var(--rb-brand);
+    }
+
+    .rb-vm-text {
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4a5568;
+        margin: 0;
+    }
+
+    @media screen and (max-width: 991px) {
+        .rb-vm-card {
+            padding: 40px 30px;
+        }
+        .rb-vm-title {
+            font-size: 34px;
+        }
+        .rb-vm-text {
+            font-size: 16px;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .rb-vision-mission-modern {
+            padding: 60px 0 20px;
+        }
+        .rb-vm-card {
+            padding: 35px 25px;
+        }
+    }
+</style>
+
+<section class="rb-vision-mission-modern">
+    <div class="container">
+        <div class="row">
+            <!-- Mission -->
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="rb-vm-card mission-card">
+                    <div class="rb-vm-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <span class="rb-vm-kicker">Our Purpose</span>
+                    <h2 class="rb-vm-title">The <em class="rb-vm-accent">Mission</em></h2>
+                    <p class="rb-vm-text">To empower adolescent girls and women—especially survivors of sexual violence from marginalized communities—through preventive self-defense (NISHASTRA), survivor-led leadership, and access to justice. We are dedicated to dismantling patriarchal mindsets and building a society where women stand strong with an unshakeable sense of dignity.</p>
+                </div>
+            </div>
+            <!-- Vision -->
+            <div class="col-lg-6">
+                <div class="rb-vm-card vision-card">
+                    <div class="rb-vm-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <span class="rb-vm-kicker">Our Future</span>
+                    <h2 class="rb-vm-title">The <em class="rb-vm-accent">Vision</em></h2>
+                    <p class="rb-vm-text"><strong>"A safe society with zero tolerance for sexual violence."</strong><br><br>The vision of Red Brigade Lucknow is to build a society where women live fearlessly with dignity, equality, justice, and freedom. The organization seeks to create a gender-just and socially harmonious society where women are recognized as leaders in shaping social transformation and nation-building.</p>
+                </div>
+            </div>
         </div>
     </div>
-    
 </section>
+
+<!-- Start Premium Overlapping About Section -->
+<style>
+    .rb-about-premium {
+        padding: 110px 0;
+        background-color: #fdfdfd;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .rb-about-container {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .rb-about-img-wrap {
+        flex: 0 0 45%;
+        max-width: 45%;
+        position: relative;
+        z-index: 2; /* Increased z-index to stay above the card if they overlap */
+    }
+
+    .rb-about-img-wrap img {
+        width: 100%;
+        height: 580px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .rb-about-badge {
+        position: absolute;
+        bottom: 40px; /* Moved up to be fully inside the image area */
+        left: -30px; /* Moved to the left side to avoid the overlapping card */
+        background: linear-gradient(135deg, #ff414d 0%, #E31E24 100%);
+        color: #fff;
+        padding: 30px 35px;
+        border-radius: 12px;
+        box-shadow: 0 15px 30px rgba(227, 30, 36, 0.3);
+        text-align: center;
+        border: 5px solid #fff;
+        z-index: 5;
+    }
+
+    .rb-about-badge .year {
+        display: block;
+        font-size: 42px;
+        font-weight: 800;
+        line-height: 1;
+        margin-bottom: 5px;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .rb-about-badge .text {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .rb-about-content-box {
+        flex: 0 0 60%;
+        max-width: 60%;
+        margin-left: -5%; /* Overlap image */
+        background: #fff;
+        padding: 65px 70px;
+        border-radius: 12px;
+        box-shadow: 0 30px 60px rgba(14, 32, 56, 0.08);
+        position: relative;
+        z-index: 3; /* Ensure content is above image */
+        border-left: 6px solid #E31E24;
+    }
+
+    .rb-about-kicker {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #E31E24;
+        margin-bottom: 15px;
+    }
+
+    .rb-about-heading {
+        font-family: 'Playfair Display', serif;
+        font-size: 44px;
+        line-height: 1.15;
+        color: #111827;
+        margin-bottom: 25px;
+    }
+
+    .rb-about-heading em {
+        color: #E31E24;
+        font-style: normal;
+    }
+
+    .rb-about-desc {
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4b5563;
+        margin-bottom: 35px;
+    }
+
+    .rb-about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+        list-style: none;
+        padding: 0;
+    }
+
+    .rb-about-grid li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 16px;
+        color: #1f2937;
+        font-weight: 600;
+    }
+
+    .rb-about-grid i {
+        color: #E31E24; /* Red checkmark */
+        font-size: 20px;
+    }
+
+    /* Fixed Button Styling */
+    .rb-about-content-box .btn-wrapper {
+        margin-top: 15px;
+    }
+    
+    .rb-about-discover-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 38px;
+        height: 58px;
+        font-size: 16px;
+        border-radius: 999px;
+        color: #ffffff !important;
+        text-decoration: none !important;
+        background: linear-gradient(120deg, #E31E24 0%, #b3141b 100%);
+        border: none;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(227, 30, 36, 0.25);
+    }
+
+    .rb-about-discover-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgba(227, 30, 36, 0.4);
+        color: #ffffff !important;
+    }
+
+    .rb-about-discover-btn i {
+        font-size: 14px;
+        transition: transform 0.3s ease;
+    }
+
+    .rb-about-discover-btn:hover i {
+        transform: translateX(4px);
+    }
+
+    @media (max-width: 1199px) {
+        .rb-about-content-box { padding: 50px; }
+        .rb-about-heading { font-size: 38px; }
+    }
+
+    @media (max-width: 991px) {
+        .rb-about-container { flex-direction: column; }
+        .rb-about-img-wrap { flex: 0 0 100%; max-width: 100%; margin-bottom: 40px; }
+        .rb-about-badge { left: 20px; bottom: -20px; }
+        .rb-about-content-box { 
+            flex: 0 0 100%; 
+            max-width: 100%; 
+            margin-left: 0; 
+            margin-top: -60px; 
+            padding: 45px 35px; 
+        }
+    }
+
+    @media (max-width: 767px) {
+        .rb-about-premium { padding: 70px 0; }
+        .rb-about-img-wrap img { height: 400px; }
+        .rb-about-badge { padding: 20px; border-width: 3px; left: 10px; }
+        .rb-about-badge .year { font-size: 32px; }
+        .rb-about-grid { grid-template-columns: 1fr; gap: 15px; }
+        .rb-about-content-box { 
+            padding: 35px 25px; 
+            border-left: none; 
+            border-top: 5px solid #E31E24; 
+        }
+        .rb-about-heading { font-size: 32px; }
+        .rb-about-desc { font-size: 16px; }
+    }
+</style>
+
+<section class="rb-about-premium">
+    <div class="rb-about-container">
+        <!-- Image & Badge Column -->
+        <div class="rb-about-img-wrap">
+            <img src="<?php echo asset('uploads/img/about-left-image.jpg'); ?>" alt="Red Brigade Lucknow Impact">
+            <div class="rb-about-badge">
+                <span class="year">10+</span>
+                <span class="text">Years of<br>Impact</span>
+            </div>
+        </div>
+
+        <!-- Overlapping Content Card -->
+        <div class="rb-about-content-box">
+            <span class="rb-about-kicker">Who We Are</span>
+            <h2 class="rb-about-heading">We Are <em class="rb-about-accent">Red Brigade Lucknow</em></h2>
+            <p class="rb-about-desc">We fight against sexual violence and train women in self-defense through our specialized program, NISHATRA. Our commitment is to empower women and build a society with zero tolerance toward sexual violence.</p>
+            
+            <ul class="rb-about-grid">
+                <li><i class="fas fa-check-circle"></i> Committed to F.L.O.W.</li>
+                <li><i class="fas fa-check-circle"></i> Survivor-Led Leadership</li>
+                <li><i class="fas fa-check-circle"></i> 700+ Street Plays</li>
+                <li><i class="fas fa-check-circle"></i> 200+ Rehabilitated</li>
+            </ul>
+
+            <div class="btn-wrapper">
+                <a href="<?php echo action('MainController@about')?>" class="rb-about-discover-btn">Discover More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Premium Overlapping About Section -->
 
 <!-- Recent Work area start  -->
     
