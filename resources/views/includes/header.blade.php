@@ -114,7 +114,7 @@
         align-items: center;
         justify-content: center;
         margin: 0 15px;
-        overflow: hidden; /* Hide overflow if screen is extremely weird */
+        /* Removed overflow: hidden; because it clips the dropdown menu */
     }
 
     .navbar-area .navbar-nav {
@@ -142,6 +142,46 @@
     .navbar-area .nav-item.active .nav-link,
     .navbar-area .nav-item .nav-link:hover {
         color: #000000 !important; 
+    }
+
+    /* Custom Dropdown Styling */
+    @media (min-width: 1281px) {
+        .navbar-area .rb-custom-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 5px;
+            padding: 10px 0;
+            background: #ffffff;
+            border-radius: 8px;
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+            min-width: 220px;
+            z-index: 999999 !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+        }
+        .navbar-area .rb-custom-menu.rb-show {
+            display: block !important;
+            visibility: visible !important;
+            animation: fadeIn 0.2s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .navbar-area .dropdown-item {
+            display: block;
+            padding: 10px 20px;
+            color: #173455;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-decoration: none !important;
+        }
+        .navbar-area .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #E31E24 !important;
+        }
     }
 
     /* Mobile Toggler */
@@ -283,6 +323,33 @@
                 toggleMenu();
             }
         });
+
+        // Custom Dropdown Click Handler for Desktop
+        const dropdownToggle = document.getElementById('rbDropdownToggle');
+        const dropdownMenu = document.getElementById('rbDropdownMenu');
+
+        if (dropdownToggle && dropdownMenu) {
+            dropdownToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Close others if they exist (we only have one, but good practice)
+                const isShowing = dropdownMenu.classList.contains('rb-show');
+                
+                if (isShowing) {
+                    dropdownMenu.classList.remove('rb-show');
+                } else {
+                    dropdownMenu.classList.add('rb-show');
+                }
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('rb-show');
+                }
+            });
+        }
     });
     </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -317,8 +384,17 @@
                     <li class="nav-item <?php echo Request::is('about') ? 'active' : ''; ?>">
                         <a class="nav-link" href="<?php echo action('MainController@about'); ?>">About Us</a>
                     </li>
-                    <li class="nav-item <?php echo Request::is('event') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo action('MainController@event'); ?>">Our Work</a>
+                    <li class="nav-item rb-custom-dropdown <?php echo Request::is('event') ? 'active' : ''; ?>" style="position: relative;">
+                        <a class="nav-link" href="#" id="rbDropdownToggle">
+                            Our Work <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 3px;"></i>
+                        </a>
+                        <div class="rb-custom-menu shadow border-0" id="rbDropdownMenu">
+                            <a class="dropdown-item py-2" href="<?php echo action('MainController@event'); ?>" style="font-weight: 600; color: #173455;">Ongoing Work</a>
+                            <a class="dropdown-item py-2" href="#" style="font-weight: 600; color: #173455;">Previous Work</a>
+                            <a class="dropdown-item py-2" href="#" style="font-weight: 600; color: #173455;">Upcoming Work</a>
+                            <a class="dropdown-item py-2" href="#" style="font-weight: 600; color: #173455;">Educations</a>
+                            <a class="dropdown-item py-2" href="<?php echo action('MainController@skills'); ?>" style="font-weight: 600; color: #173455;">Skills</a>
+                        </div>
                     </li>
                     <li class="nav-item <?php echo Request::is('blog') ? 'active' : ''; ?>">
                         <a class="nav-link" href="<?php echo action('MainController@blog'); ?>">Blog</a>
@@ -337,6 +413,9 @@
                     </li>
                     <li class="nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
                         <a class="nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>
+                    </li>
+                    <li class="nav-item <?php echo Request::is('partners') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="#">Our Partners</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('contact') ? 'active' : ''; ?>">
                         <a class="nav-link" href="<?php echo action('MainController@contact'); ?>">Contact us</a>
@@ -366,7 +445,16 @@
                 <a class="sidebar-nav-link" href="<?php echo action('MainController@about'); ?>">About Us</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('event') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="<?php echo action('MainController@event'); ?>">Our Work</a>
+                <div style="font-size: 18px; font-weight: 700; color: #E31E24; padding: 16px 30px; border-bottom: 1px solid #f9f9f9; display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none';">
+                    Our Work <i class="fas fa-chevron-down" style="font-size: 14px;"></i>
+                </div>
+                <ul style="list-style: none; padding-left: 20px; margin: 0; display: none; background: #fffafa;">
+                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="<?php echo action('MainController@event'); ?>">Ongoing Work</a></li>
+                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="#">Past Work</a></li>
+                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="#">Upcoming Work</a></li>
+                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="#">Educations</a></li>
+                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: 1px solid #f9f9f9;" href="<?php echo action('MainController@skills'); ?>">Skills</a></li>
+                </ul>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('blog') ? 'active' : ''; ?>">
                 <a class="sidebar-nav-link" href="<?php echo action('MainController@blog'); ?>">Blog</a>
@@ -385,6 +473,9 @@
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
                 <a class="sidebar-nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>
+            </li>
+            <li class="sidebar-nav-item <?php echo Request::is('partners') ? 'active' : ''; ?>">
+                <a class="sidebar-nav-link" href="#">Our Partners</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('contact') ? 'active' : ''; ?>">
                 <a class="sidebar-nav-link" href="<?php echo action('MainController@contact'); ?>">Contact us</a>

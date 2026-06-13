@@ -6,13 +6,39 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="footer-about">
-                        <div class="footer-brand-wrap">
+                        <div class="footer-brand-wrap" style="display: flex; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap;">
                             <img src="<?php echo URL::asset('uploads/img/logo.png')?>" alt="Red Brigade Logo" class="footer-brand-logo" style="width: 250px; height: auto;">
+                            <a class="donate-btn" href="<?php echo action('MainController@donate'); ?>" style="margin-top: 0;">Donate</a>
                         </div>
                         <p class="footer-about-text">
                             Red Brigade Lucknow is dedicated to providing a safe, empowering, and action-focused
                             learning environment where girls and women can build confidence through self-defence training.
                         </p>
+                        <style>
+                            .footer-area .donate-btn {
+                                display: inline-block;
+                                text-align: center;
+                                height: 44px;
+                                line-height: 40px;
+                                font-size: 15px;
+                                border-radius: 4px;
+                                color: #ffffff !important;
+                                background-color: #E31E24 !important;
+                                padding: 0px 35px;
+                                text-transform: uppercase;
+                                font-weight: 800;
+                                transition: all 0.3s ease;
+                                border: 2px solid #E31E24;
+                                letter-spacing: 0.5px;
+                            }
+                            .footer-area .donate-btn:hover {
+                                background-color: #ffffff !important;
+                                border-color: #ffffff !important;
+                                color: #E31E24 !important;
+                                transform: translateY(-2px);
+                                box-shadow: 0 5px 15px rgba(227, 30, 36, 0.3);
+                            }
+                        </style>
                         <ul class="footer-social">
                             <li><a href="https://www.facebook.com/redbrigade.lucknow" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="https://twitter.com/redbrigadel" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a></li>
@@ -62,33 +88,6 @@
                                 </a>
                             </li>
                         </ul>
-                        <style>
-                            .footer-area .donate-btn {
-                                display: inline-block;
-                                text-align: center;
-                                height: 44px;
-                                line-height: 40px;
-                                font-size: 15px;
-                                border-radius: 4px;
-                                color: #ffffff !important;
-                                background-color: #E31E24 !important;
-                                padding: 0px 35px;
-                                text-transform: uppercase;
-                                font-weight: 800;
-                                transition: all 0.3s ease;
-                                border: 2px solid #E31E24;
-                                margin-top: 25px;
-                                letter-spacing: 0.5px;
-                            }
-                            .footer-area .donate-btn:hover {
-                                background-color: #ffffff !important;
-                                border-color: #ffffff !important;
-                                color: #E31E24 !important;
-                                transform: translateY(-2px);
-                                box-shadow: 0 5px 15px rgba(227, 30, 36, 0.3);
-                            }
-                        </style>
-                        <a class="donate-btn" href="<?php echo action('MainController@donate'); ?>">Donate</a>
                     </div>
                 </div>
             </div>

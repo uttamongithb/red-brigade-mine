@@ -55,6 +55,15 @@ class RealDataSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
+            [
+                'name' => 'Meera Singh',
+                'image' => 'sunshine-testimonial-317.jpg',
+                'description' => 'Former Lead Coordinator. Meera played a pivotal role in the early days of Red Brigade, helping establish the first self-defense camps.',
+                'type' => 'Executive',
+                'status' => 0,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
         ];
         DB::table('testimonial')->insert($team);
 

@@ -60,6 +60,11 @@ class MainController extends Controller {
 	public function achievements()
 	{
 	    return view('main.achievements');
+	}
+
+	public function skills()
+	{
+	    return view('main.skills');
 	} 
 
 	public function event()

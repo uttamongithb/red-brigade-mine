@@ -209,11 +209,18 @@
         URL::asset('uploads/testimonial/sunshine-testimonial-393.jpg'),
     ];
 
-    $normalizeTeamMembers = function ($members) use ($teamPlaceholder, $teamImagePool) {
+    $normalizeTeamMembers = function ($members, $targetStatus = null) use ($teamPlaceholder, $teamImagePool) {
         $items = [];
         if (empty($members)) return $items;
 
-        foreach ($members as $index => $member) {
+        $index = 0;
+        foreach ($members as $member) {
+            // Check status if targetStatus is provided (assume 1 if not set)
+            $status = is_array($member) ? ($member['status'] ?? 1) : ($member->status ?? 1);
+            if ($targetStatus !== null && $status != $targetStatus) {
+                continue;
+            }
+
             $name = is_array($member) ? ($member['name'] ?? 'Team Member') : ($member->name ?? 'Team Member');
             $role = is_array($member) ? ($member['role'] ?? strip_tags($member['description'] ?? 'Member')) : (isset($member->description) ? strip_tags($member->description) : ($member->role ?? 'Member'));
             
@@ -225,11 +232,13 @@
             }
 
             $items[] = ['name' => $name, 'role' => $role, 'image' => $image];
+            $index++;
         }
         return $items;
     };
 
-    $allMembers = $normalizeTeamMembers($alltestimonial ?? []);
+    $activeMembers = $normalizeTeamMembers($alltestimonial ?? [], 1);
+    $alumniMembers = $normalizeTeamMembers($alltestimonial ?? [], 0);
 @endphp
 
 <div class="rb-team-page-modern">
@@ -245,8 +254,12 @@
     <!-- Main Team Grid -->
     <section class="rb-team-section">
         <div class="container">
+            <div class="rb-section-header" style="text-align: center;">
+                <h2>Active Members</h2>
+                <p style="margin: 0 auto;">The leaders currently driving our mission forward.</p>
+            </div>
             <div class="rb-member-grid">
-                @foreach ($allMembers as $member)
+                @foreach ($activeMembers as $member)
                     <article class="rb-member-card">
                         <div class="rb-member-image">
                             <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
@@ -261,14 +274,30 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="rb-team-intro" style="padding: 100px 0; border-top: 1px solid #eef2f6;">
-        <div class="container text-center">
-            <h2 style="font-size: 42px; margin-bottom: 20px;">Join Our Mission</h2>
-            <p style="font-size: 18px; color: #4a5568; max-width: 600px; margin: 0 auto 40px;">Whether as a volunteer, supporter, or ally, you can be part of the change we are building together.</p>
-            <a href="<?php echo action('MainController@contact'); ?>" style="display: inline-block; padding: 16px 40px; background: #E31E24; color: #fff; font-weight: 700; border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.backgroundColor='#1f2f46'" onmouseout="this.style.backgroundColor='#E31E24'">Get Involved</a>
+    <!-- Alumni Section -->
+    @if(count($alumniMembers) > 0)
+    <section class="rb-team-section" style="background: #f8fafc;">
+        <div class="container">
+            <div class="rb-section-header" style="text-align: center;">
+                <h2>Our Alumni</h2>
+                <p style="margin: 0 auto;">Honoring the legacy of those who helped build the foundation of Red Brigade.</p>
+            </div>
+            <div class="rb-member-grid">
+                @foreach ($alumniMembers as $member)
+                    <article class="rb-member-card">
+                        <div class="rb-member-image" style="filter: grayscale(100%);">
+                            <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
+                        </div>
+                        <div class="rb-member-info">
+                            <h4 class="rb-member-name">{{ $member['name'] }}</h4>
+                            <p class="rb-member-role">{{ $member['role'] }}</p>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
         </div>
     </section>
+    @endif
 </div>
 
 @include('includes.footer')

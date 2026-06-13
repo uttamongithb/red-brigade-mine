@@ -59,10 +59,13 @@
 
 /* Mission / Uddesh */
 .rb-mission-section { padding: 100px 0; background: #f8fafc; }
-.rb-mission-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-.rb-mission-item { background: #fff; padding: 35px; border-radius: 16px; border: 1px solid #eef2f6; }
-.rb-mission-item i { color: #E31E24; font-size: 24px; margin-bottom: 15px; display: block; }
-.rb-mission-item h4 { font-size: 20px; margin-bottom: 12px; }
+.rb-mission-v2-section { padding: 100px 0; background: #0f172a; color: #fff; }
+.rb-mission-v2-section h2 { color: #fff; font-size: 42px; margin-bottom: 60px; text-align: center; }
+.rb-mission-v2-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.rb-mission-v2-item { background: transparent; padding: 0; border: none; }
+.rb-mission-v2-item i { color: #E31E24; font-size: 28px; margin-bottom: 20px; display: block; }
+.rb-mission-v2-item h4 { color: #E31E24; font-size: 22px; margin-bottom: 15px; }
+.rb-mission-v2-item p { color: #cbd5e0; font-size: 15px; line-height: 1.6; }
 
 /* Tree Section */
 .rb-tree-section { padding: 100px 0; background: #fff; }
@@ -78,30 +81,12 @@
 .rb-principle-card h4 { color: #E31E24; font-size: 22px; margin-bottom: 15px; }
 .rb-principle-card p { color: #cbd5e0; font-size: 15px; }
 
-/* Impact Section */
-.rb-impact-section { padding: 80px 0; background: #fff; }
-.rb-impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.rb-impact-stat-card {
-    background: #fff;
-    padding: 40px 20px;
-    border-radius: 30px; /* Highly rounded as requested */
-    text-align: center;
-    border: 1px solid #eef2f6;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
-}
-.rb-impact-stat-card:hover { transform: translateY(-5px); }
-.rb-impact-stat-card h3 { font-size: 36px; color: #E31E24; font-weight: 800; margin-bottom: 10px; }
-.rb-impact-stat-card p { font-size: 15px; color: #4a5568; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.3; }
-
 @media (max-width: 991px) {
-    .rb-impact-grid { grid-template-columns: repeat(2, 1fr); }
-    .rb-mission-grid, .rb-principles-grid { grid-template-columns: repeat(2, 1fr); }
+    .rb-mission-grid, .rb-principles-grid, .rb-mission-v2-grid { grid-template-columns: repeat(2, 1fr); }
     .rb-tree-grid { flex-direction: column; }
 }
 @media (max-width: 767px) {
-    .rb-impact-grid { grid-template-columns: 1fr; }
-    .rb-mission-grid, .rb-principles-grid { grid-template-columns: 1fr; }
+    .rb-mission-grid, .rb-principles-grid, .rb-mission-v2-grid { grid-template-columns: 1fr; }
     .rb-vision-card { padding: 30px; }
     .rb-vision-card h2 { font-size: 32px; }
     .rb-vision-card p { font-size: 18px; }
@@ -127,64 +112,37 @@
         </div>
     </section>
 
-    <!-- Impact Stats -->
-    <section class="rb-impact-section">
-        <div class="container">
-            <div class="rb-impact-grid">
-                <div class="rb-impact-stat-card">
-                    <h3>3,00,000+</h3>
-                    <p>Women Trained in NISHASTRA</p>
-                </div>
-                <div class="rb-impact-stat-card">
-                    <h3>700+</h3>
-                    <p>Street Plays Performed</p>
-                </div>
-                <div class="rb-impact-stat-card">
-                    <h3>200+</h3>
-                    <p>Survivors Rehabilitated</p>
-                </div>
-                <div class="rb-impact-stat-card">
-                    <h3>20,000+</h3>
-                    <p>Lives Impacted Through Balmanch</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Mission / Uddesh -->
-    <section class="rb-mission-section">
+    <section class="rb-mission-v2-section">
         <div class="container">
-            <div class="rb-gallery-header" style="text-align:center; margin-bottom:60px;">
-                <span class="rb-kicker">Our Purpose</span>
-                <h2>Mission</h2>
-            </div>
-            <div class="rb-mission-grid">
-                <div class="rb-mission-item">
+            <h2>Mission</h2>
+            <div class="rb-mission-v2-grid">
+                <div class="rb-mission-v2-item">
                     <i class="fas fa-users"></i>
                     <h4>Empowerment</h4>
                     <p>To empower adolescent girls and young women from marginalised communities — particularly Dalit, Muslim, and OBC communities — who are survivors of sexual violence.</p>
                 </div>
-                <div class="rb-mission-item">
+                <div class="rb-mission-v2-item">
                     <i class="fas fa-crown"></i>
                     <h4>Survivor Leadership</h4>
                     <p>To foster survivor-led leadership so that lived experience of victimisation becomes a source of strength and systemic change.</p>
                 </div>
-                <div class="rb-mission-item">
+                <div class="rb-mission-v2-item">
                     <i class="fas fa-shield-alt"></i>
                     <h4>NISHASTRA</h4>
                     <p>To develop and deliver preventive self-defense (NISHASTRA) as a practical tool and a psychological shield against sexual violence.</p>
                 </div>
-                <div class="rb-mission-item">
+                <div class="rb-mission-v2-item">
                     <i class="fas fa-dismantle"></i>
                     <h4>Dismantling Mindsets</h4>
                     <p>To dismantle the victim mindset created by patriarchal conditioning and replace it with an unshakeable sense of self-image.</p>
                 </div>
-                <div class="rb-mission-item">
+                <div class="rb-mission-v2-item">
                     <i class="fas fa-gavel"></i>
                     <h4>Access to Justice</h4>
                     <p>To ensure that every survivor has access to justice through police, legal aid, and the courts, ensuring no one faces the system alone.</p>
                 </div>
-                <div class="rb-mission-item">
+                <div class="rb-mission-v2-item">
                     <i class="fas fa-tree"></i>
                     <h4>Building Trees</h4>
                     <p>To build a society where women are trees — with deep roots, strong trunks, and branches that reach the sky — not potted plants kept for decoration.</p>

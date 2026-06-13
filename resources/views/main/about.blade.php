@@ -291,39 +291,6 @@
     margin: 0;
 }
 
-/* Join Section */
-.rb-join-section {
-    padding: 100px 0;
-    text-align: center;
-    background: #fff;
-}
-.rb-join-section h2 {
-    font-size: 42px;
-    margin-bottom: 20px;
-}
-.rb-join-section p {
-    font-size: 18px;
-    color: #4a5568;
-    max-width: 600px;
-    margin: 0 auto 40px;
-}
-.rb-btn {
-    display: inline-block;
-    padding: 15px 35px;
-    background: #E31E24;
-    color: #fff;
-    font-weight: 700;
-    border-radius: 50px;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: 0.3s;
-}
-.rb-btn:hover {
-    background: #1f2f46;
-    color: #fff;
-}
-
 @media (max-width: 991px) {
     .rb-mission-grid { flex-direction: column; }
     .rb-gallery-grid { grid-template-columns: repeat(2, 1fr); }
@@ -331,26 +298,65 @@
     .rb-video-wrapper { flex-direction: column; padding: 40px; text-align: center; }
     .rb-video-thumbnail-container { width: 100%; }
 }
-@media (max-width: 767px) {
-    .rb-gallery-grid { grid-template-columns: 1fr; }
-    .rb-about-hero h1 { font-size: 42px; }
-    .rb-mission-text h2 { font-size: 36px; }
-    .rb-mission-images { grid-template-columns: 1fr; }
-    .rb-mission-images .img-tall { grid-row: auto; }
-    .rb-video-wrapper { padding: 30px 20px; }
+
+/* Impact Section - Ethical Commitments Style */
+.rb-impact-section {
+    padding: 100px 0;
+    background: #1f2f46;
+    color: #fff;
 }
-.rb-lead-text { font-size: 22px; font-family: 'Playfair Display', serif; color: #1f2f46; margin-bottom: 20px; line-height: 1.4; }
-.rb-mission-quote { font-size: 20px; font-style: italic; color: #E31E24; border-left: 4px solid #E31E24; padding-left: 20px; margin: 30px 0; font-family: 'Playfair Display', serif; line-height: 1.6; }
-.rb-mission-box { background: #f8fafc; padding: 25px; border-radius: 12px; font-size: 16px; color: #1f2f46; border: 1px solid #e2e8f0; line-height: 1.7; margin-top: 30px; }
-.rb-mission-box strong { color: #E31E24; font-size: 18px; display: block; margin-bottom: 8px; font-family: 'Playfair Display', serif; }
+.rb-impact-section h2 {
+    color: #fff;
+    font-size: 42px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.rb-impact-section .rb-lead {
+    color: #cbd5e0;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.rb-impact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+.rb-impact-card h4 {
+    color: #E31E24;
+    font-size: 18px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+}
+.rb-impact-card h4 i {
+    margin-right: 10px;
+    margin-top: 4px;
+    font-size: 16px;
+}
+.rb-impact-card p {
+    color: #cbd5e0;
+    font-size: 15px;
+    line-height: 1.6;
+}
+@media (max-width: 1199px) {
+    .rb-impact-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 767px) {
+    .rb-impact-grid { grid-template-columns: 1fr; }
+    .rb-impact-section h2 { font-size: 32px; }
+}
 </style>
 
 <div class="rb-about-page">
     <!-- Hero Section -->
     <section class="rb-about-hero">
         <div class="container">
-            <h1>Our Story</h1>
-            <p>Empowering women, fighting sexual violence, and building a fearless society.</p>
+            <h1>ABOUT US</h1>
+            <p>WE ARE RED BRIGADE LUCKNOW</p>
         </div>
     </section>
 
@@ -372,15 +378,78 @@
                         "Empowerment starts with safety and dignity. We believe every woman has the right to live without fear."
                     </blockquote>
                     <p>We combine direct action with community education to dismantle the culture of violence. Through dedicated self-defense training, immersive street plays, and unwavering solidarity, we are actively reclaiming our narrative and creating a safer world for all.</p>
-                    <div class="rb-mission-box">
-                        <strong>Our Key Areas:</strong>
-                        <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
-                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Self-Defense Training (NISHATRA)</li>
-                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Survivor Support & Rehabilitation</li>
-                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Awareness Through Street Plays (Nukkad Natak)</li>
-                            <li><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 8px;"></i> Women Leadership & Advocacy</li>
-                        </ul>
-                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact & Story Section -->
+    <section class="rb-impact-section">
+        <div class="container">
+            <span class="rb-kicker" style="text-align:center; color:#E31E24; display:block;">Our Journey</span>
+            <h2>WE ARE RED BRIGADE LUCKNOW</h2>
+            <p class="rb-lead">A Survivor-Led Movement Building a Fearless Life of Women (FLOW)</p>
+            
+            <div class="rb-impact-grid">
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> Founded by Survivors</h4>
+                    <p>Founded in 2011 by Usha Vishwakarma and 15 adolescent girls, Red Brigade Lucknow has grown into a nationally recognized survivor-led movement working towards a society with Zero Tolerance towards Sexual Violence.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> Leadership Transformation</h4>
+                    <p>Transforming Victims into Survivors, Survivors into Leaders, and Leaders into Agents of Social Change through self-defense, self-image building, justice, education, leadership, and economic empowerment.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> NISHASTRA Impact</h4>
+                    <p>Trained more than 3,00,000 women and girls through NISHASTRA (New Instrument against Sexual Harassment and Stand Against Rape Aggression), a survivor-informed self-defense model developed from real-life experiences of women.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> Grassroots Reach</h4>
+                    <p>Built a grassroots movement spanning 20+ States, 500+ Villages, and 500+ Educational Institutions including schools and colleges, empowering women and girls through collective action and leadership.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> Powerful Network</h4>
+                    <p>Developed a strong network of trainers, volunteers, survivors, educators, social activists, legal professionals, and community leaders working together to create safer communities for women.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> Comprehensive Support</h4>
+                    <p>Supported and rehabilitated more than 200 survivors of sexual violence, domestic abuse, harassment, and gender-based violence through counseling, legal aid, rehabilitation, education support, and access to justice.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> Creative Awareness</h4>
+                    <p>Raised a powerful collective voice against sexual violence through more than 700 Street Plays (Nukkad Natak), awareness campaigns, public mobilizations, community dialogues, and advocacy initiatives.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> Education & Sensitization</h4>
+                    <p>Conducted more than 2,000 seminars, workshops, self-defense training sessions, gender sensitization programs, and leadership development initiatives across educational institutions and communities.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> Community Outreach</h4>
+                    <p>Impacted more than 20,000 lives through Bal Manch and community-based educational initiatives, supporting children and young women from marginalized communities.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> Sustained Action</h4>
+                    <p>Promoted educational empowerment, women’s leadership, and community participation through programs such as 100 Days–100 Schools, 100 Days–100 Villages, Mission Shakti, Sashakt Kishori, Hinsa Mukt Jeevan, Veerangana Vahini, and National Women’s Day campaigns.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> National Women's Day</h4>
+                    <p>Revived National Women’s Day as a people’s movement and promoted awareness about India’s women freedom fighters, women warriors, and contemporary women leaders to strengthen self-image and leadership among young women.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> Economic Self-Reliance</h4>
+                    <p>Advanced economic self-reliance through skill development, entrepreneurship support, vocational training, and livelihood initiatives, enabling women to achieve financial independence and dignity.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> Humanitarian Support</h4>
+                    <p>Extended humanitarian support during times of crisis through relief distribution, community outreach, nutrition support, and assistance to vulnerable families.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> National Recognition</h4>
+                    <p>Recognized nationally and internationally for its pioneering work in women’s empowerment, survivor leadership, self-defense innovation, and grassroots social transformation.</p>
+                </div>
+                <div class="rb-impact-card">
+                    <h4><i class="fas fa-check"></i> The Vision of FLOW</h4>
+                    <p>Creating a Fearless Life of Women (FLOW) through Courage, Leadership, Equality, Justice, Dignity, and Collective Action.</p>
                 </div>
             </div>
         </div>
@@ -447,43 +516,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Artisan Skills Section -->
-    <section class="rb-skills-section">
-        <div class="container">
-            <div class="rb-gallery-header">
-                <span class="rb-kicker">Economic Empowerment</span>
-                <h2>Artisan Skills & Craftsmanship</h2>
-                <p>We provide vocational training in traditional crafts to ensure survivors and women from marginalized communities achieve financial independence.</p>
-            </div>
-            <div class="rb-skills-grid">
-                <div class="rb-skill-card">
-                    <div class="rb-skill-icon"><i class="fas fa-cut"></i></div>
-                    <h3>Chikankari</h3>
-                    <p>Training in the world-renowned traditional embroidery of Lucknow, preserving heritage while creating livelihoods.</p>
-                </div>
-                <div class="rb-skill-card">
-                    <div class="rb-skill-icon"><i class="fas fa-th"></i></div>
-                    <h3>Crosia (Crochet)</h3>
-                    <p>Mastering crochet techniques to create intricate designs and high-quality handmade products for modern markets.</p>
-                </div>
-                <div class="rb-skill-card">
-                    <div class="rb-skill-icon"><i class="fas fa-ellipsis-h"></i></div>
-                    <h3>Making Jhalar</h3>
-                    <p>Learning the art of creating traditional fringes and decorative hangings (Jhalar), essential for textile ornamentation.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="rb-join-section">
-        <div class="container">
-            <h2>Ready to Join the Movement?</h2>
-            <p>You can be an active part of this movement to achieve F.L.O.W. (Fearless Life of Women). Stand with us to make a profound difference today.</p>
-            <a href="<?php echo action('MainController@contact'); ?>" class="rb-btn">Get Involved</a>
         </div>
     </section>
 </div>

@@ -1052,6 +1052,78 @@ if (!empty($allevent)) {
             text-align: center;
         }
     }
+
+    /* Minimal Join Us Section */
+    .rb-join-minimal {
+        padding: 100px 0;
+        background: #fff;
+        text-align: center;
+        border-top: 1px solid #f1f5f9;
+    }
+    .rb-join-minimal .rb-join-kicker {
+        color: #E31E24;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 13px;
+        margin-bottom: 15px;
+        display: block;
+    }
+    .rb-join-minimal h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 42px;
+        color: #1f2f46;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+    .rb-join-minimal p {
+        font-size: 19px;
+        color: #64748b;
+        max-width: 700px;
+        margin: 0 auto 40px;
+        line-height: 1.6;
+    }
+    .rb-join-minimal .rb-join-btns {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    .rb-join-minimal .rb-btn {
+        padding: 15px 40px;
+        font-size: 15px;
+        font-weight: 700;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .rb-join-minimal .rb-btn.primary {
+        background: #E31E24;
+        color: #fff;
+        border: 2px solid #E31E24;
+    }
+    .rb-join-minimal .rb-btn.primary:hover {
+        background: #1f2f46;
+        border-color: #1f2f46;
+    }
+    .rb-join-minimal .rb-btn.secondary {
+        background: transparent;
+        color: #1f2f46;
+        border: 2px solid #1f2f46;
+    }
+    .rb-join-minimal .rb-btn.secondary:hover {
+        background: #1f2f46;
+        color: #fff;
+    }
+
+    @media (max-width: 767px) {
+        .rb-join-minimal { padding: 70px 0; }
+        .rb-join-minimal h2 { font-size: 32px; }
+        .rb-join-minimal p { font-size: 17px; }
+        .rb-join-minimal .rb-join-btns { flex-direction: column; padding: 0 20px; }
+    }
 </style>
 
 <section class="rb-testimonial-modern" id="testimonial-section">
@@ -1080,19 +1152,16 @@ if (!empty($allevent)) {
 <!-- End Redesigned Testimonial Section -->
 
 <!-- Join Us area start  -->
-<section class="join-area rb-join-modern">
+<section class="rb-join-minimal">
     <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <h6 class="title">You can be part of this movement to achieve F.L.O.W. (Fearless Life of Women)</h6> 
-                    <div class="btn-wrapper animated fadeInUp">
-                        <a href="<?php  echo action('MainController@contact')?>" class="boxed-btn donate" role="button">Join Now </a>
-                        <a href="<?php  echo action('MainController@donate')?>" class="boxed-btn " role="button">Donate </a>
-                    </div>
-            </div>
+        <span class="rb-join-kicker">Take Action</span>
+        <h2>Become part of the movement</h2>
+        <p>Support our mission to achieve <strong>F.L.O.W. (Fearless Life of Women)</strong>. Every contribution helps us build a world where women live with dignity and courage.</p>
+        <div class="rb-join-btns">
+            <a href="<?php echo action('MainController@contact')?>" class="rb-btn primary">Join Now</a>
+            <a href="<?php echo action('MainController@donate')?>" class="rb-btn secondary">Donate</a>
         </div>
     </div>
-    <!--End Container-->
 </section>
 
 @include('includes.footer')

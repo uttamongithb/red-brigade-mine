@@ -287,15 +287,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Join Section -->
-    <section class="rb-join-section">
-        <div class="container">
-            <h2>Join Our Journey of Impact</h2>
-            <p>Every milestone we achieve is powered by supporters like you. Help us empower more women.</p>
-            <a href="<?php echo action('MainController@contact'); ?>" class="rb-btn">Get Involved Today</a>
-        </div>
-    </section>
 </div>
 
 @include('includes.footer')
