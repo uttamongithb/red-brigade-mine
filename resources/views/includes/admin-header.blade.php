@@ -131,12 +131,15 @@
       border-right: 1px solid #eaecf0;
       z-index: 1000;
       padding-top: 0 !important;
-      transition: width 0.3s ease;
+      transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .sidebar-collapse .main-sidebar { width: 60px !important; }
+  /* Minimized Sidebar (72px Standard) */
+  .sidebar-collapse .main-sidebar { 
+      width: 72px !important; 
+  }
 
-  /* Unified Header Row (Sidebar + Content Alignment) */
+  /* Unified Header Row */
   .sidebar-header-row {
       height: 50px;
       display: flex;
@@ -147,37 +150,35 @@
       background: #ffffff;
   }
 
-  .sidebar-header-label {
-      font-size: 11px;
-      font-weight: 700;
-      color: #667085;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      white-space: nowrap;
+  .sidebar-collapse .sidebar-header-row {
+      justify-content: center;
+      padding: 0;
   }
 
   .sidebar-toggle-btn {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #667085;
       cursor: pointer;
-      border-radius: 4px;
-      transition: 0.2s;
+      border-radius: 8px;
+      transition: all 0.2s;
   }
 
   .sidebar-toggle-btn:hover { color: #E31E24; background: #f9fafb; }
 
-  .sidebar-collapse .sidebar-header-label { display: none; }
-  .sidebar-collapse .sidebar-header-row { justify-content: center; }
-
   /* Navigation Items */
   .sidebar-menu {
-      padding: 10px !important;
+      padding: 12px 8px !important;
       list-style: none;
       margin: 0;
+  }
+
+  .sidebar-menu li {
+      position: relative;
+      margin-bottom: 4px;
   }
 
   .sidebar-menu li a {
@@ -187,46 +188,82 @@
       color: #475467;
       font-weight: 500;
       font-size: 14px;
-      border-radius: 6px;
+      border-radius: 8px;
       text-decoration: none !important;
-      transition: 0.2s;
+      transition: all 0.2s;
   }
 
   .sidebar-menu li a i {
-      width: 28px;
+      width: 24px;
       text-align: center;
-      font-size: 16px;
-      margin-right: 8px;
+      font-size: 18px;
+      margin-right: 12px;
+      transition: color 0.2s;
   }
 
-  .sidebar-menu li:hover > a, .sidebar-menu li.active > a {
+  .sidebar-menu li:hover > a {
+      background: #f9fafb;
+      color: #101828;
+  }
+
+  /* Active State with Vertical Pill */
+  .sidebar-menu li.active > a {
       background: #fef2f2 !important;
       color: #E31E24 !important;
   }
 
-  .sidebar-collapse .sidebar-menu li a span { display: none; }
-
-  /* Page Content Menubar (Synced with Sidebar Header Row) */
-  .content-header {
-      height: 50px !important;
-      background: #ffffff !important;
-      display: flex !important;
-      align-items: center !important;
-      padding: 0 24px !important;
-      border-bottom: 1px solid #eaecf0 !important;
-      margin-bottom: 24px !important;
-      box-sizing: border-box;
+  .sidebar-menu li.active::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 10px;
+      bottom: 10px;
+      width: 4px;
+      background: #E31E24;
+      border-radius: 0 4px 4px 0;
+      transition: all 0.2s;
   }
 
-  .content-header h1 {
-      margin: 0 !important;
-      font-size: 18px !important;
-      font-weight: 700 !important;
-      color: #101828 !important;
+  /* Collapsed Alignments */
+  .sidebar-collapse .sidebar-menu li a {
+      justify-content: center;
+      padding: 10px 0 !important;
+      width: 44px !important;
+      height: 44px !important;
+      margin: 0 auto;
   }
 
-  .content-header .breadcrumb {
-      display: none !important; /* Keep it clear per request */
+  .sidebar-collapse .sidebar-menu li a i {
+      margin-right: 0 !important;
+      font-size: 20px;
+      line-height: 24px;
+  }
+
+  /* Professional Collapsed Fixes */
+  .sidebar-collapse .sidebar-menu li a span,
+  .sidebar-collapse .sidebar-header-label {
+      display: none !important;
+  }
+
+  .sidebar-collapse .sidebar-header-row {
+      justify-content: center !important;
+      padding: 0 !important;
+  }
+
+  .sidebar-collapse .sidebar-menu li.active::before {
+      left: -8px; 
+      top: 6px;
+      bottom: 6px;
+  }
+
+  /* Smooth scaling for icons on hover when collapsed */
+  .sidebar-collapse .sidebar-menu li a:hover i {
+      transform: scale(1.1);
+      color: #E31E24;
+  }
+  
+  .sidebar-collapse .sidebar-menu li a i {
+      transition: transform 0.2s ease, color 0.2s ease;
   }
 
   /* Main Content Area */
@@ -234,12 +271,12 @@
       margin-left: 230px !important;
       margin-top: 0 !important;
       padding: 0 !important; 
-      transition: margin-left 0.3s ease;
+      transition: margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       background-color: #fcfcfd !important;
       min-height: calc(100vh - 50px) !important;
   }
 
-  .sidebar-collapse .content-wrapper { margin-left: 60px !important; }
+  .sidebar-collapse .content-wrapper { margin-left: 72px !important; }
 
   /* Final Clutter Removal */
   .main-header .navbar, .main-header .logo { display: none !important; }

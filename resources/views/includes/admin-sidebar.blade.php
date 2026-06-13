@@ -11,6 +11,12 @@
     <section class="sidebar">
       <ul class="sidebar-menu">
 
+		<li class="{{ Request::is('admin/viewslider') ? 'active' : '' }}">
+          <a href="<?php echo action('ServiceController@viewslider')?>">
+            <i class="fa fa-picture-o"></i> <span>Home Hero Slider</span>
+          </a>
+        </li>
+
 		<li class="{{ Request::is('admin/viewtestimonial') ? 'active' : '' }}">
           <a href="<?php echo action('ServiceController@viewtestimonial')?>">
             <i class="fa fa-users"></i> <span>Our Team</span>
@@ -26,12 +32,6 @@
 		<li class="{{ Request::is('admin/viewblog') ? 'active' : '' }}">
           <a href="<?php echo action('ServiceController@viewblog')?>">
             <i class="fa fa-edit"></i> <span>Blog</span>
-          </a>
-        </li>
-
-		<li class="{{ Request::is('admin/viewslider') ? 'active' : '' }}">
-          <a href="<?php echo action('ServiceController@viewslider')?>">
-            <i class="fa fa-picture-o"></i> <span>Slider</span>
           </a>
         </li>
 

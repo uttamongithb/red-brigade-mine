@@ -3,16 +3,10 @@
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        View All Our Work
-        <small>Preview</small>
+        Our Work / Stories
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#"> Our Work</a></li>
-        <li class="active">View All Our Work</li>
-      </ol>
     </section>
-	<section class="content">
+    <section class="content">
       <div class="row">
 	<div class="col-xs-12">
         <div class="box" style="background:#fff">

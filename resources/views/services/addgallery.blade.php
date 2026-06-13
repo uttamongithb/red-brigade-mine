@@ -1,17 +1,11 @@
 @include('includes.admin-header');
- <div class="content-wrapper">
+<div class="content-wrapper">
     <section class="content-header">
       <h1>
         Add Gallery
-        <small>Preview</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li class="active">Add Gallery</li>
-      </ol>
     </section>
-<section class="content">
+    <section class="content">
       <div class="row">
 	    <div class="col-md-12">
 		  </div>

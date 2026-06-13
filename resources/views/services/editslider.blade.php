@@ -2,14 +2,8 @@
  <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Update Slider
-        <small>Preview</small>
+        Update Home Hero Slider
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Slider</a></li>
-        <li class="active">Update Slider</li>
-      </ol>
     </section>
 <section class="content">
       <div class="row">

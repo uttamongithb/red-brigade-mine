@@ -3,14 +3,8 @@
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        View All Services
-        <small>Preview</small>
+        Services
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#"> Services</a></li>
-        <li class="active">View All Services</li>
-      </ol>
     </section>
 	<section class="content">
       <div class="row">
