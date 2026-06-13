@@ -18,6 +18,7 @@ Route::any('/research', 'MainController@research');
 Route::any('/ethics', 'MainController@ethics');
 Route::any('/ourteam', 'MainController@ourteam');
 Route::any('/achievements', 'MainController@achievements');
+Route::any('/collaborations', 'MainController@collaborations');
 Route::any('/skills', 'MainController@skills');
 Route::any('/event', 'MainController@event');
 Route::any('/gallery', 'MainController@gallery');

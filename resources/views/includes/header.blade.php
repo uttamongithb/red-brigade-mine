@@ -414,8 +414,8 @@
                     <li class="nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
                         <a class="nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>
                     </li>
-                    <li class="nav-item <?php echo Request::is('partners') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="#">Our Partners</a>
+                    <li class="nav-item <?php echo Request::is('collaborations') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo action('MainController@collaborations'); ?>">Collaborations</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('contact') ? 'active' : ''; ?>">
                         <a class="nav-link" href="<?php echo action('MainController@contact'); ?>">Contact us</a>
@@ -474,8 +474,8 @@
             <li class="sidebar-nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
                 <a class="sidebar-nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>
             </li>
-            <li class="sidebar-nav-item <?php echo Request::is('partners') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="#">Our Partners</a>
+            <li class="sidebar-nav-item <?php echo Request::is('collaborations') ? 'active' : ''; ?>">
+                <a class="sidebar-nav-link" href="<?php echo action('MainController@collaborations'); ?>">Collaborations</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('contact') ? 'active' : ''; ?>">
                 <a class="sidebar-nav-link" href="<?php echo action('MainController@contact'); ?>">Contact us</a>

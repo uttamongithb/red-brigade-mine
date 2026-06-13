@@ -62,6 +62,11 @@ class MainController extends Controller {
 	    return view('main.achievements');
 	}
 
+	public function collaborations()
+	{
+	    return view('main.collaborations');
+	}
+
 	public function skills()
 	{
 	    return view('main.skills');
