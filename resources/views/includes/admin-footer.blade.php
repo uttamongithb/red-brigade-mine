@@ -4,7 +4,6 @@
 <script src="<?php echo URL::asset('js/admin/bootstrap.min.js')?>"></script>
 <script src="<?php echo URL::asset('js/ckeditor/ckeditor.js')?>"></script>
 <script src="<?php echo URL::asset('js/admin/select2.full.min.js')?>"></script>
-<script src="<?php echo URL::asset('js/front/jquery.js')?>"></script>
 <script src="<?php echo URL::asset('js/front/jquery-ui.js')?>"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.semanticui.min.js"></script>

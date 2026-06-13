@@ -174,13 +174,26 @@ padding: 10px;background:rgb(246,246,246);">
 		curl_close($ch);
 	}
 	public static function imageExtension($file){
-		$filename = $file->getClientOriginalName();
-		$extension = $file->getClientOriginalExtension();
-		$ext = array('jpg','JPG','jpeg','gif','png');
-		if(!in_array($extension, $ext)){
-			return false;
+		$extension = strtolower($file->getClientOriginalExtension());
+		$ext = array('jpg','jpeg','gif','png');
+		return in_array($extension, $ext);
+	}
+	public static function videoExtension($file){
+		$extension = strtolower($file->getClientOriginalExtension());
+		$ext = array('mp4','webm','ogg');
+		return in_array($extension, $ext);
+	}
+	public static function fileUpload($file,$destinationPath,$fileName){
+		$array=array();
+		foreach($file as $f){
+				$extension = strtolower($f->getClientOriginalExtension());
+				$newfilename = $fileName.'-'.rand(100,999).'.'.$extension;
+				$fullDestinationPath = public_path($destinationPath);
+				
+				$f->move($fullDestinationPath, $newfilename);
+				$array[]=$newfilename;
 		}
-		return true;
+		return implode('{$}',$array);
 	}
 	public static function imageUpload($file,$destinationPath,$fileName){
 		$array=array();

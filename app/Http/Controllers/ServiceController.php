@@ -261,13 +261,22 @@ class ServiceController extends Controller {
 	public function addslider(Request $request)
 	{
 		if ($request->isMethod('post')) {
-			$input = $request->except(['_token', 'image']);
 			if ($request->hasFile('image')) {
-				$file = Input::file('image');
-				$input['image'] = Helpers::imageUpload($file, 'uploads/slider', 'sunshine-slider');
+				$files = $request->file('image');
+				foreach ($files as $file) {
+					// Upload each file individually to get single filenames
+					$uploadedName = Helpers::fileUpload([$file], 'uploads/slider', 'sunshine-slider');
+					
+					$input = [
+						'image' => $uploadedName,
+						'name' => $request->input('name', ''),
+						'description' => $request->input('description', ''),
+						'status' => 1
+					];
+					DB::table('slider')->insert($input);
+				}
+				Session::flash('message', 'Successfully Added ' . count($files) . ' Slider(s)!');
 			}
-			DB::table('slider')->insert($input);
-			Session::flash('message', 'Successfully Added Slider!');
 			return Redirect::back();
 		}
 		return view('services.addslider');
@@ -281,8 +290,12 @@ class ServiceController extends Controller {
 			$input = $request->except(['_token', 'image']);
 			if ($request->hasFile('image')) {
 				$file = Input::file('image');
-				$input['image'] = Helpers::imageUpload($file, 'uploads/slider', 'sunshine-slider');
+				$input['image'] = Helpers::fileUpload($file, 'uploads/slider', 'sunshine-slider');
 			}
+			// Maintain name/desc or set to empty if intentionally removed
+			if (!$request->has('name')) $input['name'] = $thisdata->name ?? '';
+			if (!$request->has('description')) $input['description'] = $thisdata->description ?? '';
+
 			DB::table('slider')->where('id', $id)->update($input);
 			Session::flash('message', 'Successfully Updated Slider!');
 			return Redirect::back();
