@@ -11,7 +11,7 @@ Route::get('/main-admin/login', function(){
 });
 Route::post('/main-admin/login', 'Auth\AuthController@login');
 Route::any('/admin', function(){
-	return redirect('/main-admin/dashboard');
+	return redirect('/admin/viewnews');
 });
 Route::any('/about', 'MainController@about');
 Route::any('/research', 'MainController@research');

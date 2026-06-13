@@ -1,110 +1,52 @@
 <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-	  <?php
-	  $adminname="";
-		if(Auth::check())
-		{
-			$adminname =  Auth::user()->name;
-		}
-	  ?>
-        <div class="pull-left image" style="height:20px">
-         </div>
-        <div class="pull-left info">
-          <p><i class="fa fa-user"></i> <?php echo ucwords($adminname)?></p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+    <!-- Unified Header Row (Main Menu + Toggle) -->
+    <div class="sidebar-header-row">
+        <span class="sidebar-header-label">Main Menu</span>
+        <div class="sidebar-toggle-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+            <i class="fa fa-bars"></i>
         </div>
-      </div>
-      
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <section class="sidebar">
       <ul class="sidebar-menu">
-        <li class="header">MAIN NAVIGATION</li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-dashboard" style="color:#800000;"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-double-left pull-right faffff"></i>
-            </span>
+
+		<li class="{{ Request::is('admin/viewtestimonial') ? 'active' : '' }}">
+          <a href="<?php echo action('ServiceController@viewtestimonial')?>">
+            <i class="fa fa-users"></i> <span>Our Team</span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo action('DashboardController@index')?>"><i class="fa fa-dashboard"></i> View Dashboard</a></li>
-           <li><a href="<?php echo URL('main-admin/logout')?>"><i class="fa fa-sign-out"></i> Logout</a></li>
-          </ul>
-		  
+        </li>
+
+		<li class="{{ Request::is('admin/viewnews') ? 'active' : '' }}">
+          <a href="<?php echo action('ServiceController@viewnews')?>">
+            <i class="fa fa-briefcase"></i> <span>Our Work / Stories</span>
+          </a>
+        </li>
+
+		<li class="{{ Request::is('admin/viewblog') ? 'active' : '' }}">
+          <a href="<?php echo action('ServiceController@viewblog')?>">
+            <i class="fa fa-edit"></i> <span>Blog</span>
+          </a>
+        </li>
+
+		<li class="{{ Request::is('admin/viewslider') ? 'active' : '' }}">
+          <a href="<?php echo action('ServiceController@viewslider')?>">
+            <i class="fa fa-picture-o"></i> <span>Slider</span>
+          </a>
+        </li>
+
+		<li class="{{ Request::is('admin/viewgallery') ? 'active' : '' }}">
+          <a href="<?php echo action('ServiceController@viewgallery')?>">
+            <i class="fa fa-image"></i> <span>Gallery</span>
+          </a>
         </li> 
 
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-users" style="color:#800000;"></i> <span>Our Team</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-double-left pull-right faffff"></i>
-            </span>
+		<li class="{{ Request::is('admin/enquiry') ? 'active' : '' }}">
+          <a href="<?php echo action('ServiceController@enquiry')?>">
+            <i class="fa fa-envelope"></i> <span>Enquiries</span>
           </a>
-          <ul class="treeview-menu">
-           <li><a href="<?php echo action('ServiceController@viewtestimonial')?>"><i class="fa fa-users"></i> View Team Members</a></li>
-          </ul>
-        </li>
-
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-briefcase" style="color:#800000;"></i> <span>Our Work</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-double-left pull-right faffff"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-           <li><a href="<?php echo action('ServiceController@viewnews')?>"><i class="fa fa-briefcase"></i> View Work / Stories</a></li>
-          </ul>
-        </li>
-
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-edit" style="color:#800000;"></i> <span>Blog</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-double-left pull-right faffff"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-           <li><a href="<?php echo action('ServiceController@viewblog')?>"><i class="fa fa-edit"></i> View Blog</a></li>
-          </ul>
-        </li>
-
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-cubes" style="color:#800000;"></i> <span>Slider</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-double-left pull-right faffff"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-           <li><a href="<?php echo action('ServiceController@viewslider')?>"><i class="fa fa-cubes"></i> View Slider</a></li>
-          </ul>
-        </li>
-
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-cubes" style="color:#800000;"></i> <span>Gallery</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-double-left pull-right faffff"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-           <li><a href="<?php echo action('ServiceController@viewgallery')?>"><i class="fa fa-cubes"></i> View Gallery</a></li>
-          </ul>
         </li> 
 
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-envelope" style="color:#800000;"></i> <span>Contacts Listing</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-double-left pull-right faffff"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-           <li><a href="<?php echo action('ServiceController@enquiry')?>"><i class="fa fa-envelope"></i> View Enquiry</a></li>
-          </ul>
-        </li> 
       </ul>
     </section>
   </aside>
