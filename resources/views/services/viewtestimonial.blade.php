@@ -12,10 +12,6 @@
         <div class="box" style="background:#fff">
             <div class="box-header">
 				<div class="box-tools pull-left col-md-12 col-sm-12" style="padding:0px;">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<?php echo Helpers::errormessage($errors);?>
-						<?php echo Helpers::flashMessage();?>
-					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
 						<div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px;">
 
@@ -116,7 +112,7 @@ $(document).ready(function(){
             });
 		}
 		else{
-			alert('Please Select Testimonial to delete');
+			toastr.warning('Please Select Testimonial to delete');
 		}
 		
 		

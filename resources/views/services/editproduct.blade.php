@@ -21,8 +21,6 @@
 			{{ Form::open(array('action' => array('ServiceController@editproduct',$getid),'files' => true)) }}
 			  {{ csrf_field() }}
               <div class="box-body">
-					<?php echo Helpers::errormessage($errors);?>
-					<?php echo Helpers::flashMessage();?>
                     <div class="col-md-12 create">
 						<div class="col-md-8 form-group">
 								 <?php echo Form::label('Select Service', 'Select Service') ?>

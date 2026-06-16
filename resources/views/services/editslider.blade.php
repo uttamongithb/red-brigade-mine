@@ -163,8 +163,6 @@
             {{ Form::open(array('action' => array('ServiceController@editslider',$getid),'files' => true)) }}
                 {{ csrf_field() }}
                 <div class="form-body">
-                    <?php echo Helpers::errormessage($errors);?>
-                    <?php echo Helpers::flashMessage();?>
 
                     <div class="form-group">
                         <label>Current Image</label>

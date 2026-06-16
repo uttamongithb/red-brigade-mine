@@ -24,8 +24,6 @@
 			{{ Form::open(array('action' => 'ServiceController@addtestimonial','files' => true)) }}
 			  {{ csrf_field() }}
               <div class="box-body">
-					<?php echo Helpers::errormessage($errors);?>
-					<?php echo Helpers::flashMessage();?>
                     <div class="col-md-12 create">
 						<div class="col-md-8 form-group">
 							<label for="SAMStudId">Team Name</label>

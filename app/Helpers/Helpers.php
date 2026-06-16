@@ -175,8 +175,10 @@ padding: 10px;background:rgb(246,246,246);">
 	}
 	public static function imageExtension($file){
 		$extension = strtolower($file->getClientOriginalExtension());
-		$ext = array('jpg','jpeg','gif','png');
-		return in_array($extension, $ext);
+		$ext = array('jpg','jpeg','gif','png', 'webp', 'jfif');
+		$isValid = in_array($extension, $ext);
+		\Log::info("Checking extension for " . $file->getClientOriginalName() . ": " . $extension . " -> " . ($isValid ? "VALID" : "INVALID"));
+		return $isValid;
 	}
 	public static function videoExtension($file){
 		$extension = strtolower($file->getClientOriginalExtension());
@@ -185,11 +187,14 @@ padding: 10px;background:rgb(246,246,246);">
 	}
 	public static function fileUpload($file,$destinationPath,$fileName){
 		$array=array();
-		foreach($file as $f){
+		$files = is_array($file) ? $file : [$file];
+		foreach($files as $f){
+				if ($f === null) continue;
+				\Log::info("Uploading file: " . $f->getClientOriginalName());
 				$extension = strtolower($f->getClientOriginalExtension());
 				$newfilename = $fileName.'-'.rand(100,999).'.'.$extension;
 				$fullDestinationPath = public_path($destinationPath);
-				
+
 				$f->move($fullDestinationPath, $newfilename);
 				$array[]=$newfilename;
 		}
@@ -197,8 +202,15 @@ padding: 10px;background:rgb(246,246,246);">
 	}
 	public static function imageUpload($file,$destinationPath,$fileName){
 		$array=array();
-		foreach($file as $fileimage){
-				if(!self::imageExtension($fileimage)){
+		$files = is_array($file) ? $file : [$file];
+		\Log::info("imageUpload received " . count($files) . " files.");
+		foreach($files as $fileimage){
+				if ($fileimage === null) {
+					\Log::warning("File is null in imageUpload loop.");
+					continue;
+				}
+				if (!self::imageExtension($fileimage)){
+					\Log::warning("File rejected by imageExtension: " . $fileimage->getClientOriginalName());
 					continue;
 				}
 				$filename = $fileimage->getClientOriginalName();
@@ -211,6 +223,7 @@ padding: 10px;background:rgb(246,246,246);">
 						$newfilename=$imageNamee.".".$info['extension'];
 					}
 					$array[]=$newfilename;
+					\Log::info("Moving file to: " . $fullDestinationPath . '/' . $newfilename);
 					$upload_success = $fileimage->move($fullDestinationPath, $newfilename);
 			 }
 			  $imageNames = implode('{$}',$array);

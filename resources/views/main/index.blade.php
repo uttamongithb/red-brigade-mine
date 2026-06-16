@@ -534,12 +534,11 @@ if (!empty($allevent)) {
         <!-- Section Header -->
         <div class="rb-blog-header">
             <div class="rb-blog-header-left">
-                <span class="rb-blog-kicker">Recent Work</span>
-                <h2 class="rb-blog-title">Our <em class="rb-blog-title-accent">Events</em></h2>
-                <p class="rb-blog-subtitle">Our events are focused on empowerment and amplifying women's voices against sexual violence.</p>
+                <h2 class="rb-blog-title">Our <em class="rb-blog-title-accent">Works</em></h2>
+                <p class="rb-blog-subtitle">Our works are focused on empowerment and amplifying women's voices against sexual violence.</p>
             </div>
             <a href="<?php echo action('MainController@event')?>" class="rb-blog-view-all">
-                Explore All Events
+                Explore All Works
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14 Jur"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
         </div>
@@ -553,7 +552,7 @@ if (!empty($allevent)) {
                 </div>
                 <div class="rb-blog-featured-overlay"></div>
                 <div class="rb-blog-featured-content">
-                    <span class="rb-blog-badge">Event</span>
+                    <span class="rb-blog-badge">Work</span>
                     <h3 class="rb-blog-featured-title"><?php echo ucfirst($featuredEvent->name); ?></h3>
                     <p class="rb-blog-featured-excerpt"><?php echo strip_tags(substr($featuredEvent->description, 0, 200)); ?>...</p>
                     <div class="rb-blog-featured-meta">
@@ -573,7 +572,7 @@ if (!empty($allevent)) {
                 <article class="rb-blog-card" style="animation-delay: <?php echo ($idx * 0.08); ?>s;">
                     <div class="rb-blog-card-img">
                         <img src="<?php echo asset('uploads/news/'.trim($ev->image));?>" alt="<?php echo $ev->name; ?>" loading="lazy">
-                        <span class="rb-blog-badge">Event</span>
+                        <span class="rb-blog-badge">Work</span>
                     </div>
                     <div class="rb-blog-card-body">
                         <div class="rb-blog-card-meta">
@@ -595,7 +594,7 @@ if (!empty($allevent)) {
         <!-- Bottom CTA -->
         <div class="rb-blog-bottom-cta">
             <a href="<?php echo action('MainController@event'); ?>" class="rb-blog-explore-btn">
-                <span>Explore All Events</span>
+                <span>Explore All Works</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
         </div>
@@ -1129,7 +1128,6 @@ if (!empty($allevent)) {
 <section class="rb-testimonial-modern" id="testimonial-section">
     <div class="container">
         <div class="rb-testimonial-wrapper">
-            <span class="rb-testimonial-kicker">Testimonial</span>
             <h2 class="rb-testimonial-heading">Appreciation About Our <em class="rb-testimonial-accent">Work</em></h2>
             
             <div class="rb-testimonial-quote-box">

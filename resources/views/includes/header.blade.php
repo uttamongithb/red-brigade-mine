@@ -390,9 +390,9 @@
                         </a>
                         <div class="rb-custom-menu shadow border-0" id="rbDropdownMenu">
                             <a class="dropdown-item py-2" href="<?php echo action('MainController@event'); ?>" style="font-weight: 600; color: #173455;">Ongoing Work</a>
-                            <a class="dropdown-item py-2" href="#" style="font-weight: 600; color: #173455;">Previous Work</a>
-                            <a class="dropdown-item py-2" href="#" style="font-weight: 600; color: #173455;">Upcoming Work</a>
-                            <a class="dropdown-item py-2" href="#" style="font-weight: 600; color: #173455;">Educations</a>
+                            <a class="dropdown-item py-2" href="<?php echo action('MainController@previouswork'); ?>" style="font-weight: 600; color: #173455;">Previous Work</a>
+                            <a class="dropdown-item py-2" href="<?php echo action('MainController@upcomingwork'); ?>" style="font-weight: 600; color: #173455;">Upcoming Work</a>
+                            <a class="dropdown-item py-2" href="<?php echo action('MainController@education'); ?>" style="font-weight: 600; color: #173455;">Education</a>
                             <a class="dropdown-item py-2" href="<?php echo action('MainController@skills'); ?>" style="font-weight: 600; color: #173455;">Skills</a>
                         </div>
                     </li>
@@ -450,9 +450,9 @@
                 </div>
                 <ul style="list-style: none; padding-left: 20px; margin: 0; display: none; background: #fffafa;">
                     <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="<?php echo action('MainController@event'); ?>">Ongoing Work</a></li>
-                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="#">Past Work</a></li>
-                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="#">Upcoming Work</a></li>
-                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="#">Educations</a></li>
+                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="<?php echo action('MainController@previouswork'); ?>">Previous Work</a></li>
+                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="<?php echo action('MainController@upcomingwork'); ?>">Upcoming Work</a></li>
+                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="<?php echo action('MainController@education'); ?>">Education</a></li>
                     <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: 1px solid #f9f9f9;" href="<?php echo action('MainController@skills'); ?>">Skills</a></li>
                 </ul>
             </li>

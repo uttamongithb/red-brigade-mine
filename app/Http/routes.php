@@ -21,6 +21,9 @@ Route::any('/achievements', 'MainController@achievements');
 Route::any('/collaborations', 'MainController@collaborations');
 Route::any('/skills', 'MainController@skills');
 Route::any('/event', 'MainController@event');
+Route::any('/previous-work', 'MainController@previouswork');
+Route::any('/upcoming-work', 'MainController@upcomingwork');
+Route::any('/education', 'MainController@education');
 Route::any('/gallery', 'MainController@gallery');
 Route::any('/blog', 'MainController@blog');
 Route::any('/singleblog/{slug}', 'MainController@singleblog');
@@ -128,5 +131,26 @@ Route::any('/admin/editgallery/{id}', 'ServiceController@editgallery')->middlewa
 Route::any('/admin/deletegallery/{id}', 'ServiceController@deletegallery')->middleware('auth');
 Route::any('/admin/deleteblog/{id}', 'ServiceController@deleteblog')->middleware('auth');
 Route::any('/admin/multiGallery', 'ServiceController@multiGallery')->middleware('auth');																
-/*Gallery*/																
+/*Gallery*/
+
+/*Strategy Pillar Module*/
+Route::any('/admin/addstrategy', 'ServiceController@addstrategy')->middleware('auth');
+Route::any('/admin/viewstrategy', 'ServiceController@viewstrategy')->middleware('auth');
+Route::any('/admin/editstrategy/{id}', 'ServiceController@editstrategy')->middleware('auth');
+Route::any('/admin/deletestrategy/{id}', 'ServiceController@deletestrategy')->middleware('auth');
+Route::any('/admin/statusstrategy/{id}/{status}', 'ServiceController@statusstrategy')->middleware('auth');
+/*Strategy Pillar Module*/
+
+/*Our Work Expanded Module*/
+Route::any('/admin/addeducation', 'ServiceController@addeducation')->middleware('auth');
+Route::any('/admin/vieweducation', 'ServiceController@vieweducation')->middleware('auth');
+Route::any('/admin/editeducation/{id}', 'ServiceController@editeducation')->middleware('auth');
+Route::any('/admin/deleteeducation/{id}', 'ServiceController@deleteeducation')->middleware('auth');
+
+Route::any('/admin/addskills', 'ServiceController@addskills')->middleware('auth');
+Route::any('/admin/viewskills', 'ServiceController@viewskills')->middleware('auth');
+Route::any('/admin/editskills/{id}', 'ServiceController@editskills')->middleware('auth');
+Route::any('/admin/deleteskills/{id}', 'ServiceController@deleteskills')->middleware('auth');
+/*Our Work Expanded Module*/
+
 ?>

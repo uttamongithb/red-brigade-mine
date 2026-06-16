@@ -148,8 +148,6 @@
             {{ Form::open(array('action' => 'ServiceController@addslider','files' => true)) }}
                 {{ csrf_field() }}
                 <div class="form-body">
-                    <?php echo Helpers::errormessage($errors);?>
-                    <?php echo Helpers::flashMessage();?>
 
                     <div class="form-group">
                         <label>Slide Image</label>

@@ -159,9 +159,6 @@
             </a>
         </div>
 
-        <?php echo Helpers::errormessage($errors);?>
-        <?php echo Helpers::flashMessage();?>
-
         <div class="table-container">
             <table class="premium-table">
                 <thead>
@@ -194,8 +191,8 @@
                                         title="View Image">
                                     <i class="fa fa-eye"></i> View
                                 </button>
-                                <a href="<?php echo action('ServiceController@deleteslider',$idget)?>" 
-                                   onclick="return confirm('Are you sure you want to delete this slide?')" 
+                                <a href="<?php echo url('admin/deleteslider/'.$idget)?>" 
+                                   onclick="return confirm('Are you sure you want to delete this hero image?')" 
                                    class="btn-table-action btn-table-delete" title="Delete Image">
                                     <i class="fa fa-trash"></i> Delete
                                 </a>

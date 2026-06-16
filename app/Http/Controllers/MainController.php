@@ -38,8 +38,9 @@ class MainController extends Controller {
 
 	public function about()
 	{
-	   return view('main.about');
-	} 
+		$allstrategy = DB::table('strategy')->where('status',1)->get();
+	    return view('main.about', compact('allstrategy'));
+	}
 
 	public function research()
 	{
@@ -67,16 +68,39 @@ class MainController extends Controller {
 	    return view('main.collaborations');
 	}
 
-	public function skills()
-	{
-	    return view('main.skills');
-	} 
-
 	public function event()
 	{
 		// Our Work page: show BOTH events and blogs
 		$allevent=Db::table('news')->orderBy('date','DESC')->orderBy('id','DESC')->get();
 		return view('main.event',compact('allevent'));
+	}
+
+	public function previouswork()
+	{
+		$today = date('Y-m-d');
+		$allevent = Db::table('news')->where('date', '<', $today)->orderBy('date','DESC')->get();
+		return view('main.previouswork', compact('allevent'));
+	}
+
+	public function upcomingwork()
+	{
+		$today = date('Y-m-d');
+		$allevent = Db::table('news')->where('date', '>=', $today)->orderBy('date','ASC')->get();
+		return view('main.upcomingwork', compact('allevent'));
+	}
+
+	public function education()
+	{
+		// Fetch gallery items related to education (Balmanch)
+		$education_items = Db::table('gallery')->where('type', 'Donate')->orWhere('type', 'Activity')->orderBy('id', 'DESC')->get();
+		$alleducation_cards = Db::table('education_cards')->where('status', 1)->get();
+		return view('main.education', compact('education_items', 'alleducation_cards'));
+	}
+
+	public function skills()
+	{
+		$allskills_cards = Db::table('skills_cards')->where('status', 1)->get();
+	    return view('main.skills', compact('allskills_cards'));
 	}
 
 	public function gallery()

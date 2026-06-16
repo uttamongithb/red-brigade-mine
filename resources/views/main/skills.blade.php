@@ -189,6 +189,15 @@
                 <p>We provide vocational training in traditional crafts to ensure survivors and women from marginalized communities achieve financial independence.</p>
             </div>
             <div class="rb-skills-grid">
+                <?php if(isset($allskills_cards) && count($allskills_cards) > 0) { 
+                    foreach($allskills_cards as $skill) {
+                ?>
+                <div class="rb-skill-card">
+                    <div class="rb-skill-icon"><i class="fas <?php echo $skill->icon; ?>"></i></div>
+                    <h3><?php echo $skill->name; ?></h3>
+                    <p><?php echo $skill->description; ?></p>
+                </div>
+                <?php } } else { ?>
                 <div class="rb-skill-card">
                     <div class="rb-skill-icon"><i class="fas fa-cut"></i></div>
                     <h3>Chikankari</h3>
@@ -204,6 +213,7 @@
                     <h3>Making Jhalar</h3>
                     <p>Learning the art of creating traditional fringes and decorative hangings (Jhalar), essential for textile ornamentation.</p>
                 </div>
+                <?php } ?>
             </div>
         </div>
     </section>

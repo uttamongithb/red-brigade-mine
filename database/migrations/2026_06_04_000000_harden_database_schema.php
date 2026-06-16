@@ -15,6 +15,14 @@ class HardenDatabaseSchema extends Migration
         // Helper to check if index exists
         $indexExists = function ($table, $index) {
             $conn = DB::connection();
+            $driver = $conn->getDriverName();
+            if ($driver === 'sqlite') {
+                $results = DB::select("PRAGMA index_list('$table')");
+                foreach ($results as $row) {
+                    if ($row->name === $index) return true;
+                }
+                return false;
+            }
             $db = $conn->getDatabaseName();
             $results = DB::select("SELECT * FROM information_schema.statistics WHERE table_schema = '$db' AND table_name = '$table' AND index_name = '$index'");
             return count($results) > 0;
