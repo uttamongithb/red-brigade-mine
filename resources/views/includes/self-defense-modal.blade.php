@@ -198,6 +198,14 @@
     box-shadow: 0 8px 18px rgba(200, 35, 51, 0.4);
 }
 
+.rb-program-modal {
+    z-index: 1050000 !important;
+}
+
+.modal-backdrop {
+    z-index: 1049990 !important;
+}
+
 .modal-backdrop.show {
     opacity: 0.6;
 }

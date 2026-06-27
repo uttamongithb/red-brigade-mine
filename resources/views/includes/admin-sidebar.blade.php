@@ -27,26 +27,32 @@
           <a href="#">
             <i class="fa fa-briefcase"></i> <span>Our Work</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li class="{{ Request::is('admin/viewnews') && Request::get('filter') == 'previous' ? 'active' : '' }}">
-              <a href="<?php echo action('ServiceController@viewnews')?>?filter=previous"><i class="fa fa-circle-o"></i> Previous Work</a>
+              <a href="<?php echo action('ServiceController@viewnews')?>?filter=previous">Previous Work</a>
             </li>
             <li class="{{ Request::is('admin/viewnews') && !Request::has('filter') ? 'active' : '' }}">
-              <a href="<?php echo action('ServiceController@viewnews')?>"><i class="fa fa-circle-o"></i> Ongoing Work</a>
+              <a href="<?php echo action('ServiceController@viewnews')?>">Ongoing Work</a>
             </li>
             <li class="{{ Request::is('admin/viewnews') && Request::get('filter') == 'upcoming' ? 'active' : '' }}">
-              <a href="<?php echo action('ServiceController@viewnews')?>?filter=upcoming"><i class="fa fa-circle-o"></i> Upcoming Work</a>
+              <a href="<?php echo action('ServiceController@viewnews')?>?filter=upcoming">Upcoming Work</a>
             </li>
             <li class="{{ Request::is('admin/vieweducation') ? 'active' : '' }}">
-              <a href="<?php echo action('ServiceController@vieweducation')?>"><i class="fa fa-circle-o"></i> Education</a>
+              <a href="<?php echo action('ServiceController@vieweducation')?>">Education</a>
             </li>
             <li class="{{ Request::is('admin/viewskills') ? 'active' : '' }}">
-              <a href="<?php echo action('ServiceController@viewskills')?>"><i class="fa fa-circle-o"></i> Skills</a>
+              <a href="<?php echo action('ServiceController@viewskills')?>">Skills</a>
             </li>
           </ul>
+        </li>
+
+		<li class="{{ Request::is('admin/viewblog') || Request::is('admin/addblog') || Request::is('admin/editblog/*') ? 'active' : '' }}">
+          <a href="<?php echo action('ServiceController@viewblog')?>">
+            <i class="fa fa-newspaper-o"></i> <span>Blog</span>
+          </a>
         </li>
 
 		<li class="{{ Request::is('admin/viewtestimonial') ? 'active' : '' }}">
@@ -54,6 +60,13 @@
             <i class="fa fa-users"></i> <span>Our Team</span>
           </a>
         </li>
+
+		<li class="{{ Request::is('admin/viewgallery') || Request::is('admin/addgallery') || Request::is('admin/editgallery/*') ? 'active' : '' }}">
+          <a href="<?php echo action('ServiceController@viewgallery')?>">
+            <i class="fa fa-camera"></i> <span>Gallery</span>
+          </a>
+        </li>
+
 		<li class="{{ Request::is('admin/enquiry') ? 'active' : '' }}">
           <a href="<?php echo action('ServiceController@enquiry')?>">
             <i class="fa fa-envelope"></i> <span>Enquiries</span>

@@ -109,7 +109,7 @@
 
 <div class="content-wrapper">
     <section class="content-header">
-      <h1>Artisan Skills & Pillars</h1>
+      <h1>Skills</h1>
     </section>
 
     <section class="content">

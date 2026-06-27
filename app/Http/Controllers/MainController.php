@@ -105,8 +105,8 @@ class MainController extends Controller {
 
 	public function gallery()
 	{
-		$photos=Db::table('gallery')->where('type', 'Photo')->orderBy('gallery.id','DESC')->get();
-		$videos=Db::table('gallery')->where('type', 'Video')->orderBy('gallery.id','DESC')->get();
+		$photos=Db::table('gallery')->where('type', '!=', 'Video')->where('status', 1)->orderBy('gallery.id','DESC')->get();
+		$videos=Db::table('gallery')->where('type', 'Video')->where('status', 1)->orderBy('gallery.id','DESC')->get();
 		return view('main.gallery',compact('photos', 'videos'));
 	}
 

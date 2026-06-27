@@ -6,8 +6,7 @@
 <script src="<?php echo URL::asset('js/admin/select2.full.min.js')?>"></script>
 <script src="<?php echo URL::asset('js/front/jquery-ui.js')?>"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/dataTables.semanticui.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script src="<?php echo URL::asset('js/admin/app.min.js')?>"></script>
 <script src="<?php echo URL::asset('js/admin/demo.js')?>"></script>
@@ -72,6 +71,26 @@
     $('.datepicker').datepicker({
       autoclose: true,
       dateFormat: 'yy-mm-dd'
+    });
+
+    // Custom Treeview Toggle (Our Work Dropdown)
+    $('.sidebar-menu .treeview > a').on('click', function(e) {
+        e.preventDefault();
+        var $parent = $(this).parent();
+        var $submenu = $(this).next('.treeview-menu');
+        
+        if ($parent.hasClass('menu-open') || $parent.hasClass('active')) {
+            $submenu.slideUp(250, function() {
+                $parent.removeClass('menu-open active');
+            });
+        } else {
+            // Optional: Close other open menus
+            $('.sidebar-menu .treeview.menu-open').removeClass('menu-open active').children('.treeview-menu').slideUp(250);
+            
+            $submenu.slideDown(250, function() {
+                $parent.addClass('menu-open');
+            });
+        }
     });
 
     // Sidebar Toggle Check

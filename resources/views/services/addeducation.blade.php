@@ -100,8 +100,8 @@
                 <h5><i class="fa fa-plus-circle" style="color: #E31E24;"></i> Create Education Focus Card</h5>
             </div>
 
-            {{ Form::open(array('action' => 'ServiceController@addeducation')) }}
-                {{ csrf_field() }}
+            <form action="<?php echo action('ServiceController@addeducation'); ?>" method="POST" enctype="multipart/form-data">
+                {!! csrf_field() !!}
                 <div class="form-body">
                     <div class="form-group">
                         <label>Card Title</label>
@@ -109,8 +109,23 @@
                     </div>
 
                     <div class="form-group">
-                        <label>FontAwesome Icon Class</label>
-                        <input required type="text" name="icon" class="form-control-premium" placeholder="e.g. fa-book-reader" />
+                        <label>Icon/Image</label>
+                        <div id="image_preview_container" style="display: none; margin-bottom: 16px; border-radius: 12px; overflow: hidden; border: 1px solid #eaecf0; width: fit-content;">
+                            <img id="image_preview" src="#" alt="Selected Image" style="display: block; max-width: 200px; height: auto;">
+                        </div>
+                        <div class="file-upload-wrapper" onclick="document.getElementById('image_upload').click();">
+                            <i class="fa fa-cloud-upload"></i>
+                            <div class="file-upload-text">
+                                <span id="upload_status_text">Click to upload image</span> or drag and drop<br>
+                                <small>Best size: 400x300px</small>
+                            </div>
+                            <input id="image_upload" type="file" name="image" accept="image/*" style="opacity: 0; position: absolute; z-index: -1;" onchange="previewImage(this)" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>FontAwesome Icon Class (Optional if image uploaded)</label>
+                        <input type="text" name="icon" class="form-control-premium" placeholder="e.g. fa-book-reader" />
                         <p class="icon-hint">Use FontAwesome 5 classes (e.g., fa-book, fa-shield-alt, fa-users).</p>
                     </div>
 
@@ -127,5 +142,19 @@
         </div>
     </section>
 </div>
+
+<script>
+function previewImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('image_preview').src = e.target.result;
+            document.getElementById('image_preview_container').style.display = 'block';
+            document.getElementById('upload_status_text').innerHTML = 'Change selection';
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
 
 @include('includes.admin-footer');

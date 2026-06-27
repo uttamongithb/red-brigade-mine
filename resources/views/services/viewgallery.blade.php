@@ -1,120 +1,180 @@
 @include('includes.admin-header');
 @include('includes.admin-sidebar');
+
+<style>
+/* Premium Table Styling */
+.table-container {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #eaecf0;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.1);
+    padding: 16px;
+}
+
+.premium-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.premium-table th {
+    background: #f9fafb;
+    padding: 12px 24px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: #667085;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #eaecf0;
+}
+
+.premium-table td {
+    padding: 16px 24px;
+    vertical-align: middle;
+    border-bottom: 1px solid #eaecf0;
+    color: #475467;
+    font-size: 14px;
+}
+
+.premium-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Action Buttons */
+.action-flex {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-table-action {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #d0d5dd;
+    background: #fff;
+    color: #344054;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+    text-decoration: none !important;
+}
+
+.btn-table-action:hover {
+    background: #f9fafb;
+    color: #E31E24;
+    border-color: #E31E24;
+}
+
+.btn-table-delete:hover {
+    background: #fef3f2;
+    color: #d92d20;
+    border-color: #f89687;
+}
+
+.action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    background: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #eaecf0;
+}
+
+.btn-premium {
+    background: #E31E24;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    transition: all 0.2s;
+    text-decoration: none !important;
+}
+
+.btn-premium:hover {
+    background: #bc1a1f;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(227, 30, 36, 0.24);
+}
+
+/* DataTables Bootstrap Customizations */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 16px;
+}
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+    margin-top: 16px;
+}
+</style>
+
 <div class="content-wrapper">
     <section class="content-header">
-      <h1>
-        Gallery
-      </h1>
+      <h1>Gallery</h1>
     </section>
+
     <section class="content">
-      <div class="row">
-	<div class="col-xs-12">
-        <div class="box" style="background:#fff">
-            <div class="box-header">
-				<div class="box-tools pull-left col-md-12 col-sm-12" style="padding:0px;">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-					</div>
-					<div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
-						<div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px;">
-							<a class="btn btn-app pull-left greenback" href="<?php echo action('ServiceController@addgallery')?>">
-								<i class="fa fa-plus-circle"></i> Add New Gallery
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive">
-              <table class="table table-bordered" id="example" border="1">
-                <thead>
-				<tr>
-
-                  <th>S.No</th>
-                  <th>Title</th>
-                  <th>Gallery Type</th>
-                  <th>Image</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-				</thead>
-				<tbody>
-				
-				<?php
-					if(isset($allgallery)){
-						if(!empty($allgallery)){
-							$i=0;
-							foreach($allgallery as $tt){ $i++;
-				?>
-                <tr>
-				  <td><?php echo $i?></td>
-				  <td><?php echo $tt->name; ?></td>
-				  <td><?php echo ucwords($tt->type);?></td>
-				  <td><img style="width:75px;height:75px;" class="img-responsive" src="<?php echo URL::asset('uploads/gallery/'.$tt->image)?>"/></td>
-
-				    <?php $idget = $tt->id; ?>
-					 <td>
-						<?php if($tt->status==0){ ?>
-							  <a class="actionbtn btn-info" href="<?php  echo action('ServiceController@populargallery',[$idget,1])?>"><i class="fa fa-star-o"></i></a>
-							  <?php } else{ ?>
-							  <a class="actionbtn btn-info" href="<?php  echo action('ServiceController@populargallery',[$idget,0])?>">
-								<i class="fa fa-star"></i>
-							  </a>
-						  <?php } ?>
-					  </td>
-					  <td style="width:200px;">
-							<a href="<?php  echo action('ServiceController@editgallery',$idget)?>" title="Edit" class="actionbtn btn-info">
-								<i class="fa fa-edit"></i>
-							</a>
-							<a href="<?php echo action('ServiceController@deletegallery',$idget)?>" title="Delete" class="actionbtn btn-danger">
-								<i class="fa fa-trash-o"></i>
-							</a>
-					  </td>
-				</tr>
-					<?php } ?>
-					<?php } ?>
-					<?php } ?>
-              </tbody></table>
+        <div class="action-bar">
+            <div style="color: #667085; font-size: 14px;">
+                Manage the media and pictures displayed in the Gallery and sections of the Red Brigade website.
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+            <div>
+                <a href="<?php echo action('ServiceController@addgallery')?>" class="btn-premium">
+                    <i class="fa fa-plus-circle"></i> Add New Gallery
+                </a>
+            </div>
         </div>
-        </div>
-		</section>
-</div>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-		$.ajaxSetup({
-			headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
-		});
-	});
 
-	function muldelete() {
-		var p=[];
-		$.each($("input[name='checkCat']:checked"), function(){            
-			p.push($(this).val());
-		});
-		if(p!=""){
-		var datavar = '_token = <?php echo csrf_token();?>&hg_cart='+p;
-		$.ajax({
-               type:'POST',
-               url:'<?php echo Config::get('constants.PROJECT_URL');?>admin/multiGallery',
-			   
-               data:datavar,
-			 	success:function(data){
-					if(data==1){
-			 			window.location.reload();
-			 		}
-               		
-               }
-            });
-		}
-		else{
-			toastr.warning('Please Select Gallery to delete');
-		}
-		
-		
-	}
-	</script>
+        <div class="table-container">
+            <table class="premium-table" id="example">
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">S.No</th>
+                        <th>Image</th>
+                        <th style="width: 200px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        if(isset($allgallery) && !empty($allgallery)){
+                            $i = 0;
+                            foreach($allgallery as $tt){ 
+                                $i++;
+                                $idget = $tt->id;
+                    ?>
+                    <tr>
+                        <td><?php echo $i; ?></td>
+                        <td>
+                            <img src="<?php echo URL::asset('uploads/gallery/'.$tt->image); ?>" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 1px solid #eaecf0;" alt="Gallery Thumbnail">
+                        </td>
+                        <td>
+                            <div class="action-flex">
+                                <a href="<?php echo action('ServiceController@editgallery', $idget)?>" class="btn-table-action" title="Edit">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="<?php echo action('ServiceController@deletegallery', $idget)?>" 
+                                   onclick="return confirm('Are you sure you want to delete this gallery item?')" 
+                                   class="btn-table-action btn-table-delete" title="Delete">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php } } ?>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
 @include('includes.admin-footer');

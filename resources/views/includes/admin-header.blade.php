@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo URL::asset('css/admin/AdminLTE.css')?>">
   <link rel="stylesheet" type="text/css" href="<?php echo URL::asset('css/admin/_all-skins.min.css')?>">
   <link href="<?php echo URL::asset('font-awesome-4.7.0/css/font-awesome.min.css')?>" rel="stylesheet" media="all">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
@@ -224,6 +225,64 @@
       transition: all 0.2s;
   }
 
+  /* Dropdown (Treeview) Styling */
+  .treeview-menu {
+      display: none;
+      list-style: none;
+      padding: 0 0 0 28px !important;
+      margin: 4px 0 0 0;
+  }
+
+  .treeview.active > .treeview-menu,
+  .treeview.menu-open > .treeview-menu {
+      display: block;
+  }
+
+  .treeview-menu li {
+      margin-bottom: 2px;
+  }
+
+  .treeview-menu li a {
+      padding: 8px 12px !important;
+      font-size: 13px !important;
+      color: #667085 !important;
+      border-radius: 6px !important;
+  }
+
+  .treeview-menu li a i {
+      font-size: 12px !important;
+      width: 16px !important;
+      margin-right: 8px !important;
+  }
+
+  .treeview-menu li:hover > a {
+      color: #101828 !important;
+      background: #f2f4f7 !important;
+  }
+
+  .treeview-menu li.active > a {
+      color: #E31E24 !important;
+      background: #fef2f2 !important;
+      font-weight: 600;
+  }
+  
+  .treeview-menu li.active::before {
+      display: none; /* Hide the red bar for sub-items */
+  }
+
+  .pull-right-container {
+      margin-left: auto;
+  }
+
+  .treeview.active > a .pull-right-container i,
+  .treeview.menu-open > a .pull-right-container i {
+      transform: rotate(90deg);
+  }
+
+  .pull-right-container i {
+      transition: transform 0.2s ease;
+  }
+
   /* Collapsed Alignments */
   .sidebar-collapse .sidebar-menu li a {
       justify-content: center;
@@ -281,7 +340,26 @@
   /* Final Clutter Removal */
   .main-header .navbar, .main-header .logo { display: none !important; }
   .sidebar-menu .header { display: none !important; } /* Replaced by sidebar-header-row */
-  
+
+  /* Remove DataTable sorting indicators (tiny boxes) globally */
+  table.dataTable thead .sorting::after,
+  table.dataTable thead .sorting_asc::after,
+  table.dataTable thead .sorting_desc::after,
+  table.dataTable thead .sorting_asc_disabled::after,
+  table.dataTable thead .sorting_desc_disabled::after,
+  table.dataTable thead .sorting::before,
+  table.dataTable thead .sorting_asc::before,
+  table.dataTable thead .sorting_desc::before,
+  table.dataTable thead .sorting_asc_disabled::before,
+  table.dataTable thead .sorting_desc_disabled::before {
+      display: none !important;
+      content: "" !important;
+  }
+  table.dataTable thead th.sorting,
+  table.dataTable thead th.sorting_asc,
+  table.dataTable thead th.sorting_desc {
+      padding-right: 24px !important;
+  }
   </style>
   </head>
 <body class="hold-transition skin-blue sidebar-mini">

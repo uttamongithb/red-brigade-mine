@@ -517,13 +517,21 @@ class ServiceController extends Controller {
 	public function vieweducation()
 	{
 		$alleducation = DB::table('education_cards')->orderby('id','DESC')->get();
-		return view('services.vieweducation',compact('alleducation'));
+		$allgallery = DB::table('gallery')->whereIn('type', ['Donate', 'Activity'])->orderby('id','DESC')->get();
+		return view('services.vieweducation',compact('alleducation', 'allgallery'));
 	}
 
 	public function addeducation(Request $request)
 	{
 		if ($request->isMethod('post')) {
-			$input = $request->except(['_token']);
+			$input = $request->except(['_token', 'image']);
+			if ($request->hasFile('image')) {
+				$file = $request->file('image') ?: Input::file('image');
+				if ($file && $file->isValid()) {
+					$fileName = str_slug($request->input('name', 'edu-card'), '-');
+					$input['image'] = Helpers::imageUpload($file, 'uploads/gallery', $fileName);
+				}
+			}
 			$input['status'] = 1;
 			DB::table('education_cards')->insert($input);
 			Session::flash('message', 'Successfully Added Education Feature!');
@@ -536,7 +544,22 @@ class ServiceController extends Controller {
 	{
 		$thisdata = DB::table('education_cards')->where('id', $id)->first();
 		if ($request->isMethod('post')) {
-			$input = $request->except(['_token']);
+			$input = $request->except(['_token', 'image']);
+			if ($request->hasFile('image')) {
+				$file = $request->file('image') ?: Input::file('image');
+				if ($file && $file->isValid()) {
+					$fileName = str_slug($request->input('name', 'edu-card'), '-');
+					$input['image'] = Helpers::imageUpload($file, 'uploads/gallery', $fileName);
+
+					// Cleanup old image
+					if ($thisdata && !empty($thisdata->image)) {
+						$oldPath = public_path('uploads/gallery/' . $thisdata->image);
+						if (file_exists($oldPath)) {
+							@unlink($oldPath);
+						}
+					}
+				}
+			}
 			DB::table('education_cards')->where('id', $id)->update($input);
 			Session::flash('message', 'Successfully Updated Education Feature!');
 			return Redirect::action('ServiceController@vieweducation');
@@ -546,6 +569,13 @@ class ServiceController extends Controller {
 
 	public function deleteeducation($id)
 	{
+		$thisdata = DB::table('education_cards')->where('id', $id)->first();
+		if ($thisdata && !empty($thisdata->image)) {
+			$oldPath = public_path('uploads/gallery/' . $thisdata->image);
+			if (file_exists($oldPath)) {
+				@unlink($oldPath);
+			}
+		}
 		DB::table('education_cards')->where('id', $id)->delete();
 		Session::flash('message', 'Successfully Deleted Education Feature!');
 		return Redirect::back();

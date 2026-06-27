@@ -130,6 +130,81 @@
     .rb-gallery-grid { grid-template-columns: 1fr; }
     .rb-tab-nav { gap: 20px; }
 }
+
+/* Asymmetric / Masonry Layout for Photos */
+.rb-gallery-grid-asymmetric {
+    display: none;
+}
+.rb-gallery-grid-asymmetric.active {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 240px;
+    grid-auto-flow: dense !important;
+    gap: 20px;
+}
+@media (max-width: 991px) {
+    .rb-gallery-grid-asymmetric.active {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+    }
+}
+@media (max-width: 600px) {
+    .rb-gallery-grid-asymmetric.active {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 250px;
+    }
+}
+
+.rb-gallery-grid-asymmetric .rb-media-card {
+    position: relative;
+    background: #fff;
+    border: 1px solid #eef2f6;
+    overflow: hidden;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.rb-gallery-grid-asymmetric .rb-media-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.rb-gallery-grid-asymmetric .rb-media-thumbnail {
+    width: 100%;
+    height: 100% !important;
+    overflow: hidden;
+    background: #f8fafc;
+}
+
+.rb-gallery-grid-asymmetric .rb-media-thumbnail img {
+    width: 100%;
+    height: 100% !important;
+    object-fit: cover;
+    display: block;
+}
+
+/* Asymmetric Span Patterns */
+.rb-gallery-grid-asymmetric .rb-media-card:nth-child(6n+1) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.rb-gallery-grid-asymmetric .rb-media-card:nth-child(6n+3) {
+    grid-row: span 2;
+}
+.rb-gallery-grid-asymmetric .rb-media-card:nth-child(6n+5) {
+    grid-column: span 2;
+}
+
+@media (max-width: 600px) {
+    .rb-gallery-grid-asymmetric .rb-media-card:nth-child(6n+1),
+    .rb-gallery-grid-asymmetric .rb-media-card:nth-child(6n+3),
+    .rb-gallery-grid-asymmetric .rb-media-card:nth-child(6n+5) {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+    }
+}
 </style>
 
 <div class="rb-gallery-page">
@@ -154,18 +229,15 @@
             </div>
 
             <!-- Photos Tab -->
-            <div id="photos" class="rb-tab-content rb-gallery-grid active">
+            <div id="photos" class="rb-tab-content rb-gallery-grid-asymmetric active">
                 <?php if(!empty($photos)) { foreach($photos as $allg) { ?>
                     <a href="<?php echo URL::asset('uploads/gallery/'.trim($allg->image));?>" class="rb-media-card image-popup">
                         <div class="rb-media-thumbnail">
-                            <img src="<?php echo URL::asset('uploads/gallery/'.trim($allg->image));?>" alt="<?php echo $allg->name; ?>" loading="lazy">
-                        </div>
-                        <div class="rb-media-info">
-                            <h4><?php echo !empty($allg->name) ? $allg->name : 'Movement Documentation'; ?></h4>
+                            <img src="<?php echo URL::asset('uploads/gallery/'.trim($allg->image));?>" alt="Documentation Photo" loading="lazy">
                         </div>
                     </a>			
                 <?php } } else { ?>
-                    <div class="col-12 text-center" style="grid-column: 1 / -1; padding: 40px;">
+                    <div class="col-12 text-center" style="padding: 40px; width: 100%;">
                         <p style="color: #64748b;">No photos uploaded yet.</p>
                     </div>
                 <?php } ?>

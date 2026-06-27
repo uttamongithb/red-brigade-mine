@@ -97,11 +97,11 @@
 
         <div class="form-card">
             <div class="form-header">
-                <h5><i class="fa fa-edit" style="color: #E31E24;"></i> Edit Card: <?php echo $thisdata->name; ?></h5>
+                <h5><i class="fa fa-edit" style="color: #E31E24;"></i> Edit Education Focus Card</h5>
             </div>
 
-            {{ Form::open(array('action' => array('ServiceController@editeducation', $thisdata->id))) }}
-                {{ csrf_field() }}
+            <form action="<?php echo action('ServiceController@editeducation', $thisdata->id); ?>" method="POST" enctype="multipart/form-data">
+                {!! csrf_field() !!}
                 <div class="form-body">
                     <div class="form-group">
                         <label>Card Title</label>
@@ -109,9 +109,37 @@
                     </div>
 
                     <div class="form-group">
-                        <label>FontAwesome Icon Class</label>
-                        <input required type="text" name="icon" value="<?php echo $thisdata->icon; ?>" class="form-control-premium" />
-                        <p class="icon-hint">Current: <i class="fas <?php echo $thisdata->icon; ?>"></i></p>
+                        <label>Current Image/Icon</label>
+                        <?php if(!empty($thisdata->image)) { ?>
+                            <div style="margin-bottom: 16px; border-radius: 12px; overflow: hidden; border: 1px solid #eaecf0; width: fit-content;">
+                                <img src="<?php echo URL::asset('uploads/gallery/'.$thisdata->image); ?>" alt="Current Image" style="display: block; max-width: 200px; height: auto;">
+                            </div>
+                        <?php } else { ?>
+                            <div style="padding: 12px; background: #f8fafc; border-radius: 8px; color: #667085; font-size: 14px; margin-bottom: 16px;">
+                                <i class="fas <?php echo $thisdata->icon; ?>"></i> Using FontAwesome Icon
+                            </div>
+                        <?php } ?>
+
+                        <div id="new_preview_container" style="display: none; margin-bottom: 16px; border-radius: 12px; overflow: hidden; border: 2px solid #E31E24; width: fit-content;">
+                            <label style="padding: 4px 8px; background: #E31E24; color: #fff; font-size: 10px; display: block;">NEW PREVIEW</label>
+                            <img id="new_preview" src="#" alt="New Image" style="display: block; max-width: 200px; height: auto;">
+                        </div>
+
+                        <label>Replace Image (Optional)</label>
+                        <div class="file-upload-wrapper" onclick="document.getElementById('image_upload').click();">
+                            <i class="fa fa-cloud-upload"></i>
+                            <div class="file-upload-text">
+                                <span id="upload_status_text">Click to change image</span> or drag and drop<br>
+                                <small>Leave empty to keep current image/icon</small>
+                            </div>
+                            <input id="image_upload" type="file" name="image" accept="image/*" style="opacity: 0; position: absolute; z-index: -1;" onchange="previewNewImage(this)" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>FontAwesome Icon Class (Used if no image present)</label>
+                        <input type="text" name="icon" value="<?php echo $thisdata->icon; ?>" class="form-control-premium" />
+                        <p class="icon-hint">e.g. fa-book-reader, fa-shield-alt</p>
                     </div>
 
                     <div class="form-group">
@@ -125,7 +153,21 @@
                 </div>
             </form>
         </div>
-    </section>
-</div>
+        </section>
+        </div>
+
+        <script>
+        function previewNewImage(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('new_preview').src = e.target.result;
+            document.getElementById('new_preview_container').style.display = 'block';
+            document.getElementById('upload_status_text').innerHTML = 'Change new selection';
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+        }
+        </script>
 
 @include('includes.admin-footer');

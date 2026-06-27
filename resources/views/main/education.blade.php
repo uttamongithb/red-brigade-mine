@@ -1,228 +1,353 @@
 @include('includes.header')
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-/* Reset & Base - Consistent Design Language */
-.rb-edu-page {
-    font-family: 'Inter', sans-serif;
-    color: #4a4a4a;
-    line-height: 1.6;
-    background-color: #fff;
-}
-.rb-edu-page h1, .rb-edu-page h2, .rb-edu-page h3, .rb-edu-page h4 {
-    font-family: 'Playfair Display', serif;
-    color: #1f2f46;
+/* Reset & Variables */
+:root {
+    --primary: #E31E24;
+    --text-main: #111827;
+    --text-muted: #6B7280;
+    --bg-light: #F9FAFB;
+    --white: #FFFFFF;
+    --border: #E5E7EB;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --radius: 12px;
 }
 
-/* Consistent Container Width (90%) */
-.rb-edu-page .container {
-    width: 90%;
-    max-width: none;
+.balmanch-minimal {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-light);
+    line-height: 1.6;
 }
+
+.container-compact {
+    width: 90%;
+    max-width: 1400px; /* Optional cap so it doesn't look stretched on ultra-wide monitors, but feels like 90% on normal screens */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
 @media (max-width: 767px) {
-    .rb-edu-page .container {
+    .container-compact {
         width: 100%;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding: 0 15px;
     }
 }
 
-/* Modern Hero Section */
-.rb-edu-hero {
-    position: relative;
-    background: url('<?php echo URL::asset("uploads/news/rb-education.png"); ?>') no-repeat center center/cover;
-    padding: 180px 0 120px;
-    text-align: center;
-    color: #fff;
-}
-.rb-edu-hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(to bottom, rgba(17, 26, 40, 0.7) 0%, rgba(17, 26, 40, 0.9) 100%);
-}
-.rb-edu-hero .container { position: relative; z-index: 2; }
-.rb-edu-hero h1 {
-    font-size: 64px;
-    color: #fff;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-.rb-edu-hero p {
-    font-size: 22px;
-    max-width: 800px;
-    margin: 0 auto;
-    color: #e2e8f0;
-    font-weight: 300;
+.section-compact { padding: 64px 0; }
+.bg-white { background-color: var(--white); }
+
+/* Typography */
+h1, h2, h3, h4 { font-weight: 700; color: var(--text-main); letter-spacing: -0.02em; margin: 0; }
+p { color: var(--text-muted); margin: 0 0 16px 0; }
+.badge-red {
+    display: inline-block;
+    background: rgba(227, 30, 36, 0.1);
+    color: var(--primary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
 }
 
-.rb-kicker { 
-    color: #E31E24; 
-    font-weight: 700; 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
-    font-size: 14px; 
-    display: block; 
-    margin-bottom: 15px; 
+/* 1. Hero Section (Side by Side) */
+.hero-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    padding: 80px 0 40px;
+}
+.hero-text { flex: 1; }
+.hero-text h1 { font-size: 48px; line-height: 1.1; margin-bottom: 20px; }
+.hero-text p { font-size: 18px; color: var(--text-muted); margin-bottom: 32px; max-width: 90%; }
+.hero-img { flex: 1; }
+.hero-img img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
 }
 
-/* Core Values / Features */
-.rb-edu-features {
-    padding: 100px 0;
-    background: #fff;
-}
-.rb-edu-grid {
+/* 2. Overview Grid (Motive + Mission/Vision) */
+.overview-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 3fr 2fr;
     gap: 40px;
-    margin-top: 60px;
 }
-.rb-edu-card {
+.motive-box {
+    background: var(--white);
     padding: 40px;
-    background: #f8fafc;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    border: 1px solid #eef2f6;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
 }
-.rb-edu-card:hover {
-    transform: translateY(-10px);
-    background: #fff;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-    border-color: #E31E24;
+.motive-box h2 { font-size: 28px; margin-bottom: 20px; }
+.motive-box p { font-size: 16px; }
+
+.mv-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
-.rb-edu-icon {
-    width: 60px;
-    height: 60px;
-    background: #E31E24;
-    color: #fff;
-    border-radius: 12px;
+.mv-card {
+    background: var(--white);
+    padding: 32px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+.mv-card h3 { font-size: 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.mv-card h3 i { color: var(--primary); font-size: 18px; }
+.mv-card p { font-size: 15px; margin: 0; }
+
+/* 3. Target Audience */
+.target-wrap {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin-top: 32px;
+}
+.target-pill {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 16px 24px;
+    border-radius: 100px; /* Pill shape */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 15px;
+    box-shadow: var(--shadow-sm);
+    flex: 1;
+    justify-content: center;
+}
+.target-pill i { color: var(--primary); }
+
+/* 4. Core Focus Cards */
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+.focus-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.focus-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+.focus-img-box {
+    height: 180px;
+    width: 100%;
+    background: var(--bg-light);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border);
 }
-.rb-edu-card h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #1f2f46;
-}
-.rb-edu-card p {
-    font-size: 16px;
-    color: #4a5568;
-}
-
-/* Gallery Section */
-.rb-edu-gallery {
-    padding: 100px 0;
-    background: #f8fafc;
-}
-.rb-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin-top: 40px;
-}
-.rb-gallery-item {
-    aspect-ratio: 1/1;
-    overflow: hidden;
-    border-radius: 8px;
-    position: relative;
-}
-.rb-gallery-item img {
+.focus-img-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
 }
-.rb-gallery-item:hover img {
-    transform: scale(1.1);
-}
+.focus-img-box i { font-size: 40px; color: #D1D5DB; }
+.focus-card-body { padding: 24px; }
+.focus-card-body h3 { font-size: 18px; margin-bottom: 10px; }
+.focus-card-body p { font-size: 14px; margin: 0; line-height: 1.5; }
 
+/* 5. Impact Gallery Compact Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+}
+.gallery-item {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.gallery-item:hover img { transform: scale(1.05); }
+
+/* Buttons */
+.btn-primary-compact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: var(--white);
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none !important;
+    transition: opacity 0.2s;
+}
+.btn-primary-compact:hover { opacity: 0.9; color: var(--white); }
+
+/* Responsive */
 @media (max-width: 991px) {
-    .rb-edu-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-wrapper { flex-direction: column; text-align: center; gap: 32px; padding: 40px 0; }
+    .hero-text p { margin: 0 auto 32px; }
+    .overview-grid { grid-template-columns: 1fr; }
+    .target-wrap { flex-direction: column; }
+    .target-pill { border-radius: 12px; padding: 20px; justify-content: flex-start; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-    .rb-edu-hero h1 { font-size: 42px; }
-    .rb-edu-grid { grid-template-columns: 1fr; }
+    .hero-text h1 { font-size: 36px; }
+    .section-compact { padding: 48px 0; }
 }
 </style>
 
-<div class="rb-edu-page">
+<div class="balmanch-minimal">
+
     <!-- Hero Section -->
-    <section class="rb-edu-hero">
-        <div class="container">
-            <span class="rb-kicker" style="color: #ff8a00;">Empowerment Through Knowledge</span>
-            <h1>Education (Balmanch)</h1>
-            <p>Our commitment to providing educational support and safe spaces for children in marginalized communities.</p>
+    <section class="bg-white">
+        <div class="container-compact">
+            <div class="hero-wrapper">
+                <div class="hero-text">
+                    <span class="badge-red">Balmanch</span>
+                    <h1>Education & Safety for Every Child</h1>
+                    <p>A dedicated platform established by Red Brigade to foster holistic development, literacy, and self-defense skills in marginalized communities.</p>
+                    <a href="<?php echo action('MainController@donate'); ?>" class="btn-primary-compact">Support the Initiative</a>
+                </div>
+                <div class="hero-img">
+                    <img src="<?php echo URL::asset('uploads/news/rb-education.png'); ?>" alt="Children studying">
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Balmanch Mission -->
-    <section class="rb-edu-features">
-        <div class="container">
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <span class="rb-kicker">Our Core Focus</span>
-                <h2 style="font-size: 42px; margin-bottom: 30px;">Investing in the Future</h2>
-                <p style="font-size: 18px; color: #4a5568;">Balmanch is Red Brigade's dedicated initiative for child education. We believe that true social change begins with the youngest members of our society, ensuring they have the tools, safety, and confidence to thrive.</p>
+    <!-- Overview & Mission -->
+    <section class="section-compact">
+        <div class="container-compact">
+            <div class="overview-grid">
+                
+                <!-- Motive -->
+                <div class="motive-box">
+                    <span class="badge-red">Our Motive</span>
+                    <h2>Why We Started Balmanch</h2>
+                    <p>While working within sensitive communities, we encountered a stark reality: true empowerment must begin early. Children dropping out of school or lacking safe spaces were overwhelmingly vulnerable to exploitation, violence, and cyclical poverty.</p>
+                    <p style="margin-bottom: 0;">Balmanch was created to bridge this critical gap. Our motive is to intervene during the formative years—providing a reliable safety net where education replaces vulnerability. We believe no child's potential should be dictated by their geographical or economic circumstances.</p>
+                </div>
+
+                <!-- Mission & Vision -->
+                <div class="mv-stack">
+                    <div class="mv-card">
+                        <h3><i class="fas fa-bullseye"></i> Mission</h3>
+                        <p>To provide accessible educational support and essential life skills to children in underserved areas, reintegrating dropouts and teaching personal safety.</p>
+                    </div>
+                    <div class="mv-card" style="border-left-color: #111827;">
+                        <h3><i class="fas fa-eye" style="color:#111827;"></i> Vision</h3>
+                        <p>A society where every child has the undeniable opportunity to learn in a safe, joyful environment, creating a future driven by empowered youth.</p>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="rb-edu-grid">
+            <!-- Target Audience Pills -->
+            <div class="target-wrap">
+                <div class="target-pill"><i class="fas fa-user-graduate"></i> School Dropouts</div>
+                <div class="target-pill"><i class="fas fa-home"></i> Marginalized Communities</div>
+                <div class="target-pill"><i class="fas fa-child"></i> Vulnerable Youth</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Focus -->
+    <section class="section-compact bg-white">
+        <div class="container-compact">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                <div>
+                    <span class="badge-red">Interventions</span>
+                    <h2 style="font-size: 32px;">Our Core Focus Areas</h2>
+                </div>
+            </div>
+
+            <div class="focus-grid">
                 <?php if(isset($alleducation_cards) && count($alleducation_cards) > 0) { 
                     foreach($alleducation_cards as $card) {
                 ?>
-                <div class="rb-edu-card">
-                    <div class="rb-edu-icon"><i class="fas <?php echo $card->icon; ?>"></i></div>
-                    <h3><?php echo $card->name; ?></h3>
-                    <p><?php echo $card->description; ?></p>
+                <div class="focus-card">
+                    <div class="focus-img-box">
+                        <?php if(!empty($card->image)) { ?>
+                            <img src="<?php echo URL::asset('uploads/gallery/'.$card->image); ?>" alt="<?php echo $card->name; ?>">
+                        <?php } else { ?>
+                            <i class="fas <?php echo $card->icon; ?>"></i>
+                        <?php } ?>
+                    </div>
+                    <div class="focus-card-body">
+                        <h3><?php echo $card->name; ?></h3>
+                        <p><?php echo $card->description; ?></p>
+                    </div>
                 </div>
                 <?php } } else { ?>
-                <div class="rb-edu-card">
-                    <div class="rb-edu-icon"><i class="fas fa-book-reader"></i></div>
-                    <h3>Literacy & Support</h3>
-                    <p>Providing direct educational assistance and bridge courses for children who have dropped out of school.</p>
+                <!-- Fallbacks -->
+                <div class="focus-card">
+                    <div class="focus-img-box"><i class="fas fa-book-reader"></i></div>
+                    <div class="focus-card-body">
+                        <h3>Literacy & Support</h3>
+                        <p>Providing direct educational assistance and bridge courses for children who have dropped out of school.</p>
+                    </div>
                 </div>
-                <div class="rb-edu-card">
-                    <div class="rb-edu-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3>Child Safety</h3>
-                    <p>Teaching children about their rights, "Good Touch & Bad Touch," and how to protect themselves from exploitation.</p>
-                </div>
-                <div class="rb-edu-card">
-                    <div class="rb-edu-icon"><i class="fas fa-users"></i></div>
-                    <h3>Community Hubs</h3>
-                    <p>Establishing local learning centers that act as safe havens for children in sensitive neighborhoods.</p>
+                <div class="focus-card">
+                    <div class="focus-img-box"><i class="fas fa-shield-alt"></i></div>
+                    <div class="focus-card-body">
+                        <h3>Child Safety</h3>
+                        <p>Teaching children about their rights, "Good Touch & Bad Touch," and how to protect themselves.</p>
+                    </div>
                 </div>
                 <?php } ?>
             </div>
         </div>
     </section>
 
-    <!-- Visual Impact -->
-    <section class="rb-edu-gallery">
-        <div class="container">
-            <h2 style="text-align: center;">Glimpses of Our Impact</h2>
-            <div class="rb-gallery-grid">
-                <?php if(isset($education_items) && !empty($education_items)) { 
+    <!-- Impact Gallery -->
+    <section class="section-compact">
+        <div class="container-compact">
+            <span class="badge-red">In Action</span>
+            <h2 style="font-size: 32px;">Glimpses of Impact</h2>
+            
+            <div class="gallery-grid">
+                <?php if(isset($education_items) && count($education_items) > 0) { 
+                    // Render gallery items dynamically
                     foreach($education_items as $item) { ?>
-                    <div class="rb-gallery-item">
-                        <img src="<?php echo URL::asset('uploads/gallery/'.$item->image); ?>" alt="Education" loading="lazy">
+                    <div class="gallery-item">
+                        <img src="<?php echo URL::asset('uploads/gallery/'.$item->image); ?>" alt="<?php echo $item->name; ?>" loading="lazy" title="<?php echo $item->name; ?>">
                     </div>
                 <?php } } else { ?>
-                    <div class="rb-gallery-item"><img src="<?php echo URL::asset('uploads/news/rb-education.png'); ?>" alt="Edu"></div>
-                    <div class="rb-gallery-item"><img src="<?php echo URL::asset('uploads/news/rb-skill-dev.png'); ?>" alt="Skill"></div>
-                    <div class="rb-gallery-item"><img src="<?php echo URL::asset('uploads/news/rb-street-play.png'); ?>" alt="Play"></div>
+                    <div class="gallery-item"><img src="<?php echo URL::asset('uploads/news/rb-education.png'); ?>" alt="Edu"></div>
+                    <div class="gallery-item"><img src="<?php echo URL::asset('uploads/news/rb-skill-dev.png'); ?>" alt="Skill"></div>
+                    <div class="gallery-item"><img src="<?php echo URL::asset('uploads/news/rb-street-play.png'); ?>" alt="Play"></div>
+                    <div class="gallery-item"><img src="<?php echo URL::asset('uploads/news/rb-covid-relief.png'); ?>" alt="Relief"></div>
                 <?php } ?>
             </div>
+            
         </div>
     </section>
 
-    <!-- Support Education -->
-    <section class="rb-edu-features" style="background: #1f2f46; color: #fff;">
-        <div class="container text-center">
-            <h2 style="color: #fff; font-size: 36px; margin-bottom: 20px;">Support a Child's Future</h2>
-            <p style="color: #cbd5e1; font-size: 18px; max-width: 700px; margin: 0 auto 40px;">Your contributions directly fund books, teaching materials, and school fees for children in our program.</p>
-            <a href="<?php echo action('MainController@donate'); ?>" class="rb-btn" style="display: inline-block; padding: 14px 40px; background: #E31E24; color: #fff; font-weight: 700; border-radius: 4px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;">Donate to Education</a>
-        </div>
-    </section>
 </div>
 
 @include('includes.footer')

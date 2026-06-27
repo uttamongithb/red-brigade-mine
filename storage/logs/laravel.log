@@ -7195,3 +7195,45 @@ Stack trace:
 [2026-06-16 06:56:26] local.INFO: Deleted slider record from DB. ID: 4  
 [2026-06-16 06:57:10] local.INFO: Uploading file: IMG_5941.JPG.jpeg  
 [2026-06-16 06:57:51] local.INFO: Uploading file: IMG_1916.JPG.jpeg  
+[2026-06-16 07:13:23] local.ERROR: ReflectionException: Class EducationSeeder does not exist in C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Container\Container.php:734
+Stack trace:
+#0 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Container\Container.php(734): ReflectionClass->__construct('EducationSeeder')
+#1 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Container\Container.php(629): Illuminate\Container\Container->build('EducationSeeder', Array)
+#2 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Foundation\Application.php(697): Illuminate\Container\Container->make('EducationSeeder', Array)
+#3 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Console\Seeds\SeedCommand.php(74): Illuminate\Foundation\Application->make('EducationSeeder')
+#4 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Console\Seeds\SeedCommand.php(63): Illuminate\Database\Console\Seeds\SeedCommand->getSeeder()
+#5 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(2314): Illuminate\Database\Console\Seeds\SeedCommand->Illuminate\Database\Console\Seeds\{closure}()
+#6 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Console\Seeds\SeedCommand.php(64): Illuminate\Database\Eloquent\Model::unguarded(Object(Closure))
+#7 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#8 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Container\Container.php(507): call_user_func_array(Array, Array)
+#9 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Console\Command.php(169): Illuminate\Container\Container->call(Array)
+#10 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\symfony\console\Command\Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Console\Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\symfony\console\Application.php(794): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\symfony\console\Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\symfony\console\Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 C:\Users\user\Desktop\red-brigade\red-brigade\artisan(35): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 {main}  
+[2026-06-16 07:59:11] local.INFO: imageUpload received 1 files.  
+[2026-06-16 07:59:11] local.INFO: Checking extension for IMG_1916.JPG.jpeg: jpeg -> VALID  
+[2026-06-16 07:59:11] local.INFO: Moving file to: C:\Users\user\Desktop\red-brigade\red-brigade\public\uploads/gallery/erdfgyhj.jpeg  
+[2026-06-26 07:05:27] local.ERROR: PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 4 in C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Connection.php:457
+Stack trace:
+#0 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Connection.php(457): PDO->prepare('insert into `ga...')
+#1 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Connection.php(722): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'insert into `ga...', Array)
+#2 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Connection.php(685): Illuminate\Database\Connection->runQueryCallback('insert into `ga...', Array, Object(Closure))
+#3 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Connection.php(458): Illuminate\Database\Connection->run('insert into `ga...', Array, Object(Closure))
+#4 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Connection.php(414): Illuminate\Database\Connection->statement('insert into `ga...', Array)
+#5 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(2091): Illuminate\Database\Connection->insert('insert into `ga...', Array)
+#6 C:\Users\user\Desktop\red-brigade\red-brigade\test_insert.php(81): Illuminate\Database\Query\Builder->insert(Array)
+#7 {main}
+
+Next Illuminate\Database\QueryException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 4 (SQL: insert into `gallery` (`created_at`, `image`, `name`, `status`, `type`, `updated_at`) values (2026-06-26 07:05:27, rb-self-defense-training.jpg, Self-Defense Workshop in Lucknow, 1, Photo, 2026-06-26 07:05:27), (2026-06-26 07:05:27, rb-street-play-activism.jpg, Nukkad Natak Street Play, 1, Photo, 2026-06-26 07:05:27), (2026-06-26 07:05:27, rb-rally-empowerment.jpg, Women Empowerment Rally, 1, Photo, 2026-06-26 07:05:27), (2026-06-26 07:05:27, <iframe width="100%" height="100%" src="https://www.youtube.com/embed/N6RaqQ0D09w" frameborder="0" allowfullscreen></iframe>, rb-self-defense-training.jpg, TEDx Talk by Founder Usha Vishwakarma, 1, Video, 2026-06-26 07:05:27), (2026-06-26 07:05:27, <iframe width="100%" height="100%" src="https://www.youtube.com/embed/nL_uEIC7Zss" frameborder="0" allowfullscreen></iframe>, rb-street-play-activism.jpg, Documentary on Red Brigade Movement, 1, Video, 2026-06-26 07:05:27)) in C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Connection.php:729
+Stack trace:
+#0 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Connection.php(685): Illuminate\Database\Connection->runQueryCallback('insert into `ga...', Array, Object(Closure))
+#1 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Connection.php(458): Illuminate\Database\Connection->run('insert into `ga...', Array, Object(Closure))
+#2 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Connection.php(414): Illuminate\Database\Connection->statement('insert into `ga...', Array)
+#3 C:\Users\user\Desktop\red-brigade\red-brigade\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(2091): Illuminate\Database\Connection->insert('insert into `ga...', Array)
+#4 C:\Users\user\Desktop\red-brigade\red-brigade\test_insert.php(81): Illuminate\Database\Query\Builder->insert(Array)
+#5 {main}  

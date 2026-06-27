@@ -109,26 +109,32 @@
 
 <div class="content-wrapper">
     <section class="content-header">
-      <h1>Education Focus Areas</h1>
+      <h1>Education Program Management</h1>
     </section>
 
     <section class="content">
-        <div class="action-bar">
-            <div style="color: #667085; font-size: 14px;">
-                Manage the focus area cards displayed on the Balmanch Education page.
+        <!-- Section 1: Our Core Focus Areas -->
+        <div class="action-bar" style="margin-bottom: 16px;">
+            <div>
+                <h3 style="font-weight: 700; color: #101828; margin: 0 0 4px 0; font-size: 18px;">Our Core Focus Areas</h3>
+                <div style="color: #667085; font-size: 13px;">
+                    Manage the main intervention focus area cards displayed on the Education page.
+                </div>
             </div>
-            <a href="<?php echo action('ServiceController@addeducation')?>" class="btn-premium">
-                <i class="fa fa-plus"></i> Add Focus Card
-            </a>
+            <div>
+                <a href="<?php echo action('ServiceController@addeducation')?>" class="btn-premium">
+                    <i class="fa fa-plus"></i> Add Focus Card
+                </a>
+            </div>
         </div>
 
-        <div class="table-container">
+        <div class="table-container" style="margin-bottom: 40px;">
             <table class="premium-table">
                 <thead>
                     <tr>
                         <th style="width: 80px;">S.No</th>
+                        <th>Icon/Image</th>
                         <th>Title</th>
-                        <th>Icon Class</th>
                         <th>Description</th>
                         <th style="width: 200px;">Action</th>
                     </tr>
@@ -143,8 +149,16 @@
                     ?>
                     <tr>
                         <td><?php echo $i; ?></td>
+                        <td>
+                            <?php if(!empty($tt->image)) { ?>
+                                <img src="<?php echo URL::asset('uploads/gallery/'.$tt->image); ?>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;" alt="Icon">
+                            <?php } else { ?>
+                                <div style="width: 50px; height: 50px; background: #f8fafc; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #E31E24; font-size: 20px; border: 1px solid #eaecf0;">
+                                    <i class="fas <?php echo $tt->icon; ?>"></i>
+                                </div>
+                            <?php } ?>
+                        </td>
                         <td style="font-weight: 700; color: #101828;"><?php echo $tt->name; ?></td>
-                        <td><i class="fas <?php echo $tt->icon; ?>" style="color: #E31E24; margin-right: 8px;"></i> <?php echo $tt->icon; ?></td>
                         <td style="max-width: 300px; color: #667085; font-size: 13px;">
                             <?php echo strip_tags(substr($tt->description, 0, 100)); ?>...
                         </td>
@@ -153,10 +167,10 @@
                                 <a href="<?php echo action('ServiceController@editeducation',$idget)?>" class="btn-table-action" title="Edit">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="javascript:void(0)" 
-                                   onclick="confirmDelete('<?php echo action('ServiceController@deleteeducation',$idget)?>')" 
+                                <a href="<?php echo url('admin/deleteeducation/'.$idget)?>" 
+                                   onclick="return confirm('Are you sure you want to delete this education card?')" 
                                    class="btn-table-action btn-table-delete" title="Delete">
-                                    <i class="fa fa-trash"></i> Delete
+                                    <i class="fa fa-trash"></i>
                                 </a>
                             </div>
                         </td>
@@ -166,6 +180,68 @@
                         <td colspan="5" style="text-align: center; padding: 48px; color: #98a2b3;">
                             <i class="fa fa-book" style="font-size: 32px; margin-bottom: 12px; display: block;"></i>
                             No education focus cards found.
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section 2: Glimpses of Impact -->
+        <div class="action-bar" style="margin-bottom: 16px;">
+            <div>
+                <h3 style="font-weight: 700; color: #101828; margin: 0 0 4px 0; font-size: 18px;">Glimpses of Impact</h3>
+                <div style="color: #667085; font-size: 13px;">
+                    Manage the gallery images and impact moments of type 'Activity' or 'Donate' shown on the Education page.
+                </div>
+            </div>
+            <div>
+                <a href="<?php echo action('ServiceController@addgallery')?>" class="btn-premium" style="background: #1f2f46;">
+                    <i class="fa fa-camera"></i> Add Impact Image
+                </a>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="premium-table">
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">S.No</th>
+                        <th>Image</th>
+                        <th style="width: 200px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        if(isset($allgallery) && !empty($allgallery)){
+                            $j = 0;
+                            foreach($allgallery as $item){ 
+                                $j++;
+                                $galleryId = $item->id;
+                    ?>
+                    <tr>
+                        <td><?php echo $j; ?></td>
+                        <td>
+                            <img src="<?php echo URL::asset('uploads/gallery/'.$item->image); ?>" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;" alt="Gallery Image">
+                        </td>
+                        <td>
+                            <div class="action-flex">
+                                <a href="<?php echo action('ServiceController@editgallery', $galleryId)?>" class="btn-table-action" title="Edit">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="<?php echo action('ServiceController@deletegallery', $galleryId)?>" 
+                                   onclick="return confirm('Are you sure you want to delete this gallery item?')" 
+                                   class="btn-table-action btn-table-delete" title="Delete">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php } } else { ?>
+                    <tr>
+                        <td colspan="3" style="text-align: center; padding: 48px; color: #98a2b3;">
+                            <i class="fa fa-image" style="font-size: 32px; margin-bottom: 12px; display: block;"></i>
+                            No glimpses of impact images found.
                         </td>
                     </tr>
                     <?php } ?>

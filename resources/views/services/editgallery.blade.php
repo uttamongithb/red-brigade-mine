@@ -7,8 +7,11 @@
     </section>
     <section class="content">
       <div class="row">
-	    <div class="col-md-12">
-		  </div>
+	    <div class="col-md-12" style="margin-bottom: 20px;">
+			<a class="btn btn-default" href="<?php echo action('ServiceController@viewgallery')?>" style="font-weight: 600; padding: 8px 16px; border-radius: 8px; border: 1px solid #d0d5dd; background: #fff; color: #344054; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+				<i class="fa fa-arrow-left"></i> Back to List
+			</a>
+		</div>
 		    <div class="col-md-12">
 		 <div class="box box-primary">
             <div class="widget-title"> <span class="icon"> <i class="fa fa-plus-circle"></i> </span>
@@ -27,7 +30,7 @@
 							<label for="SAMStudId">Gallery Type</label>
 							<select name="type" id="gallery-type" class="form-control" >
 								<option value="">Select Gallery Type</option>
-								<option value="Photo" <?php if($thisdata->type=='Photo') { echo "selected"; } ?>>Photo</option>
+								<option value="Photo" <?php if($thisdata->type=='Photo') { echo "selected"; } ?>>General Photo</option>
 								<option value="Video" <?php if($thisdata->type=='Video') { echo "selected"; } ?>>Video</option>
 							</select>
 						</div>
@@ -49,8 +52,9 @@
 							 <input type="text" id="video-embed-input" name="embed" class="form-control" value="<?php echo $thisdata->embed; ?>" placeholder="Paste iframe or video link here" />
 							</div>
 						</div>
-						<div class="col-md-12 text-left" style="pUpdateing-right:15px;margin-bottom:20px;">
-							<input type="submit" class="btn btn-sqr" value="Submit" title="Submit"  />
+						<div class="col-md-12 text-left" style="padding-right:15px;margin-bottom:20px; display: flex; gap: 12px; align-items: center;">
+							<input type="submit" class="btn btn-sqr" value="Submit" title="Submit" style="background: #E31E24; color: #fff; padding: 10px 24px; border: none; border-radius: 8px; font-weight: 600;" />
+							<a href="<?php echo action('ServiceController@viewgallery')?>" class="btn btn-default" style="padding: 10px 24px; border-radius: 8px; font-weight: 600; border: 1px solid #d0d5dd; background: #fff; color: #344054; text-decoration: none;">Cancel</a>
 						</div>
                     </div>
 				</div>
