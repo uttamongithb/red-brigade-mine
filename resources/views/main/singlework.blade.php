@@ -122,15 +122,15 @@
                     $formattedDate = date('F d, Y', strtotime($dateToUse));
                 }
             ?>
-            <span class="rb-post-date"><?php echo $formattedDate; ?></span>
-            <h1 class="rb-post-title"><?php echo ucfirst($thiswork->name); ?></h1>
+            <span class="rb-post-date"><?php echo htmlspecialchars($formattedDate, ENT_QUOTES, 'UTF-8'); ?></span>
+            <h1 class="rb-post-title"><?php echo htmlspecialchars(ucfirst($thiswork->name), ENT_QUOTES, 'UTF-8'); ?></h1>
         </div>
     </header>
 
     <!-- Featured Image -->
     <?php if(!empty($thiswork->image)): ?>
     <div class="rb-post-featured-image container">
-        <img src="<?php echo URL::asset('uploads/news/'.trim($thiswork->image));?>" alt="<?php echo $thiswork->name; ?>">
+        <img src="<?php echo URL::asset('uploads/news/'.trim($thiswork->image));?>" alt="<?php echo htmlspecialchars($thiswork->name, ENT_QUOTES, 'UTF-8'); ?>">
     </div>
     <?php else: ?>
     <div style="height: 60px;"></div>
@@ -139,7 +139,7 @@
     <!-- Content -->
     <div class="container">
         <div class="rb-post-body">
-            <?php echo $thiswork->description; ?>
+            <?php echo \App\Helpers\Sanitizer::clean($thiswork->description); ?>
             
             <div style="text-align: center;">
                 <a href="<?php echo action('MainController@event'); ?>" class="rb-back-link"><i class="fas fa-arrow-left"></i> Back to Our Work</a>

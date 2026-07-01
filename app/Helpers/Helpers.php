@@ -17,8 +17,8 @@ class Helpers
 		$headers = "MIME-Version: 1.0" . "\r\n";
 					$headers.= "Content-type:text/html;charset=UTF-8" . "\r\n";
 					$headers.= "From:info@redbrigadelucknow.org" . "\r\n".
-								"Reply-To:info@redbrigadelucknow.org" . "\r\n";
-								return $headers;
+							"Reply-To:info@redbrigadelucknow.org" . "\r\n";
+							return $headers;
 	}
 	public static function mail_footer_section(){
 		$content='<div style="background:rgb(227,30,36);padding:10px 0px;width:100%;float:left">
@@ -65,7 +65,7 @@ padding: 10px;background:rgb(246,246,246);">
                     <tbody><tr>
                       <td style="padding:0">
                        '.$message.'</td>
-						</tr>
+					</tr>
                   </tbody></table>
                 </td>
               </tr>
@@ -73,7 +73,7 @@ padding: 10px;background:rgb(246,246,246);">
 				  <tr>
 				<td style="padding:15px 20px 20px 20px;width:100%">
                   <div style="font-family:Georgia,Arial,Helvetica;font-size:15px;color:#333;font-weight:normal;line-height:1.6;font-style:italic;width:100%">Warm regards,<br>
-					Red Brigade Lucknow</div>
+				Red Brigade Lucknow</div>
                 </td>
               </tr>
               <tr>
@@ -90,12 +90,11 @@ padding: 10px;background:rgb(246,246,246);">
 	
     public function sendmessage($mobile,$msg)
     {
-//api code =        VVLcCvhPTEeKU60jght0ew //
-		$apikey = "VVLcCvhPTEeKU60jght0ew";
-		$apisender = "REDBRG";
+		$apikey = env('SMS_API_KEY', '');
+		$apisender = env('SMS_SENDER_ID', 'REDBRG');
 		$msg =$msg;
-		$num = $mobile;    // MULTIPLE NUMBER VARIABLE PUT HERE...!                
-		$ms = rawurlencode($msg);   //This for encode your message content                        
+		$num = $mobile;
+		$ms = rawurlencode($msg);
 		 
 		$url = 'https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey='.$apikey.'&senderid='.$apisender.'&channel=2&DCS=0&flashsms=0&number='.$num.'&text='.$ms.'&route=1';
 		$ch=curl_init($url);
@@ -165,7 +164,8 @@ padding: 10px;background:rgb(246,246,246);">
 	public static function sendTextSMS($txtmsg,$mobile){
 		$mobile=str_replace('$$',',',$mobile);
 		$txtmsg=rawurlencode($txtmsg);
-		$url="http://sms.imgglobalinfotech.com/api/send_http.php?authkey=706b7ffed8ac4d47b4bbd9b0306735e2&mobiles=".$mobile."&message=".$txtmsg."&sender=MIMESY&route=B";
+		$smsApiKey = env('SMS_API_KEY_2', '');
+		$url="http://sms.imgglobalinfotech.com/api/send_http.php?authkey=".$smsApiKey."&mobiles=".$mobile."&message=".$txtmsg."&sender=MIMESY&route=B";
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -173,26 +173,83 @@ padding: 10px;background:rgb(246,246,246);">
 		curl_exec($ch);
 		curl_close($ch);
 	}
+
+	/**
+	 * Allowed MIME types for image uploads.
+	 */
+	private static $allowedMimeTypes = [
+		'image/jpeg' => 'jpg',
+		'image/png' => 'png',
+		'image/gif' => 'gif',
+		'image/webp' => 'webp',
+	];
+
+	/**
+	 * Validate file is a genuine image by checking MIME type via finfo (not extension).
+	 */
 	public static function imageExtension($file){
+		// Primary check: MIME type from file content (not user-supplied extension)
+		$mimeType = $file->getMimeType();
+		if (!array_key_exists($mimeType, self::$allowedMimeTypes)) {
+			\Log::warning("File rejected by MIME check: " . $file->getClientOriginalName() . " (MIME: " . $mimeType . ")");
+			return false;
+		}
+
+		// Secondary check: extension whitelist
 		$extension = strtolower($file->getClientOriginalExtension());
 		$ext = array('jpg','jpeg','gif','png', 'webp', 'jfif');
 		$isValid = in_array($extension, $ext);
-		\Log::info("Checking extension for " . $file->getClientOriginalName() . ": " . $extension . " -> " . ($isValid ? "VALID" : "INVALID"));
+		if (!$isValid) {
+			\Log::warning("File rejected by extension check: " . $file->getClientOriginalName() . ": " . $extension);
+		}
 		return $isValid;
 	}
+
+	/**
+	 * Get safe extension based on actual MIME type.
+	 */
+	public static function getSafeExtension($file){
+		$mimeType = $file->getMimeType();
+		if (array_key_exists($mimeType, self::$allowedMimeTypes)) {
+			return self::$allowedMimeTypes[$mimeType];
+		}
+		return null;
+	}
+
 	public static function videoExtension($file){
 		$extension = strtolower($file->getClientOriginalExtension());
 		$ext = array('mp4','webm','ogg');
 		return in_array($extension, $ext);
 	}
+
+	/**
+	 * Sanitize filename to prevent path traversal and special characters.
+	 */
+	public static function sanitizeFilename($name) {
+		// Remove path separators and null bytes
+		$name = str_replace(['/', '\\', "\0", '..'], '', $name);
+		// Only allow alphanumeric, hyphens, underscores
+		$name = preg_replace('/[^a-zA-Z0-9_-]/', '', $name);
+		// Ensure not empty
+		if (empty($name)) {
+			$name = 'upload';
+		}
+		return substr($name, 0, 100); // Limit length
+	}
+
 	public static function fileUpload($file,$destinationPath,$fileName){
 		$array=array();
 		$files = is_array($file) ? $file : [$file];
 		foreach($files as $f){
 				if ($f === null) continue;
 				\Log::info("Uploading file: " . $f->getClientOriginalName());
-				$extension = strtolower($f->getClientOriginalExtension());
-				$newfilename = $fileName.'-'.rand(100,999).'.'.$extension;
+
+				// Use safe extension from MIME type when possible
+				$safeExt = self::getSafeExtension($f);
+				$extension = $safeExt ?: strtolower($f->getClientOriginalExtension());
+
+				$sanitizedName = self::sanitizeFilename($fileName);
+				$newfilename = $sanitizedName.'-'.rand(100,999).'.'.$extension;
 				$fullDestinationPath = public_path($destinationPath);
 
 				$f->move($fullDestinationPath, $newfilename);
@@ -200,6 +257,7 @@ padding: 10px;background:rgb(246,246,246);">
 		}
 		return implode('{$}',$array);
 	}
+
 	public static function imageUpload($file,$destinationPath,$fileName){
 		$array=array();
 		$files = is_array($file) ? $file : [$file];
@@ -213,18 +271,23 @@ padding: 10px;background:rgb(246,246,246);">
 					\Log::warning("File rejected by imageExtension: " . $fileimage->getClientOriginalName());
 					continue;
 				}
-				$filename = $fileimage->getClientOriginalName();
-					$extension = $fileimage->getClientOriginalExtension();
-					$newfilename = $fileName.'.'.$extension;
-					$fullDestinationPath = public_path($destinationPath);
-					if(file_exists($fullDestinationPath.'/'.$newfilename)){
-						$info=pathinfo($newfilename);
-						$imageNamee=$info['filename'].'-'.rand(100,999);
-						$newfilename=$imageNamee.".".$info['extension'];
-					}
-					$array[]=$newfilename;
-					\Log::info("Moving file to: " . $fullDestinationPath . '/' . $newfilename);
-					$upload_success = $fileimage->move($fullDestinationPath, $newfilename);
+
+				// Use safe extension from MIME type, not user-supplied extension
+				$safeExt = self::getSafeExtension($fileimage);
+				$extension = $safeExt ?: strtolower($fileimage->getClientOriginalExtension());
+
+				$sanitizedName = self::sanitizeFilename($fileName);
+				$newfilename = $sanitizedName.'.'.$extension;
+				$fullDestinationPath = public_path($destinationPath);
+
+				if(file_exists($fullDestinationPath.'/'.$newfilename)){
+					$info=pathinfo($newfilename);
+					$imageNamee=self::sanitizeFilename($info['filename']).'-'.rand(100,999);
+					$newfilename=$imageNamee.".".$info['extension'];
+				}
+				$array[]=$newfilename;
+				\Log::info("Moving file to: " . $fullDestinationPath . '/' . $newfilename);
+				$upload_success = $fileimage->move($fullDestinationPath, $newfilename);
 			 }
 			  $imageNames = implode('{$}',$array);
 			  return $imageNames;

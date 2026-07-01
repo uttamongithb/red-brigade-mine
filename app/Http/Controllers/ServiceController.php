@@ -63,7 +63,7 @@ class ServiceController extends Controller {
 			if ($validator->fails()) {
 				return Redirect::back()->withErrors($validator)->withInput(Input::except('password'));
 			} else {
-				$input = $request->except(['_token', 'image']);
+				$input = $request->only(['name', 'description', 'date']);
 				if ($request->hasFile('image')) {
 					$file = Input::file('image');
 					$input['image'] = Helpers::imageUpload($file, 'uploads/news', 'sunshine-work');
@@ -81,10 +81,10 @@ class ServiceController extends Controller {
 
 	public function editnews($id, Request $request)
 	{
-		$id = $id;
+		$id = (int) $id;
 		$thisdata = DB::table('news')->where('id', $id)->first();
 		if ($request->isMethod('post')) {
-			$input = $request->except(['_token', 'image']);
+			$input = $request->only(['name', 'description', 'date']);
 			if ($request->hasFile('image')) {
 				$file = Input::file('image');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/news', 'sunshine-work');
@@ -99,9 +99,10 @@ class ServiceController extends Controller {
 		return view('services.editnews', compact('thisdata'));
 	}
 
+
 	public function deletenews($id)
 	{
-		$id = $id;
+		$id = (int) $id;
 		DB::table('news')->where('id', $id)->delete();
 		Session::flash('message', 'Successfully deleted work!');                                                
 		return Redirect::back();
@@ -122,7 +123,7 @@ class ServiceController extends Controller {
 			if ($validator->fails()) {
 				return Redirect::back()->withErrors($validator)->withInput();
 			} else {
-				$input = $request->except(['_token', 'image']);
+				$input = $request->only(['name', 'description', 'date']);
 				if ($request->hasFile('image')) {
 					$file = Input::file('image');
 					$input['image'] = Helpers::imageUpload($file, 'uploads/news', 'sunshine-blog');
@@ -138,10 +139,10 @@ class ServiceController extends Controller {
 
 	public function editblog($id, Request $request)
 	{
-		$id = $id;
+		$id = (int) $id;
 		$thisdata = DB::table('blog')->where('id', $id)->first();
 		if ($request->isMethod('post')) {
-			$input = $request->except(['_token', 'image']);
+			$input = $request->only(['name', 'description', 'date']);
 			if ($request->hasFile('image')) {
 				$file = Input::file('image');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/news', 'sunshine-blog');
@@ -154,9 +155,10 @@ class ServiceController extends Controller {
 		return view('services.editblog', compact('thisdata'));
 	}
 
+
 	public function deleteblog($id)
 	{
-		$id = $id;
+		$id = (int) $id;
 		DB::table('blog')->where('id', $id)->delete();
 		Session::flash('message', 'Successfully deleted blog story!');                                                
 		return Redirect::back();
@@ -172,7 +174,15 @@ class ServiceController extends Controller {
 	public function addgallery(Request $request)
 	{
 		if ($request->isMethod('post')) {
-			$input = $request->except(['_token', 'image']);
+			$rules = [
+				'name' => 'required|string|max:255',
+				'type' => 'required|string|max:50',
+			];
+			$validator = Validator::make($request->all(), $rules);
+			if ($validator->fails()) {
+				return Redirect::back()->withErrors($validator)->withInput();
+			}
+			$input = $request->only(['name', 'type', 'embed', 'status']);
 			if ($request->hasFile('image')) {
 				$file = Input::file('image');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/gallery', 'sunshine-gallery');
@@ -186,10 +196,10 @@ class ServiceController extends Controller {
 
 	public function editgallery($id, Request $request)
 	{
-		$id = $id;
+		$id = (int) $id;
 		$thisdata = DB::table('gallery')->where('id', $id)->first();
 		if ($request->isMethod('post')) {
-			$input = $request->except(['_token', 'image']);
+			$input = $request->only(['name', 'type', 'embed', 'status']);
 			if ($request->hasFile('image')) {
 				$file = Input::file('image');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/gallery', 'sunshine-gallery');
@@ -203,7 +213,7 @@ class ServiceController extends Controller {
 
 	public function deletegallery($id)
 	{
-		$id = $id;
+		$id = (int) $id;
 		DB::table('gallery')->where('id', $id)->delete();
 		Session::flash('message', 'Successfully deleted gallery item!');                                                
 		return Redirect::back();
@@ -239,10 +249,10 @@ class ServiceController extends Controller {
 
 	public function edittestimonial($id, Request $request)
 	{
-		$id = $id;
+		$id = (int) $id;
 		$thisdata = DB::table('testimonial')->where('id', $id)->first();
 		if ($request->isMethod('post')) {
-			$input = $request->except(['_token', 'image']);
+			$input = $request->only(['name', 'description', 'type']);
 			if ($request->hasFile('image')) {
 				$file = Input::file('image');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/testimonial', 'sunshine-team');
@@ -256,7 +266,7 @@ class ServiceController extends Controller {
 
 	public function deletetestimonial($id)
 	{
-		$id = $id;
+		$id = (int) $id;
 		DB::table('testimonial')->where('id', $id)->delete();
 		Session::flash('message', 'Successfully deleted team member!');                                                
 		return Redirect::back();

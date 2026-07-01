@@ -1,156 +1,189 @@
 <?php
-Route::auth();
-Route::any('/', 'MainController@home');
+// ===========================
+// Authentication Routes
+// ===========================
+// Login routes (registration disabled for security — admin-only site)
+Route::get('/login', 'Auth\AuthController@showLoginForm');
+Route::post('/login', 'Auth\AuthController@login');
+Route::get('/logout', 'Auth\AuthController@logout');
 
+// Password reset routes
+Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
+Route::post('password/reset', 'Auth\PasswordController@reset');
 
-Route::any('/', 'MainController@index');
+// ===========================
+// Public Routes (GET only)
+// ===========================
+Route::get('/', 'MainController@index');
 
-// Compatibility redirects: map legacy admin/login and /admin to real login/dashboard
+// Compatibility redirects
 Route::get('/main-admin/login', function(){
     return redirect('/login');
 });
 Route::post('/main-admin/login', 'Auth\AuthController@login');
-Route::any('/admin', function(){
+Route::get('/admin', function(){
 	return redirect('/admin/viewnews');
 });
-Route::any('/about', 'MainController@about');
-Route::any('/research', 'MainController@research');
-Route::any('/ethics', 'MainController@ethics');
-Route::any('/ourteam', 'MainController@ourteam');
-Route::any('/achievements', 'MainController@achievements');
-Route::any('/collaborations', 'MainController@collaborations');
-Route::any('/skills', 'MainController@skills');
-Route::any('/event', 'MainController@event');
-Route::any('/previous-work', 'MainController@previouswork');
-Route::any('/upcoming-work', 'MainController@upcomingwork');
-Route::any('/education', 'MainController@education');
-Route::any('/gallery', 'MainController@gallery');
-Route::any('/blog', 'MainController@blog');
-Route::any('/singleblog/{slug}', 'MainController@singleblog');
-Route::any('/singlework/{id}', 'MainController@singlework');
-Route::any('/singleproduct/{slug}', 'MainController@singleproduct');
-Route::any('/singleservice/{slug}', 'MainController@singleservice');
-Route::any('/ourworkpdf', 'MainController@ourworkpdf');
-Route::any('/donate', 'MainController@donate');
-Route::any('/contact', 'MainController@contact');
-Route::any('/enquiry', 'MainController@enquiry');
-Route::any('/product', 'MainController@product');
-Route::any('/service', 'MainController@service');
-Route::any('/payumoney/{id}', 'MainController@payumoney');
-Route::any('/paysuccess', 'MainController@paysuccess');
-Route::any('/failure', 'MainController@failure'); 
-//dashboard//
-/*Blog*/
-Route::any('/admin/addblog', 'ServiceController@addblog')->middleware('auth');
-Route::any('/admin/viewblog', 'ServiceController@viewblog')->middleware('auth');
-Route::any('/admin/editblog/{id}', 'ServiceController@editblog')->middleware('auth');
-														
-/*Blog*/
-/*News*/
-Route::any('/admin/addnews', 'ServiceController@addnews')->middleware('auth');
-Route::any('/admin/viewnews', 'ServiceController@viewnews')->middleware('auth');
-Route::any('/admin/editnews/{id}', 'ServiceController@editnews')->middleware('auth');
-Route::any('/admin/deletenews/{id}', 'ServiceController@deletenews')->middleware('auth');
-														
-/*News*/
 
+Route::get('/about', 'MainController@about');
+Route::get('/research', 'MainController@research');
+Route::get('/ethics', 'MainController@ethics');
+Route::get('/ourteam', 'MainController@ourteam');
+Route::get('/achievements', 'MainController@achievements');
+Route::get('/collaborations', 'MainController@collaborations');
+Route::get('/skills', 'MainController@skills');
+Route::get('/event', 'MainController@event');
+Route::get('/previous-work', 'MainController@previouswork');
+Route::get('/upcoming-work', 'MainController@upcomingwork');
+Route::get('/education', 'MainController@education');
+Route::get('/gallery', 'MainController@gallery');
+Route::get('/blog', 'MainController@blog');
+Route::get('/singleblog/{slug}', 'MainController@singleblog');
+Route::get('/singlework/{id}', 'MainController@singlework')->where('id', '[0-9]+');
+Route::get('/singleproduct/{slug}', 'MainController@singleproduct');
+Route::get('/singleservice/{slug}', 'MainController@singleservice');
+Route::get('/ourworkpdf', 'MainController@ourworkpdf');
+Route::get('/product', 'MainController@product');
+Route::get('/service', 'MainController@service');
 
+// Public form submissions (GET to show, POST to submit)
+Route::get('/donate', 'MainController@donate');
+Route::post('/donate', 'MainController@donate');
+Route::get('/contact', 'MainController@contact');
+Route::post('/contact', 'MainController@contact');
+Route::get('/enquiry', 'MainController@enquiry');
 
-Route::any('/main-admin/dashboard', 'DashboardController@index')->middleware('auth');
-Route::any('/main-admin/allmembers', 'DashboardController@allmembers')->middleware('auth');
-Route::any('/main-admin/blockuser/{id}', 'DashboardController@blockuser')->middleware('auth');
-Route::any('/main-admin/activateuser/{id}', 'DashboardController@activateuser')->middleware('auth');
-Route::any('/admin/edit-profile', 'DashboardController@editprofile')->middleware('auth');
-Route::any('/admin/updateprofile-profile', 'DashboardController@updateprofile')->middleware('auth');
-Route::any('/admin/listing-of-active-users', 'RegisteruserController@listingofactiveusers')->middleware('auth');
-Route::any('/admin/addcategory', 'ServiceController@addcategory')->middleware('auth');
-Route::any('/admin/addsubcategory', 'ServiceController@addsubcategory')->middleware('auth');
-Route::any('/admin/editsubcategory/{id}', 'ServiceController@editsubcategory')->middleware('auth');
-Route::any('/admin/viewsubcategories', 'ServiceController@viewsubcategories')->middleware('auth');
-Route::any('/admin/deletesubcategory/{id}', 'ServiceController@deletesubcategory')->middleware('auth');
-Route::any('/admin/mul_delete_subcat', 'ServiceController@mul_delete_subcat')->middleware('auth');
+// Payment routes
+Route::get('/payumoney/{id}', 'MainController@payumoney')->where('id', '[0-9]+');
+Route::post('/paysuccess', 'MainController@paysuccess');
+Route::post('/failure', 'MainController@failure');
 
+// ===========================
+// Admin Routes (auth + admin middleware)
+// ===========================
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
 
+    /* Our Work (Events) */
+    Route::get('/addnews', 'ServiceController@addnews');
+    Route::post('/addnews', 'ServiceController@addnews');
+    Route::get('/viewnews', 'ServiceController@viewnews');
+    Route::get('/editnews/{id}', 'ServiceController@editnews')->where('id', '[0-9]+');
+    Route::post('/editnews/{id}', 'ServiceController@editnews')->where('id', '[0-9]+');
+    Route::post('/deletenews/{id}', 'ServiceController@deletenews')->where('id', '[0-9]+');
 
+    /* Blog */
+    Route::get('/addblog', 'ServiceController@addblog');
+    Route::post('/addblog', 'ServiceController@addblog');
+    Route::get('/viewblog', 'ServiceController@viewblog');
+    Route::get('/editblog/{id}', 'ServiceController@editblog')->where('id', '[0-9]+');
+    Route::post('/editblog/{id}', 'ServiceController@editblog')->where('id', '[0-9]+');
+    Route::post('/deleteblog/{id}', 'ServiceController@deleteblog')->where('id', '[0-9]+');
 
+    /* Slider */
+    Route::get('/addslider', 'ServiceController@addslider');
+    Route::post('/addslider', 'ServiceController@addslider');
+    Route::get('/viewslider', 'ServiceController@viewslider');
+    Route::post('/popularslider/{id}/{status}', 'ServiceController@popularslider')->where(['id' => '[0-9]+', 'status' => '[0-1]']);
+    Route::get('/editslider/{id}', 'ServiceController@editslider')->where('id', '[0-9]+');
+    Route::post('/editslider/{id}', 'ServiceController@editslider')->where('id', '[0-9]+');
+    Route::post('/deleteslider/{id}', 'ServiceController@deleteslider')->where('id', '[0-9]+');
+    Route::post('/multiSlider', 'ServiceController@multiSlider');
 
+    /* Services */
+    Route::get('/addservice', 'ServiceController@addservice');
+    Route::post('/addservice', 'ServiceController@addservice');
+    Route::get('/viewservice', 'ServiceController@viewservice');
+    Route::post('/popularservice/{id}/{status}', 'ServiceController@popularservice')->where(['id' => '[0-9]+', 'status' => '[0-1]']);
+    Route::get('/editservice/{id}', 'ServiceController@editservice')->where('id', '[0-9]+');
+    Route::post('/editservice/{id}', 'ServiceController@editservice')->where('id', '[0-9]+');
+    Route::post('/deleteservice/{id}', 'ServiceController@deleteservice')->where('id', '[0-9]+');
+    Route::post('/multiServices', 'ServiceController@multiServices');
 
-// Admission//
+    /* Product */
+    Route::get('/addproduct', 'ServiceController@addproduct');
+    Route::post('/addproduct', 'ServiceController@addproduct');
+    Route::get('/viewproduct', 'ServiceController@viewproduct');
+    Route::post('/popularproduct/{id}/{status}', 'ServiceController@popularproduct')->where(['id' => '[0-9]+', 'status' => '[0-1]']);
+    Route::get('/editproduct/{id}', 'ServiceController@editproduct')->where('id', '[0-9]+');
+    Route::post('/editproduct/{id}', 'ServiceController@editproduct')->where('id', '[0-9]+');
+    Route::post('/deleteproduct/{id}', 'ServiceController@deleteproduct')->where('id', '[0-9]+');
+    Route::post('/multiProduct', 'ServiceController@multiProduct');
 
+    /* Testimonial / Team */
+    Route::get('/addtestimonial', 'ServiceController@addtestimonial');
+    Route::post('/addtestimonial', 'ServiceController@addtestimonial');
+    Route::get('/viewtestimonial', 'ServiceController@viewtestimonial');
+    Route::post('/populartestimonial/{id}/{status}', 'ServiceController@populartestimonial')->where(['id' => '[0-9]+', 'status' => '[0-1]']);
+    Route::get('/edittestimonial/{id}', 'ServiceController@edittestimonial')->where('id', '[0-9]+');
+    Route::post('/edittestimonial/{id}', 'ServiceController@edittestimonial')->where('id', '[0-9]+');
+    Route::post('/deletetestimonial/{id}', 'ServiceController@deletetestimonial')->where('id', '[0-9]+');
+    Route::post('/multiTestimonial', 'ServiceController@multiTestimonial');
 
-/* Slider+*/
+    /* Enquiry */
+    Route::get('/enquiry', 'ServiceController@enquiry');
+    Route::post('/deleteEnquiry/{id}', 'ServiceController@deleteEnquiry')->where('id', '[0-9]+');
 
-Route::any('/admin/addslider', 'ServiceController@addslider')->middleware('auth');
-Route::any('/admin/viewslider', 'ServiceController@viewslider')->middleware('auth');
-Route::any('/admin/popularslider/{id}/{status}', 'ServiceController@popularslider')->middleware('auth');
-Route::any('/admin/editslider/{id}', 'ServiceController@editslider')->middleware('auth');
-Route::any('/admin/deleteslider/{id}', 'ServiceController@deleteslider')->middleware('auth');
-Route::any('/admin/multiSlider', 'ServiceController@multiSlider')->middleware('auth');
-/* Slider+*/
+    /* Gallery */
+    Route::get('/addgallery', 'ServiceController@addgallery');
+    Route::post('/addgallery', 'ServiceController@addgallery');
+    Route::get('/viewgallery', 'ServiceController@viewgallery');
+    Route::post('/populargallery/{id}/{status}', 'ServiceController@populargallery')->where(['id' => '[0-9]+', 'status' => '[0-1]']);
+    Route::get('/editgallery/{id}', 'ServiceController@editgallery')->where('id', '[0-9]+');
+    Route::post('/editgallery/{id}', 'ServiceController@editgallery')->where('id', '[0-9]+');
+    Route::post('/deletegallery/{id}', 'ServiceController@deletegallery')->where('id', '[0-9]+');
+    Route::post('/multiGallery', 'ServiceController@multiGallery');
 
-/* Services+*/
-Route::any('/admin/addservice', 'ServiceController@addservice')->middleware('auth');
-Route::any('/admin/viewservice', 'ServiceController@viewservice')->middleware('auth');
-Route::any('/admin/popularservice/{id}/{status}', 'ServiceController@popularservice')->middleware('auth');
-Route::any('/admin/editservice/{id}', 'ServiceController@editservice')->middleware('auth');
-Route::any('/admin/deleteservice/{id}', 'ServiceController@deleteservice')->middleware('auth');
-Route::any('/admin/multiServices', 'ServiceController@multiServices')->middleware('auth');
+    /* Strategy Pillar */
+    Route::get('/addstrategy', 'ServiceController@addstrategy');
+    Route::post('/addstrategy', 'ServiceController@addstrategy');
+    Route::get('/viewstrategy', 'ServiceController@viewstrategy');
+    Route::get('/editstrategy/{id}', 'ServiceController@editstrategy')->where('id', '[0-9]+');
+    Route::post('/editstrategy/{id}', 'ServiceController@editstrategy')->where('id', '[0-9]+');
+    Route::post('/deletestrategy/{id}', 'ServiceController@deletestrategy')->where('id', '[0-9]+');
+    Route::post('/statusstrategy/{id}/{status}', 'ServiceController@statusstrategy')->where(['id' => '[0-9]+', 'status' => '[0-1]']);
 
-/* Services+*/
+    /* Education Cards */
+    Route::get('/addeducation', 'ServiceController@addeducation');
+    Route::post('/addeducation', 'ServiceController@addeducation');
+    Route::get('/vieweducation', 'ServiceController@vieweducation');
+    Route::get('/editeducation/{id}', 'ServiceController@editeducation')->where('id', '[0-9]+');
+    Route::post('/editeducation/{id}', 'ServiceController@editeducation')->where('id', '[0-9]+');
+    Route::post('/deleteeducation/{id}', 'ServiceController@deleteeducation')->where('id', '[0-9]+');
 
-/* Product+*/
-Route::any('/admin/addproduct', 'ServiceController@addproduct')->middleware('auth');
-Route::any('/admin/viewproduct', 'ServiceController@viewproduct')->middleware('auth');
-Route::any('/admin/popularproduct/{id}/{status}', 'ServiceController@popularproduct')->middleware('auth');
-Route::any('/admin/editproduct/{id}', 'ServiceController@editproduct')->middleware('auth');
-Route::any('/admin/deleteproduct/{id}', 'ServiceController@deleteproduct')->middleware('auth');
-Route::any('/admin/multiProduct', 'ServiceController@multiProduct')->middleware('auth');
+    /* Skills Cards */
+    Route::get('/addskills', 'ServiceController@addskills');
+    Route::post('/addskills', 'ServiceController@addskills');
+    Route::get('/viewskills', 'ServiceController@viewskills');
+    Route::get('/editskills/{id}', 'ServiceController@editskills')->where('id', '[0-9]+');
+    Route::post('/editskills/{id}', 'ServiceController@editskills')->where('id', '[0-9]+');
+    Route::post('/deleteskills/{id}', 'ServiceController@deleteskills')->where('id', '[0-9]+');
 
-/* Product+*/
+    /* Profile */
+    Route::get('/edit-profile', 'DashboardController@editprofile');
+    Route::post('/updateprofile-profile', 'DashboardController@updateprofile');
 
-/* Testimonial+*/
-Route::any('/admin/addtestimonial', 'ServiceController@addtestimonial')->middleware('auth');
-Route::any('/admin/viewtestimonial', 'ServiceController@viewtestimonial')->middleware('auth');
-Route::any('/admin/populartestimonial/{id}/{status}', 'ServiceController@populartestimonial')->middleware('auth');
-Route::any('/admin/edittestimonial/{id}', 'ServiceController@edittestimonial')->middleware('auth');
-Route::any('/admin/deletetestimonial/{id}', 'ServiceController@deletetestimonial')->middleware('auth');
-Route::any('/admin/multiTestimonial', 'ServiceController@multiTestimonial')->middleware('auth');
+    /* Categories (if used) */
+    Route::get('/addcategory', 'ServiceController@addcategory');
+    Route::post('/addcategory', 'ServiceController@addcategory');
+    Route::get('/addsubcategory', 'ServiceController@addsubcategory');
+    Route::post('/addsubcategory', 'ServiceController@addsubcategory');
+    Route::get('/editsubcategory/{id}', 'ServiceController@editsubcategory')->where('id', '[0-9]+');
+    Route::post('/editsubcategory/{id}', 'ServiceController@editsubcategory')->where('id', '[0-9]+');
+    Route::get('/viewsubcategories', 'ServiceController@viewsubcategories');
+    Route::post('/deletesubcategory/{id}', 'ServiceController@deletesubcategory')->where('id', '[0-9]+');
+    Route::post('/mul_delete_subcat', 'ServiceController@mul_delete_subcat');
 
+    /* Active Users */
+    Route::get('/listing-of-active-users', 'RegisteruserController@listingofactiveusers');
+});
 
-
-/* Testimonial+*/
-Route::any('/admin/enquiry/', 'ServiceController@enquiry')->middleware('auth');		
-					
-Route::any('/admin/deleteEnquiry/{id}', 'ServiceController@deleteEnquiry')->middleware('auth');					
-
-/*Gallery*/
-Route::any('/admin/addgallery', 'ServiceController@addgallery')->middleware('auth');
-Route::any('/admin/viewgallery', 'ServiceController@viewgallery')->middleware('auth');
-Route::any('/admin/populargallery/{id}/{status}', 'ServiceController@populargallery')->middleware('auth');
-Route::any('/admin/editgallery/{id}', 'ServiceController@editgallery')->middleware('auth');
-Route::any('/admin/deletegallery/{id}', 'ServiceController@deletegallery')->middleware('auth');
-Route::any('/admin/deleteblog/{id}', 'ServiceController@deleteblog')->middleware('auth');
-Route::any('/admin/multiGallery', 'ServiceController@multiGallery')->middleware('auth');																
-/*Gallery*/
-
-/*Strategy Pillar Module*/
-Route::any('/admin/addstrategy', 'ServiceController@addstrategy')->middleware('auth');
-Route::any('/admin/viewstrategy', 'ServiceController@viewstrategy')->middleware('auth');
-Route::any('/admin/editstrategy/{id}', 'ServiceController@editstrategy')->middleware('auth');
-Route::any('/admin/deletestrategy/{id}', 'ServiceController@deletestrategy')->middleware('auth');
-Route::any('/admin/statusstrategy/{id}/{status}', 'ServiceController@statusstrategy')->middleware('auth');
-/*Strategy Pillar Module*/
-
-/*Our Work Expanded Module*/
-Route::any('/admin/addeducation', 'ServiceController@addeducation')->middleware('auth');
-Route::any('/admin/vieweducation', 'ServiceController@vieweducation')->middleware('auth');
-Route::any('/admin/editeducation/{id}', 'ServiceController@editeducation')->middleware('auth');
-Route::any('/admin/deleteeducation/{id}', 'ServiceController@deleteeducation')->middleware('auth');
-
-Route::any('/admin/addskills', 'ServiceController@addskills')->middleware('auth');
-Route::any('/admin/viewskills', 'ServiceController@viewskills')->middleware('auth');
-Route::any('/admin/editskills/{id}', 'ServiceController@editskills')->middleware('auth');
-Route::any('/admin/deleteskills/{id}', 'ServiceController@deleteskills')->middleware('auth');
-/*Our Work Expanded Module*/
+// Admin dashboard routes (separate prefix)
+Route::group(['prefix' => 'main-admin', 'middleware' => ['auth', 'admin']], function () {
+    Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/allmembers', 'DashboardController@allmembers');
+    Route::post('/blockuser/{id}', 'DashboardController@blockuser')->where('id', '[0-9]+');
+    Route::post('/activateuser/{id}', 'DashboardController@activateuser')->where('id', '[0-9]+');
+});
 
 ?>

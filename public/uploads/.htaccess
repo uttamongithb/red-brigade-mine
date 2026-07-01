@@ -1,0 +1,20 @@
+# Deny PHP execution in uploads directory
+# This prevents uploaded PHP files from being executed by the web server
+
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|phps|phar|cgi|pl|py|sh|bash)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Also deny .htaccess overwrites in subdirectories
+<Files ".htaccess">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Disable directory listing
+Options -Indexes
+
+# Prevent script execution via handler manipulation
+RemoveHandler .php .phtml .php3 .php4 .php5 .php7
+RemoveType .php .phtml .php3 .php4 .php5 .php7

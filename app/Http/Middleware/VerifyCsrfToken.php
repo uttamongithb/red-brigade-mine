@@ -12,8 +12,6 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        '/`paysuccess',
-        '/failure',
-
+        // No CSRF exemptions — payment callbacks should use webhook signature verification
     ];
 }

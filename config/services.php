@@ -35,25 +35,26 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 	'facebook' => [
-		'client_id' => '505424843150632',
-		'client_secret' => '867adef7fb732241652380576a6dfbee',
-		'redirect' => 'http://demoimg.com/mimessay-demo/facebook/callback',
+		'client_id' => env('FACEBOOK_CLIENT_ID', ''),
+		'client_secret' => env('FACEBOOK_CLIENT_SECRET', ''),
+		'redirect' => env('FACEBOOK_REDIRECT', ''),
 	],
 	'twitter' => [
-		'client_id' => '28q5ppdUtcqgM0xotQOG1n549',
-		'client_secret' => 'nPOj9JQ7mqq4CdLZJJ08ykf6yXcjp7itWQCBtRyDpjvEAL6zmk',
-		'redirect' => 'http://demoimg.com/mimessay-demo/twitter/callback'
+		'client_id' => env('TWITTER_CLIENT_ID', ''),
+		'client_secret' => env('TWITTER_CLIENT_SECRET', ''),
+		'redirect' => env('TWITTER_REDIRECT', ''),
 	],
 	'google' => [
-		'client_id' => '247373360039-ujkdho3thsuja9aqg52ehcvko8stff4d.apps.googleusercontent.com',
-		'client_secret' => 'OAP4h99GEVGIRZd7U__Ib9w1',
-		'redirect' => 'http://demoimg.com/mimessay-demo/google/callback'
+		'client_id' => env('GOOGLE_CLIENT_ID', ''),
+		'client_secret' => env('GOOGLE_CLIENT_SECRET', ''),
+		'redirect' => env('GOOGLE_REDIRECT', ''),
 	],
 	'linkedin' => [
-		'client_id' => '819afja5umsy7y',
-		'client_secret' => 'tMxDbozu1JLl4a7J',
-		'redirect' => 'http://demoimg.com/mimessay-demo/linkedin/callback'
+		'client_id' => env('LINKEDIN_CLIENT_ID', ''),
+		'client_secret' => env('LINKEDIN_CLIENT_SECRET', ''),
+		'redirect' => env('LINKEDIN_REDIRECT', ''),
 	],
+
 	'payu' => [
 		'merchant_key' => env('PAYU_MERCHANT_KEY'),
 		'salt' => env('PAYU_SALT'),

@@ -116,15 +116,15 @@
             <?php 
                 $dateToUse = !empty($thisblog->date) ? $thisblog->date : $thisblog->created_at;
             ?>
-            <span class="rb-post-date"><?php echo date('F d, Y', strtotime($dateToUse)); ?></span>
-            <h1 class="rb-post-title"><?php echo ucfirst($thisblog->name); ?></h1>
+            <span class="rb-post-date"><?php echo htmlspecialchars(date('F d, Y', strtotime($dateToUse)), ENT_QUOTES, 'UTF-8'); ?></span>
+            <h1 class="rb-post-title"><?php echo htmlspecialchars(ucfirst($thisblog->name), ENT_QUOTES, 'UTF-8'); ?></h1>
         </div>
     </header>
 
     <!-- Featured Image -->
     <?php if(!empty($thisblog->image)): ?>
     <div class="rb-post-featured-image container">
-        <img src="<?php echo URL::asset('uploads/news/'.$thisblog->image);?>" alt="<?php echo $thisblog->name; ?>">
+        <img src="<?php echo URL::asset('uploads/news/'.$thisblog->image);?>" alt="<?php echo htmlspecialchars($thisblog->name, ENT_QUOTES, 'UTF-8'); ?>">
     </div>
     <?php else: ?>
     <div style="height: 60px;"></div>
@@ -133,8 +133,7 @@
     <!-- Content -->
     <div class="container">
         <div class="rb-post-body">
-            <!-- Output raw HTML from WYSIWYG editor if present, otherwise fallback to plain text if needed. Assuming the admin panel uses a rich text editor for description -->
-            <?php echo $thisblog->description; ?>
+            <?php echo \App\Helpers\Sanitizer::clean($thisblog->description); ?>
             
             <div style="text-align: center;">
                 <a href="<?php echo action('MainController@blog'); ?>" class="rb-back-link"><i class="fas fa-arrow-left"></i> Back to all stories</a>

@@ -127,6 +127,7 @@ class MainController extends Controller {
 
 	public function singlework($id)
 	{
+		$id = (int) $id;
 		$thiswork=Db::table('news')->where('id',$id)->first();
 		if (!$thiswork) {
 			return redirect()->action('MainController@event');
@@ -143,6 +144,21 @@ class MainController extends Controller {
 	{
 		if($request->isMethod('post'))
 		{
+			$rules = [
+				'fast_name' => 'required|string|max:255',
+				'last_name' => 'nullable|string|max:255',
+				'email' => 'required|email|max:255',
+				'mobile' => 'required|string|max:20',
+				'address' => 'required|string|max:500',
+				'amount' => 'required|numeric|min:1',
+				'city' => 'nullable|string|max:255',
+				'state' => 'nullable|string|max:255',
+				'zip' => 'nullable|string|max:20'
+			];
+			$validator = Validator::make($request->all(), $rules);
+			if($validator->fails()){
+				return Redirect::back()->withErrors($validator)->withInput();
+			}
 		   $input = $request->only(['fast_name','last_name','email','mobile','address','amount','city','state','zip']);
 			$this_data=Db::table('donate')->orderBy('id','DESC')->select('id')->first();
 			$rand=rand(1000,99999);
@@ -161,7 +177,7 @@ class MainController extends Controller {
 
 	public function payumoney($id,Request $request)
 	{
-		$transId = $id;
+		$transId = (int) $id;
 		$userdata=Db::table('donate')->where('transId',$transId)->where('status',0)->first();
 		return view('main.payumoney',compact('userdata'));
 	}
@@ -196,7 +212,7 @@ class MainController extends Controller {
 				'district' => 'required',
 				'msg'	=> 'required',
 				);
-				 $validator = Validator::make(Input::all(), $rules);
+				 $validator = Validator::make($request->all(), $rules);
 				if($validator->fails()){
 					return Redirect::back()
 						->withErrors($validator)

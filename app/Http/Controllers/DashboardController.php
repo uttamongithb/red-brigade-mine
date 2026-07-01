@@ -27,17 +27,28 @@ class DashboardController extends Controller {
 	}
 	public function updateprofile(Request $request){
 		if(Auth::check()){
-			$getid = Auth::user()->id;
+			$getid = (int) Auth::user()->id;
+		} else {
+			return redirect('/login');
 		}
 		if ($request->isMethod('post')){
-			$input = Input::all();
-			unset($input['_token']);
-			if($input['password']!=""){
-				$dataupdate['password'] = bcrypt($input['password']);
+			$rules = [
+				'name' => 'required|string|max:255',
+				'address' => 'nullable|string|max:500',
+				'number' => 'nullable|string|max:20',
+			];
+			$validator = Validator::make($request->all(), $rules);
+			if ($validator->fails()) {
+				return Redirect::back()->withErrors($validator)->withInput();
 			}
-			$dataupdate['name'] = $input['name'];
-			$dataupdate['address'] = $input['address'];
-			$dataupdate['number'] = $input['number'];
+
+			$dataupdate = [];
+			if($request->input('password') != ""){
+				$dataupdate['password'] = bcrypt($request->input('password'));
+			}
+			$dataupdate['name'] = $request->input('name');
+			$dataupdate['address'] = $request->input('address', '');
+			$dataupdate['number'] = $request->input('number', '');
 			Session::put('mim_messagetrue','Your profile updated successfully');
 			DB::table('users')->where('id',$getid)->update($dataupdate);
 			return redirect()->action('DashboardController@editprofile');
@@ -46,6 +57,7 @@ class DashboardController extends Controller {
 			return redirect()->action('DashboardController@editprofile');
 		}
 	}
+
 	public function allmembers(){
 		$findllmemebers = DB::table('registerusers')->orderBy('id','DESC')->get();
 		return view('dashboards.allmembers',compact('findllmemebers'));

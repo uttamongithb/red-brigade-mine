@@ -161,7 +161,7 @@ return [
 		Laravel\Socialite\SocialiteServiceProvider::class,
 		Collective\Html\HtmlServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
-		'Barryvdh\Debugbar\ServiceProvider',
+		// Debugbar loaded conditionally in AppServiceProvider (only in local env)
 	
 		
 		
