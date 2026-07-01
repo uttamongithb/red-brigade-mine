@@ -34,6 +34,15 @@
                     </div>
                     <div class="col-md-8 form-group">
                     <div class="form-group" style="margin-top:20px;">
+                        <label for="status">Status</label>
+                        <select name="status" class="form-control" required>
+                            <option value="1" <?php echo ($thisdata->status == 1) ? 'selected' : ''; ?>>Active</option>
+                            <option value="0" <?php echo ($thisdata->status == 0) ? 'selected' : ''; ?>>Alumni</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div class="col-md-8 form-group">
+                    <div class="form-group" style="margin-top:20px;">
                     <label for="exampleInputEmail1">Description*</label>
                     <textarea class="form-control ckeditor" name="description" required><?php echo $thisdata->description; ?></textarea>
                     </div>

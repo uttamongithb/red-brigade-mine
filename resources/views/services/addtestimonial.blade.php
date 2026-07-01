@@ -37,6 +37,15 @@
 						</div>
 						<div class="col-md-8 form-group">
 							<div class="form-group" style="margin-top:20px;">
+								<label for="status">Status</label>
+								<select name="status" class="form-control" required>
+									<option value="1">Active</option>
+									<option value="0">Alumni</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-8 form-group">
+							<div class="form-group" style="margin-top:20px;">
 							  <label for="exampleInputEmail1">Description*</label>
 							  <textarea class="form-control ckeditor" name="description" required></textarea>
 							</div>

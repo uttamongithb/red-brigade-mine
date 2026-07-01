@@ -252,7 +252,7 @@ class ServiceController extends Controller {
 		$id = (int) $id;
 		$thisdata = DB::table('testimonial')->where('id', $id)->first();
 		if ($request->isMethod('post')) {
-			$input = $request->only(['name', 'description', 'type']);
+			$input = $request->only(['name', 'description', 'type', 'status']);
 			if ($request->hasFile('image')) {
 				$file = Input::file('image');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/testimonial', 'sunshine-team');

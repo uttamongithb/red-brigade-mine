@@ -167,10 +167,10 @@
                         <td>
                             <?php if($tt->status == 0){ ?>
                                 <a class="btn-table-action" href="<?php echo action('ServiceController@populartestimonial', [$idget, 1])?>" title="Mark Active" style="display: inline-flex; padding: 4px 8px;">
-                                    <i class="fa fa-star-o" style="color: #98a2b3;"></i> Inactive
+                                    <i class="fa fa-star-o" style="color: #98a2b3;"></i> Alumni
                                 </a>
                             <?php } else { ?>
-                                <a class="btn-table-action" href="<?php echo action('ServiceController@populartestimonial', [$idget, 0])?>" title="Mark Inactive" style="display: inline-flex; padding: 4px 8px; color: #d97706; border-color: #f59e0b;">
+                                <a class="btn-table-action" href="<?php echo action('ServiceController@populartestimonial', [$idget, 0])?>" title="Mark Alumni" style="display: inline-flex; padding: 4px 8px; color: #d97706; border-color: #f59e0b;">
                                     <i class="fa fa-star" style="color: #f59e0b;"></i> Active
                                 </a>
                             <?php } ?>
