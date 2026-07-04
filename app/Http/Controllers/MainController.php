@@ -22,6 +22,7 @@ class MainController extends Controller {
 		
 		// For Homepage Recent Work: show both events and blogs
 		$allevent=Db::table('news')->orderBy('date','DESC')->orderBy('id','DESC')->limit(12)->get();
+		$allevent = $this->sortEvents($allevent);
 		
 		// Featured stories on homepage: show only blogs
 		$allblog=Db::table('news')->where('type', 'blog')->orderBy('date','DESC')->orderBy('id','DESC')->limit(6)->get();
@@ -70,22 +71,43 @@ class MainController extends Controller {
 
 	public function event()
 	{
-		// Our Work page: show BOTH events and blogs
-		$allevent=Db::table('news')->orderBy('date','DESC')->orderBy('id','DESC')->get();
+		// Ongoing Work page: show only ongoing and future events
+		$today = date('Y-m-d');
+		$allevent = DB::table('news')
+			->where(function($query) use ($today) {
+				$query->where('date', '>=', $today)
+				      ->orWhere('date', 'Ongoing');
+			})
+			->orderBy('date','DESC')
+			->orderBy('id','DESC')
+			->get();
+		$allevent = $this->sortEvents($allevent);
 		return view('main.event',compact('allevent'));
 	}
 
 	public function previouswork()
 	{
 		$today = date('Y-m-d');
-		$allevent = Db::table('news')->where('date', '<', $today)->orderBy('date','DESC')->get();
+		$allevent = DB::table('news')
+			->where('date', '<', $today)
+			->where('date', '!=', 'Ongoing')
+			->orderBy('date','DESC')
+			->get();
+		$allevent = $this->sortEvents($allevent);
 		return view('main.previouswork', compact('allevent'));
 	}
 
 	public function upcomingwork()
 	{
 		$today = date('Y-m-d');
-		$allevent = Db::table('news')->where('date', '>=', $today)->orderBy('date','ASC')->get();
+		$allevent = DB::table('news')
+			->where(function($query) use ($today) {
+				$query->where('date', '>=', $today)
+				      ->orWhere('date', 'Ongoing');
+			})
+			->orderBy('date','ASC')
+			->get();
+		$allevent = $this->sortEvents($allevent);
 		return view('main.upcomingwork', compact('allevent'));
 	}
 
@@ -127,12 +149,7 @@ class MainController extends Controller {
 
 	public function singlework($id)
 	{
-		$id = (int) $id;
-		$thiswork=Db::table('news')->where('id',$id)->first();
-		if (!$thiswork) {
-			return redirect()->action('MainController@event');
-		}
-		return view('main.singlework',compact('thiswork'));
+		return redirect()->action('MainController@event');
 	}
 
 	public function ourworkpdf() 
@@ -267,5 +284,22 @@ class MainController extends Controller {
 	public function productrepairing()
 	{
 	  return view('main.productrepairing');
+	}
+
+	private function sortEvents($events)
+	{
+		$eventsArr = is_array($events) ? $events : $events->all();
+		$hasText = [];
+		$noText = [];
+		foreach ($eventsArr as $item) {
+			$name = isset($item->name) ? trim($item->name) : '';
+			$desc = isset($item->description) ? trim(strip_tags($item->description)) : '';
+			if ($name !== '' || $desc !== '') {
+				$hasText[] = $item;
+			} else {
+				$noText[] = $item;
+			}
+		}
+		return array_merge($hasText, $noText);
 	}
 }

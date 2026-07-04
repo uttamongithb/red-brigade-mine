@@ -544,36 +544,46 @@ if (!empty($allevent)) {
         </div>
 
         <!-- Featured Post -->
-        <?php if($featuredEvent) { ?>
-        <a href="<?php echo action('MainController@singlework', $featuredEvent->id); ?>" class="rb-blog-featured-link">
+        <?php if($featuredEvent) { 
+            $hasFeaturedText = !empty(trim($featuredEvent->name)) || !empty(trim(strip_tags($featuredEvent->description)));
+        ?>
+        <div class="rb-blog-featured-link">
             <div class="rb-blog-featured">
                 <div class="rb-blog-featured-img">
                     <img src="<?php echo asset('uploads/news/'.trim($featuredEvent->image));?>" alt="<?php echo $featuredEvent->name; ?>">
                 </div>
                 <div class="rb-blog-featured-overlay"></div>
+                <?php if ($hasFeaturedText) { ?>
                 <div class="rb-blog-featured-content">
                     <span class="rb-blog-badge">Work</span>
-                    <h3 class="rb-blog-featured-title"><?php echo ucfirst($featuredEvent->name); ?></h3>
-                    <p class="rb-blog-featured-excerpt"><?php echo strip_tags(substr($featuredEvent->description, 0, 200)); ?>...</p>
+                    <?php if (!empty(trim($featuredEvent->name))) { ?>
+                        <h3 class="rb-blog-featured-title"><?php echo ucfirst($featuredEvent->name); ?></h3>
+                    <?php } ?>
+                    <?php if (!empty(trim(strip_tags($featuredEvent->description)))) { ?>
+                        <p class="rb-blog-featured-excerpt"><?php echo strip_tags(substr($featuredEvent->description, 0, 200)); ?>...</p>
+                    <?php } ?>
                     <div class="rb-blog-featured-meta">
                         <span class="rb-blog-meta-date"><i class="fas fa-calendar-alt"></i> <?php echo $featuredEvent->date; ?></span>
-                        <span class="rb-blog-read-cta">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
                     </div>
                 </div>
+                <?php } ?>
             </div>
-        </a>
+        </div>
         <?php } ?>
 
         <!-- Secondary Posts Grid -->
         <?php if(!empty($secondaryEvents)) { ?>
         <div class="rb-blog-grid">
-            <?php foreach($secondaryEvents as $idx => $ev) { ?>
-            <a href="<?php echo action('MainController@singlework', $ev->id); ?>" class="rb-blog-card-link">
+            <?php foreach($secondaryEvents as $idx => $ev) { 
+                $hasEvText = !empty(trim($ev->name)) || !empty(trim(strip_tags($ev->description)));
+            ?>
+            <div class="rb-blog-card-link">
                 <article class="rb-blog-card" style="animation-delay: <?php echo ($idx * 0.08); ?>s;">
                     <div class="rb-blog-card-img">
                         <img src="<?php echo asset('uploads/news/'.trim($ev->image));?>" alt="<?php echo $ev->name; ?>" loading="lazy">
                         <span class="rb-blog-badge">Work</span>
                     </div>
+                    <?php if ($hasEvText) { ?>
                     <div class="rb-blog-card-body">
                         <div class="rb-blog-card-meta">
                             <span><i class="fas fa-calendar-alt"></i> <?php echo $ev->date; ?></span>
@@ -581,12 +591,16 @@ if (!empty($allevent)) {
                                 <span><i class="fas fa-map-marker-alt"></i> <?php echo $ev->location; ?></span>
                             <?php } ?>
                         </div>
-                        <h4 class="rb-blog-card-title"><?php echo ucfirst($ev->name); ?></h4>
-                        <p class="rb-blog-card-excerpt"><?php echo strip_tags(substr($ev->description, 0, 120)); ?>...</p>
-                        <span class="rb-blog-card-read">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                        <?php if (!empty(trim($ev->name))) { ?>
+                            <h4 class="rb-blog-card-title"><?php echo ucfirst($ev->name); ?></h4>
+                        <?php } ?>
+                        <?php if (!empty(trim(strip_tags($ev->description)))) { ?>
+                            <p class="rb-blog-card-excerpt" style="margin-bottom: 0;"><?php echo strip_tags(substr($ev->description, 0, 120)); ?>...</p>
+                        <?php } ?>
                     </div>
+                    <?php } ?>
                 </article>
-            </a>
+            </div>
             <?php } ?>
         </div>
         <?php } ?>

@@ -21,5 +21,12 @@
    - Primary admin access is managed via database seeding (`AdminUserSeeder.php`).
    - Default known admin: `newadmin@redbrigade.org` (can be reset via `php artisan db:seed --class=AdminUserSeeder`).
 
+4. **Education Page Section Overhaul (Balmanch)**:
+   - Replaced standard sections with highly engaging visual metaphors extracted from `changes.pdf` (e.g., "The Tree, Not the Pot").
+   - Introduced a vertical timeline to chronicle 'Annu's Journey' from student to Balmanch coordinator.
+   - Clarified the scope of Balmanch in the hero and philosophy sections to explicitly mention that it provides education for *all marginalised children*, not just survivors of abuse.
+   - Replaced static grid with hover-reveal cards for dynamic interventions, added JS animated stats counters, and a masonry layout for the dynamic image gallery.
+   - Integrated a strong CTA banner at the bottom for donations.
+
 ## Open Issues / Ongoing Work
-- None at the moment. The application is running successfully on the local environment and the team members feature is fully functional.
+- The application is running successfully locally. The Education page has been redesigned and its content accurately reflects the inclusive nature of Balmanch.

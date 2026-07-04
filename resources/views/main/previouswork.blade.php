@@ -89,6 +89,7 @@
     box-shadow: 0 20px 40px rgba(0,0,0,0.05);
 }
 .rb-event-thumb {
+    display: block;
     aspect-ratio: 4/3;
     overflow: hidden;
     position: relative;
@@ -172,19 +173,26 @@
                     <article class="rb-event-card">
                         <?php 
                             $imgPath = !empty($item->image) ? 'uploads/news/'.trim($item->image) : 'uploads/img/logo.png';
-                            $link = action('MainController@singlework', $item->id);
+                            $hasText = !empty(trim($item->name)) || !empty(trim(strip_tags($item->description)));
                         ?>
-                        <a href="{{ $link }}" class="rb-event-thumb">
+                        <div class="rb-event-thumb">
                             <img src="<?php echo URL::asset($imgPath);?>" alt="{{ $item->name }}" loading="lazy">
-                        </a>
-                        <div class="rb-event-content">
-                            <span class="rb-event-date"><?php echo ($item->type == 'blog') ? date('F d, Y', strtotime($item->created_at)) : $item->date; ?></span>
-                            <h3 class="rb-event-title"><a href="{{ $link }}" style="color: inherit; text-decoration: none;"><?php echo ucfirst($item->name); ?></a></h3>
-                            <div class="rb-event-excerpt">
-                                <?php echo substr(strip_tags($item->description), 0, 120); ?>...
-                            </div>
-                            <a href="{{ $link }}" class="rb-read-more">View Details <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        <?php if ($hasText) { ?>
+                        <div class="rb-event-content">
+                            <?php if (!empty($item->date) || !empty($item->created_at)) { ?>
+                                <span class="rb-event-date"><?php echo ($item->type == 'blog') ? date('F d, Y', strtotime($item->created_at)) : $item->date; ?></span>
+                            <?php } ?>
+                            <?php if (!empty(trim($item->name))) { ?>
+                                <h3 class="rb-event-title" style="color: #1f2f46; font-weight: 700;"><?php echo ucfirst($item->name); ?></h3>
+                            <?php } ?>
+                            <?php if (!empty(trim(strip_tags($item->description)))) { ?>
+                                <div class="rb-event-excerpt" style="margin-bottom: 0;">
+                                    <?php echo substr(strip_tags($item->description), 0, 120); ?>...
+                                </div>
+                            <?php } ?>
+                        </div>
+                        <?php } ?>
                     </article>
                 <?php }} else { ?>
                     <div style="grid-column: 1/-1; text-align: center; padding: 100px 0;">

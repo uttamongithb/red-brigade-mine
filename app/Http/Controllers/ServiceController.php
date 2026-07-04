@@ -42,9 +42,13 @@ class ServiceController extends Controller {
 		$query = DB::table('news');
 		
 		if ($filter == 'previous') {
-			$query->where('date', '<', $today);
-		} elseif ($filter == 'upcoming') {
-			$query->where('date', '>=', $today);
+			$query->where('date', '<', $today)
+			      ->where('date', '!=', 'Ongoing');
+		} else {
+			$query->where(function($q) use ($today) {
+				$q->where('date', '>=', $today)
+				  ->orWhere('date', 'Ongoing');
+			});
 		}
 		
 		$allnews = $query->orderBy('date','DESC')->get();	
@@ -55,8 +59,6 @@ class ServiceController extends Controller {
 	{
 		if ($request->isMethod('post')) {
 			$rules = [
-				'name' => 'required',
-				'description' => 'required',
 				'date' => 'required',
 			];
 			$validator = Validator::make(Input::all(), $rules);
@@ -64,6 +66,8 @@ class ServiceController extends Controller {
 				return Redirect::back()->withErrors($validator)->withInput(Input::except('password'));
 			} else {
 				$input = $request->only(['name', 'description', 'date']);
+				$input['name'] = $input['name'] !== null ? $input['name'] : '';
+				$input['description'] = $input['description'] !== null ? $input['description'] : '';
 				if ($request->hasFile('image')) {
 					$file = Input::file('image');
 					$input['image'] = Helpers::imageUpload($file, 'uploads/news', 'sunshine-work');
@@ -85,6 +89,8 @@ class ServiceController extends Controller {
 		$thisdata = DB::table('news')->where('id', $id)->first();
 		if ($request->isMethod('post')) {
 			$input = $request->only(['name', 'description', 'date']);
+			$input['name'] = $input['name'] !== null ? $input['name'] : '';
+			$input['description'] = $input['description'] !== null ? $input['description'] : '';
 			if ($request->hasFile('image')) {
 				$file = Input::file('image');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/news', 'sunshine-work');

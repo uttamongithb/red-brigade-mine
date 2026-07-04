@@ -26,7 +26,7 @@
               <div class="box-body">
                     <div class="col-md-12 create">
 						<div class="col-md-8 form-group">
-							<label for="SAMStudId">Title/Name*</label>
+							<label for="SAMStudId">Title/Name</label>
 							<input  type="text" value="<?php echo $thisdata->name; ?>" name="name" class="form-control"  />
 						</div>
 						<div class="col-md-8 form-group">
@@ -41,8 +41,8 @@
 						</div>
 						<div class="col-md-8 form-group">
 							<div class="form-group" style="margin-top:20px;">
-							  <label for="exampleInputEmail1">Description*</label>
-							  <textarea class="form-control ckeditor" name="description" required><?php echo $thisdata->description; ?></textarea>
+							  <label for="exampleInputEmail1">Description</label>
+							  <textarea class="form-control ckeditor" name="description"><?php echo $thisdata->description; ?></textarea>
 							</div>
 						</div>
 						<div class="col-md-12 text-left" style="pUpdateing-right:15px;margin-bottom:20px;">
