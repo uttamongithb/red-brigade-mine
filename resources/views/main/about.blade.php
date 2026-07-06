@@ -304,6 +304,7 @@
     padding: 100px 0;
     background: #1f2f46;
     color: #fff;
+    margin-bottom: 80px;
 }
 .rb-impact-section h2 {
     color: #fff;
@@ -365,7 +366,7 @@
         <div class="container">
             <div class="rb-mission-grid">
                 <div class="rb-mission-images">
-                    <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-437.png');?>" alt="Red Brigade Action" class="img-tall">
+                    <img src="<?php echo URL::asset('uploads/slider/prev_work_1783160021_55.jpeg');?>" alt="Red Brigade Action" class="img-tall">
                     <img src="<?php echo URL::asset('uploads/img/about-left-image.jpg');?>" alt="Red Brigade Founder">
                     <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-201.png');?>" alt="Red Brigade Team">
                 </div>
@@ -453,65 +454,7 @@
         </div>
     </section>
 
-    <!-- Video Break -->
-    <section class="rb-video-section">
-        <div class="container">
-            <div class="rb-video-wrapper">
-                <div class="rb-video-text">
-                    <h2>A Rebuilt Life: Diya's Story</h2>
-                    <p class="rb-lead-text">Rebuilding lives, not merely survived.</p>
-                    <p>At 14, Diya survived an attempted rape in Mistripur, Lucknow, where the perpetrator had powerful connections and her complaint was initially refused registration. Red Brigade took up her case, provided shelter, and supported her through the entire legal process — travelling with her from Mistripur to Lucknow for every single court date. The perpetrator was imprisoned. Today, Diya is married and a mother — a life rebuilt, a testament to what collective support can achieve.</p>
-                </div>
-                <div class="rb-video-thumbnail-container">
-                    <img src="<?php echo URL::asset('uploads/slider/Redbrigade-lucknow-614.jpeg'); ?>" alt="Resilience Story">
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Visual Approach (Gallery) -->
-    <section class="rb-gallery-section">
-        <div class="container">
-            <div class="rb-gallery-header">
-                <h2>A Multi-Dimensional Strategy</h2>
-            </div>
-            <div class="rb-gallery-grid">
-                <?php if(isset($allstrategy) && count($allstrategy) > 0) { 
-                    foreach($allstrategy as $strat) {
-                ?>
-                <div class="rb-gallery-item">
-                    <img src="<?php echo URL::asset('uploads/strategy/'.$strat->image);?>" alt="<?php echo $strat->name; ?>">
-                    <div class="rb-gallery-overlay">
-                        <h4><?php echo $strat->name; ?></h4>
-                        <p><?php echo $strat->description; ?></p>
-                    </div>
-                </div>
-                <?php } } else { ?>
-                <div class="rb-gallery-item">
-                    <img src="<?php echo URL::asset('uploads/news/rb-self-defense.png');?>" alt="Self Defense">
-                    <div class="rb-gallery-overlay">
-                        <h4>Self-Defense</h4>
-                        <p>Empowering women with critical, real-world self-defense skills (Nishatra).</p>
-                    </div>
-                </div>
-                <div class="rb-gallery-item">
-                    <img src="<?php echo URL::asset('uploads/news/rb-women-leadership.png');?>" alt="Feminist Leadership">
-                    <div class="rb-gallery-overlay">
-                        <h4>Leadership</h4>
-                        <p>Creating the next generation of fearless feminist leadership.</p>
-                    </div>
-                </div>
-                <div class="rb-gallery-item">
-                    <img src="<?php echo URL::asset('uploads/news/rb-skill-dev.png');?>" alt="Activism">
-                    <div class="rb-gallery-overlay">
-                        <h4>Activism</h4>
-                        <p>Building widespread social movements to dismantle discrimination.</p>
-                    </div>
-                </div>
-                <?php } ?>
-            </div>
-        </div>
-    </section>
 </div>
 
 @include('includes.footer')

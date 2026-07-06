@@ -141,8 +141,8 @@
 
                 <!-- Partner 2 -->
                 <div class="rb-collab-card">
-                    <img src="https://shriramcharitabletrust.com/wp-content/uploads/2023/12/WhatsApp-Image-2024-11-07-at-15.33.28_5937fa81.jpg" alt="Shree Ram Charitable Trust" style="width: 100%; max-width: 200px; margin-bottom: 25px; border-radius: 8px; object-fit: contain;" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Shree+Ram+Trust&background=1f2f46&color=fff&size=200&font-size=0.33';">
-                    <h3>Shree Ram Charitable Trust</h3>
+                    <img src="<?php echo URL::asset('uploads/img/partners/sri_ram_charitable_trust_logo_1.png'); ?>" alt="Sri Ram Charitable Trust" style="width: 100%; max-width: 320px; margin-bottom: 25px; border-radius: 8px; object-fit: contain;" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Sri+Ram+Trust&background=1f2f46&color=fff&size=200&font-size=0.33';">
+                    <h3>Sri Ram Charitable Trust</h3>
                     <p>Partnering with us to empower marginalized communities.</p>
                 </div>
 
