@@ -33,10 +33,18 @@ Route::get('/ourteam', 'MainController@ourteam');
 Route::get('/achievements', 'MainController@achievements');
 Route::get('/collaborations', 'MainController@collaborations');
 Route::get('/skills', 'MainController@skills');
-Route::get('/event', 'MainController@event');
-Route::get('/previous-work', 'MainController@previouswork');
-Route::get('/upcoming-work', 'MainController@upcomingwork');
 Route::get('/education', 'MainController@education');
+
+// New Work-related Topic Pages
+Route::get('/journey-combating-sexual-violence', 'MainController@journey');
+Route::get('/key-programs', 'MainController@keyprograms');
+Route::get('/response-to-violence', 'MainController@responseviolence');
+Route::get('/gender-sensitization-awareness', 'MainController@gendersensitization');
+Route::get('/leadership-community-building', 'MainController@leadershipcommunity');
+Route::get('/educational-empowerment-support', 'MainController@educationalsupport');
+Route::get('/economic-upliftment', 'MainController@economicupliftment');
+Route::get('/covid-19-crisis-intervention', 'MainController@covid');
+
 Route::get('/gallery', 'MainController@gallery');
 Route::get('/blog', 'MainController@blog');
 Route::get('/singleblog/{slug}', 'MainController@singleblog');

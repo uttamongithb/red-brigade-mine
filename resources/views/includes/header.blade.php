@@ -182,6 +182,47 @@
             background-color: #f8f9fa;
             color: #E31E24 !important;
         }
+        
+        /* Nested Dropdowns Style */
+        .navbar-area .dropdown-submenu {
+            position: relative;
+        }
+        .navbar-area .dropdown-submenu:hover > .rb-nested-menu {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .navbar-area .rb-nested-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            margin-top: -5px;
+            padding: 8px 0;
+            background: #ffffff;
+            border-radius: 8px;
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+            min-width: 290px;
+            z-index: 1000000 !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            transform: translateX(10px);
+        }
+        .navbar-area .rb-nested-menu .dropdown-item {
+            font-size: 13.5px !important;
+            font-weight: 600;
+            color: #173455;
+            padding: 8px 20px;
+            white-space: normal;
+            line-height: 1.4;
+        }
+        .navbar-area .rb-nested-menu .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #E31E24 !important;
+            padding-left: 23px;
+        }
     }
 
     /* Mobile Toggler */
@@ -384,16 +425,58 @@
                     <li class="nav-item <?php echo Request::is('about') ? 'active' : ''; ?>">
                         <a class="nav-link" href="<?php echo action('MainController@about'); ?>">About Us</a>
                     </li>
-                    <li class="nav-item rb-custom-dropdown <?php echo Request::is('event') ? 'active' : ''; ?>" style="position: relative;">
+                    <li class="nav-item rb-custom-dropdown <?php echo (Request::is('event') || Request::is('previous-work') || Request::is('upcoming-work') || Request::is('journey-combating-sexual-violence') || Request::is('key-programs') || Request::is('response-to-violence') || Request::is('gender-sensitization-awareness') || Request::is('leadership-community-building') || Request::is('educational-empowerment-support') || Request::is('economic-upliftment') || Request::is('covid-19-crisis-intervention')) ? 'active' : ''; ?>" style="position: relative;">
                         <a class="nav-link" href="#" id="rbDropdownToggle">
                             Our Work <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 3px;"></i>
                         </a>
                         <div class="rb-custom-menu shadow border-0" id="rbDropdownMenu">
-                            <a class="dropdown-item py-2" href="<?php echo action('MainController@event'); ?>" style="font-weight: 600; color: #173455;">Ongoing Work</a>
-                            <a class="dropdown-item py-2" href="<?php echo action('MainController@previouswork'); ?>" style="font-weight: 600; color: #173455;">Previous Work</a>
-                            <a class="dropdown-item py-2" href="<?php echo action('MainController@upcomingwork'); ?>" style="font-weight: 600; color: #173455;">Upcoming Work</a>
-                            <a class="dropdown-item py-2" href="<?php echo action('MainController@education'); ?>" style="font-weight: 600; color: #173455;">Education</a>
-                            <a class="dropdown-item py-2" href="<?php echo action('MainController@skills'); ?>" style="font-weight: 600; color: #173455;">Skills</a>
+                            <!-- Ongoing Work Dropdown -->
+                            <div class="dropdown-submenu">
+                                <a class="dropdown-item py-2 d-flex justify-content-between align-items-center" href="javascript:void(0);" style="font-weight: 600; color: #173455;">
+                                    Ongoing Work <i class="fas fa-chevron-right" style="font-size: 9px; margin-left: 5px;"></i>
+                                </a>
+                                <div class="rb-nested-menu shadow border-0">
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@journey'); ?>?filter=ongoing">Combating Sexual Violence</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@keyprograms'); ?>?filter=ongoing">Key Programs</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@responseviolence'); ?>?filter=ongoing">Response to Violence</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@gendersensitization'); ?>?filter=ongoing">Gender Sensitization & Awareness</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@leadershipcommunity'); ?>?filter=ongoing">Leadership & Community Building</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@educationalsupport'); ?>?filter=ongoing">Educational Empowerment & Support</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@economicupliftment'); ?>?filter=ongoing">Economic Upliftment</a>
+                                </div>
+                            </div>
+                            <!-- Previous Work Dropdown -->
+                            <div class="dropdown-submenu">
+                                <a class="dropdown-item py-2 d-flex justify-content-between align-items-center" href="javascript:void(0);" style="font-weight: 600; color: #173455;">
+                                    Previous Work <i class="fas fa-chevron-right" style="font-size: 9px; margin-left: 5px;"></i>
+                                </a>
+                                <div class="rb-nested-menu shadow border-0">
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@journey'); ?>?filter=previous">Combating Sexual Violence</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@keyprograms'); ?>?filter=previous">Key Programs</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@responseviolence'); ?>?filter=previous">Response to Violence</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@gendersensitization'); ?>?filter=previous">Gender Sensitization & Awareness</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@leadershipcommunity'); ?>?filter=previous">Leadership & Community Building</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@educationalsupport'); ?>?filter=previous">Educational Empowerment & Support</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@economicupliftment'); ?>?filter=previous">Economic Upliftment</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@covid'); ?>?filter=previous">COVID-19 Crisis Intervention</a>
+                                </div>
+                            </div>
+                            <!-- Upcoming Work Dropdown -->
+                            <div class="dropdown-submenu">
+                                <a class="dropdown-item py-2 d-flex justify-content-between align-items-center" href="javascript:void(0);" style="font-weight: 600; color: #173455;">
+                                    Upcoming Work <i class="fas fa-chevron-right" style="font-size: 9px; margin-left: 5px;"></i>
+                                </a>
+                                <div class="rb-nested-menu shadow border-0">
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@journey'); ?>?filter=upcoming">Combating Sexual Violence</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@keyprograms'); ?>?filter=upcoming">Key Programs</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@responseviolence'); ?>?filter=upcoming">Response to Violence</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@gendersensitization'); ?>?filter=upcoming">Gender Sensitization & Awareness</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@leadershipcommunity'); ?>?filter=upcoming">Leadership & Community Building</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@educationalsupport'); ?>?filter=upcoming">Educational Empowerment & Support</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@economicupliftment'); ?>?filter=upcoming">Economic Upliftment</a>
+                                </div>
+                            </div>
+                            <!-- Removed Education and Skills -->
                         </div>
                     </li>
                     <li class="nav-item <?php echo Request::is('blog') ? 'active' : ''; ?>">
@@ -444,16 +527,58 @@
             <li class="sidebar-nav-item <?php echo Request::is('about') ? 'active' : ''; ?>">
                 <a class="sidebar-nav-link" href="<?php echo action('MainController@about'); ?>">About Us</a>
             </li>
-            <li class="sidebar-nav-item <?php echo Request::is('event') ? 'active' : ''; ?>">
+            <li class="sidebar-nav-item <?php echo (Request::is('event') || Request::is('previous-work') || Request::is('upcoming-work') || Request::is('journey-combating-sexual-violence') || Request::is('key-programs') || Request::is('response-to-violence') || Request::is('gender-sensitization-awareness') || Request::is('leadership-community-building') || Request::is('educational-empowerment-support') || Request::is('economic-upliftment') || Request::is('covid-19-crisis-intervention')) ? 'active' : ''; ?>">
                 <div style="font-size: 18px; font-weight: 700; color: #E31E24; padding: 16px 30px; border-bottom: 1px solid #f9f9f9; display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none';">
                     Our Work <i class="fas fa-chevron-down" style="font-size: 14px;"></i>
                 </div>
                 <ul style="list-style: none; padding-left: 20px; margin: 0; display: none; background: #fffafa;">
-                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="<?php echo action('MainController@event'); ?>">Ongoing Work</a></li>
-                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="<?php echo action('MainController@previouswork'); ?>">Previous Work</a></li>
-                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="<?php echo action('MainController@upcomingwork'); ?>">Upcoming Work</a></li>
-                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: none;" href="<?php echo action('MainController@education'); ?>">Education</a></li>
-                    <li><a class="sidebar-nav-link" style="padding: 12px 30px !important; font-size: 16px !important; border-bottom: 1px solid #f9f9f9;" href="<?php echo action('MainController@skills'); ?>">Skills</a></li>
+                    <!-- Ongoing Work Accordion -->
+                    <li style="border-bottom: 1px solid #f9f9f9;">
+                        <div style="font-size: 16px; font-weight: 700; color: #173455; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none';">
+                            Ongoing Work <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+                        </div>
+                        <ul style="list-style: none; padding-left: 15px; margin: 0; display: none; background: #ffffff;">
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@journey'); ?>?filter=ongoing">Combating Sexual Violence</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@keyprograms'); ?>?filter=ongoing">Key Programs</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@responseviolence'); ?>?filter=ongoing">Response to Violence</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@gendersensitization'); ?>?filter=ongoing">Gender Sensitization & Awareness</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@leadershipcommunity'); ?>?filter=ongoing">Leadership & Community Building</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@educationalsupport'); ?>?filter=ongoing">Educational Empowerment & Support</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@economicupliftment'); ?>?filter=ongoing">Economic Upliftment</a></li>
+                        </ul>
+                    </li>
+                    <!-- Previous Work Accordion -->
+                    <li style="border-bottom: 1px solid #f9f9f9;">
+                        <div style="font-size: 16px; font-weight: 700; color: #173455; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none';">
+                            Previous Work <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+                        </div>
+                        <ul style="list-style: none; padding-left: 15px; margin: 0; display: none; background: #ffffff;">
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@journey'); ?>?filter=previous">Combating Sexual Violence</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@keyprograms'); ?>?filter=previous">Key Programs</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@responseviolence'); ?>?filter=previous">Response to Violence</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@gendersensitization'); ?>?filter=previous">Gender Sensitization & Awareness</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@leadershipcommunity'); ?>?filter=previous">Leadership & Community Building</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@educationalsupport'); ?>?filter=previous">Educational Empowerment & Support</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@economicupliftment'); ?>?filter=previous">Economic Upliftment</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@covid'); ?>?filter=previous">COVID-19 Crisis Intervention</a></li>
+                        </ul>
+                    </li>
+                    <!-- Upcoming Work Accordion -->
+                    <li style="border-bottom: 1px solid #f9f9f9;">
+                        <div style="font-size: 16px; font-weight: 700; color: #173455; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none';">
+                            Upcoming Work <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+                        </div>
+                        <ul style="list-style: none; padding-left: 15px; margin: 0; display: none; background: #ffffff;">
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@journey'); ?>?filter=upcoming">Combating Sexual Violence</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@keyprograms'); ?>?filter=upcoming">Key Programs</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@responseviolence'); ?>?filter=upcoming">Response to Violence</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@gendersensitization'); ?>?filter=upcoming">Gender Sensitization & Awareness</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@leadershipcommunity'); ?>?filter=upcoming">Leadership & Community Building</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@educationalsupport'); ?>?filter=upcoming">Educational Empowerment & Support</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@economicupliftment'); ?>?filter=upcoming">Economic Upliftment</a></li>
+                        </ul>
+                    </li>
+                    <!-- Removed Education and Skills -->
                 </ul>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('blog') ? 'active' : ''; ?>">

@@ -235,7 +235,7 @@
             <!-- Women in Red Card -->
             <div class="rb-research-card reverse">
                 <div class="rb-card-visual">
-                    <img src="<?php echo URL::asset('uploads/slider/Redbrigade-lucknow-report-335.jpeg'); ?>" alt="Women in Red Book">
+                    <img src="<?php echo URL::asset('uploads/img/women_in_red.jpeg'); ?>" alt="Women in Red Book">
                 </div>
                 <div class="rb-card-info">
                     <span class="rb-research-tag">Published Book</span>
@@ -247,7 +247,7 @@
                         <li><strong>Format</strong> <span>Visual & Narrative Documentation</span></li>
                     </ul>
                     <div class="rb-btn-wrap">
-                        <a href="https://www.blurb.com/b/9556863-women-in-red" target="_blank" class="rb-btn" style="font-size: 14px; padding: 12px 30px;">View on Blurb</a>
+                        <a href="<?php echo URL::asset('uploads/Women_in_Red.pdf'); ?>" target="_blank" class="rb-btn" style="font-size: 14px; padding: 12px 30px;">Download PDF</a>
                     </div>
                 </div>
             </div>

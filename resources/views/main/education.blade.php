@@ -313,7 +313,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; font-weight: 700; c
     <div class="container-box">
         <div class="stats-grid">
             <div class="stat-box">
-                <h2 class="counter" data-target="200000">0</h2>
+                <h2 class="counter" data-target="300000">0</h2>
                 <p>Girls Trained</p>
             </div>
             <div class="stat-box">

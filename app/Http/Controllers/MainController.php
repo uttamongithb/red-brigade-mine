@@ -69,47 +69,6 @@ class MainController extends Controller {
 	    return view('main.collaborations');
 	}
 
-	public function event()
-	{
-		// Ongoing Work page: show only ongoing and future events
-		$today = date('Y-m-d');
-		$allevent = DB::table('news')
-			->where(function($query) use ($today) {
-				$query->where('date', '>=', $today)
-				      ->orWhere('date', 'Ongoing');
-			})
-			->orderBy('date','DESC')
-			->orderBy('id','DESC')
-			->get();
-		$allevent = $this->sortEvents($allevent);
-		return view('main.event',compact('allevent'));
-	}
-
-	public function previouswork()
-	{
-		$today = date('Y-m-d');
-		$allevent = DB::table('news')
-			->where('date', '<', $today)
-			->where('date', '!=', 'Ongoing')
-			->orderBy('date','DESC')
-			->get();
-		$allevent = $this->sortEvents($allevent);
-		return view('main.previouswork', compact('allevent'));
-	}
-
-	public function upcomingwork()
-	{
-		$today = date('Y-m-d');
-		$allevent = DB::table('news')
-			->where(function($query) use ($today) {
-				$query->where('date', '>=', $today)
-				      ->orWhere('date', 'Ongoing');
-			})
-			->orderBy('date','ASC')
-			->get();
-		$allevent = $this->sortEvents($allevent);
-		return view('main.upcomingwork', compact('allevent'));
-	}
 
 	public function education()
 	{
@@ -284,6 +243,54 @@ class MainController extends Controller {
 	public function productrepairing()
 	{
 	  return view('main.productrepairing');
+	}
+
+	public function journey(Request $request)
+	{
+		$filter = $request->query('filter', 'ongoing');
+		return view('main.journey', compact('filter'));
+	}
+
+	public function keyprograms(Request $request)
+	{
+		$filter = $request->query('filter', 'ongoing');
+		return view('main.programs', compact('filter'));
+	}
+
+	public function responseviolence(Request $request)
+	{
+		$filter = $request->query('filter', 'ongoing');
+		return view('main.response', compact('filter'));
+	}
+
+	public function gendersensitization(Request $request)
+	{
+		$filter = $request->query('filter', 'ongoing');
+		return view('main.sensitization', compact('filter'));
+	}
+
+	public function leadershipcommunity(Request $request)
+	{
+		$filter = $request->query('filter', 'ongoing');
+		return view('main.leadership', compact('filter'));
+	}
+
+	public function educationalsupport(Request $request)
+	{
+		$filter = $request->query('filter', 'ongoing');
+		return view('main.education_support', compact('filter'));
+	}
+
+	public function economicupliftment(Request $request)
+	{
+		$filter = $request->query('filter', 'ongoing');
+		return view('main.economic', compact('filter'));
+	}
+
+	public function covid(Request $request)
+	{
+		$filter = $request->query('filter', 'ongoing');
+		return view('main.covid', compact('filter'));
 	}
 
 	private function sortEvents($events)

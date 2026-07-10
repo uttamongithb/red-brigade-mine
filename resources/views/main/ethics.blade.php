@@ -75,7 +75,7 @@
 .rb-tree-img img { width: 100%; height: auto; display: block; }
 
 /* Principles */
-.rb-principles-section { padding: 100px 0; background: #1f2f46; color: #fff; }
+.rb-principles-section { padding: 100px 0; background: #1f2f46; color: #fff; margin-bottom: 80px; }
 .rb-principles-section h2 { color: #fff; font-size: 42px; margin-bottom: 60px; text-align: center; }
 .rb-principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
 .rb-principle-card h4 { color: #E31E24; font-size: 22px; margin-bottom: 15px; }
@@ -106,70 +106,58 @@
     <section class="rb-vision-section" style="padding-bottom: 40px;">
         <div class="container">
             <div class="rb-vision-card">
-                <span class="rb-kicker">Our Vision</span>
-                <p style="font-style: normal; max-width: 900px;">The vision of Red Brigade Lucknow is to build a society where women live fearlessly with dignity, equality, justice, and freedom. The organization seeks to create a gender-just and socially harmonious society where women are recognized as leaders in shaping social transformation and nation-building.</p>
+                <span class="rb-kicker" style="font-size: 24px; margin-bottom: 20px;">Our Vision</span>
+                <h2 style="font-size: 36px; color: var(--navy); margin-bottom: 20px; font-weight: 700; font-family: 'Playfair Display', serif;">To establish and create a 'FLOW' (Fearless Life of Women)</h2>
+                <p style="font-style: normal; max-width: 900px; margin: 0 auto; line-height: 1.8;">The vision of Red Brigade Lucknow is to build a society where women live fearlessly with dignity, equality, justice, and freedom. The organization seeks to create a gender-just and socially harmonious society where women are recognized as leaders in shaping social transformation and nation-building.</p>
             </div>
         </div>
     </section>
 
-    <!-- Mission / Uddesh -->
+    <!-- Mission -->
     <section class="rb-mission-v2-section">
         <div class="container">
             <h2>Mission</h2>
+            <p style="text-align: center; font-size: 24px; color: #ff414d; font-family: 'Playfair Display', serif; margin-top: -45px; margin-bottom: 55px; font-weight: 600; font-style: italic; letter-spacing: 0.5px;">"A safe society with zero tolerance for sexual violence."</p>
             <div class="rb-mission-v2-grid">
                 <div class="rb-mission-v2-item">
+                    <i class="fas fa-hand-rock"></i>
+                    <h4>Combat Sexual Violence</h4>
+                    <p>Combat sexual violence through self-defense training using the skill-based technique called 'Nishastra'.</p>
+                </div>
+                <div class="rb-mission-v2-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <h4>Empathetic Support</h4>
+                    <p>Provide psychological and mental health support, socio-legal assistance, shelter, and rehabilitation to create an empathetic environment for survivors.</p>
+                </div>
+                <div class="rb-mission-v2-item">
+                    <i class="fas fa-theater-masks"></i>
+                    <h4>Gender Sensitization</h4>
+                    <p>Promote gender sensitization and awareness to break the silence around sexual violence and gender discrimination, encouraging women to raise powerful voices against it.</p>
+                </div>
+                <div class="rb-mission-v2-item">
+                    <i class="fas fa-hands-helping"></i>
+                    <h4>Collaborative Platform</h4>
+                    <p>Build a platform against sexual violence by collaborating with NGOs, civil society organizations, media, government agencies, legal allies, and police.</p>
+                </div>
+                <div class="rb-mission-v2-item">
                     <i class="fas fa-users"></i>
-                    <h4>Empowerment</h4>
-                    <p>To empower adolescent girls and young women from marginalised communities — particularly Dalit, Muslim, and OBC communities — who are survivors of sexual violence.</p>
+                    <h4>Leadership & Community</h4>
+                    <p>Foster leadership and community building through workshops, self-defense training programs, and awareness initiatives, primarily targeting young women and girls (adults and adolescents).</p>
                 </div>
                 <div class="rb-mission-v2-item">
-                    <i class="fas fa-crown"></i>
-                    <h4>Survivor Leadership</h4>
-                    <p>To foster survivor-led leadership so that lived experience of victimisation becomes a source of strength and systemic change.</p>
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4>Educational Support</h4>
+                    <p>Support educational empowerment by providing material and emotional support for girls from socio-economically marginalized communities to continue education beyond the primary level.</p>
                 </div>
                 <div class="rb-mission-v2-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <h4>NISHASTRA</h4>
-                    <p>To develop and deliver preventive self-defense (NISHASTRA) as a practical tool and a psychological shield against sexual violence.</p>
-                </div>
-                <div class="rb-mission-v2-item">
-                    <i class="fas fa-dismantle"></i>
-                    <h4>Dismantling Mindsets</h4>
-                    <p>To dismantle the victim mindset created by patriarchal conditioning and replace it with an unshakeable sense of self-image.</p>
-                </div>
-                <div class="rb-mission-v2-item">
-                    <i class="fas fa-gavel"></i>
-                    <h4>Access to Justice</h4>
-                    <p>To ensure that every survivor has access to justice through police, legal aid, and the courts, ensuring no one faces the system alone.</p>
-                </div>
-                <div class="rb-mission-v2-item">
-                    <i class="fas fa-tree"></i>
-                    <h4>Building Trees</h4>
-                    <p>To build a society where women are trees — with deep roots, strong trunks, and branches that reach the sky — not potted plants kept for decoration.</p>
+                    <i class="fas fa-coins"></i>
+                    <h4>Economic Self-Reliance</h4>
+                    <p>Promote economic self-reliance by offering skill-based training to strengthen the financial independence of young women and girls.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Philosophy: Tree vs Pot -->
-    <section class="rb-tree-section">
-        <div class="container">
-            <div class="rb-tree-grid">
-                <div class="rb-tree-text">
-                    <span class="rb-kicker">Core Philosophy</span>
-                    <h2>The Tree, Not the Pot</h2>
-                    <p>Girls are not nurtured to become trees in this society. They are nurtured to become potted plants — decorative, contained, dependent. Red Brigade exists to change that.</p>
-                    <blockquote class="rb-mission-quote">
-                        "Our work helps women grow deep roots and reach their own sky."
-                    </blockquote>
-                    <p>Patriarchy does not only operate through external violence. It operates internally — through self-doubt, self-blame, and internalised weakness. When a girl is told she is weak from childhood, she begins to believe it. When a woman is attacked, she is often made to feel responsible. Red Brigade fights on both fronts — external safety and internal liberation.</p>
-                </div>
-                <div class="rb-tree-img">
-                    <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-133.png');?>" alt="Tree vs Pot Philosophy">
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Operational Rules -->
     <section class="rb-mission-section" style="background:#f8fafc;">
@@ -241,14 +229,7 @@
         </div>
     </section>
 
-    <!-- Rules / Slogan -->
-    <section class="rb-mission-section" style="background:#fff;">
-        <div class="container text-center">
-            <span class="rb-kicker">Our Slogan</span>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 36px; margin: 20px 0;">चली थी अकेली मगर लोग साथ आते गए और कारवाां बनता गया</h2>
-            <p style="font-size: 20px; color: #64748b;">"She walked alone — but people joined, and a caravan was formed."</p>
-        </div>
-    </section>
+
 </div>
 
 @include('includes.footer')

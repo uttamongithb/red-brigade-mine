@@ -263,9 +263,8 @@
                     <div class="rb-vm-icon">
                         <i class="fas fa-bullseye"></i>
                     </div>
-                    <span class="rb-vm-kicker">Our Purpose</span>
                     <h2 class="rb-vm-title">The <em class="rb-vm-accent">Mission</em></h2>
-                    <p class="rb-vm-text">To empower adolescent girls and women—especially survivors of sexual violence from marginalized communities—through preventive self-defense (NISHASTRA), survivor-led leadership, and access to justice. We are dedicated to dismantling patriarchal mindsets and building a society where women stand strong with an unshakeable sense of dignity.</p>
+                    <p class="rb-vm-text"><strong>A safe society with zero tolerance for sexual violence.</strong><br><br>To empower adolescent girls and women—especially survivors of sexual violence from marginalized communities—through preventive self-defense (NISHASTRA), survivor-led leadership, and access to justice. We are dedicated to dismantling patriarchal mindsets and building a society where women stand strong with an unshakeable sense of dignity.</p>
                 </div>
             </div>
             <!-- Vision -->
@@ -274,9 +273,8 @@
                     <div class="rb-vm-icon">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <span class="rb-vm-kicker">Our Future</span>
                     <h2 class="rb-vm-title">The <em class="rb-vm-accent">Vision</em></h2>
-                    <p class="rb-vm-text"><strong>"A safe society with zero tolerance for sexual violence."</strong><br><br>The vision of Red Brigade Lucknow is to build a society where women live fearlessly with dignity, equality, justice, and freedom. The organization seeks to create a gender-just and socially harmonious society where women are recognized as leaders in shaping social transformation and nation-building.</p>
+                    <p class="rb-vm-text"><strong>To establish and create a 'FLOW' (Fearless Life of Women)</strong><br><br>The vision of Red Brigade Lucknow is to build a society where women live fearlessly with dignity, equality, justice, and freedom. The organization seeks to create a gender-just and socially harmonious society where women are recognized as leaders in shaping social transformation and nation-building.</p>
                 </div>
             </div>
         </div>
@@ -537,7 +535,7 @@ if (!empty($allevent)) {
                 <h2 class="rb-blog-title">Our <em class="rb-blog-title-accent">Works</em></h2>
                 <p class="rb-blog-subtitle">Our works are focused on empowerment and amplifying women's voices against sexual violence.</p>
             </div>
-            <a href="<?php echo action('MainController@event')?>" class="rb-blog-view-all">
+            <a href="<?php echo action('MainController@journey')?>" class="rb-blog-view-all">
                 Explore All Works
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14 Jur"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
@@ -607,7 +605,7 @@ if (!empty($allevent)) {
 
         <!-- Bottom CTA -->
         <div class="rb-blog-bottom-cta">
-            <a href="<?php echo action('MainController@event'); ?>" class="rb-blog-explore-btn">
+            <a href="<?php echo action('MainController@journey'); ?>" class="rb-blog-explore-btn">
                 <span>Explore All Works</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>

@@ -371,13 +371,17 @@
                     <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-201.png');?>" alt="Red Brigade Team">
                 </div>
                 <div class="rb-mission-text">
-                    <h2>The Courage to Fight Back</h2>
-                    <p class="rb-lead-text">Red Brigade Lucknow is a non-profit organization dedicated to the empowerment of women and girls through self-defense training and awareness programs.</p>
-                    <p>Founded by Usha Vishwakarma, we aim to create a society where women can live without fear. Our primary initiative, NISHATRA, has trained over 3,00,000 women in self-defense, giving them the tools and confidence to protect themselves and stand up against sexual violence.</p>
-                    <blockquote class="rb-mission-quote">
-                        "Empowerment starts with safety and dignity. We believe every woman has the right to live without fear."
+                    <span class="rb-kicker">A Brief Introduction</span>
+                    <h2>Red Brigade Lucknow <span style="font-size: 24px; font-weight: 500; color: #718096; display: inline-block; margin-left: 8px;">— Women Led organization</span></h2>
+                    <p class="rb-lead-text" style="font-size: 18px; line-height: 1.6; color: var(--navy); margin-bottom: 20px;">Red Brigade is a girls and young women survivors-led organization, aiming towards building a safe society and ensuring a zero-tolerance atmosphere towards sexual violence.</p>
+                    <p style="font-size: 16px; line-height: 1.8; color: #4a5568; margin-bottom: 20px;">Founded in 2011 by Ms. Usha Vishwakarma, who herself is a survivor, alongside 15 adolescent girls, most of whom are survivors of sexual violence from marginalized communities (Dalit, Muslim, and Other Backward Communities). The organization cultivates leadership to empower survivors to reclaim their self-defense and self-image.</p>
+                    
+                    <blockquote class="rb-mission-quote" style="border-left: 4px solid var(--primary); padding-left: 20px; font-style: italic; font-size: 18px; margin: 30px 0; color: var(--navy);">
+                        "Traversing from victims to survivors by challenging patriarchal mindsets, Red Brigade has transformed thousands of lives."
                     </blockquote>
-                    <p>We combine direct action with community education to dismantle the culture of violence. Through dedicated self-defense training, immersive street plays, and unwavering solidarity, we are actively reclaiming our narrative and creating a safer world for all.</p>
+
+                    <p style="font-size: 16px; line-height: 1.8; color: #4a5568; margin-bottom: 20px;">Starting from a small Basti in Madiyaon, Lucknow, Red Brigade has become a global pioneer in the fight against sexual violence. We have trained over <strong>300,000 women and girls</strong> in our preventive self-defense technique, <strong>NISHASTRA</strong>, helping hundreds of survivors access justice and discover their strength.</p>
+                    <p style="font-size: 16px; line-height: 1.8; color: #4a5568;">With outreach spanning <strong>500 villages and 500 schools and colleges across 20 states and 75 districts</strong> (including interventions in 150 villages and 250 schools within Lucknow itself), our work has been recognized in over 60 countries and featured in Forbes India (Top 20 Women Achievers 2020) and various international documentaries.</p>
                 </div>
             </div>
         </div>
@@ -387,7 +391,7 @@
     <section class="rb-impact-section">
         <div class="container">
             <h2>WE ARE RED BRIGADE LUCKNOW</h2>
-            <p class="rb-lead">A Survivor-Led Movement Building a Fearless Life of Women (FLOW)</p>
+            <p class="rb-lead">Women Led organization and Building a Fearless Life of Women (FLOW)</p>
             
             <div class="rb-impact-grid">
                 <div class="rb-impact-card">

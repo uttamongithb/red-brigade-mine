@@ -53,7 +53,6 @@
                         <ul>
                             <li><a href="<?php echo action('MainController@index')?>">Home</a></li>
                             <li><a href="<?php echo action('MainController@about')?>">About Us</a></li>
-                            <li><a href="<?php echo action('MainController@education')?>">Education</a></li>
                             <li><a href="<?php echo action('MainController@gallery')?>">Gallery</a></li>
                             <li><a href="<?php echo action('MainController@contact')?>">Contact</a></li>
                         </ul>
