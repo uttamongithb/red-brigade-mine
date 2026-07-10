@@ -63,9 +63,9 @@
                         <h4 class="footer-heading">Contact</h4>
                         <ul>
                             <li>
-                                <a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+1,+Near+Mini+Stadium,+Vinay+Khand-3,+Gomti+Nagar,+Lucknow+-+226010" target="_blank" rel="noopener" aria-label="Open Red Brigade Lucknow address on map">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Ram+Nagar+Naubasta+Khurd,+Madiyanv,+Sitapur+road,+Lucknow+-+226021" target="_blank" rel="noopener" aria-label="Open Red Brigade Lucknow address on map">
                                     <i class="fas fa-map-marker-alt"></i>
-                                    <span>Plot No. 1, Near Mini Stadium, Vinay Khand-3, Gomti Nagar, Lucknow - 226010</span>
+                                    <span>Ram Nagar Naubasta Khurd, Madiyanv, Sitapur road, Lucknow - 226021, Uttar Pradesh, India</span>
                                 </a>
                             </li>
                             <li>
@@ -81,9 +81,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="mailto:info@redbrigadelucknow.org" target="_self" aria-label="Email Red Brigade Lucknow">
+                                <a href="mailto:redbrigade.lucknow@gmail.com" target="_self" aria-label="Email Red Brigade Lucknow">
                                     <i class="fas fa-envelope"></i>
-                                    <span>info@redbrigadelucknow.org</span>
+                                    <span>redbrigade.lucknow@gmail.com</span>
                                 </a>
                             </li>
                         </ul>
