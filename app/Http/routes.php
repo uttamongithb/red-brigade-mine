@@ -48,6 +48,7 @@ Route::get('/covid-19-crisis-intervention', 'MainController@covid');
 Route::get('/gallery', 'MainController@gallery');
 Route::get('/blog', 'MainController@blog');
 Route::get('/singleblog/{slug}', 'MainController@singleblog');
+Route::get('/work/{slug}', 'MainController@showWork');
 Route::get('/singlework/{id}', 'MainController@singlework')->where('id', '[0-9]+');
 Route::get('/singleproduct/{slug}', 'MainController@singleproduct');
 Route::get('/singleservice/{slug}', 'MainController@singleservice');

@@ -188,6 +188,13 @@ class RealDataSeeder extends Seeder
                 'category' => 'sexual_violence',
                 'type' => 'ongoing',
                 'status' => 1,
+                'slug' => 'mission-one-million-ongoing',
+                'description' => 'Mission One Million is an extensive and high-impact self-defense and empowerment campaign targeting young girls and women to build physical safety skills and psychological resilience. In collaboration with SEWA THDC, the campaign aims to reach one million women across India to create a fearless environment and promote women\'s agency.',
+                'gallery_images' => json_encode([
+                    'WhatsApp Image 2026-07-02 at 11.02.28 (1).jpeg',
+                    'WhatsApp Image 2026-07-02 at 11.02.28.jpeg',
+                    'WhatsApp Image 2026-07-02 at 11.02.29.jpeg'
+                ]),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
@@ -199,6 +206,13 @@ class RealDataSeeder extends Seeder
                 'category' => 'sexual_violence',
                 'type' => 'ongoing',
                 'status' => 1,
+                'slug' => 'ncc-uttar-pradesh',
+                'description' => 'A dedicated safety and self-defense training program conducted in collaboration with the National Cadet Corps (NCC) in Uttar Pradesh. The program focuses on youth leadership, situational awareness, and quick-response survival techniques, enabling cadets to act as safety ambassadors in their communities.',
+                'gallery_images' => json_encode([
+                    'WhatsApp Image 2026-07-02 at 11.02.30.jpeg',
+                    'WhatsApp Image 2026-07-02 at 11.02.31 (1).jpeg',
+                    'WhatsApp Image 2026-07-02 at 11.02.31.jpeg'
+                ]),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
@@ -210,6 +224,13 @@ class RealDataSeeder extends Seeder
                 'category' => 'economic_upliftment',
                 'type' => 'ongoing',
                 'status' => 1,
+                'slug' => 'chikenkari-training',
+                'description' => 'Chikenkari Training provides skill-building workshops in the traditional art of Chikenkari embroidery, offering marginalized women a viable livelihood and financial independence. The program combines artisanal craft training with entrepreneurial coaching to foster long-term financial autonomy and dignity.',
+                'gallery_images' => json_encode([
+                    'WhatsApp Image 2026-07-02 at 11.02.32 (1).jpeg',
+                    'WhatsApp Image 2026-07-02 at 11.02.32.jpeg',
+                    'WhatsApp Image 2026-07-02 at 11.02.33.jpeg'
+                ]),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
@@ -221,6 +242,13 @@ class RealDataSeeder extends Seeder
                 'category' => 'sexual_violence',
                 'type' => 'previous',
                 'status' => 1,
+                'slug' => 'mission-one-million-previous',
+                'description' => 'A previous phase of the Mission One Million campaign, focusing on self-defense workshops in public schools and rural centers. Through SEWA THDC’s support, this phase laid the foundation of our high-impact physical and psychological empowerment methodology.',
+                'gallery_images' => json_encode([
+                    'WhatsApp Image 2026-07-02 at 11.02.35 (1).jpeg',
+                    'WhatsApp Image 2026-07-02 at 11.02.35 (2).jpeg',
+                    'WhatsApp Image 2026-07-02 at 11.02.35.jpeg'
+                ]),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
@@ -232,6 +260,13 @@ class RealDataSeeder extends Seeder
                 'category' => 'sexual_violence',
                 'type' => 'previous',
                 'status' => 1,
+                'slug' => 'nishastakala-hirmi',
+                'description' => 'A specialized workshop teaching \'Nishastra Kala\', a real-world self-defense technique developed by Red Brigade survivors. This session was conducted at The Aditya Birla Public School, Hirmi Chhattisgarh, equipping 100 female students with physical defense methods and mental confidence to counter violence.',
+                'gallery_images' => json_encode([
+                    'WhatsApp Image 2026-07-02 at 11.02.37.jpeg',
+                    'WhatsApp Image 2026-07-02 at 11.02.39.jpeg',
+                    'WhatsApp Image 2026-07-02 at 11.02.40.jpeg'
+                ]),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ]

@@ -303,6 +303,21 @@ class MainController extends Controller {
 		return view('main.covid', compact('filter', 'initiatives'));
 	}
 
+	public function showWork($slug)
+	{
+		$work = DB::table('work_initiatives')->where('slug', $slug)->where('status', 1)->first();
+		if (!$work) {
+			abort(404);
+		}
+		
+		$work->gallery = [];
+		if (!empty($work->gallery_images)) {
+			$work->gallery = json_decode($work->gallery_images, true) ?: [];
+		}
+		
+		return view('main.work_detail', compact('work'));
+	}
+
 	private function sortEvents($events)
 	{
 		$eventsArr = is_array($events) ? $events : $events->all();

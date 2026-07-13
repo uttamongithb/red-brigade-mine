@@ -546,7 +546,7 @@ if (!empty($allevent)) {
         <?php if (!empty($ongoingWorks) && count($ongoingWorks) > 0) { ?>
         <div class="rb-blog-grid">
             <?php foreach ($ongoingWorks as $idx => $item) { ?>
-                <div class="rb-blog-card-link">
+                <a href="<?php echo url('work/'.$item->slug); ?>" class="rb-blog-card-link" style="text-decoration: none; display: block; color: inherit;">
                     <article class="rb-blog-card" style="animation-delay: <?php echo ($idx * 0.08); ?>s;">
                         <div class="rb-blog-card-img">
                             <img src="<?php echo URL::asset('uploads/img/'.$item->image); ?>" alt="<?php echo $item->title; ?>" loading="lazy">
@@ -565,7 +565,7 @@ if (!empty($allevent)) {
                             <?php } ?>
                         </div>
                     </article>
-                </div>
+                </a>
             <?php } ?>
         </div>
         <?php } ?>

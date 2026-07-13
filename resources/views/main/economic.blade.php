@@ -299,15 +299,17 @@
                     <div class="row justify-content-center">
                         <?php foreach ($ongoing as $item) { ?>
                             <div class="col-lg-6 col-md-8 col-sm-10">
-                                <article class="rb-blog-card" style="width: 100%; max-width: 588px; margin: 0 auto 30px;">
-                                    <div class="rb-blog-card-img">
-                                        <img src="<?php echo URL::asset('uploads/img/'.$item->image); ?>" alt="<?php echo $item->title; ?>" loading="lazy">
-                                        <span class="rb-blog-badge">Ongoing</span>
-                                    </div>
-                                    <div class="rb-blog-card-body">
-                                        <h4 class="rb-blog-card-title" style="margin-bottom: 0;"><?php echo $item->title; ?></h4>
-                                    </div>
-                                </article>
+                                <a href="<?php echo url('work/'.$item->slug); ?>" style="text-decoration: none; display: block; color: inherit;">
+                                    <article class="rb-blog-card" style="width: 100%; max-width: 588px; margin: 0 auto 30px;">
+                                        <div class="rb-blog-card-img">
+                                            <img src="<?php echo URL::asset('uploads/img/'.$item->image); ?>" alt="<?php echo $item->title; ?>" loading="lazy">
+                                            <span class="rb-blog-badge">Ongoing</span>
+                                        </div>
+                                        <div class="rb-blog-card-body">
+                                            <h4 class="rb-blog-card-title" style="margin-bottom: 0;"><?php echo $item->title; ?></h4>
+                                        </div>
+                                    </article>
+                                </a>
                             </div>
                         <?php } ?>
                     </div>
@@ -338,24 +340,26 @@
                             <!-- Previous Work Cards Grid -->
                             <div class="rb-blog-grid" style="margin-top: 40px;">
                                 <?php foreach ($previous as $item) { ?>
-                                    <article class="rb-blog-card">
-                                        <div class="rb-blog-card-img">
-                                            <img src="<?php echo URL::asset('uploads/img/'.$item->image); ?>" alt="<?php echo $item->title; ?>" loading="lazy">
-                                            <span class="rb-blog-badge">Previous</span>
-                                        </div>
-                                        <div class="rb-blog-card-body">
-                                            <h4 class="rb-blog-card-title"><?php echo $item->title; ?></h4>
-                                            <?php if (!empty($item->tagline)) { ?>
-                                                <p class="rb-blog-card-excerpt" style="color: #E31E24; font-weight: 600; font-style: italic; margin-bottom: 8px;">"<?php echo $item->tagline; ?>"</p>
-                                            <?php } ?>
-                                            <?php if (!empty($item->collaboration)) { ?>
-                                                <div style="display: flex; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 10px; margin-top: 10px;">
-                                                    <span style="font-size: 11px; font-weight: 700; color: #7f8da3; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 6px;">In Collaboration With:</span>
-                                                    <strong style="color: #273247; font-size: 13px; font-weight: 700;"><?php echo $item->collaboration; ?></strong>
-                                                </div>
-                                            <?php } ?>
-                                        </div>
-                                    </article>
+                                    <a href="<?php echo url('work/'.$item->slug); ?>" style="text-decoration: none; display: block; color: inherit;">
+                                        <article class="rb-blog-card">
+                                            <div class="rb-blog-card-img">
+                                                <img src="<?php echo URL::asset('uploads/img/'.$item->image); ?>" alt="<?php echo $item->title; ?>" loading="lazy">
+                                                <span class="rb-blog-badge">Previous</span>
+                                            </div>
+                                            <div class="rb-blog-card-body">
+                                                <h4 class="rb-blog-card-title"><?php echo $item->title; ?></h4>
+                                                <?php if (!empty($item->tagline)) { ?>
+                                                    <p class="rb-blog-card-excerpt" style="color: #E31E24; font-weight: 600; font-style: italic; margin-bottom: 8px;">"<?php echo $item->tagline; ?>"</p>
+                                                <?php } ?>
+                                                <?php if (!empty($item->collaboration)) { ?>
+                                                    <div style="display: flex; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 10px; margin-top: 10px;">
+                                                        <span style="font-size: 11px; font-weight: 700; color: #7f8da3; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 6px;">In Collaboration With:</span>
+                                                        <strong style="color: #273247; font-size: 13px; font-weight: 700;"><?php echo $item->collaboration; ?></strong>
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+                                        </article>
+                                    </a>
                                 <?php } ?>
                             </div>
                         <?php } ?>
