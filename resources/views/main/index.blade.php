@@ -11,6 +11,9 @@
         if (!empty($allslider) && count($allslider) > 0) {
             foreach ($allslider as $alle) {
                 $trimmedImage = trim($alle->image);
+                if ($trimmedImage === 'prev_work_1783160020_43.jpeg') {
+                    continue;
+                }
                 $heroSlides[] = [
                     'src' => URL::asset('uploads/slider/'.$trimmedImage),
                     'name' => !empty($alle->name) ? $alle->name : 'Stand With Red Brigade Lucknow',
@@ -539,66 +542,30 @@ if (!empty($allevent)) {
                 Explore All Works
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14 Jur"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
-        </div>
-
-        <!-- Featured Post -->
-        <?php if($featuredEvent) { 
-            $hasFeaturedText = !empty(trim($featuredEvent->name)) || !empty(trim(strip_tags($featuredEvent->description)));
-        ?>
-        <div class="rb-blog-featured-link">
-            <div class="rb-blog-featured">
-                <div class="rb-blog-featured-img">
-                    <img src="<?php echo asset('uploads/news/'.trim($featuredEvent->image));?>" alt="<?php echo $featuredEvent->name; ?>">
-                </div>
-                <div class="rb-blog-featured-overlay"></div>
-                <?php if ($hasFeaturedText) { ?>
-                <div class="rb-blog-featured-content">
-                    <span class="rb-blog-badge">Work</span>
-                    <?php if (!empty(trim($featuredEvent->name))) { ?>
-                        <h3 class="rb-blog-featured-title"><?php echo ucfirst($featuredEvent->name); ?></h3>
-                    <?php } ?>
-                    <?php if (!empty(trim(strip_tags($featuredEvent->description)))) { ?>
-                        <p class="rb-blog-featured-excerpt"><?php echo strip_tags(substr($featuredEvent->description, 0, 200)); ?>...</p>
-                    <?php } ?>
-                    <div class="rb-blog-featured-meta">
-                        <span class="rb-blog-meta-date"><i class="fas fa-calendar-alt"></i> <?php echo $featuredEvent->date; ?></span>
-                    </div>
-                </div>
-                <?php } ?>
-            </div>
-        </div>
-        <?php } ?>
-
-        <!-- Secondary Posts Grid -->
-        <?php if(!empty($secondaryEvents)) { ?>
+        </div>        <!-- Ongoing Works Grid -->
+        <?php if (!empty($ongoingWorks) && count($ongoingWorks) > 0) { ?>
         <div class="rb-blog-grid">
-            <?php foreach($secondaryEvents as $idx => $ev) { 
-                $hasEvText = !empty(trim($ev->name)) || !empty(trim(strip_tags($ev->description)));
-            ?>
-            <div class="rb-blog-card-link">
-                <article class="rb-blog-card" style="animation-delay: <?php echo ($idx * 0.08); ?>s;">
-                    <div class="rb-blog-card-img">
-                        <img src="<?php echo asset('uploads/news/'.trim($ev->image));?>" alt="<?php echo $ev->name; ?>" loading="lazy">
-                        <span class="rb-blog-badge">Work</span>
-                    </div>
-                    <?php if ($hasEvText) { ?>
-                    <div class="rb-blog-card-body">
-                        <div class="rb-blog-card-meta">
-                            <span><i class="fas fa-calendar-alt"></i> <?php echo $ev->date; ?></span>
-                            <?php if(isset($ev->location) && !empty($ev->location)) { ?>
-                                <span><i class="fas fa-map-marker-alt"></i> <?php echo $ev->location; ?></span>
+            <?php foreach ($ongoingWorks as $idx => $item) { ?>
+                <div class="rb-blog-card-link">
+                    <article class="rb-blog-card" style="animation-delay: <?php echo ($idx * 0.08); ?>s;">
+                        <div class="rb-blog-card-img">
+                            <img src="<?php echo URL::asset('uploads/img/'.$item->image); ?>" alt="<?php echo $item->title; ?>" loading="lazy">
+                            <span class="rb-blog-badge">Ongoing</span>
+                        </div>
+                        <div class="rb-blog-card-body">
+                            <h4 class="rb-blog-card-title" style="<?php echo empty($item->tagline) && empty($item->collaboration) ? 'margin-bottom: 0;' : ''; ?>"><?php echo $item->title; ?></h4>
+                            <?php if (!empty($item->tagline)) { ?>
+                                <p class="rb-blog-card-excerpt" style="color: #E31E24; font-weight: 600; font-style: italic; margin-bottom: 8px;">"<?php echo $item->tagline; ?>"</p>
+                            <?php } ?>
+                            <?php if (!empty($item->collaboration)) { ?>
+                                <div style="display: flex; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 10px; margin-top: 10px;">
+                                    <span style="font-size: 11px; font-weight: 700; color: #7f8da3; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 6px;">In Collaboration With:</span>
+                                    <strong style="color: #273247; font-size: 13px; font-weight: 700;"><?php echo $item->collaboration; ?></strong>
+                                </div>
                             <?php } ?>
                         </div>
-                        <?php if (!empty(trim($ev->name))) { ?>
-                            <h4 class="rb-blog-card-title"><?php echo ucfirst($ev->name); ?></h4>
-                        <?php } ?>
-                        <?php if (!empty(trim(strip_tags($ev->description)))) { ?>
-                            <p class="rb-blog-card-excerpt" style="margin-bottom: 0;"><?php echo strip_tags(substr($ev->description, 0, 120)); ?>...</p>
-                        <?php } ?>
-                    </div>
-                    <?php } ?>
-                </article>
-            </div>
+                    </article>
+                </div>
             <?php } ?>
         </div>
         <?php } ?>

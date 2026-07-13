@@ -176,5 +176,66 @@ class RealDataSeeder extends Seeder
             ],
         ];
         DB::table('blog')->insert($blogs);
+
+        // --- Seed Work Initiatives (work_initiatives table) ---
+        DB::table('work_initiatives')->truncate();
+        $initiatives = [
+            [
+                'title' => 'Mission One Million',
+                'tagline' => 'Safe Women, Strong Women',
+                'collaboration' => 'SEWA THDC',
+                'image' => 'mission-one million-ongoing.jpeg',
+                'category' => 'sexual_violence',
+                'type' => 'ongoing',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'title' => 'NCC - Uttar Pradesh',
+                'tagline' => 'Youth Leadership & Safety',
+                'collaboration' => 'National Cadet Corps',
+                'image' => 'ncc-ongoing.jpeg',
+                'category' => 'sexual_violence',
+                'type' => 'ongoing',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'title' => 'Chikenkari Training',
+                'tagline' => null,
+                'collaboration' => null,
+                'image' => 'chikenkari.png',
+                'category' => 'economic_upliftment',
+                'type' => 'ongoing',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'title' => 'Mission One Million',
+                'tagline' => 'Safe Women, Strong Women',
+                'collaboration' => 'SEWA THDC',
+                'image' => 'mom-prev.jpeg',
+                'category' => 'sexual_violence',
+                'type' => 'previous',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'title' => 'Nishastra Kala Self-Defense Workshop',
+                'tagline' => null,
+                'collaboration' => 'The Aditya Birla Public School, Hirmi Chhattisgarh',
+                'image' => 'nishastakala hirmi.jpeg',
+                'category' => 'sexual_violence',
+                'type' => 'previous',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]
+        ];
+        DB::table('work_initiatives')->insert($initiatives);
     }
 }

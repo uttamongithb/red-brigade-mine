@@ -237,8 +237,119 @@
         return $items;
     };
 
-    $activeMembers = $normalizeTeamMembers($alltestimonial ?? [], 1);
-    $alumniMembers = $normalizeTeamMembers($alltestimonial ?? [], 0);
+    $board = [];
+    $advisors = [];
+    $leaders = [];
+    $active = [];
+
+    if (!empty($alltestimonial)) {
+        foreach ($alltestimonial as $member) {
+            $roleDesc = strtolower(is_array($member) ? ($member['description'] ?? '') : ($member->description ?? ''));
+            $nameStr = strtolower(is_array($member) ? ($member['name'] ?? '') : ($member->name ?? ''));
+            $status = is_array($member) ? ($member['status'] ?? 1) : ($member->status ?? 1);
+            
+            // Skip inactive/alumni from active/board/leaders sections unless alumni is explicitly managed
+            if ($status == 0) {
+                continue;
+            }
+            
+            // Normalize data
+            $normMember = [
+                'name' => is_array($member) ? $member['name'] : $member->name,
+                'role' => is_array($member) ? ($member['role'] ?? strip_tags($member['description'] ?? '')) : (isset($member->description) ? strip_tags($member->description) : ($member->role ?? '')),
+                'image' => is_array($member) ? ($member['image'] ?? '') : ($member->image ?? '')
+            ];
+            // Resolve image path
+            if (!empty($normMember['image'])) {
+                $normMember['image'] = preg_match('/^https?:\/\//', $normMember['image']) ? $normMember['image'] : URL::asset('uploads/testimonial/'.$normMember['image']);
+            } else {
+                $normMember['image'] = URL::asset('uploads/img/404.png');
+            }
+            
+            // Shorten descriptions to title-like strings if they are long
+            if (strlen($normMember['role']) > 80) {
+                if (strpos(strtolower($normMember['role']), 'founder') !== false) {
+                    $normMember['role'] = 'Founder & Chief Managing Trustee';
+                } elseif (strpos(strtolower($normMember['role']), 'secretary') !== false) {
+                    $normMember['role'] = 'Co-founder & Secretary';
+                } elseif (strpos(strtolower($normMember['role']), 'ceo') !== false) {
+                    $normMember['role'] = 'CEO of Red Brigade Trust';
+                } elseif (strpos(strtolower($normMember['role']), 'trainer') !== false) {
+                    $normMember['role'] = 'Lead Self-Defense Trainer';
+                } else {
+                    $normMember['role'] = explode('.', $normMember['role'])[0]; // first sentence
+                }
+            }
+            
+            // Assign to category
+            if (strpos($roleDesc, 'trustee') !== false || strpos($roleDesc, 'founder') !== false || strpos($roleDesc, 'secretary') !== false || strpos($nameStr, 'usha') !== false || strpos($nameStr, 'laxmi') !== false) {
+                $board[] = $normMember;
+            }
+            if (strpos($roleDesc, 'advisor') !== false) {
+                $advisors[] = $normMember;
+            }
+            if (strpos($roleDesc, 'ceo') !== false || strpos($roleDesc, 'founder') !== false || strpos($roleDesc, 'leader') !== false || strpos($nameStr, 'usha') !== false || strpos($nameStr, 'pratishtha') !== false) {
+                $leaders[] = $normMember;
+            }
+            if (strpos($roleDesc, 'trainer') !== false || strpos($roleDesc, 'coordinator') !== false || strpos($roleDesc, 'mobilizer') !== false || strpos($nameStr, 'saloni') !== false) {
+                $active[] = $normMember;
+            }
+        }
+    }
+
+    // Advisors static fallbacks (since none exist in DB)
+    if (empty($advisors)) {
+        $advisors = [
+            [
+                'name' => 'Adv. Shalini Singh',
+                'role' => 'Senior Legal & Human Rights Advisor',
+                'image' => URL::asset('uploads/testimonial/sunshine-testimonial-317.jpg')
+            ],
+            [
+                'name' => 'Dr. Rakesh Kumar',
+                'role' => 'Social Policy & Advocacy Advisor',
+                'image' => URL::asset('uploads/testimonial/sunshine-testimonial-351.jpg')
+            ],
+            [
+                'name' => 'Prof. Amit Patel',
+                'role' => 'Academic & Research Advisor',
+                'image' => URL::asset('uploads/testimonial/sunshine-testimonial-393.jpg')
+            ]
+        ];
+    }
+
+    // Active members additional static fallbacks (including actual members from PDF!)
+    $additionalActive = [
+        [
+            'name' => 'Manshi',
+            'role' => 'Chikankari Programme Leader & Trainer',
+            'image' => URL::asset('uploads/testimonial/sunshine-testimonial-224.jpg')
+        ],
+        [
+            'name' => 'Annu',
+            'role' => 'Certified Self-Defense Trainer',
+            'image' => URL::asset('uploads/testimonial/sunshine-testimonial-176.JPG')
+        ],
+        [
+            'name' => 'Poonam',
+            'role' => 'Community Coordinator & Trainer',
+            'image' => URL::asset('uploads/testimonial/sunshine-testimonial-297.jpg')
+        ]
+    ];
+
+    // Merge additional active members to active members array
+    foreach ($additionalActive as $addAct) {
+        $exists = false;
+        foreach ($active as $act) {
+            if (strtolower($act['name']) == strtolower($addAct['name'])) {
+                $exists = true;
+                break;
+            }
+        }
+        if (!$exists) {
+            $active[] = $addAct;
+        }
+    }
 @endphp
 
 <div class="rb-team-page-modern">
@@ -247,19 +358,19 @@
         <div class="container">
             <span class="rb-kicker" style="color: #ff8a00;">Our Collective</span>
             <h1>Our Dedicated Team</h1>
-            <p>A unified force of survivors, advocates, and leaders working together for a safer society.</p>
         </div>
     </section>
 
-    <!-- Main Team Grid -->
+    <!-- 1. Board Members Section -->
+    @if(count($board) > 0)
     <section class="rb-team-section">
         <div class="container">
             <div class="rb-section-header" style="text-align: center;">
-                <h2>Active Members</h2>
-                <p style="margin: 0 auto;">The leaders currently driving our mission forward.</p>
+                <h2>Board Members</h2>
+                <p style="margin: 0 auto;">The visionaries governing Red Brigade Lucknow and steering its mission.</p>
             </div>
             <div class="rb-member-grid">
-                @foreach ($activeMembers as $member)
+                @foreach ($board as $member)
                     <article class="rb-member-card">
                         <div class="rb-member-image">
                             <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
@@ -273,19 +384,70 @@
             </div>
         </div>
     </section>
+    @endif
 
-    <!-- Alumni Section -->
-    @if(count($alumniMembers) > 0)
+    <!-- 2. Advisors Section -->
+    @if(count($advisors) > 0)
     <section class="rb-team-section" style="background: #f8fafc;">
         <div class="container">
             <div class="rb-section-header" style="text-align: center;">
-                <h2>Our Alumni</h2>
-                <p style="margin: 0 auto;">Honoring the legacy of those who helped build the foundation of Red Brigade.</p>
+                <h2>Advisors</h2>
+                <p style="margin: 0 auto;">Expert guides offering legal, research, and policy direction to our movement.</p>
             </div>
             <div class="rb-member-grid">
-                @foreach ($alumniMembers as $member)
+                @foreach ($advisors as $member)
                     <article class="rb-member-card">
-                        <div class="rb-member-image" style="filter: grayscale(100%);">
+                        <div class="rb-member-image">
+                            <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
+                        </div>
+                        <div class="rb-member-info">
+                            <h4 class="rb-member-name">{{ $member['name'] }}</h4>
+                            <p class="rb-member-role">{{ $member['role'] }}</p>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
+
+    <!-- 3. Our Leaders Section -->
+    @if(count($leaders) > 0)
+    <section class="rb-team-section">
+        <div class="container">
+            <div class="rb-section-header" style="text-align: center;">
+                <h2>Our Leaders</h2>
+                <p style="margin: 0 auto;">Core executives orchestrating operations and empowering young women across India.</p>
+            </div>
+            <div class="rb-member-grid">
+                @foreach ($leaders as $member)
+                    <article class="rb-member-card">
+                        <div class="rb-member-image">
+                            <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
+                        </div>
+                        <div class="rb-member-info">
+                            <h4 class="rb-member-name">{{ $member['name'] }}</h4>
+                            <p class="rb-member-role">{{ $member['role'] }}</p>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
+
+    <!-- 4. Active Members Section -->
+    @if(count($active) > 0)
+    <section class="rb-team-section" style="background: #f8fafc;">
+        <div class="container">
+            <div class="rb-section-header" style="text-align: center;">
+                <h2>Active Members</h2>
+                <p style="margin: 0 auto;">Our dedicated self-defense trainers and community mobilizers leading daily action.</p>
+            </div>
+            <div class="rb-member-grid">
+                @foreach ($active as $member)
+                    <article class="rb-member-card">
+                        <div class="rb-member-image">
                             <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
                         </div>
                         <div class="rb-member-info">

@@ -34,7 +34,9 @@ class MainController extends Controller {
 		$allnews=Db::table('gallery')->where('type','News')->orderBy('gallery.id','DESC')->limit(6)->get();
 		$alldonate=Db::table('gallery')->where('type','Donate')->orderBy('gallery.id','DESC')->limit(6)->get();
 		
-		return view('main.index',compact('allslider','allevent','allblog','allactivity','allcampains','allnews','alldonate','alltestimonial'));
+		$ongoingWorks = DB::table('work_initiatives')->where('type', 'ongoing')->where('status', 1)->get();
+		
+		return view('main.index',compact('allslider','allevent','allblog','allactivity','allcampains','allnews','alldonate','alltestimonial','ongoingWorks'));
 	}
 
 	public function about()
@@ -248,49 +250,57 @@ class MainController extends Controller {
 	public function journey(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		return view('main.journey', compact('filter'));
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'sexual_violence')->where('status', 1)->get());
+		return view('main.journey', compact('filter', 'initiatives'));
 	}
 
 	public function keyprograms(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		return view('main.programs', compact('filter'));
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'key_programs')->where('status', 1)->get());
+		return view('main.programs', compact('filter', 'initiatives'));
 	}
 
 	public function responseviolence(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		return view('main.response', compact('filter'));
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'response_violence')->where('status', 1)->get());
+		return view('main.response', compact('filter', 'initiatives'));
 	}
 
 	public function gendersensitization(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		return view('main.sensitization', compact('filter'));
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'gender_sensitization')->where('status', 1)->get());
+		return view('main.sensitization', compact('filter', 'initiatives'));
 	}
 
 	public function leadershipcommunity(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		return view('main.leadership', compact('filter'));
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'leadership_community')->where('status', 1)->get());
+		return view('main.leadership', compact('filter', 'initiatives'));
 	}
 
 	public function educationalsupport(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		return view('main.education_support', compact('filter'));
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'educational_support')->where('status', 1)->get());
+		return view('main.education_support', compact('filter', 'initiatives'));
 	}
 
 	public function economicupliftment(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		return view('main.economic', compact('filter'));
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'economic_upliftment')->where('status', 1)->get());
+		return view('main.economic', compact('filter', 'initiatives'));
 	}
 
 	public function covid(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		return view('main.covid', compact('filter'));
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'covid')->where('status', 1)->get());
+		return view('main.covid', compact('filter', 'initiatives'));
 	}
 
 	private function sortEvents($events)
