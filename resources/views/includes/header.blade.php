@@ -187,7 +187,7 @@
         .navbar-area .dropdown-submenu {
             position: relative;
         }
-        .navbar-area .dropdown-submenu:hover > .rb-nested-menu {
+        .navbar-area .rb-nested-menu.rb-show {
             display: block !important;
             visibility: visible !important;
             opacity: 1;
@@ -239,7 +239,7 @@
 
     /* MOBILE DRAWER */
     .rb-mobile-drawer {
-        display: none !important;
+        display: none;
     }
 
     /* BREAKPOINT FOR MOBILE SWITCH - Set to 1280px to safely avoid overlaps */
@@ -261,8 +261,25 @@
             width: 150px;
         }
 
-        .rb-mobile-drawer.active {
+        .rb-mobile-drawer {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
             right: 0;
+            width: 320px;
+            height: 100vh;
+            height: 100dvh;
+            background: #ffffff;
+            z-index: 100000;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+            overflow-y: auto;
+        }
+
+        .rb-mobile-drawer.active {
+            transform: translateX(0);
         }
 
         .sidebar-header {
@@ -370,24 +387,58 @@
         const dropdownMenu = document.getElementById('rbDropdownMenu');
 
         if (dropdownToggle && dropdownMenu) {
+            // Function to close all nested submenus
+            function closeAllSubmenus() {
+                const submenus = dropdownMenu.querySelectorAll('.rb-nested-menu');
+                submenus.forEach(menu => {
+                    menu.classList.remove('rb-show');
+                });
+            }
+
+            // Click handler for main Our Work dropdown
             dropdownToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                // Close others if they exist (we only have one, but good practice)
                 const isShowing = dropdownMenu.classList.contains('rb-show');
                 
                 if (isShowing) {
                     dropdownMenu.classList.remove('rb-show');
+                    closeAllSubmenus();
                 } else {
                     dropdownMenu.classList.add('rb-show');
                 }
             });
 
-            // Close dropdown when clicking outside
+            // Click handler for nested dropdown submenus (Ongoing Work, Previous Work, Upcoming Work)
+            const submenuToggles = dropdownMenu.querySelectorAll('.dropdown-submenu > a');
+            submenuToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const currentMenu = this.nextElementSibling;
+                    if (!currentMenu) return;
+                    
+                    const isShowing = currentMenu.classList.contains('rb-show');
+                    
+                    // Close all other nested submenus at the same level
+                    closeAllSubmenus();
+                    
+                    // Toggle current submenu
+                    if (isShowing) {
+                        currentMenu.classList.remove('rb-show');
+                    } else {
+                        currentMenu.classList.add('rb-show');
+                    }
+                });
+            });
+
+            // Close everything when clicking outside
             document.addEventListener('click', function(e) {
                 if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
                     dropdownMenu.classList.remove('rb-show');
+                    closeAllSubmenus();
                 }
             });
         }

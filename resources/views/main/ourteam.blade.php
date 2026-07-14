@@ -288,7 +288,7 @@
             if (strpos($roleDesc, 'advisor') !== false) {
                 $advisors[] = $normMember;
             }
-            if (strpos($roleDesc, 'ceo') !== false || strpos($roleDesc, 'founder') !== false || strpos($roleDesc, 'leader') !== false || strpos($nameStr, 'usha') !== false || strpos($nameStr, 'pratishtha') !== false) {
+            if ((strpos($roleDesc, 'ceo') !== false || strpos($roleDesc, 'founder') !== false || strpos($roleDesc, 'leader') !== false || strpos($nameStr, 'usha') !== false || strpos($nameStr, 'pratishtha') !== false) && strpos($nameStr, 'usha') === false && strpos($nameStr, 'laxmi') === false) {
                 $leaders[] = $normMember;
             }
             if (strpos($roleDesc, 'trainer') !== false || strpos($roleDesc, 'coordinator') !== false || strpos($roleDesc, 'mobilizer') !== false || strpos($nameStr, 'saloni') !== false) {
@@ -297,59 +297,11 @@
         }
     }
 
-    // Advisors static fallbacks (since none exist in DB)
-    if (empty($advisors)) {
-        $advisors = [
-            [
-                'name' => 'Adv. Shalini Singh',
-                'role' => 'Senior Legal & Human Rights Advisor',
-                'image' => URL::asset('uploads/testimonial/sunshine-testimonial-317.jpg')
-            ],
-            [
-                'name' => 'Dr. Rakesh Kumar',
-                'role' => 'Social Policy & Advocacy Advisor',
-                'image' => URL::asset('uploads/testimonial/sunshine-testimonial-351.jpg')
-            ],
-            [
-                'name' => 'Prof. Amit Patel',
-                'role' => 'Academic & Research Advisor',
-                'image' => URL::asset('uploads/testimonial/sunshine-testimonial-393.jpg')
-            ]
-        ];
-    }
+    // Advisors static fallbacks (removed as requested)
+    $advisors = [];
 
-    // Active members additional static fallbacks (including actual members from PDF!)
-    $additionalActive = [
-        [
-            'name' => 'Manshi',
-            'role' => 'Chikankari Programme Leader & Trainer',
-            'image' => URL::asset('uploads/testimonial/sunshine-testimonial-224.jpg')
-        ],
-        [
-            'name' => 'Annu',
-            'role' => 'Certified Self-Defense Trainer',
-            'image' => URL::asset('uploads/testimonial/sunshine-testimonial-176.JPG')
-        ],
-        [
-            'name' => 'Poonam',
-            'role' => 'Community Coordinator & Trainer',
-            'image' => URL::asset('uploads/testimonial/sunshine-testimonial-297.jpg')
-        ]
-    ];
-
-    // Merge additional active members to active members array
-    foreach ($additionalActive as $addAct) {
-        $exists = false;
-        foreach ($active as $act) {
-            if (strtolower($act['name']) == strtolower($addAct['name'])) {
-                $exists = true;
-                break;
-            }
-        }
-        if (!$exists) {
-            $active[] = $addAct;
-        }
-    }
+    // Active members additional static fallbacks (removed as requested)
+    $additionalActive = [];
 @endphp
 
 <div class="rb-team-page-modern">
@@ -362,7 +314,6 @@
     </section>
 
     <!-- 1. Board Members Section -->
-    @if(count($board) > 0)
     <section class="rb-team-section">
         <div class="container">
             <div class="rb-section-header" style="text-align: center;">
@@ -370,7 +321,7 @@
                 <p style="margin: 0 auto;">The visionaries governing Red Brigade Lucknow and steering its mission.</p>
             </div>
             <div class="rb-member-grid">
-                @foreach ($board as $member)
+                @forelse ($board as $member)
                     <article class="rb-member-card">
                         <div class="rb-member-image">
                             <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
@@ -380,14 +331,14 @@
                             <p class="rb-member-role">{{ $member['role'] }}</p>
                         </div>
                     </article>
-                @endforeach
+                @empty
+                    <p style="grid-column: 1 / -1; text-align: center; color: #a0aec0; font-style: italic; margin-top: 20px;">No members listed yet.</p>
+                @endforelse
             </div>
         </div>
     </section>
-    @endif
 
     <!-- 2. Advisors Section -->
-    @if(count($advisors) > 0)
     <section class="rb-team-section" style="background: #f8fafc;">
         <div class="container">
             <div class="rb-section-header" style="text-align: center;">
@@ -395,7 +346,7 @@
                 <p style="margin: 0 auto;">Expert guides offering legal, research, and policy direction to our movement.</p>
             </div>
             <div class="rb-member-grid">
-                @foreach ($advisors as $member)
+                @forelse ($advisors as $member)
                     <article class="rb-member-card">
                         <div class="rb-member-image">
                             <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
@@ -405,14 +356,14 @@
                             <p class="rb-member-role">{{ $member['role'] }}</p>
                         </div>
                     </article>
-                @endforeach
+                @empty
+                    <p style="grid-column: 1 / -1; text-align: center; color: #a0aec0; font-style: italic; margin-top: 20px;">No members listed yet.</p>
+                @endforelse
             </div>
         </div>
     </section>
-    @endif
 
     <!-- 3. Our Leaders Section -->
-    @if(count($leaders) > 0)
     <section class="rb-team-section">
         <div class="container">
             <div class="rb-section-header" style="text-align: center;">
@@ -420,7 +371,7 @@
                 <p style="margin: 0 auto;">Core executives orchestrating operations and empowering young women across India.</p>
             </div>
             <div class="rb-member-grid">
-                @foreach ($leaders as $member)
+                @forelse ($leaders as $member)
                     <article class="rb-member-card">
                         <div class="rb-member-image">
                             <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
@@ -430,14 +381,14 @@
                             <p class="rb-member-role">{{ $member['role'] }}</p>
                         </div>
                     </article>
-                @endforeach
+                @empty
+                    <p style="grid-column: 1 / -1; text-align: center; color: #a0aec0; font-style: italic; margin-top: 20px;">No members listed yet.</p>
+                @endforelse
             </div>
         </div>
     </section>
-    @endif
 
     <!-- 4. Active Members Section -->
-    @if(count($active) > 0)
     <section class="rb-team-section" style="background: #f8fafc;">
         <div class="container">
             <div class="rb-section-header" style="text-align: center;">
@@ -445,7 +396,7 @@
                 <p style="margin: 0 auto;">Our dedicated self-defense trainers and community mobilizers leading daily action.</p>
             </div>
             <div class="rb-member-grid">
-                @foreach ($active as $member)
+                @forelse ($active as $member)
                     <article class="rb-member-card">
                         <div class="rb-member-image">
                             <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
@@ -455,11 +406,12 @@
                             <p class="rb-member-role">{{ $member['role'] }}</p>
                         </div>
                     </article>
-                @endforeach
+                @empty
+                    <p style="grid-column: 1 / -1; text-align: center; color: #a0aec0; font-style: italic; margin-top: 20px;">No members listed yet.</p>
+                @endforelse
             </div>
         </div>
     </section>
-    @endif
 </div>
 
 @include('includes.footer')

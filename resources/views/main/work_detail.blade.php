@@ -261,7 +261,7 @@
             </div>
 
             <div class="rb-work-desc">
-                <p>{{ $work->description }}</p>
+                <div>{!! $work->description !!}</div>
             </div>
         </article>
 
