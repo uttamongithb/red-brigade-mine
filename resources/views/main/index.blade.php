@@ -249,10 +249,65 @@
 
     @media screen and (max-width: 767px) {
         .rb-vision-mission-modern {
-            padding: 60px 0 20px;
+            padding: 50px 0 10px;
         }
         .rb-vm-card {
-            padding: 35px 25px;
+            padding: 35px 24px;
+            border-radius: 16px !important;
+        }
+        .rb-vm-title {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+        .rb-vm-text {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Hero & Impact Mobile Overrides */
+        .slider-res {
+            object-fit: cover !important;
+            object-position: center !important;
+            height: 480px !important;
+        }
+
+        .rb-home .rb-impact-strip {
+            padding: 40px 0;
+            background: #111a2b; /* Deep dark blue for premium contrast */
+            border-bottom: 4px solid #E31E24;
+            margin-top: 0 !important;
+        }
+
+        .rb-home .rb-impact-strip .row {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 16px !important;
+            padding: 0 10px;
+        }
+
+        .rb-home .rb-impact-strip .row > div {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 0 !important;
+        }
+
+        .rb-home .rb-impact-card {
+            border-radius: 16px !important; /* Modern rounded rectangles on mobile */
+            width: 100% !important;
+            height: 110px !important;
+            padding: 15px 10px !important;
+            margin: 0 !important;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25) !important;
+        }
+
+        .rb-home .rb-impact-card h3 {
+            font-size: 24px !important;
+            margin-bottom: 4px !important;
+        }
+
+        .rb-home .rb-impact-card p {
+            font-size: 10px !important;
+            letter-spacing: 0.2px !important;
         }
     }
 </style>
@@ -471,18 +526,21 @@
     }
 
     @media (max-width: 767px) {
-        .rb-about-premium { padding: 70px 0; }
-        .rb-about-img-wrap img { height: 400px; }
-        .rb-about-badge { padding: 20px; border-width: 3px; left: 10px; }
-        .rb-about-badge .year { font-size: 32px; }
-        .rb-about-grid { grid-template-columns: 1fr; gap: 15px; }
+        .rb-about-premium { padding: 60px 0; }
+        .rb-about-img-wrap img { height: 350px; }
+        .rb-about-badge { padding: 15px 20px; border-width: 3px; left: 15px; bottom: 15px; } /* Move badge inside image */
+        .rb-about-badge .year { font-size: 28px; }
+        .rb-about-badge .text { font-size: 11px; }
+        .rb-about-grid { grid-template-columns: 1fr; gap: 12px; }
         .rb-about-content-box { 
-            padding: 35px 25px; 
+            margin-top: 30px !important; /* Reset overlap on mobile */
+            padding: 35px 24px; 
             border-left: none; 
             border-top: 5px solid #E31E24; 
+            box-shadow: 0 15px 35px rgba(14, 32, 56, 0.05);
         }
-        .rb-about-heading { font-size: 32px; }
-        .rb-about-desc { font-size: 16px; }
+        .rb-about-heading { font-size: 30px; }
+        .rb-about-desc { font-size: 15px; }
     }
 </style>
 
@@ -540,7 +598,7 @@ if (!empty($allevent)) {
             </div>
             <a href="<?php echo action('MainController@journey')?>" class="rb-blog-view-all">
                 Explore All Works
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14 Jur"/><path d="m12 5 7 7-7 7"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
         </div>        <!-- Ongoing Works Grid -->
         <?php if (!empty($ongoingWorks) && count($ongoingWorks) > 0) { ?>
@@ -849,48 +907,72 @@ if (!empty($allevent)) {
 
     @media (max-width: 767px) {
         .rb-blogs-modern {
-            padding-top: 54px;
+            padding: 60px 0 30px;
         }
 
         .rb-blogs-modern .container {
-            width: 100%;
-            padding-left: 0;
-            padding-right: 0;
+            width: 90% !important;
+            padding-left: 15px;
+            padding-right: 15px;
         }
 
-        .rb-blog-featured {
+        .rb-blog-header {
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
             margin-bottom: 20px;
         }
 
-        .rb-blog-grid {
-            gap: 14px;
-        }
-
         .rb-blog-title {
-            font-size: 34px;
+            font-size: 30px !important;
         }
 
-        .rb-blog-featured-content {
-            left: 18px;
-            right: 18px;
-            bottom: 18px;
+        .rb-blog-subtitle {
+            font-size: 14px !important;
+            margin-top: 6px !important;
         }
 
-        .rb-blog-featured-title {
-            font-size: 28px;
+        .rb-blog-view-all {
+            display: none !important;
         }
 
-        .rb-blog-featured-excerpt {
-            font-size: 16px;
-        }
-
+        /* Swipeable Carousel Grid Layout */
         .rb-blog-grid {
-            grid-template-columns: 1fr;
-            gap: 14px;
+            display: flex !important;
+            overflow-x: auto !important;
+            scroll-snap-type: x mandatory !important;
+            gap: 16px !important;
+            padding: 10px 5px 25px !important;
+            margin: 0 -20px !important; /* Bleed to screen edge */
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            scrollbar-width: none !important; /* Firefox */
+        }
+
+        .rb-blog-grid::-webkit-scrollbar {
+            display: none !important; /* Safari/Chrome */
+        }
+
+        .rb-blog-card-link {
+            flex: 0 0 80% !important; /* Show 80% of card width for peek effect */
+            scroll-snap-align: start !important;
+        }
+
+        .rb-blog-card {
+            box-shadow: 0 8px 20px rgba(26, 39, 59, 0.08) !important;
+        }
+
+        .rb-blog-card-img {
+            height: 200px !important; /* Compact image height on mobile */
         }
 
         .rb-blog-card-title {
-            font-size: 21px;
+            font-size: 17px !important;
+            line-height: 1.3 !important;
+        }
+
+        .rb-blog-bottom-cta {
+            margin-top: 15px !important;
         }
     }
 </style>
@@ -1006,28 +1088,41 @@ if (!empty($allevent)) {
             padding: 60px 0;
         }
         .rb-testimonial-heading {
-            font-size: 34px;
-            margin-bottom: 30px;
+            font-size: 30px;
+            margin-bottom: 25px;
         }
         .rb-testimonial-quote-box {
-            padding: 35px 20px;
+            padding: 40px 24px 30px;
+            border-radius: 12px !important;
+            box-shadow: 0 15px 35px rgba(22, 35, 56, 0.05);
         }
         .rb-quote-icon {
             left: 20px;
-            top: -15px;
-            width: 40px;
-            height: 40px;
+            top: -20px;
+            width: 45px;
+            height: 45px;
         }
         .rb-testimonial-text {
-            font-size: 18px;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 24px;
         }
         .rb-testimonial-author {
-            flex-direction: column;
-            text-align: center;
-            gap: 12px;
+            flex-direction: row; /* Horizontal author alignment is cleaner */
+            text-align: left;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
-        .rb-testimonial-author-info {
-            text-align: center;
+        .rb-testimonial-author-img {
+            width: 55px;
+            height: 55px;
+        }
+        .rb-testimonial-author-info h4 {
+            font-size: 16px;
+        }
+        .rb-testimonial-author-info p {
+            font-size: 12px;
         }
     }
 
