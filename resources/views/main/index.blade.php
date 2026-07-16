@@ -7,6 +7,12 @@
     <?php
         $heroSlides = [];
 
+        $heroSlides[] = [
+            'src' => URL::asset('uploads/img/team_homepage.jpeg'),
+            'name' => 'Team Red Brigade Lucknow',
+            'desc' => 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
+        ];
+
         // If admin has uploaded sliders, use them FIRST
         if (!empty($allslider) && count($allslider) > 0) {
             foreach ($allslider as $alle) {
@@ -322,7 +328,7 @@
                         <i class="fas fa-bullseye"></i>
                     </div>
                     <h2 class="rb-vm-title">The <em class="rb-vm-accent">Mission</em></h2>
-                    <p class="rb-vm-text"><strong>A safe society with zero tolerance for sexual violence.</strong><br><br>To empower adolescent girls and women—especially survivors of sexual violence from marginalized communities—through preventive self-defense (NISHASTRA), survivor-led leadership, and access to justice. We are dedicated to dismantling patriarchal mindsets and building a society where women stand strong with an unshakeable sense of dignity.</p>
+                    <p class="rb-vm-text"><strong>A safe society with zero tolerance for sexual violence.</strong><br><br>To empower adolescent girls and women—especially survivors of sexual violence from marginalized communities—through preventive self-defense (NISHASTRA), Women Led organization, and access to justice. We are dedicated to dismantling patriarchal mindsets and building a society where women stand strong with an unshakeable sense of dignity.</p>
                 </div>
             </div>
             <!-- Vision -->
@@ -548,7 +554,7 @@
     <div class="rb-about-container">
         <!-- Image & Badge Column -->
         <div class="rb-about-img-wrap">
-            <img src="<?php echo asset('uploads/img/about-left-image.jpg'); ?>" alt="Red Brigade Lucknow Impact">
+            <img src="<?php echo asset('uploads/img/who_we_are.jpeg'); ?>" alt="Red Brigade Lucknow Impact">
             <div class="rb-about-badge">
                 <span class="year">10+</span>
                 <span class="text">Years of<br>Impact</span>
@@ -563,13 +569,13 @@
             
             <ul class="rb-about-grid">
                 <li><i class="fas fa-check-circle"></i> Committed to F.L.O.W.</li>
-                <li><i class="fas fa-check-circle"></i> Survivor-Led Leadership</li>
-                <li><i class="fas fa-check-circle"></i> 700+ Street Plays</li>
+                <li><i class="fas fa-check-circle"></i> Women Led organization</li>
+                <li><i class="fas fa-check-circle"></i> 800+ Street Plays</li>
                 <li><i class="fas fa-check-circle"></i> 200+ Rehabilitated</li>
             </ul>
 
             <div class="btn-wrapper">
-                <a href="<?php echo action('MainController@about')?>" class="rb-about-discover-btn">Discover More <i class="fas fa-arrow-right"></i></a>
+                <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'about'])?>" class="rb-about-discover-btn">Discover More <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
@@ -596,7 +602,7 @@ if (!empty($allevent)) {
                 <h2 class="rb-blog-title">Our <em class="rb-blog-title-accent">Works</em></h2>
                 <p class="rb-blog-subtitle">Our works are focused on empowerment and amplifying women's voices against sexual violence.</p>
             </div>
-            <a href="<?php echo action('MainController@journey')?>" class="rb-blog-view-all">
+            <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'journey'])?>" class="rb-blog-view-all">
                 Explore All Works
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
@@ -608,7 +614,7 @@ if (!empty($allevent)) {
                     <article class="rb-blog-card" style="animation-delay: <?php echo ($idx * 0.08); ?>s;">
                         <div class="rb-blog-card-img">
                             <img src="<?php echo URL::asset('uploads/img/'.$item->image); ?>" alt="<?php echo $item->title; ?>" loading="lazy">
-                            <span class="rb-blog-badge">Ongoing</span>
+                            <span class="rb-blog-badge"><?php echo ucfirst($item->type); ?></span>
                         </div>
                         <div class="rb-blog-card-body">
                             <h4 class="rb-blog-card-title" style="<?php echo empty($item->tagline) && empty($item->collaboration) ? 'margin-bottom: 0;' : ''; ?>"><?php echo $item->title; ?></h4>
@@ -630,7 +636,7 @@ if (!empty($allevent)) {
 
         <!-- Bottom CTA -->
         <div class="rb-blog-bottom-cta">
-            <a href="<?php echo action('MainController@journey'); ?>" class="rb-blog-explore-btn">
+            <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'journey']); ?>" class="rb-blog-explore-btn">
                 <span>Explore All Works</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
@@ -1230,8 +1236,8 @@ if (!empty($allevent)) {
         <h2>Become part of the movement</h2>
         <p>Support our mission to achieve <strong>F.L.O.W. (Fearless Life of Women)</strong>. Every contribution helps us build a world where women live with dignity and courage.</p>
         <div class="rb-join-btns">
-            <a href="<?php echo action('MainController@contact')?>" class="rb-btn primary">Join Now</a>
-            <a href="<?php echo action('MainController@donate')?>" class="rb-btn secondary">Donate</a>
+            <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'contact'])?>" class="rb-btn primary">Join Now</a>
+            <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'donate'])?>" class="rb-btn secondary">Donate</a>
         </div>
     </div>
 </section>

@@ -138,77 +138,65 @@
         </div>
     </section>
 
-    <!-- Content & Tabs Section -->
-    <section class="rb-tabs-section">
-        <div class="container" style="width: 90%; max-width: 1200px; margin: 0 auto;">
-            
-            <!-- Tab Navigation Buttons -->
-            <div class="rb-tabs-nav">
-                <button class="rb-tab-btn <?php echo ($filter === 'ongoing') ? 'active' : ''; ?>" onclick="switchTab(event, 'ongoing')">Ongoing Work</button>
-                <button class="rb-tab-btn <?php echo ($filter === 'previous') ? 'active' : ''; ?>" onclick="switchTab(event, 'previous')">Previous Work</button>
-                <button class="rb-tab-btn <?php echo ($filter === 'upcoming') ? 'active' : ''; ?>" onclick="switchTab(event, 'upcoming')">Upcoming Work</button>
-            </div>
-
-            <!-- Tab Content: Ongoing Work -->
-            <div id="ongoing" class="rb-tab-content <?php echo ($filter === 'ongoing') ? 'active' : ''; ?>">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center py-5">
-                        <div class="rb-card-premium" style="padding: 40px; border-style: dashed; border-color: #cbd5e1; align-items: center;">
-                            <div class="rb-card-icon" style="color: #64748b; font-size: 32px; margin-bottom: 20px;"><i class="fas fa-tasks"></i></div>
-                            <h3 class="rb-card-title" style="font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700; color: #64748b; margin-bottom: 15px;">No Ongoing Work</h3>
-                            <p class="rb-card-text" style="font-size: 15px; color: #64748b; margin: 0; max-width: 500px; line-height: 1.7;">There are currently no active ongoing initiatives in this section. Please check back later or view our Previous Work.</p>
+    <!-- Integrated Content & Gallery Section -->
+    <section class="rb-integrated-section" style="padding: 80px 0;">
+        <div class="container" style="width: 90%; max-width: 100%; margin: 0 auto;">
+            <div class="row align-items-center mb-5">
+                <!-- Text Column -->
+                <div class="col-lg-12">
+                    <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                        <span style="color: #E31E24; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; display: block; margin-bottom: 10px;">Our Impact</span>
+                        <h2 style="font-family: 'Poppins', sans-serif; font-size: 42px; font-weight: 800; color: var(--navy-dark); margin-bottom: 30px; line-height: 1.2;">Standing Strong Together During the COVID-19 Crisis</h2>
+                        
+                        <p style="font-size: 18px; line-height: 1.8; margin-bottom: 25px; color: #4a5568;">
+                            During the unprecedented challenges of the pandemic, we mobilized rapidly to support the most vulnerable. We provided ration kits and daily essentials to <strong style="color: #E31E24;">20,000 people (4,000 families)</strong> during the first wave and <strong style="color: #E31E24;">15,000 people</strong> in the second wave.
+                        </p>
+                        
+                        <div class="row text-left mt-5 mb-5" style="border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; padding: 40px 0;">
+                            <div class="col-md-6 mb-4 mb-md-0">
+                                <ul style="list-style: none; padding: 0; margin: 0;">
+                                    <li style="margin-bottom: 15px; font-size: 16px;"><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 10px;"></i> Distributed <strong>32,000+</strong> cooked meal packets.</li>
+                                    <li style="margin-bottom: 15px; font-size: 16px;"><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 10px;"></i> Provided <strong>18,000</strong> milk & oatmeal packets to children.</li>
+                                    <li style="margin-bottom: 0; font-size: 16px;"><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 10px;"></i> Distributed <strong>1,500</strong> nutrition & immunity kits.</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul style="list-style: none; padding: 0; margin: 0;">
+                                    <li style="margin-bottom: 15px; font-size: 16px;"><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 10px;"></i> Empowered <strong>women</strong> to lead distribution efforts.</li>
+                                    <li style="margin-bottom: 0; font-size: 16px;"><i class="fas fa-check-circle" style="color: #E31E24; margin-right: 10px;"></i> Counseled women facing <strong>domestic violence</strong> surges.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tab Content: Previous Work -->
-            <div id="previous" class="rb-tab-content <?php echo ($filter === 'previous') ? 'active' : ''; ?>">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="rb-card-premium" style="padding: 45px; margin-bottom: 30px; border-left: 5px solid #E31E24;">
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Provided ration kits and daily essentials to <strong style="color: #E31E24; font-weight: 700;">20,000 people (4,000 families)</strong> during the first wave <strong style="color: #E31E24; font-weight: 700;">(March-July 2020)</strong> and <strong style="color: #E31E24; font-weight: 700;">15,000 people (3,000 families)</strong> during the second wave <strong style="color: #E31E24; font-weight: 700;">(April-September 2021)</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Distributed <strong style="color: #E31E24; font-weight: 700;">25,000 cooked meal packets</strong> in the first wave and <strong style="color: #E31E24; font-weight: 700;">7,000</strong> in the second wave.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Provided <strong style="color: #E31E24; font-weight: 700;">18,000 milk and oatmeal packets</strong> and <strong style="color: #E31E24; font-weight: 700;">1,500 nutrition and immunity kits</strong> to children during the first wave.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Prioritized women’s participation by ensuring relief items were delivered through <strong style="color: #E31E24; font-weight: 700;">women in beneficiary families</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 0;">Counseled <strong style="color: #E31E24; font-weight: 700;">women facing a surge in domestic violence</strong> during the lockdown.</p>
-                        </div>
+            <!-- Gallery Grid -->
+            <div class="row">
+                <?php
+                    $covidImages = [
+                        'covid_1.jpeg',
+                        'covid_2.jpeg',
+                        'covid_3.jpeg',
+                        'covid_4.jpeg',
+                        'covid_5.jpeg',
+                        'covid_6.jpeg',
+                        'covid_7.jpeg',
+                        'covid_8.jpeg'
+                    ];
+                    foreach($covidImages as $img) {
+                ?>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 400px; position: relative;">
+                        <img src="<?php echo URL::asset('uploads/img/'.$img); ?>" alt="COVID-19 Relief" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
                 </div>
+                <?php } ?>
             </div>
-
-            <!-- Tab Content: Upcoming Work -->
-            <div id="upcoming" class="rb-tab-content <?php echo ($filter === 'upcoming') ? 'active' : ''; ?>">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center py-5">
-                        <div class="rb-card-premium" style="padding: 40px; border-style: dashed; border-color: #cbd5e1; align-items: center;">
-                            <div class="rb-card-icon" style="color: #64748b; font-size: 32px; margin-bottom: 20px;"><i class="fas fa-calendar-alt"></i></div>
-                            <h3 class="rb-card-title" style="font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700; color: #64748b; margin-bottom: 15px;">No Upcoming Work</h3>
-                            <p class="rb-card-text" style="font-size: 15px; color: #64748b; margin: 0; max-width: 500px; line-height: 1.7;">There are currently no upcoming initiatives scheduled for this section. Stay tuned for future updates.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 </div>
 
-<script>
-function switchTab(evt, tabId) {
-    const contents = document.querySelectorAll('.rb-tab-content');
-    contents.forEach(content => content.classList.remove('active'));
 
-    const buttons = document.querySelectorAll('.rb-tab-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-
-    document.getElementById(tabId).classList.add('active');
-    evt.currentTarget.classList.add('active');
-}
-</script>
 
 @include('includes.footer')

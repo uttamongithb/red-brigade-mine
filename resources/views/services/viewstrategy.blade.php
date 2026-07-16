@@ -134,7 +134,7 @@
             <div style="color: #667085; font-size: 14px;">
                 Manage the strategic pillars displayed on the About Us page.
             </div>
-            <a href="<?php echo action('ServiceController@addstrategy')?>" class="btn-premium">
+            <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'addstrategy'])?>" class="btn-premium">
                 <i class="fa fa-plus"></i> Add Strategy Pillar
             </a>
         </div>
@@ -169,7 +169,7 @@
                             <?php echo strip_tags(substr($tt->description, 0, 100)); ?>...
                         </td>
                         <td>
-                            <a href="<?php echo action('ServiceController@statusstrategy', [$idget, ($tt->status == 1 ? 0 : 1)])?>" style="text-decoration: none;">
+                            <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'statusstrategy'], [$idget, ($tt->status == 1 ? 0 : 1)])?>" style="text-decoration: none;">
                                 <span class="status-badge <?php echo $tt->status == 1 ? 'status-active' : 'status-inactive'; ?>">
                                     <?php echo $tt->status == 1 ? 'Active' : 'Inactive'; ?>
                                 </span>
@@ -177,10 +177,10 @@
                         </td>
                         <td>
                             <div class="action-flex">
-                                <a href="<?php echo action('ServiceController@editstrategy',$idget)?>" class="btn-table-action" title="Edit">
+                                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'editstrategy'],$idget)?>" class="btn-table-action" title="Edit">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="<?php echo action('ServiceController@deletestrategy',$idget)?>" 
+                                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'deletestrategy'],$idget)?>" 
                                    onclick="return confirm('Are you sure you want to delete this strategy pillar?')" 
                                    class="btn-table-action btn-table-delete" title="Delete">
                                     <i class="fa fa-trash"></i>

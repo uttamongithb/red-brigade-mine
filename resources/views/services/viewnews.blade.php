@@ -147,7 +147,7 @@
                 ?>
             </div>
             <div>
-                <a href="<?php echo action('ServiceController@addnews')?>" class="btn-premium">
+                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'addnews'])?>" class="btn-premium">
                     <i class="fa fa-plus-circle"></i> Add Our Work
                 </a>
             </div>
@@ -181,10 +181,10 @@
                         <td style="white-space: nowrap; color: #667085;"><?php echo date('M d, Y', strtotime($tt->date)); ?></td>
                         <td>
                             <div class="action-flex">
-                                <a href="<?php echo action('ServiceController@editnews', $idget)?>" class="btn-table-action" title="Edit">
+                                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'editnews'], $idget)?>" class="btn-table-action" title="Edit">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="<?php echo action('ServiceController@deletenews', $idget)?>" 
+                                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'deletenews'], $idget)?>" 
                                    onclick="return confirm('Are you sure you want to delete this work?')" 
                                    class="btn-table-action btn-table-delete" title="Delete">
                                     <i class="fa fa-trash"></i>

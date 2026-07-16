@@ -230,7 +230,7 @@
             <span class="rb-kicker" style="color: #E31E24; letter-spacing: 3px; font-size: 12px; margin-bottom: 10px;">Every Contribution Counts</span>
             <h2 style="color: #1f2f46; font-size: 36px; margin: 0 0 20px; font-family: 'Playfair Display', serif;">Empower the Change</h2>
             <p style="color: #64748b; font-size: 18px; max-width: 650px; margin: 0 auto 35px; font-weight: 400; line-height: 1.6;">Whether it is a small monthly gift or a one-time donation, your support enables us to reach more villages and train more girls in self-defense.</p>
-            <a href="<?php echo action('MainController@contact'); ?>" class="rb-btn" style="display: inline-block; padding: 14px 40px; background: #E31E24; color: #fff; font-weight: 700; border-radius: 4px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.backgroundColor='#1f2f46'" onmouseout="this.style.backgroundColor='#E31E24'">Contact Us for Queries</a>
+            <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'contact']); ?>" class="rb-btn" style="display: inline-block; padding: 14px 40px; background: #E31E24; color: #fff; font-weight: 700; border-radius: 4px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;" onmouseover="this.style.backgroundColor='#1f2f46'" onmouseout="this.style.backgroundColor='#E31E24'">Contact Us for Queries</a>
         </div>
     </section>
 </div>

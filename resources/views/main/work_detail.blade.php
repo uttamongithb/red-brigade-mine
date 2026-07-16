@@ -9,7 +9,8 @@
 }
 
 .rb-detail-container {
-    max-width: 1000px;
+    width: 90%;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -171,7 +172,7 @@
 }
 .rb-gallery-img {
     width: 100%;
-    height: 200px;
+    height: 350px;
     object-fit: cover;
     border-radius: 8px;
     display: block;
@@ -261,7 +262,7 @@
             </div>
 
             <div class="rb-work-desc">
-                <div>{!! $work->description !!}</div>
+                <div>{!! Sanitizer::clean($work->description) !!}</div>
             </div>
         </article>
 

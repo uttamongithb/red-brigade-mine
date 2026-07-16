@@ -462,7 +462,7 @@
         <div class="nav-container">
             <!-- Zone 1: Logo -->
             <div class="navbar-header">
-                <a href="<?php echo action('MainController@index'); ?>">
+                <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'index']); ?>">
                     <img src="<?php echo URL::asset('uploads/img/logo.png'); ?>" alt="Red Brigade" class="logo-width" width="219" height="auto">
                 </a>
             </div>
@@ -471,10 +471,10 @@
             <div class="navbar-collapse-desktop">
                 <ul class="navbar-nav">
                     <li class="nav-item <?php echo Request::is('/') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo action('MainController@index'); ?>">Home</a>
+                        <a class="nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'index']); ?>">Home</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('about') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo action('MainController@about'); ?>">About Us</a>
+                        <a class="nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'about']); ?>">About Us</a>
                     </li>
                     <li class="nav-item rb-custom-dropdown <?php echo (Request::is('event') || Request::is('previous-work') || Request::is('upcoming-work') || Request::is('journey-combating-sexual-violence') || Request::is('key-programs') || Request::is('response-to-violence') || Request::is('gender-sensitization-awareness') || Request::is('leadership-community-building') || Request::is('educational-empowerment-support') || Request::is('economic-upliftment') || Request::is('covid-19-crisis-intervention')) ? 'active' : ''; ?>" style="position: relative;">
                         <a class="nav-link" href="#" id="rbDropdownToggle">
@@ -487,13 +487,13 @@
                                     Ongoing Work <i class="fas fa-chevron-right" style="font-size: 9px; margin-left: 5px;"></i>
                                 </a>
                                 <div class="rb-nested-menu shadow border-0">
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@journey'); ?>?filter=ongoing">Combating Sexual Violence</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@keyprograms'); ?>?filter=ongoing">Key Programs</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@responseviolence'); ?>?filter=ongoing">Response to Violence</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@gendersensitization'); ?>?filter=ongoing">Gender Sensitization & Awareness</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@leadershipcommunity'); ?>?filter=ongoing">Leadership & Community Building</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@educationalsupport'); ?>?filter=ongoing">Educational Empowerment & Support</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@economicupliftment'); ?>?filter=ongoing">Economic Upliftment</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'journey']); ?>?filter=ongoing">Combating Sexual Violence</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'keyprograms']); ?>?filter=ongoing">Key Programs</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'responseviolence']); ?>?filter=ongoing">Response to Violence</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'gendersensitization']); ?>?filter=ongoing">Gender Sensitization & Awareness</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'leadershipcommunity']); ?>?filter=ongoing">Leadership & Community Building</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'educationalsupport']); ?>?filter=ongoing">Educational Empowerment & Support</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'economicupliftment']); ?>?filter=ongoing">Economic Upliftment</a>
                                 </div>
                             </div>
                             <!-- Previous Work Dropdown -->
@@ -502,14 +502,14 @@
                                     Previous Work <i class="fas fa-chevron-right" style="font-size: 9px; margin-left: 5px;"></i>
                                 </a>
                                 <div class="rb-nested-menu shadow border-0">
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@journey'); ?>?filter=previous">Combating Sexual Violence</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@keyprograms'); ?>?filter=previous">Key Programs</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@responseviolence'); ?>?filter=previous">Response to Violence</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@gendersensitization'); ?>?filter=previous">Gender Sensitization & Awareness</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@leadershipcommunity'); ?>?filter=previous">Leadership & Community Building</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@educationalsupport'); ?>?filter=previous">Educational Empowerment & Support</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@economicupliftment'); ?>?filter=previous">Economic Upliftment</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@covid'); ?>?filter=previous">COVID-19 Crisis Intervention</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'journey']); ?>?filter=previous">Combating Sexual Violence</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'keyprograms']); ?>?filter=previous">Key Programs</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'responseviolence']); ?>?filter=previous">Response to Violence</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'gendersensitization']); ?>?filter=previous">Gender Sensitization & Awareness</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'leadershipcommunity']); ?>?filter=previous">Leadership & Community Building</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'educationalsupport']); ?>?filter=previous">Educational Empowerment & Support</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'economicupliftment']); ?>?filter=previous">Economic Upliftment</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'covid']); ?>?filter=previous">COVID-19 Crisis Intervention</a>
                                 </div>
                             </div>
                             <!-- Upcoming Work Dropdown -->
@@ -518,41 +518,41 @@
                                     Upcoming Work <i class="fas fa-chevron-right" style="font-size: 9px; margin-left: 5px;"></i>
                                 </a>
                                 <div class="rb-nested-menu shadow border-0">
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@journey'); ?>?filter=upcoming">Combating Sexual Violence</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@keyprograms'); ?>?filter=upcoming">Key Programs</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@responseviolence'); ?>?filter=upcoming">Response to Violence</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@gendersensitization'); ?>?filter=upcoming">Gender Sensitization & Awareness</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@leadershipcommunity'); ?>?filter=upcoming">Leadership & Community Building</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@educationalsupport'); ?>?filter=upcoming">Educational Empowerment & Support</a>
-                                    <a class="dropdown-item py-2" href="<?php echo action('MainController@economicupliftment'); ?>?filter=upcoming">Economic Upliftment</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'journey']); ?>?filter=upcoming">Combating Sexual Violence</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'keyprograms']); ?>?filter=upcoming">Key Programs</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'responseviolence']); ?>?filter=upcoming">Response to Violence</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'gendersensitization']); ?>?filter=upcoming">Gender Sensitization & Awareness</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'leadershipcommunity']); ?>?filter=upcoming">Leadership & Community Building</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'educationalsupport']); ?>?filter=upcoming">Educational Empowerment & Support</a>
+                                    <a class="dropdown-item py-2" href="<?php echo action([\App\Http\Controllers\MainController::class, 'economicupliftment']); ?>?filter=upcoming">Economic Upliftment</a>
                                 </div>
                             </div>
                             <!-- Removed Education and Skills -->
                         </div>
                     </li>
                     <li class="nav-item <?php echo Request::is('blog') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo action('MainController@blog'); ?>">Blog</a>
+                        <a class="nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'blog']); ?>">Blog</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('ourteam') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo action('MainController@ourteam'); ?>">Our Team</a>
+                        <a class="nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'ourteam']); ?>">Our Team</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('research') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo action('MainController@research'); ?>">Research</a>
+                        <a class="nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'research']); ?>">Research</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('gallery') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo action('MainController@gallery'); ?>">Gallery</a>
+                        <a class="nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'gallery']); ?>">Gallery</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('ethics') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Mission</a>
+                        <a class="nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'ethics']); ?>">Vision & Mission</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>
+                        <a class="nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'achievements']); ?>">Achievements</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('collaborations') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo action('MainController@collaborations'); ?>">Collaborations</a>
+                        <a class="nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'collaborations']); ?>">Collaborations</a>
                     </li>
                     <li class="nav-item <?php echo Request::is('contact') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo action('MainController@contact'); ?>">Contact us</a>
+                        <a class="nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'contact']); ?>">Contact us</a>
                     </li>
                 </ul>
             </div>
@@ -573,10 +573,10 @@
         
         <ul class="sidebar-nav-list">
             <li class="sidebar-nav-item <?php echo Request::is('/') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="<?php echo action('MainController@index'); ?>">Home</a>
+                <a class="sidebar-nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'index']); ?>">Home</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('about') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="<?php echo action('MainController@about'); ?>">About Us</a>
+                <a class="sidebar-nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'about']); ?>">About Us</a>
             </li>
             <li class="sidebar-nav-item <?php echo (Request::is('event') || Request::is('previous-work') || Request::is('upcoming-work') || Request::is('journey-combating-sexual-violence') || Request::is('key-programs') || Request::is('response-to-violence') || Request::is('gender-sensitization-awareness') || Request::is('leadership-community-building') || Request::is('educational-empowerment-support') || Request::is('economic-upliftment') || Request::is('covid-19-crisis-intervention')) ? 'active' : ''; ?>">
                 <div style="font-size: 18px; font-weight: 700; color: #E31E24; padding: 16px 30px; border-bottom: 1px solid #f9f9f9; display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none';">
@@ -589,13 +589,13 @@
                             Ongoing Work <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
                         </div>
                         <ul style="list-style: none; padding-left: 15px; margin: 0; display: none; background: #ffffff;">
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@journey'); ?>?filter=ongoing">Combating Sexual Violence</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@keyprograms'); ?>?filter=ongoing">Key Programs</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@responseviolence'); ?>?filter=ongoing">Response to Violence</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@gendersensitization'); ?>?filter=ongoing">Gender Sensitization & Awareness</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@leadershipcommunity'); ?>?filter=ongoing">Leadership & Community Building</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@educationalsupport'); ?>?filter=ongoing">Educational Empowerment & Support</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@economicupliftment'); ?>?filter=ongoing">Economic Upliftment</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'journey']); ?>?filter=ongoing">Combating Sexual Violence</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'keyprograms']); ?>?filter=ongoing">Key Programs</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'responseviolence']); ?>?filter=ongoing">Response to Violence</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'gendersensitization']); ?>?filter=ongoing">Gender Sensitization & Awareness</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'leadershipcommunity']); ?>?filter=ongoing">Leadership & Community Building</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'educationalsupport']); ?>?filter=ongoing">Educational Empowerment & Support</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'economicupliftment']); ?>?filter=ongoing">Economic Upliftment</a></li>
                         </ul>
                     </li>
                     <!-- Previous Work Accordion -->
@@ -604,14 +604,14 @@
                             Previous Work <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
                         </div>
                         <ul style="list-style: none; padding-left: 15px; margin: 0; display: none; background: #ffffff;">
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@journey'); ?>?filter=previous">Combating Sexual Violence</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@keyprograms'); ?>?filter=previous">Key Programs</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@responseviolence'); ?>?filter=previous">Response to Violence</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@gendersensitization'); ?>?filter=previous">Gender Sensitization & Awareness</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@leadershipcommunity'); ?>?filter=previous">Leadership & Community Building</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@educationalsupport'); ?>?filter=previous">Educational Empowerment & Support</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@economicupliftment'); ?>?filter=previous">Economic Upliftment</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@covid'); ?>?filter=previous">COVID-19 Crisis Intervention</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'journey']); ?>?filter=previous">Combating Sexual Violence</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'keyprograms']); ?>?filter=previous">Key Programs</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'responseviolence']); ?>?filter=previous">Response to Violence</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'gendersensitization']); ?>?filter=previous">Gender Sensitization & Awareness</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'leadershipcommunity']); ?>?filter=previous">Leadership & Community Building</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'educationalsupport']); ?>?filter=previous">Educational Empowerment & Support</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'economicupliftment']); ?>?filter=previous">Economic Upliftment</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'covid']); ?>?filter=previous">COVID-19 Crisis Intervention</a></li>
                         </ul>
                     </li>
                     <!-- Upcoming Work Accordion -->
@@ -620,41 +620,41 @@
                             Upcoming Work <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
                         </div>
                         <ul style="list-style: none; padding-left: 15px; margin: 0; display: none; background: #ffffff;">
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@journey'); ?>?filter=upcoming">Combating Sexual Violence</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@keyprograms'); ?>?filter=upcoming">Key Programs</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@responseviolence'); ?>?filter=upcoming">Response to Violence</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@gendersensitization'); ?>?filter=upcoming">Gender Sensitization & Awareness</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@leadershipcommunity'); ?>?filter=upcoming">Leadership & Community Building</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@educationalsupport'); ?>?filter=upcoming">Educational Empowerment & Support</a></li>
-                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action('MainController@economicupliftment'); ?>?filter=upcoming">Economic Upliftment</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'journey']); ?>?filter=upcoming">Combating Sexual Violence</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'keyprograms']); ?>?filter=upcoming">Key Programs</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'responseviolence']); ?>?filter=upcoming">Response to Violence</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'gendersensitization']); ?>?filter=upcoming">Gender Sensitization & Awareness</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'leadershipcommunity']); ?>?filter=upcoming">Leadership & Community Building</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'educationalsupport']); ?>?filter=upcoming">Educational Empowerment & Support</a></li>
+                            <li><a class="sidebar-nav-link" style="padding: 10px 20px !important; font-size: 14px !important; border-bottom: none; font-weight: 600 !important; color: #555 !important;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'economicupliftment']); ?>?filter=upcoming">Economic Upliftment</a></li>
                         </ul>
                     </li>
                     <!-- Removed Education and Skills -->
                 </ul>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('blog') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="<?php echo action('MainController@blog'); ?>">Blog</a>
+                <a class="sidebar-nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'blog']); ?>">Blog</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('ourteam') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="<?php echo action('MainController@ourteam'); ?>">Our Team</a>
+                <a class="sidebar-nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'ourteam']); ?>">Our Team</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('research') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="<?php echo action('MainController@research'); ?>">Research</a>
+                <a class="sidebar-nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'research']); ?>">Research</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('gallery') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="<?php echo action('MainController@gallery'); ?>">Gallery</a>
+                <a class="sidebar-nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'gallery']); ?>">Gallery</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('ethics') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="<?php echo action('MainController@ethics'); ?>">Vision & Mission</a>
+                <a class="sidebar-nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'ethics']); ?>">Vision & Mission</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('achievements') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="<?php echo action('MainController@achievements'); ?>">Achievements</a>
+                <a class="sidebar-nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'achievements']); ?>">Achievements</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('collaborations') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="<?php echo action('MainController@collaborations'); ?>">Collaborations</a>
+                <a class="sidebar-nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'collaborations']); ?>">Collaborations</a>
             </li>
             <li class="sidebar-nav-item <?php echo Request::is('contact') ? 'active' : ''; ?>">
-                <a class="sidebar-nav-link" href="<?php echo action('MainController@contact'); ?>">Contact us</a>
+                <a class="sidebar-nav-link" href="<?php echo action([\App\Http\Controllers\MainController::class, 'contact']); ?>">Contact us</a>
             </li>
         </ul>
 

@@ -17,11 +17,11 @@
 				<div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
 					<div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px;">
 					<a class="btn btn-app pull-left blueback" onclick="muldelete()"><i class="fa fa-trash-o"></i> Multiple Delete </a>
-					<a class="btn btn-app pull-left yellowback" href="<?php echo action('ServiceController@index')?>" style="background:rgb(255,152,0);">
+					<a class="btn btn-app pull-left yellowback" href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'index'])?>" style="background:rgb(255,152,0);">
 						
 						<i class="fa fa-barcode"></i> Locations List
 					</a>
-					<a class="btn btn-app pull-left greenback" href="<?php echo action('ServiceController@addlocation')?>">
+					<a class="btn btn-app pull-left greenback" href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'addlocation'])?>">
 						<i class="fa fa-plus-circle"></i> Add Location
 					</a>
 				</div>
@@ -67,18 +67,18 @@
 				  <?php $idget = $tt->id;?>
 				   <td>
 					<?php if($tt->popular==0){ ?>
-						  <a class="actionbtn btn-info" href="<?php echo action('ServiceController@popularplace',[$idget,1])?>"><i class="fa fa-star-o"></i></a>
+						  <a class="actionbtn btn-info" href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'popularplace'],[$idget,1])?>"><i class="fa fa-star-o"></i></a>
 						  <?php } else{ ?>
-						  <a class="actionbtn btn-info" href="<?php echo action('ServiceController@popularplace',[$idget,0])?>">
+						  <a class="actionbtn btn-info" href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'popularplace'],[$idget,0])?>">
 							<i class="fa fa-star"></i>
 						  </a>
 					  <?php } ?>
 				  </td>
 				  <td>
-					<a href="<?php echo action('ServiceController@editlocation',$idget)?>" class="actionbtn btn-info">
+					<a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'editlocation'],$idget)?>" class="actionbtn btn-info">
 						<i class="fa fa-edit"></i> Edit
 					</a>
-					<a href="<?php echo action('ServiceController@deletelocation',$idget)?>" class="actionbtn btn-danger">
+					<a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'deletelocation'],$idget)?>" class="actionbtn btn-danger">
 						<i class="fa fa-trash-o"></i> Delete
 					</a>
 				  </td>

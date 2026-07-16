@@ -1,9 +1,8 @@
 <?php
 namespace App\Http\Controllers;
-use App\Registeruser;
+use App\Models\Registeruser;
 use DB;
 use Session;
-use bcrypt;
 use URL;
 use Htmlhelpers;
 use Helpers;
@@ -34,7 +33,7 @@ class MainController extends Controller {
 		$allnews=Db::table('gallery')->where('type','News')->orderBy('gallery.id','DESC')->limit(6)->get();
 		$alldonate=Db::table('gallery')->where('type','Donate')->orderBy('gallery.id','DESC')->limit(6)->get();
 		
-		$ongoingWorks = DB::table('work_initiatives')->where('type', 'ongoing')->where('status', 1)->get();
+		$ongoingWorks = DB::table('work_initiatives')->whereIn('type', ['ongoing', 'upcoming'])->where('status', 1)->get();
 		
 		return view('main.index',compact('allslider','allevent','allblog','allactivity','allcampains','allnews','alldonate','alltestimonial','ongoingWorks'));
 	}
@@ -88,8 +87,22 @@ class MainController extends Controller {
 
 	public function gallery()
 	{
-		$photos=Db::table('gallery')->where('type', '!=', 'Video')->where('status', 1)->orderBy('gallery.id','DESC')->get();
-		$videos=Db::table('gallery')->where('type', 'Video')->where('status', 1)->orderBy('gallery.id','DESC')->get();
+		$works = Db::table('work_initiatives')->where('status', 1)->get();
+        $photos = collect([]);
+        foreach ($works as $work) {
+            $images = json_decode($work->gallery_images, true);
+            if (!empty($images) && is_array($images)) {
+                foreach ($images as $img) {
+                    $photos->push((object)[
+                        'image' => $img,
+                        'name' => $work->title,
+                        'type' => 'Program Gallery'
+                    ]);
+                }
+            }
+        }
+		
+		$videos = Db::table('gallery')->where('type', 'Video')->where('status', 1)->orderBy('gallery.id','DESC')->get();
 		return view('main.gallery',compact('photos', 'videos'));
 	}
 
@@ -194,7 +207,7 @@ class MainController extends Controller {
 				if($validator->fails()){
 					return Redirect::back()
 						->withErrors($validator)
-						 ->withInput(Input::except('password'));
+						 ->withInput($request->except('password'));
 				} else{
 					$input = $request->only(['name','email','mobile','state','district','msg']);
 					Db:: table('contact')->insert($input);
@@ -250,56 +263,56 @@ class MainController extends Controller {
 	public function journey(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		$initiatives = collect(Db::table('work_initiatives')->where('category', 'sexual_violence')->where('status', 1)->get());
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'LIKE', '%sexual_violence%')->where('status', 1)->get());
 		return view('main.journey', compact('filter', 'initiatives'));
 	}
 
 	public function keyprograms(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		$initiatives = collect(Db::table('work_initiatives')->where('category', 'key_programs')->where('status', 1)->get());
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'LIKE', '%key_programs%')->where('status', 1)->get());
 		return view('main.programs', compact('filter', 'initiatives'));
 	}
 
 	public function responseviolence(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		$initiatives = collect(Db::table('work_initiatives')->where('category', 'response_violence')->where('status', 1)->get());
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'LIKE', '%response_violence%')->where('status', 1)->get());
 		return view('main.response', compact('filter', 'initiatives'));
 	}
 
 	public function gendersensitization(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		$initiatives = collect(Db::table('work_initiatives')->where('category', 'gender_sensitization')->where('status', 1)->get());
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'LIKE', '%gender_sensitization%')->where('status', 1)->get());
 		return view('main.sensitization', compact('filter', 'initiatives'));
 	}
 
 	public function leadershipcommunity(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		$initiatives = collect(Db::table('work_initiatives')->where('category', 'leadership_community')->where('status', 1)->get());
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'LIKE', '%leadership_community%')->where('status', 1)->get());
 		return view('main.leadership', compact('filter', 'initiatives'));
 	}
 
 	public function educationalsupport(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		$initiatives = collect(Db::table('work_initiatives')->where('category', 'educational_support')->where('status', 1)->get());
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'LIKE', '%educational_support%')->where('status', 1)->get());
 		return view('main.education_support', compact('filter', 'initiatives'));
 	}
 
 	public function economicupliftment(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		$initiatives = collect(Db::table('work_initiatives')->where('category', 'economic_upliftment')->where('status', 1)->get());
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'LIKE', '%economic_upliftment%')->where('status', 1)->get());
 		return view('main.economic', compact('filter', 'initiatives'));
 	}
 
 	public function covid(Request $request)
 	{
 		$filter = $request->query('filter', 'ongoing');
-		$initiatives = collect(Db::table('work_initiatives')->where('category', 'covid')->where('status', 1)->get());
+		$initiatives = collect(Db::table('work_initiatives')->where('category', 'LIKE', '%covid%')->where('status', 1)->get());
 		return view('main.covid', compact('filter', 'initiatives'));
 	}
 

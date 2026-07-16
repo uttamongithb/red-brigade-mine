@@ -3,8 +3,6 @@ namespace App\Helpers;
 Use Config;
 Use Redirect;
 Use Session;
-Use Input;
-Use HTML;
 Use URL;
 Use DB;
 use App\Http\Controllers\FriendController;

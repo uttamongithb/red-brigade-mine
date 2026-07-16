@@ -136,7 +136,7 @@
             <?php echo \App\Helpers\Sanitizer::clean($thisblog->description); ?>
             
             <div style="text-align: center;">
-                <a href="<?php echo action('MainController@blog'); ?>" class="rb-back-link"><i class="fas fa-arrow-left"></i> Back to all stories</a>
+                <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'blog']); ?>" class="rb-back-link"><i class="fas fa-arrow-left"></i> Back to all stories</a>
             </div>
         </div>
     </div>

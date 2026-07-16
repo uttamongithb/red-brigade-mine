@@ -24,7 +24,7 @@
             <!-- /.box-header -->
             <!-- form start -->
 			
-            <form role="form" action="<?php echo action('DashboardController@updateprofile')?>" method="post">
+            <form role="form" action="<?php echo action([\App\Http\Controllers\DashboardController::class, 'updateprofile'])?>" method="post">
 			{{ csrf_field() }}
 			<?php
 			if(Auth::check()){

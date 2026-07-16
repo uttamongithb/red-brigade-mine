@@ -136,7 +136,7 @@
     </section>
 
     <section class="content">
-        <a href="<?php echo action('ServiceController@viewslider')?>" class="back-link">
+        <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewslider'])?>" class="back-link">
             <i class="fa fa-arrow-left"></i> Back to Slider List
         </a>
 
@@ -145,7 +145,7 @@
                 <h5><i class="fa fa-plus-circle" style="color: #E31E24;"></i> Create New Slide</h5>
             </div>
 
-            {{ Form::open(array('action' => 'ServiceController@addslider','files' => true)) }}
+            {{ Form::open(array('action' => [\App\Http\Controllers\ServiceController::class, 'addslider'],'files' => true)) }}
                 {{ csrf_field() }}
                 <div class="form-body">
 

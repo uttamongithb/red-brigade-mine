@@ -215,8 +215,12 @@
 
     <!-- Content & Tabs Section -->
     <section class="rb-tabs-section">
-        <div class="container" style="width: 90%; max-width: 1200px; margin: 0 auto;">
-            
+        <div class="container" style="width: 90%; max-width: 100%; margin: 0 auto;">
+            <?php
+                $ongoing = $initiatives->where('type', 'ongoing');
+                $previous = $initiatives->where('type', 'previous');
+                $upcoming = $initiatives->where('type', 'upcoming');
+            ?>
 
             <!-- Tab Navigation Buttons -->
             <div class="rb-tabs-nav">
@@ -227,47 +231,90 @@
 
             <!-- Tab Content: Ongoing Work -->
             <div id="ongoing" class="rb-tab-content <?php echo ($filter === 'ongoing') ? 'active' : ''; ?>">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center py-5">
-                        <div class="rb-card-premium" style="padding: 40px; border-style: dashed; border-color: #cbd5e1; align-items: center;">
-                            <div class="rb-card-icon" style="color: #64748b;"><i class="fas fa-tasks"></i></div>
-                            <h3 class="rb-card-title" style="color: #64748b;">No Ongoing Work</h3>
-                            <p class="rb-card-text" style="color: #64748b; margin: 0; max-width: 500px;">There are currently no active ongoing initiatives in this section. Please check back later or view our Previous Work.</p>
+                <?php if (count($ongoing) > 0) { ?>
+                    <div class="rb-blog-grid" style="margin-top: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+                        <?php foreach ($ongoing as $item) { ?>
+                            <a href="<?php echo url('work/'.$item->slug); ?>" style="text-decoration: none; display: block; color: inherit;">
+                                <article class="rb-blog-card" style="background: #fff; border-radius: 0; overflow: hidden; box-shadow: 0 12px 28px rgba(26, 39, 59, .12); height: 100%; transition: all 0.3s ease;">
+                                    <div class="rb-blog-card-img" style="position: relative; height: 380px; overflow: hidden;">
+                                        <img src="<?php echo URL::asset('uploads/img/'.$item->image); ?>" alt="<?php echo $item->title; ?>" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+                                        <span class="rb-blog-badge" style="position: absolute; top: 14px; left: 14px; margin: 0; color: #1e2d43; background: rgba(246, 249, 255, .86); border: 1px solid rgba(30, 45, 67, .1); font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 6px 12px; border-radius: 999px;">Ongoing</span>
+                                    </div>
+                                    <div class="rb-blog-card-body" style="padding: 14px 14px 16px;">
+                                        <h4 class="rb-blog-card-title" style="margin: 0 0 10px; color: #273247; font-size: 20px; line-height: 1.2; font-family: 'Playfair Display', serif; font-weight: 700;"><?php echo $item->title; ?></h4>
+                                    </div>
+                                </article>
+                            </a>
+                        <?php } ?>
+                    </div>
+                <?php } else { ?>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center py-5">
+                            <div class="rb-card-premium" style="padding: 40px; border-style: dashed; border-color: #cbd5e1; align-items: center;">
+                                <div class="rb-card-icon" style="color: #64748b;"><i class="fas fa-tasks"></i></div>
+                                <h3 class="rb-card-title" style="color: #64748b;">No Ongoing Work</h3>
+                                <p class="rb-card-text" style="color: #64748b; margin: 0; max-width: 500px;">There are currently no active ongoing initiatives in this section. Please check back later or view our Previous Work.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
 
             <!-- Tab Content: Previous Work -->
             <div id="previous" class="rb-tab-content <?php echo ($filter === 'previous') ? 'active' : ''; ?>">
                 <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="rb-card-premium" style="padding: 45px; margin-bottom: 30px; border-left: 5px solid #E31E24;">
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Spread awareness against sexual violence and harassment through approximately <strong style="color: #E31E24; font-weight: 700;">700 street plays (nukkad natak)</strong> in streets, schools, colleges, offices, metro, and railway stations over the past decade.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Organized the 14-day activism program <strong style="color: #E31E24; font-weight: 700;">'Raat ka Ujala'</strong> annually from <strong style="color: #E31E24; font-weight: 700;">December 16 to 29</strong> in memory of Nirbhaya (victim of the 2012 Delhi gang rape), aiming to challenge patriarchal systems and regressive mindsets. Events include <strong style="color: #E31E24; font-weight: 700;">'Ek Chai Mahila Samman Mein' (2018)</strong> and a <strong style="color: #E31E24; font-weight: 700;">936-foot banner human chain (2019)</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Played a significant role in reviving <strong style="color: #E31E24; font-weight: 700;">National Women’s Day celebrations (February 13, Sarojini Naidu’s birth anniversary)</strong>. Initiated an <strong style="color: #E31E24; font-weight: 700;">18-day activism campaign in 2018</strong>, including the <strong style="color: #E31E24; font-weight: 700;">'Prerna Yatra' (vehicle rally) covering 50 districts across four states</strong>. Other events include <strong style="color: #E31E24; font-weight: 700;">'Salute to Sarojini' (2019) with 140 events across Lucknow</strong> and a <strong style="color: #E31E24; font-weight: 700;">'One Million Meter March' scooter rally in 100 villages (2021)</strong>. In <strong style="color: #E31E24; font-weight: 700;">2023, 50 girls</strong> marched from Bhojla, Jhansi, to Lucknow. These efforts have led to National Women’s Day events in approximately <strong style="color: #E31E24; font-weight: 700;">150 districts</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Launched <strong style="color: #E31E24; font-weight: 700;">'Veerangana Vahini' in 2025</strong>, with <strong style="color: #E31E24; font-weight: 700;">1,000 young women and girls</strong> from <strong style="color: #E31E24; font-weight: 700;">40 districts</strong> in Uttar Pradesh participating.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 0;">Conducted the 12-day <strong style="color: #E31E24; font-weight: 700;">'Hinsa Mukt Jeevan' activism campaign (2022)</strong> from <strong style="color: #E31E24; font-weight: 700;">September 21 (International Peace Day) to October 2 (Gandhi Jayanti)</strong>, engaging <strong style="color: #E31E24; font-weight: 700;">100 volunteers</strong> and reaching <strong style="color: #E31E24; font-weight: 700;">10,000 girls</strong> with self-defense training.</p>
-                        </div>
+                    <div class="col-lg-12">
+
+                        <?php if (count($previous) > 0) { ?>
+                            <div class="rb-blog-grid" style="margin-top: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+                                <?php foreach ($previous as $item) { ?>
+                                    <a href="<?php echo url('work/'.$item->slug); ?>" style="text-decoration: none; display: block; color: inherit;">
+                                        <article class="rb-blog-card" style="background: #fff; border-radius: 0; overflow: hidden; box-shadow: 0 12px 28px rgba(26, 39, 59, .12); height: 100%; transition: all 0.3s ease;">
+                                            <div class="rb-blog-card-img" style="position: relative; height: 380px; overflow: hidden;">
+                                                <img src="<?php echo URL::asset('uploads/img/'.$item->image); ?>" alt="<?php echo $item->title; ?>" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+                                                <span class="rb-blog-badge" style="position: absolute; top: 14px; left: 14px; margin: 0; color: #1e2d43; background: rgba(246, 249, 255, .86); border: 1px solid rgba(30, 45, 67, .1); font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 6px 12px; border-radius: 999px;">Previous</span>
+                                            </div>
+                                            <div class="rb-blog-card-body" style="padding: 14px 14px 16px;">
+                                                <h4 class="rb-blog-card-title" style="margin: 0 0 10px; color: #273247; font-size: 20px; line-height: 1.2; font-family: 'Playfair Display', serif; font-weight: 700;"><?php echo $item->title; ?></h4>
+                                            </div>
+                                        </article>
+                                    </a>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
 
             <!-- Tab Content: Upcoming Work -->
             <div id="upcoming" class="rb-tab-content <?php echo ($filter === 'upcoming') ? 'active' : ''; ?>">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center py-5">
-                        <div class="rb-card-premium" style="padding: 40px; border-style: dashed; border-color: #cbd5e1; align-items: center;">
-                            <div class="rb-card-icon" style="color: #64748b;"><i class="fas fa-calendar-alt"></i></div>
-                            <h3 class="rb-card-title" style="color: #64748b;">No Upcoming Work</h3>
-                            <p class="rb-card-text" style="color: #64748b; margin: 0; max-width: 500px;">There are currently no upcoming initiatives scheduled for this section. Stay tuned for future updates.</p>
+                <?php if (count($upcoming) > 0) { ?>
+                    <div class="rb-blog-grid" style="margin-top: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+                        <?php foreach ($upcoming as $item) { ?>
+                            <a href="<?php echo url('work/'.$item->slug); ?>" style="text-decoration: none; display: block; color: inherit;">
+                                <article class="rb-blog-card" style="background: #fff; border-radius: 0; overflow: hidden; box-shadow: 0 12px 28px rgba(26, 39, 59, .12); height: 100%; transition: all 0.3s ease;">
+                                    <div class="rb-blog-card-img" style="position: relative; height: 380px; overflow: hidden;">
+                                        <img src="<?php echo URL::asset('uploads/img/'.$item->image); ?>" alt="<?php echo $item->title; ?>" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+                                        <span class="rb-blog-badge" style="position: absolute; top: 14px; left: 14px; margin: 0; color: #1e2d43; background: rgba(246, 249, 255, .86); border: 1px solid rgba(30, 45, 67, .1); font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 6px 12px; border-radius: 999px;">Upcoming</span>
+                                    </div>
+                                    <div class="rb-blog-card-body" style="padding: 14px 14px 16px;">
+                                        <h4 class="rb-blog-card-title" style="margin: 0 0 10px; color: #273247; font-size: 20px; line-height: 1.2; font-family: 'Playfair Display', serif; font-weight: 700;"><?php echo $item->title; ?></h4>
+                                    </div>
+                                </article>
+                            </a>
+                        <?php } ?>
+                    </div>
+                <?php } else { ?>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center py-5">
+                            <div class="rb-card-premium" style="padding: 40px; border-style: dashed; border-color: #cbd5e1; align-items: center;">
+                                <div class="rb-card-icon" style="color: #64748b;"><i class="fas fa-calendar-alt"></i></div>
+                                <h3 class="rb-card-title" style="color: #64748b;">No Upcoming Work</h3>
+                                <p class="rb-card-text" style="color: #64748b; margin: 0; max-width: 500px;">There are currently no upcoming initiatives scheduled for this section. Stay tuned for future updates.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
 
         </div>

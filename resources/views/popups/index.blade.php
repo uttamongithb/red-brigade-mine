@@ -25,11 +25,11 @@
 				<div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
 					<div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px;">
 					<a class="btn btn-app pull-left blueback" onclick="muldelete()"><i class="fa fa-trash-o"></i> Multiple Delete </a>
-					<a class="btn btn-app pull-left yellowback" href="<?php echo action('PopupsController@index')?>" style="background:rgb(255,152,0);">
+					<a class="btn btn-app pull-left yellowback" href="<?php echo action([\App\Http\Controllers\PopupsController::class, 'index'])?>" style="background:rgb(255,152,0);">
 						
 						<i class="fa fa-barcode"></i> Popup List
 					</a>
-					<a class="btn btn-app pull-left greenback" href="<?php echo action('PopupsController@add')?>">
+					<a class="btn btn-app pull-left greenback" href="<?php echo action([\App\Http\Controllers\PopupsController::class, 'add'])?>">
 						<i class="fa fa-plus-circle"></i> Add New Popup
 					</a>
 				</div>
@@ -69,10 +69,10 @@
 				<?php $idget = $tt->id;?>
 				 
 				  <td>
-					<a href="<?php echo action('PopupsController@edit',$idget)?>" class="actionbtn btn-info">
+					<a href="<?php echo action([\App\Http\Controllers\PopupsController::class, 'edit'],$idget)?>" class="actionbtn btn-info">
 						<i class="fa fa-edit"></i> Edit
 					</a>
-					<a href="<?php echo action('PopupsController@delete',$idget)?>" class="actionbtn btn-danger">
+					<a href="<?php echo action([\App\Http\Controllers\PopupsController::class, 'delete'],$idget)?>" class="actionbtn btn-danger">
 						<i class="fa fa-trash-o"></i> Delete
 					</a>
 				  </td>

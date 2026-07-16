@@ -162,7 +162,7 @@
     overflow: hidden;
     display: block;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 8px !important;
+    border-radius: 0 !important;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
@@ -230,10 +230,10 @@
 
             <!-- Photos Tab -->
             <div id="photos" class="rb-tab-content rb-gallery-grid-asymmetric active">
-                <?php if(!empty($photos)) { foreach($photos as $allg) { ?>
-                    <a href="<?php echo URL::asset('uploads/gallery/'.trim($allg->image));?>" class="rb-media-card image-popup">
+                <?php if(count($photos) > 0) { foreach($photos as $allg) { ?>
+                    <a href="<?php echo URL::asset('uploads/img/'.trim($allg->image));?>" class="rb-media-card image-popup" title="<?php echo $allg->name; ?>">
                         <div class="rb-media-thumbnail">
-                            <img src="<?php echo URL::asset('uploads/gallery/'.trim($allg->image));?>" alt="Documentation Photo" loading="lazy">
+                            <img src="<?php echo URL::asset('uploads/img/'.trim($allg->image));?>" alt="<?php echo $allg->name; ?>" loading="lazy">
                         </div>
                     </a>			
                 <?php } } else { ?>
@@ -271,7 +271,7 @@
             <span class="rb-kicker" style="color: #E31E24; letter-spacing: 3px; font-size: 12px; margin-bottom: 10px;">Get Involved</span>
             <h2 style="color: #1f2f46; font-size: 36px; margin: 0 0 20px; font-family: 'Playfair Display', serif;">Experience the Impact Firsthand</h2>
             <p style="color: #64748b; font-size: 18px; max-width: 650px; margin: 0 auto 35px; font-weight: 400; line-height: 1.6;">Stand with the survivors who are transforming their lives and communities.</p>
-            <a href="<?php echo action('MainController@contact'); ?>" class="rb-btn" style="padding: 14px 40px; font-size: 14px; text-transform: uppercase; border-radius: 4px; box-shadow: none;">Support Our Mission</a>
+            <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'contact']); ?>" class="rb-btn" style="padding: 14px 40px; font-size: 14px; text-transform: uppercase; border-radius: 4px; box-shadow: none;">Support Our Mission</a>
         </div>
     </section>
 </div>

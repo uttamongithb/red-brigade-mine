@@ -91,7 +91,7 @@
     </section>
 
     <section class="content">
-        <a href="<?php echo action('ServiceController@vieweducation')?>" class="back-link">
+        <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'vieweducation'])?>" class="back-link">
             <i class="fa fa-arrow-left"></i> Back to List
         </a>
 
@@ -100,7 +100,7 @@
                 <h5><i class="fa fa-plus-circle" style="color: #E31E24;"></i> Create Education Focus Card</h5>
             </div>
 
-            <form action="<?php echo action('ServiceController@addeducation'); ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?php echo action([\App\Http\Controllers\ServiceController::class, 'addeducation']); ?>" method="POST" enctype="multipart/form-data">
                 {!! csrf_field() !!}
                 <div class="form-body">
                     <div class="form-group">

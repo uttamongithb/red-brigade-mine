@@ -129,7 +129,7 @@
                 Manage the media and pictures displayed in the Gallery and sections of the Red Brigade website.
             </div>
             <div>
-                <a href="<?php echo action('ServiceController@addgallery')?>" class="btn-premium">
+                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'addgallery'])?>" class="btn-premium">
                     <i class="fa fa-plus-circle"></i> Add New Gallery
                 </a>
             </div>
@@ -159,10 +159,10 @@
                         </td>
                         <td>
                             <div class="action-flex">
-                                <a href="<?php echo action('ServiceController@editgallery', $idget)?>" class="btn-table-action" title="Edit">
+                                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'editgallery'], $idget)?>" class="btn-table-action" title="Edit">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="<?php echo action('ServiceController@deletegallery', $idget)?>" 
+                                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'deletegallery'], $idget)?>" 
                                    onclick="return confirm('Are you sure you want to delete this gallery item?')" 
                                    class="btn-table-action btn-table-delete" title="Delete">
                                     <i class="fa fa-trash"></i>

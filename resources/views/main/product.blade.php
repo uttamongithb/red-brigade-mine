@@ -24,9 +24,9 @@
                     <div class="col-md-3 main4">
 						<div class="col-md-12 abc  combo-max">
                             <div class=" border-img" >
-                                <a href="<?php echo action('MainController@singleproduct',$allpro->slug)?>"> <img src="<?php echo URL::asset('uploads/product/'.$allpro->image)?>" alt="" class="img-fluid blog-img"></a>
+                                <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'singleproduct'],$allpro->slug)?>"> <img src="<?php echo URL::asset('uploads/product/'.$allpro->image)?>" alt="" class="img-fluid blog-img"></a>
                             </div>
-							<a href="<?php echo action('MainController@singleproduct',$allpro->slug)?>"> <h6 class="about-text text-warning "><?php echo ucfirst($allpro->name) ?></h6></a>
+							<a href="<?php echo action([\App\Http\Controllers\MainController::class, 'singleproduct'],$allpro->slug)?>"> <h6 class="about-text text-warning "><?php echo ucfirst($allpro->name) ?></h6></a>
 									<?php echo substr($allpro->description,0,100)?>
 				        </div>
 					</div>

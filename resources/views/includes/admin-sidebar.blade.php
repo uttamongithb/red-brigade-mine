@@ -12,13 +12,13 @@
       <ul class="sidebar-menu">
 
 		<li class="{{ Request::is('admin/viewslider') ? 'active' : '' }}">
-          <a href="<?php echo action('ServiceController@viewslider')?>">
+          <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewslider'])?>">
             <i class="fa fa-picture-o"></i> <span>Home Hero Slider</span>
           </a>
         </li>
 
 		<li class="{{ Request::is('admin/viewstrategy') ? 'active' : '' }}">
-          <a href="<?php echo action('ServiceController@viewstrategy')?>">
+          <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewstrategy'])?>">
             <i class="fa fa-th-large"></i> <span>Strategy Pillars</span>
           </a>
         </li>
@@ -32,43 +32,43 @@
           </a>
           <ul class="treeview-menu">
             <li class="{{ Request::is('admin/viewnews') && Request::get('filter') == 'previous' ? 'active' : '' }}">
-              <a href="<?php echo action('ServiceController@viewnews')?>?filter=previous">Previous Work</a>
+              <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewnews'])?>?filter=previous">Previous Work</a>
             </li>
             <li class="{{ Request::is('admin/viewnews') && !Request::has('filter') ? 'active' : '' }}">
-              <a href="<?php echo action('ServiceController@viewnews')?>">Ongoing Work</a>
+              <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewnews'])?>">Ongoing Work</a>
             </li>
             <li class="{{ Request::is('admin/viewnews') && Request::get('filter') == 'upcoming' ? 'active' : '' }}">
-              <a href="<?php echo action('ServiceController@viewnews')?>?filter=upcoming">Upcoming Work</a>
+              <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewnews'])?>?filter=upcoming">Upcoming Work</a>
             </li>
             <li class="{{ Request::is('admin/vieweducation') ? 'active' : '' }}">
-              <a href="<?php echo action('ServiceController@vieweducation')?>">Education</a>
+              <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'vieweducation'])?>">Education</a>
             </li>
             <li class="{{ Request::is('admin/viewskills') ? 'active' : '' }}">
-              <a href="<?php echo action('ServiceController@viewskills')?>">Skills</a>
+              <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewskills'])?>">Skills</a>
             </li>
           </ul>
         </li>
 
 		<li class="{{ Request::is('admin/viewblog') || Request::is('admin/addblog') || Request::is('admin/editblog/*') ? 'active' : '' }}">
-          <a href="<?php echo action('ServiceController@viewblog')?>">
+          <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewblog'])?>">
             <i class="fa fa-newspaper-o"></i> <span>Blog</span>
           </a>
         </li>
 
 		<li class="{{ Request::is('admin/viewtestimonial') ? 'active' : '' }}">
-          <a href="<?php echo action('ServiceController@viewtestimonial')?>">
+          <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewtestimonial'])?>">
             <i class="fa fa-users"></i> <span>Our Team</span>
           </a>
         </li>
 
 		<li class="{{ Request::is('admin/viewgallery') || Request::is('admin/addgallery') || Request::is('admin/editgallery/*') ? 'active' : '' }}">
-          <a href="<?php echo action('ServiceController@viewgallery')?>">
+          <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewgallery'])?>">
             <i class="fa fa-camera"></i> <span>Gallery</span>
           </a>
         </li>
 
 		<li class="{{ Request::is('admin/enquiry') ? 'active' : '' }}">
-          <a href="<?php echo action('ServiceController@enquiry')?>">
+          <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'enquiry'])?>">
             <i class="fa fa-envelope"></i> <span>Enquiries</span>
           </a>
         </li> 

@@ -15,10 +15,10 @@
 					<div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
 						<div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px;">
 							<a class="btn btn-app pull-left blueback" onclick="muldelete()"><i class="fa fa-trash-o"></i> Multiple Delete </a>
-							<a class="btn btn-app pull-left yellowback" href="<?php echo action('ServiceController@viewproduct')?>" style="background:rgb(255,152,0);">
+							<a class="btn btn-app pull-left yellowback" href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewproduct'])?>" style="background:rgb(255,152,0);">
 								<i class="fa fa-barcode"></i> Product List
 							</a>
-							<a class="btn btn-app pull-left greenback" href="<?php echo action('ServiceController@addproduct')?>">
+							<a class="btn btn-app pull-left greenback" href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'addproduct'])?>">
 								<i class="fa fa-plus-circle"></i> Add New Product
 							</a>
 						</div>
@@ -60,18 +60,18 @@
 				    <?php $idget = $tt->id; ?>
 					 <td>
 						<?php if($tt->status==0){ ?>
-							  <a class="actionbtn btn-info" href="<?php  echo action('ServiceController@popularproduct',[$idget,1])?>"><i class="fa fa-star-o"></i></a>
+							  <a class="actionbtn btn-info" href="<?php  echo action([\App\Http\Controllers\ServiceController::class, 'popularproduct'],[$idget,1])?>"><i class="fa fa-star-o"></i></a>
 							  <?php } else{ ?>
-							  <a class="actionbtn btn-info" href="<?php  echo action('ServiceController@popularproduct',[$idget,0])?>">
+							  <a class="actionbtn btn-info" href="<?php  echo action([\App\Http\Controllers\ServiceController::class, 'popularproduct'],[$idget,0])?>">
 								<i class="fa fa-star"></i>
 							  </a>
 						  <?php } ?>
 					  </td>
 					  <td style="width:200px;">
-							<a href="<?php  echo action('ServiceController@editproduct',$idget)?>" title="Edit" class="actionbtn btn-info">
+							<a href="<?php  echo action([\App\Http\Controllers\ServiceController::class, 'editproduct'],$idget)?>" title="Edit" class="actionbtn btn-info">
 								<i class="fa fa-edit"></i>
 							</a>
-							<a href="<?php echo action('ServiceController@deleteproduct',$idget)?>" title="Delete" class="actionbtn btn-danger">
+							<a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'deleteproduct'],$idget)?>" title="Delete" class="actionbtn btn-danger">
 								<i class="fa fa-trash-o"></i>
 							</a>
 					  </td>

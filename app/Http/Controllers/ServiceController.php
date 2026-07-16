@@ -5,8 +5,6 @@ use Auth;
 use Session;
 use Mail;
 use File;
-use Socialite;
-use bcrypt;
 use Config;
 use Redirect;	
 use Illuminate\Http\Request;
@@ -14,7 +12,6 @@ use App\Http\Controllers\Controller;
 use Helpers;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 
 class ServiceController extends Controller {
 	
@@ -61,15 +58,15 @@ class ServiceController extends Controller {
 			$rules = [
 				'date' => 'required',
 			];
-			$validator = Validator::make(Input::all(), $rules);
+			$validator = Validator::make($request->all(), $rules);
 			if ($validator->fails()) {
-				return Redirect::back()->withErrors($validator)->withInput(Input::except('password'));
+				return Redirect::back()->withErrors($validator)->withInput($request->except('password'));
 			} else {
 				$input = $request->only(['name', 'description', 'date']);
 				$input['name'] = $input['name'] !== null ? $input['name'] : '';
 				$input['description'] = $input['description'] !== null ? $input['description'] : '';
 				if ($request->hasFile('image')) {
-					$file = Input::file('image');
+					$file = $request->file('image');
 					$input['image'] = Helpers::imageUpload($file, 'uploads/news', 'sunshine-work');
 				}
 				$input['type'] = 'event'; // Unified type
@@ -92,7 +89,7 @@ class ServiceController extends Controller {
 			$input['name'] = $input['name'] !== null ? $input['name'] : '';
 			$input['description'] = $input['description'] !== null ? $input['description'] : '';
 			if ($request->hasFile('image')) {
-				$file = Input::file('image');
+				$file = $request->file('image');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/news', 'sunshine-work');
 			}
 			$input['type'] = 'event';
@@ -125,16 +122,16 @@ class ServiceController extends Controller {
 	{
 		if ($request->isMethod('post')) {
 			$rules = ['name' => 'required', 'description' => 'required'];
-			$validator = Validator::make(Input::all(), $rules);
+			$validator = Validator::make($request->all(), $rules);
 			if ($validator->fails()) {
 				return Redirect::back()->withErrors($validator)->withInput();
 			} else {
 				$input = $request->only(['name', 'description', 'date']);
 				if ($request->hasFile('image')) {
-					$file = Input::file('image');
+					$file = $request->file('image');
 					$input['image'] = Helpers::imageUpload($file, 'uploads/news', 'sunshine-blog');
 				}
-				$input['slug'] = strtolower(str_slug($input['name'], '-'));
+				$input['slug'] = strtolower(\Illuminate\Support\Str::slug($input['name'], '-'));
 				DB::table('blog')->insert($input);
 				Session::flash('message', 'Successfully Added Blog Story!');
 				return Redirect::back();
@@ -150,10 +147,10 @@ class ServiceController extends Controller {
 		if ($request->isMethod('post')) {
 			$input = $request->only(['name', 'description', 'date']);
 			if ($request->hasFile('image')) {
-				$file = Input::file('image');
+				$file = $request->file('image');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/news', 'sunshine-blog');
 			}
-			$input['slug'] = strtolower(str_slug($input['name'], '-'));
+			$input['slug'] = strtolower(\Illuminate\Support\Str::slug($input['name'], '-'));
 			DB::table('blog')->where('id', $id)->update($input);
 			Session::flash('message', 'Successfully Updated Blog Story!');
 			return Redirect::back();
@@ -190,7 +187,7 @@ class ServiceController extends Controller {
 			}
 			$input = $request->only(['name', 'type', 'embed', 'status']);
 			if ($request->hasFile('image')) {
-				$file = Input::file('image');
+				$file = $request->file('image');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/gallery', 'sunshine-gallery');
 			}
 			DB::table('gallery')->insert($input);
@@ -207,7 +204,7 @@ class ServiceController extends Controller {
 		if ($request->isMethod('post')) {
 			$input = $request->only(['name', 'type', 'embed', 'status']);
 			if ($request->hasFile('image')) {
-				$file = Input::file('image');
+				$file = $request->file('image');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/gallery', 'sunshine-gallery');
 			}
 			DB::table('gallery')->where('id', $id)->update($input);
@@ -236,13 +233,13 @@ class ServiceController extends Controller {
 	{
 		if ($request->isMethod('post')) {
 			$rules = ['name' => 'required', 'description' => 'required'];
-			$validator = Validator::make(Input::all(), $rules);
+			$validator = Validator::make($request->all(), $rules);
 			if ($validator->fails()) {
 				return Redirect::back()->withErrors($validator)->withInput();
 			} else {
 				$input = $request->except(['_token', 'image']);
 				if ($request->hasFile('image')) {
-					$file = Input::file('image');
+					$file = $request->file('image');
 					$input['image'] = Helpers::imageUpload($file, 'uploads/testimonial', 'sunshine-team');
 				}
 				DB::table('testimonial')->insert($input);
@@ -260,7 +257,7 @@ class ServiceController extends Controller {
 		if ($request->isMethod('post')) {
 			$input = $request->only(['name', 'description', 'type', 'status']);
 			if ($request->hasFile('image')) {
-				$file = Input::file('image');
+				$file = $request->file('image');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/testimonial', 'sunshine-team');
 			}
 			DB::table('testimonial')->where('id', $id)->update($input);
@@ -433,7 +430,7 @@ class ServiceController extends Controller {
 			$input = $request->except(['_token', 'image']);
 			
 			// Try both $request and Input facade
-			$file = $request->file('image') ?: Input::file('image');
+			$file = $request->file('image') ?: $request->file('image');
 			
 			if ($file) {
 				\Log::info("File found for 'image'. Name: " . $file->getClientOriginalName());
@@ -444,7 +441,7 @@ class ServiceController extends Controller {
 					return Redirect::back()->withInput();
 				}
 
-				$fileName = str_slug($request->input('name', 'rb-strategy'), '-');
+				$fileName = \Illuminate\Support\Str::slug($request->input('name', 'rb-strategy'), '-');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/strategy', $fileName);
 				\Log::info("imageUpload result: " . ($input['image'] ?: "EMPTY"));
 			} else {
@@ -488,7 +485,7 @@ class ServiceController extends Controller {
 					return Redirect::back()->withInput();
 				}
 
-				$fileName = str_slug($request->input('name', 'rb-strategy'), '-');
+				$fileName = \Illuminate\Support\Str::slug($request->input('name', 'rb-strategy'), '-');
 				$input['image'] = Helpers::imageUpload($file, 'uploads/strategy', $fileName);
 				\Log::info("imageUpload result: " . ($input['image'] ?: "EMPTY"));
 				
@@ -542,9 +539,9 @@ class ServiceController extends Controller {
 		if ($request->isMethod('post')) {
 			$input = $request->except(['_token', 'image']);
 			if ($request->hasFile('image')) {
-				$file = $request->file('image') ?: Input::file('image');
+				$file = $request->file('image') ?: $request->file('image');
 				if ($file && $file->isValid()) {
-					$fileName = str_slug($request->input('name', 'edu-card'), '-');
+					$fileName = \Illuminate\Support\Str::slug($request->input('name', 'edu-card'), '-');
 					$input['image'] = Helpers::imageUpload($file, 'uploads/gallery', $fileName);
 				}
 			}
@@ -562,9 +559,9 @@ class ServiceController extends Controller {
 		if ($request->isMethod('post')) {
 			$input = $request->except(['_token', 'image']);
 			if ($request->hasFile('image')) {
-				$file = $request->file('image') ?: Input::file('image');
+				$file = $request->file('image') ?: $request->file('image');
 				if ($file && $file->isValid()) {
-					$fileName = str_slug($request->input('name', 'edu-card'), '-');
+					$fileName = \Illuminate\Support\Str::slug($request->input('name', 'edu-card'), '-');
 					$input['image'] = Helpers::imageUpload($file, 'uploads/gallery', $fileName);
 
 					// Cleanup old image

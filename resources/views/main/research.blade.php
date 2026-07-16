@@ -227,7 +227,7 @@
                         <li><strong>Significance</strong> <span>Primary evidence used for national self-defense policy advocacy.</span></li>
                     </ul>
                     <div class="rb-btn-wrap">
-                        <a href="<?php echo action('MainController@contact'); ?>" class="rb-btn" style="font-size: 14px; padding: 12px 30px;">Request Full Report</a>
+                        <a href="<?php echo URL::asset('azm.pdf'); ?>" target="_blank" class="rb-btn" style="font-size: 14px; padding: 12px 30px;">Read Full Report</a>
                     </div>
                 </div>
             </div>
@@ -283,7 +283,7 @@
                     <span class="rb-kicker" style="color: #ff8a00;">Observation & Study</span>
                     <h2>A Rare Research Site</h2>
                     <p>Red Brigade represents a site where the boundary between 'beneficiary' and 'change agent' is deliberately dissolved. We welcome researchers from social work, gender studies, law, and public health.</p>
-                    <a href="<?php echo action('MainController@contact'); ?>" class="rb-btn">Academic Inquiry</a>
+                    <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'contact']); ?>" class="rb-btn">Academic Inquiry</a>
                 </div>
                 <div class="rb-intent-list">
                     <div class="rb-intent-item">

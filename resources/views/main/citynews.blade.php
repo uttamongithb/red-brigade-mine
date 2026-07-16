@@ -7,7 +7,7 @@
 				 if(!empty($allcity)) {
 					 foreach($allcity as  $allc) { ?>
 						 
-						 	<a style="float:left;font-size: 18px;margin:0px 3px 0px 0px;margin-right: 0px;padding: 5px;background: #800000;color: #fff;margin-right: 3px;" href="<?php echo action('MainController@citynews',$allc->slug)?>"><h4><?php echo ucfirst($allc->name);?></h4></a>
+						 	<a style="float:left;font-size: 18px;margin:0px 3px 0px 0px;margin-right: 0px;padding: 5px;background: #800000;color: #fff;margin-right: 3px;" href="<?php echo action([\App\Http\Controllers\MainController::class, 'citynews'],$allc->slug)?>"><h4><?php echo ucfirst($allc->name);?></h4></a>
 						 
 				 <?php	 }  } }
 				 ?>
@@ -23,19 +23,19 @@
 										<?php } ?>
 										</li>
 										<?php if($getcatname!=""){ ?>
-												<li><a href="<?php echo action('MainController@listingnews',$getcatslug)?>"><?php echo $getcatname;?></a>&nbsp; &nbsp;
+												<li><a href="<?php echo action([\App\Http\Controllers\MainController::class, 'listingnews'],$getcatslug)?>"><?php echo $getcatname;?></a>&nbsp; &nbsp;
 												<?php if($getsubcatname!=""){ ?>
 													<i class="fa fa-angle-double-right"></i>
 												<?php } ?>
 												</li>
 										<?php } ?>
 										<?php if($getsubcatname!=""){ ?>
-										<li><a href="<?php echo action('MainController@listinglocation',$getsubcatslug)?>"><?php echo $getsubcatname;?></a>&nbsp; &nbsp;
+										<li><a href="<?php echo action([\App\Http\Controllers\MainController::class, 'listinglocation'],$getsubcatslug)?>"><?php echo $getsubcatname;?></a>&nbsp; &nbsp;
 										</li>
 										<?php } ?>
 										<?php if($cityname!=""){ ?>
 										<i class="fa fa-angle-double-right"></i>
-										<li><a href="<?php echo action('MainController@citynews',$cityslug)?>"><?php echo $cityname;?></a>&nbsp; &nbsp;
+										<li><a href="<?php echo action([\App\Http\Controllers\MainController::class, 'citynews'],$cityslug)?>"><?php echo $cityname;?></a>&nbsp; &nbsp;
 										</li>
 										<?php } ?>
 									</ul>
@@ -52,7 +52,7 @@
 									foreach($allnews as $news){ 
 							?>
 							<div class="col-md-6 col-sm-6 col-xs-12 brkingSmDiv brkBorder">
-								<a href="<?php echo action('MainController@singlenews',$news->slug)?>"><h4><?php echo $news->title;?></h4></a>
+								<a href="<?php echo action([\App\Http\Controllers\MainController::class, 'singlenews'],$news->slug)?>"><h4><?php echo $news->title;?></h4></a>
 								<div class="col-md-4 col-sm-4 col-xs-12 paddingZ">
 									<img class="img-responsive" src="<?php echo URL::asset('uploads/news/'.$news->featuredimage)?>" style="height:100px;">
 								</div>
@@ -61,7 +61,7 @@
 										<p><?php echo strip_tags($news->description)?></p>
 									</div>
 									<p><span><?php echo date('d M, Y',strtotime($news->created_at));?> </span></p>
-									<a href="<?php echo action('MainController@singlenews',$news->slug)?>" class="viewMore">आगे पढ़ऐ &nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+									<a href="<?php echo action([\App\Http\Controllers\MainController::class, 'singlenews'],$news->slug)?>" class="viewMore">आगे पढ़ऐ &nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
 								</div>
 							</div>
 							<?php } ?>

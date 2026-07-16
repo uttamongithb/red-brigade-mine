@@ -91,7 +91,7 @@
     </section>
 
     <section class="content">
-        <a href="<?php echo action('ServiceController@viewskills')?>" class="back-link">
+        <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewskills'])?>" class="back-link">
             <i class="fa fa-arrow-left"></i> Back to List
         </a>
 
@@ -100,7 +100,7 @@
                 <h5><i class="fa fa-plus-circle" style="color: #E31E24;"></i> Create Skill Pillar Card</h5>
             </div>
 
-            {{ Form::open(array('action' => 'ServiceController@addskills')) }}
+            {{ Form::open(array('action' => [\App\Http\Controllers\ServiceController::class, 'addskills'])) }}
                 {{ csrf_field() }}
                 <div class="form-body">
                     <div class="form-group">

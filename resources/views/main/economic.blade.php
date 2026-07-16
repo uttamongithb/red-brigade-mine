@@ -330,11 +330,7 @@
             <div id="previous" class="rb-tab-content <?php echo ($filter === 'previous') ? 'active' : ''; ?>">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <div class="rb-card-premium" style="padding: 45px; margin-bottom: 30px; border-left: 5px solid #E31E24;">
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Runs <strong style="color: #E31E24; font-weight: 700;">'Apna Hunar Training Centre,'</strong> offering skill-based training in <strong style="color: #E31E24; font-weight: 700;">tailoring, beauty parlor courses, mehndi design, culinary arts, and 'Marma Chikitsa' (traditional health knowledge system)</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 0;">Trained over <strong style="color: #E31E24; font-weight: 700;">350 young women and girls</strong> in these skills.</p>
-                        </div>
+
 
                         <?php if (count($previous) > 0) { ?>
                             <!-- Previous Work Cards Grid -->
@@ -365,6 +361,7 @@
                         <?php } ?>
                     </div>
                 </div>
+            </div>
 
             <!-- Tab Content: Upcoming Work -->
             <div id="upcoming" class="rb-tab-content <?php echo ($filter === 'upcoming') ? 'active' : ''; ?>">

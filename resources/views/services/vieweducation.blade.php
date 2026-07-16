@@ -122,7 +122,7 @@
                 </div>
             </div>
             <div>
-                <a href="<?php echo action('ServiceController@addeducation')?>" class="btn-premium">
+                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'addeducation'])?>" class="btn-premium">
                     <i class="fa fa-plus"></i> Add Focus Card
                 </a>
             </div>
@@ -164,7 +164,7 @@
                         </td>
                         <td>
                             <div class="action-flex">
-                                <a href="<?php echo action('ServiceController@editeducation',$idget)?>" class="btn-table-action" title="Edit">
+                                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'editeducation'],$idget)?>" class="btn-table-action" title="Edit">
                                     <i class="fa fa-edit"></i>
                                 </a>
                                 <a href="<?php echo url('admin/deleteeducation/'.$idget)?>" 
@@ -196,7 +196,7 @@
                 </div>
             </div>
             <div>
-                <a href="<?php echo action('ServiceController@addgallery')?>" class="btn-premium" style="background: #1f2f46;">
+                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'addgallery'])?>" class="btn-premium" style="background: #1f2f46;">
                     <i class="fa fa-camera"></i> Add Impact Image
                 </a>
             </div>
@@ -226,10 +226,10 @@
                         </td>
                         <td>
                             <div class="action-flex">
-                                <a href="<?php echo action('ServiceController@editgallery', $galleryId)?>" class="btn-table-action" title="Edit">
+                                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'editgallery'], $galleryId)?>" class="btn-table-action" title="Edit">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="<?php echo action('ServiceController@deletegallery', $galleryId)?>" 
+                                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'deletegallery'], $galleryId)?>" 
                                    onclick="return confirm('Are you sure you want to delete this gallery item?')" 
                                    class="btn-table-action btn-table-delete" title="Delete">
                                     <i class="fa fa-trash"></i>

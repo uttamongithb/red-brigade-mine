@@ -16,7 +16,7 @@
                 <h2 class="what-1 mb-3"><?php echo htmlspecialchars(ucfirst($thisproduct->name), ENT_QUOTES, 'UTF-8'); ?></h2>
                 <div class="about-text"><?php echo \App\Helpers\Sanitizer::clean($thisproduct->description); ?></div>
                 <div class="mt-4">
-                    <a href="<?php echo action('MainController@product')?>" class="btn btn-danger">Back To Products</a>
+                    <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'product'])?>" class="btn btn-danger">Back To Products</a>
                 </div>
             </div>
         </div>

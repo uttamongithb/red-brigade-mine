@@ -165,7 +165,7 @@
                     <div class="rb-award-card">
                         <div class="rb-award-icon"><i class="fas fa-users"></i></div>
                         <h3>The Republic of Women</h3>
-                        <p>Recognition for our unique survivor-led leadership model.</p>
+                        <p>Recognition for our unique Women Led organization model.</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">

@@ -23,7 +23,7 @@
                     <div class="rb-program-meta">
                         <span class="rb-date-badge">Ongoing Program</span>
                     </div>
-                    <a href="<?php echo action('MainController@contact')?>" class="rb-join-now" aria-label="Join the self defense training program">Join Now</a>
+                    <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'contact'])?>" class="rb-join-now" aria-label="Join the self defense training program">Join Now</a>
                 </div>
             </div>
         </div>

@@ -48,7 +48,7 @@
 				  <td><?php echo $tt->created_at;?></td>
 				    <?php $idget = $tt->id; ?>
 					  <td style="width:200px;">
-							<a href="<?php echo action('ServiceController@deleteEnquiry',$idget)?>" title="Delete" class="actionbtn btn-danger">
+							<a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'deleteEnquiry'],$idget)?>" title="Delete" class="actionbtn btn-danger">
 								<i class="fa fa-trash-o"></i>
 							</a>
 					  </td>

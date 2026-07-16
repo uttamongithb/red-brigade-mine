@@ -242,13 +242,7 @@
             <div id="previous" class="rb-tab-content <?php echo ($filter === 'previous') ? 'active' : ''; ?>">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <div class="rb-card-premium" style="padding: 45px; margin-bottom: 30px; border-left: 5px solid #E31E24;">
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Operated <strong style="color: #E31E24; font-weight: 700;">'Bal Manch,'</strong> an educational center for nearly a decade, serving children from marginalized communities.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Provided free bridge courses to mainstream children into education and financial support for girls to continue education beyond the primary level, benefiting over <strong style="color: #E31E24; font-weight: 700;">1,000 children</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 0;">Supported approximately <strong style="color: #E31E24; font-weight: 700;">200 girls</strong> from marginalized communities with <strong style="color: #E31E24; font-weight: 700;">financial aid</strong> for further education.</p>
-                        </div>
+
                     </div>
                 </div>
             </div>

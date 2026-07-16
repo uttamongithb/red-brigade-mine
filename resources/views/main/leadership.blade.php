@@ -200,6 +200,70 @@
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+/* Home-page Card style replication */
+.rb-blog-card {
+    background: #fff;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 12px 28px rgba(26, 39, 59, .12);
+    height: 100%;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+.rb-blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(26,39,59,0.18);
+}
+.rb-blog-card-img {
+    position: relative;
+    height: 380px;
+    overflow: hidden;
+}
+.rb-blog-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.rb-blog-card-img .rb-blog-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    margin: 0;
+    color: #1e2d43;
+    background: rgba(246, 249, 255, .86);
+    border: 1px solid rgba(30, 45, 67, .1);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    letter-spacing: .07em;
+}
+.rb-blog-card-body {
+    padding: 14px 14px 16px;
+}
+.rb-blog-card-title {
+    margin: 0 0 10px;
+    color: #273247;
+    font-size: 20px;
+    line-height: 1.2;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+.rb-blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+    margin: 0 auto;
+}
+@media (max-width: 767px) {
+    .rb-blog-grid {
+        grid-template-columns: 1fr;
+    }
+}
 </style>
 
 <div class="rb-topic-page">
@@ -218,6 +282,12 @@
         <div class="container" style="width: 90%; max-width: 1200px; margin: 0 auto;">
             
 
+            <?php
+                $ongoing = $initiatives->where('type', 'ongoing');
+                $previous = $initiatives->where('type', 'previous');
+                $upcoming = $initiatives->where('type', 'upcoming');
+            ?>
+
             <!-- Tab Navigation Buttons -->
             <div class="rb-tabs-nav">
                 <button class="rb-tab-btn <?php echo ($filter === 'ongoing') ? 'active' : ''; ?>" onclick="switchTab(event, 'ongoing')">Ongoing Work</button>
@@ -227,43 +297,119 @@
 
             <!-- Tab Content: Ongoing Work -->
             <div id="ongoing" class="rb-tab-content <?php echo ($filter === 'ongoing') ? 'active' : ''; ?>">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center py-5">
-                        <div class="rb-card-premium" style="padding: 40px; border-style: dashed; border-color: #cbd5e1; align-items: center;">
-                            <div class="rb-card-icon" style="color: #64748b;"><i class="fas fa-tasks"></i></div>
-                            <h3 class="rb-card-title" style="color: #64748b;">No Ongoing Work</h3>
-                            <p class="rb-card-text" style="color: #64748b; margin: 0; max-width: 500px;">There are currently no active ongoing initiatives in this section. Please check back later or view our Previous Work.</p>
+                <?php if (count($ongoing) > 0) { ?>
+                    <div class="rb-blog-grid" style="margin-top: 0;">
+                        <?php foreach ($ongoing as $item) { ?>
+                            <a href="<?php echo url('work/'.$item->slug); ?>" style="text-decoration: none; display: block; color: inherit;">
+                                <article class="rb-blog-card">
+                                    <div class="rb-blog-card-img">
+                                        <img src="<?php echo URL::asset('uploads/img/'.$item->image); ?>" alt="<?php echo $item->title; ?>" loading="lazy">
+                                        <span class="rb-blog-badge">Ongoing</span>
+                                    </div>
+                                    <div class="rb-blog-card-body">
+                                        <h4 class="rb-blog-card-title"><?php echo $item->title; ?></h4>
+                                        <?php if (!empty($item->tagline)) { ?>
+                                            <p class="rb-blog-card-excerpt" style="color: #E31E24; font-weight: 600; font-style: italic; margin-bottom: 8px;">"<?php echo $item->tagline; ?>"</p>
+                                        <?php } ?>
+                                        <?php if (!empty($item->collaboration)) { ?>
+                                            <div style="display: flex; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 10px; margin-top: 10px;">
+                                                <span style="font-size: 11px; font-weight: 700; color: #7f8da3; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 6px;">In Collaboration With:</span>
+                                                <strong style="color: #273247; font-size: 13px; font-weight: 700;"><?php echo $item->collaboration; ?></strong>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                </article>
+                            </a>
+                        <?php } ?>
+                    </div>
+                <?php } else { ?>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center py-5">
+                            <div class="rb-card-premium" style="padding: 40px; border-style: dashed; border-color: #cbd5e1; align-items: center;">
+                                <div class="rb-card-icon" style="color: #64748b;"><i class="fas fa-tasks"></i></div>
+                                <h3 class="rb-card-title" style="color: #64748b;">No Ongoing Work</h3>
+                                <p class="rb-card-text" style="color: #64748b; margin: 0; max-width: 500px;">There are currently no active ongoing initiatives in this section. Please check back later or view our Previous Work.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
 
             <!-- Tab Content: Previous Work -->
             <div id="previous" class="rb-tab-content <?php echo ($filter === 'previous') ? 'active' : ''; ?>">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <div class="rb-card-premium" style="padding: 45px; margin-bottom: 30px; border-left: 5px solid #E31E24;">
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Organized a <strong style="color: #E31E24; font-weight: 700;">14-day march in 2016</strong> with participation from <strong style="color: #E31E24; font-weight: 700;">women lawyers, doctors, nurses, media personalities, government officials, and women’s organization leaders</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Conducted programs in <strong style="color: #E31E24; font-weight: 700;">100 Lucknow schools in 2017</strong>, facilitating dialogues between <strong style="color: #E31E24; font-weight: 700;">girls and 100 women leaders</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 0;">Recognized emerging women leaders in fields like <strong style="color: #E31E24; font-weight: 700;">traffic police, women police, petrol pump workers, security guards, and e-rickshaw drivers</strong> through <strong style="color: #E31E24; font-weight: 700;">'Raat ka Ujala'</strong>.</p>
-                        </div>
+
+
+                        <?php if (count($previous) > 0) { ?>
+                            <!-- Previous Work Cards Grid -->
+                            <div class="rb-blog-grid" style="margin-top: 40px;">
+                                <?php foreach ($previous as $item) { ?>
+                                    <a href="<?php echo url('work/'.$item->slug); ?>" style="text-decoration: none; display: block; color: inherit;">
+                                        <article class="rb-blog-card">
+                                            <div class="rb-blog-card-img">
+                                                <img src="<?php echo URL::asset('uploads/img/'.$item->image); ?>" alt="<?php echo $item->title; ?>" loading="lazy">
+                                                <span class="rb-blog-badge">Previous</span>
+                                            </div>
+                                            <div class="rb-blog-card-body">
+                                                <h4 class="rb-blog-card-title"><?php echo $item->title; ?></h4>
+                                                <?php if (!empty($item->tagline)) { ?>
+                                                    <p class="rb-blog-card-excerpt" style="color: #E31E24; font-weight: 600; font-style: italic; margin-bottom: 8px;">"<?php echo $item->tagline; ?>"</p>
+                                                <?php } ?>
+                                                <?php if (!empty($item->collaboration)) { ?>
+                                                    <div style="display: flex; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 10px; margin-top: 10px;">
+                                                        <span style="font-size: 11px; font-weight: 700; color: #7f8da3; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 6px;">In Collaboration With:</span>
+                                                        <strong style="color: #273247; font-size: 13px; font-weight: 700;"><?php echo $item->collaboration; ?></strong>
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+                                        </article>
+                                    </a>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
 
             <!-- Tab Content: Upcoming Work -->
             <div id="upcoming" class="rb-tab-content <?php echo ($filter === 'upcoming') ? 'active' : ''; ?>">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center py-5">
-                        <div class="rb-card-premium" style="padding: 40px; border-style: dashed; border-color: #cbd5e1; align-items: center;">
-                            <div class="rb-card-icon" style="color: #64748b;"><i class="fas fa-calendar-alt"></i></div>
-                            <h3 class="rb-card-title" style="color: #64748b;">No Upcoming Work</h3>
-                            <p class="rb-card-text" style="color: #64748b; margin: 0; max-width: 500px;">There are currently no upcoming initiatives scheduled for this section. Stay tuned for future updates.</p>
+                <?php if (count($upcoming) > 0) { ?>
+                    <div class="rb-blog-grid" style="margin-top: 0;">
+                        <?php foreach ($upcoming as $item) { ?>
+                            <a href="<?php echo url('work/'.$item->slug); ?>" style="text-decoration: none; display: block; color: inherit;">
+                                <article class="rb-blog-card">
+                                    <div class="rb-blog-card-img">
+                                        <img src="<?php echo URL::asset('uploads/img/'.$item->image); ?>" alt="<?php echo $item->title; ?>" loading="lazy">
+                                        <span class="rb-blog-badge">Upcoming</span>
+                                    </div>
+                                    <div class="rb-blog-card-body">
+                                        <h4 class="rb-blog-card-title"><?php echo $item->title; ?></h4>
+                                        <?php if (!empty($item->tagline)) { ?>
+                                            <p class="rb-blog-card-excerpt" style="color: #E31E24; font-weight: 600; font-style: italic; margin-bottom: 8px;">"<?php echo $item->tagline; ?>"</p>
+                                        <?php } ?>
+                                        <?php if (!empty($item->collaboration)) { ?>
+                                            <div style="display: flex; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 10px; margin-top: 10px;">
+                                                <span style="font-size: 11px; font-weight: 700; color: #7f8da3; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 6px;">In Collaboration With:</span>
+                                                <strong style="color: #273247; font-size: 13px; font-weight: 700;"><?php echo $item->collaboration; ?></strong>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                </article>
+                            </a>
+                        <?php } ?>
+                    </div>
+                <?php } else { ?>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center py-5">
+                            <div class="rb-card-premium" style="padding: 40px; border-style: dashed; border-color: #cbd5e1; align-items: center;">
+                                <div class="rb-card-icon" style="color: #64748b;"><i class="fas fa-calendar-alt"></i></div>
+                                <h3 class="rb-card-title" style="color: #64748b;">No Upcoming Work</h3>
+                                <p class="rb-card-text" style="color: #64748b; margin: 0; max-width: 500px;">There are currently no upcoming initiatives scheduled for this section. Stay tuned for future updates.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
 
         </div>

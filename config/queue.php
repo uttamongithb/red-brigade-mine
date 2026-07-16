@@ -4,18 +4,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Queue Driver
+    | Default Queue Connection
     |--------------------------------------------------------------------------
     |
-    | The Laravel queue API supports a variety of back-ends via an unified
+    | Laravel's queue API supports a variety of back-ends via an unified
     | API, giving you convenient access to each back-end using the same
-    | syntax for each one. Here you may set the default queue driver.
+    | syntax for each one. Here you may set the default queue connection.
     |
-    | Supported: "null", "sync", "database", "beanstalkd", "sqs", "redis"
+    | Supported: "sync", "database", "beanstalkd", "sqs", "redis", "null"
     |
     */
 
-    'default' => env('QUEUE_DRIVER', 'database'),
+    'default' => env('QUEUE_CONNECTION', env('QUEUE_DRIVER', 'sync')),
 
     /*
     |--------------------------------------------------------------------------
@@ -36,32 +36,39 @@ return [
 
         'database' => [
             'driver' => 'database',
-            'table' => 'jobs',
+            'table' => env('QUEUE_TABLE', 'jobs'),
             'queue' => 'default',
-            'expire' => 60,
+            'retry_after' => env('QUEUE_RETRY_AFTER', 90),
+            'after_commit' => false,
         ],
 
         'beanstalkd' => [
             'driver' => 'beanstalkd',
-            'host' => 'localhost',
+            'host' => env('BEANSTALKD_HOST', 'localhost'),
             'queue' => 'default',
             'ttr' => 60,
+            'block_for' => 0,
+            'after_commit' => false,
         ],
 
         'sqs' => [
             'driver' => 'sqs',
-            'key' => 'your-public-key',
-            'secret' => 'your-secret-key',
-            'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-account-id',
-            'queue' => 'your-queue-name',
-            'region' => 'us-east-1',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'prefix' => env('SQS_PREFIX', 'https://sqs.us-east-1.amazonaws.com/your-account-id'),
+            'queue' => env('SQS_QUEUE', 'default'),
+            'suffix' => env('SQS_SUFFIX'),
+            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+            'after_commit' => false,
         ],
 
         'redis' => [
             'driver' => 'redis',
-            'connection' => 'default',
-            'queue' => 'default',
-            'expire' => 60,
+            'connection' => env('QUEUE_REDIS_CONNECTION', 'default'),
+            'queue' => env('QUEUE_REDIS_QUEUE', 'default'),
+            'retry_after' => env('QUEUE_RETRY_AFTER', 90),
+            'block_for' => null,
+            'after_commit' => false,
         ],
 
     ],
@@ -78,6 +85,7 @@ return [
     */
 
     'failed' => [
+        'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'),
         'database' => env('DB_CONNECTION', 'mysql'),
         'table' => 'failed_jobs',
     ],

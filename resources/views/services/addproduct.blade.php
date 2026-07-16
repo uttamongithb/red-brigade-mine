@@ -8,7 +8,7 @@
 <section class="content">
       <div class="row">
 	    <div class="col-md-12">
-			<a class="btn btn-app pull-right" href="<?php echo action('ServiceController@viewproduct')?>">
+			<a class="btn btn-app pull-right" href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewproduct'])?>">
 				<i class="fa fa-barcode"></i> Product List
 		  </a>
 		  </div>
@@ -21,7 +21,7 @@
             <!-- /.box-header -->
             <!-- form start -->
 			
-			{{ Form::open(array('action' => 'ServiceController@addproduct','files' => true)) }}
+			{{ Form::open(array('action' => [\App\Http\Controllers\ServiceController::class, 'addproduct'],'files' => true)) }}
 			  {{ csrf_field() }}
               <div class="box-body">
                     <div class="col-md-12 create">

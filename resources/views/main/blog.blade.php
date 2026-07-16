@@ -170,17 +170,17 @@
             <div class="rb-blog-grid">
                 <?php if(!empty($allblog)) { foreach($allblog as $post) { ?>
                     <article class="rb-blog-card">
-                        <a href="<?php echo action('MainController@singleblog', $post->slug); ?>" class="rb-blog-thumbnail">
+                        <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'singleblog'], $post->slug); ?>" class="rb-blog-thumbnail">
                             <?php $imagePath = !empty($post->image) ? 'uploads/news/'.trim($post->image) : 'uploads/img/logo.png'; ?>
                             <img src="<?php echo URL::asset($imagePath); ?>" alt="<?php echo $post->name; ?>">
                         </a>
                         <div class="rb-blog-content">
                             <span class="rb-blog-date"><?php echo date('F d, Y', strtotime($post->created_at)); ?></span>
-                            <h3 class="rb-blog-title"><a href="<?php echo action('MainController@singleblog', $post->slug); ?>" style="color: inherit; text-decoration: none;"><?php echo $post->name; ?></a></h3>
+                            <h3 class="rb-blog-title"><a href="<?php echo action([\App\Http\Controllers\MainController::class, 'singleblog'], $post->slug); ?>" style="color: inherit; text-decoration: none;"><?php echo $post->name; ?></a></h3>
                             <div class="rb-blog-excerpt">
                                 <?php echo substr(strip_tags($post->description), 0, 120); ?>...
                             </div>
-                            <a href="<?php echo action('MainController@singleblog', $post->slug); ?>" class="rb-read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                            <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'singleblog'], $post->slug); ?>" class="rb-read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
                 <?php } } else { ?>

@@ -399,7 +399,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; font-weight: 700; c
 <section class="cta-banner">
     <div class="container-box">
         <h2>Join the Movement. Support Balmanch.</h2>
-        <a href="<?php echo action('MainController@donate'); ?>" class="btn-solid-primary">Donate Now</a>
+        <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'donate']); ?>" class="btn-solid-primary">Donate Now</a>
     </div>
 </section>
 

@@ -154,7 +154,7 @@
             <div style="color: #667085; font-size: 14px;">
                 Manage the high-impact images on your homepage hero section.
             </div>
-            <a href="<?php echo action('ServiceController@addslider')?>" class="btn-premium">
+            <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'addslider'])?>" class="btn-premium">
                 <i class="fa fa-plus"></i> Add New Slide
             </a>
         </div>

@@ -136,7 +136,7 @@
     </section>
 
     <section class="content">
-        <a href="<?php echo action('ServiceController@viewstrategy')?>" class="back-link">
+        <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewstrategy'])?>" class="back-link">
             <i class="fa fa-arrow-left"></i> Back to Strategy List
         </a>
 
@@ -145,7 +145,7 @@
                 <h5><i class="fa fa-plus-circle" style="color: #E31E24;"></i> Create New Strategy Pillar</h5>
             </div>
 
-            <form action="<?php echo action('ServiceController@addstrategy'); ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?php echo action([\App\Http\Controllers\ServiceController::class, 'addstrategy']); ?>" method="POST" enctype="multipart/form-data">
                 {!! csrf_field() !!}
                 <div class="form-body">
 

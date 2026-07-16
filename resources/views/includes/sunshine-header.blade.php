@@ -42,7 +42,7 @@
 <div class="container padd">
     <nav class="navbar navbar-expand-lg padd">
  
-                <a class="navbar-brand" href="<?php echo action('MainController@index')?>"><img src="<?php echo URL::asset('uploads/img/logo.png')?>" class="img-fluid"></a> 
+                <a class="navbar-brand" href="<?php echo action([\App\Http\Controllers\MainController::class, 'index'])?>"><img src="<?php echo URL::asset('uploads/img/logo.png')?>" class="img-fluid"></a> 
              
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: 2px solid #E31E24; padding: 8px 12px;">
                         <span class="fas fa-bars" style="color: #E31E24; font-size: 20px;"></span>
@@ -50,11 +50,11 @@
                         
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto navi">
-				   <li class="nav-item <?php echo Request::is('/') ? 'active' : ''; ?> nav-li"><a href="<?php  echo action('MainController@index')?>" class="nav-link a-top">Home</a></li>
-				   <li class="nav-item <?php echo Request::is('about') ? 'active' : ''; ?> nav-li"><a href="<?php  echo action('MainController@about')?>"class="nav-link a-top">About us</a></li>
-				   <li class="nav-item <?php echo Request::is('product') ? 'active' : ''; ?> nav-li"><a href="<?php  echo action('MainController@product')?>" class="nav-link a-top">Products</a></li>
-				   <li class="nav-item <?php echo Request::is('service') ? 'active' : ''; ?> nav-li"><a href="<?php  echo action('MainController@service')?>" class="nav-link a-top">Service and Support</a></li>
-				   <li class="nav-item <?php echo Request::is('contact') ? 'active' : ''; ?> nav-li"><a href="<?php  echo action('MainController@contact')?>"class="nav-link a-top">Contact us</a></li>
+				   <li class="nav-item <?php echo Request::is('/') ? 'active' : ''; ?> nav-li"><a href="<?php  echo action([\App\Http\Controllers\MainController::class, 'index'])?>" class="nav-link a-top">Home</a></li>
+				   <li class="nav-item <?php echo Request::is('about') ? 'active' : ''; ?> nav-li"><a href="<?php  echo action([\App\Http\Controllers\MainController::class, 'about'])?>"class="nav-link a-top">About us</a></li>
+				   <li class="nav-item <?php echo Request::is('product') ? 'active' : ''; ?> nav-li"><a href="<?php  echo action([\App\Http\Controllers\MainController::class, 'product'])?>" class="nav-link a-top">Products</a></li>
+				   <li class="nav-item <?php echo Request::is('service') ? 'active' : ''; ?> nav-li"><a href="<?php  echo action([\App\Http\Controllers\MainController::class, 'service'])?>" class="nav-link a-top">Service and Support</a></li>
+				   <li class="nav-item <?php echo Request::is('contact') ? 'active' : ''; ?> nav-li"><a href="<?php  echo action([\App\Http\Controllers\MainController::class, 'contact'])?>"class="nav-link a-top">Contact us</a></li>
                 </ul>
                 
             </div>

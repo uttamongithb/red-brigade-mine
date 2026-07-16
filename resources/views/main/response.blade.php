@@ -242,13 +242,7 @@
             <div id="previous" class="rb-tab-content <?php echo ($filter === 'previous') ? 'active' : ''; ?>">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <div class="rb-card-premium" style="padding: 45px; margin-bottom: 30px; border-left: 5px solid #E31E24;">
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Formed dedicated teams to address rape and sexual violence: <strong style="color: #E31E24; font-weight: 700;">response team, legal advisory team, and rehabilitation and counseling team</strong>, comprising <strong style="color: #E31E24; font-weight: 700;">medical practitioners, judicial officers (including from the transgender community), prominent women, social activists, radio jockeys, and media personnel</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Successfully rehabilitated <strong style="color: #E31E24; font-weight: 700;">5 rape survivors</strong> and assisted in their legal proceedings.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 0;">Worked with over <strong style="color: #E31E24; font-weight: 700;">200 survivors</strong> of sexual violence, domestic abuse, and harassment, providing <strong style="color: #E31E24; font-weight: 700;">medical, legal, and psychological support</strong>.</p>
-                        </div>
+
                     </div>
                 </div>
             </div>

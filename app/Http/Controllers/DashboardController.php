@@ -5,8 +5,6 @@ use Auth;
 use Session;
 use Mail;
 use File;
-use Socialite;
-use bcrypt;
 use Config;
 use Redirect;
 use Illuminate\Http\Request;
@@ -14,7 +12,6 @@ use App\Http\Controllers\Controller;
 use Helpers;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 class DashboardController extends Controller {
 	public function index(){
 		return view('dashboards.index');

@@ -117,7 +117,7 @@
             <div style="color: #667085; font-size: 14px;">
                 Manage the skill cards displayed on the Artisan Skills page.
             </div>
-            <a href="<?php echo action('ServiceController@addskills')?>" class="btn-premium">
+            <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'addskills'])?>" class="btn-premium">
                 <i class="fa fa-plus"></i> Add Skill Card
             </a>
         </div>
@@ -150,11 +150,11 @@
                         </td>
                         <td>
                             <div class="action-flex">
-                                <a href="<?php echo action('ServiceController@editskills',$idget)?>" class="btn-table-action" title="Edit">
+                                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'editskills'],$idget)?>" class="btn-table-action" title="Edit">
                                     <i class="fa fa-edit"></i>
                                 </a>
                                 <a href="javascript:void(0)" 
-                                   onclick="confirmDelete('<?php echo action('ServiceController@deleteskills',$idget)?>')" 
+                                   onclick="confirmDelete('<?php echo action([\App\Http\Controllers\ServiceController::class, 'deleteskills'],$idget)?>')" 
                                    class="btn-table-action btn-table-delete" title="Delete">
                                     <i class="fa fa-trash"></i> Delete
                                 </a>

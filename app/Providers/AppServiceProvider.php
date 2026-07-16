@@ -3,27 +3,27 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function boot(): void
     {
-        if (env('APP_ENV') === 'production') {
-            \URL::forceSchema('https'); // For Laravel 5.2, forceSchema is used instead of forceScheme
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
         }
+
+        // Register global class aliases for helpers namespaced under App\Helpers
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('Helpers', \App\Helpers\Helpers::class);
+        $loader->alias('Htmlhelpers', \App\Helpers\Htmlhelpers::class);
+        $loader->alias('Sanitizer', \App\Helpers\Sanitizer::class);
     }
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         //
     }

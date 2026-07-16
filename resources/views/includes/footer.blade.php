@@ -8,7 +8,7 @@
                     <div class="footer-about">
                         <div class="footer-brand-wrap" style="display: flex; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap;">
                             <img src="<?php echo URL::asset('uploads/img/logo.png')?>" alt="Red Brigade Logo" class="footer-brand-logo" style="width: 250px; height: auto;">
-                            <a class="donate-btn" href="<?php echo action('MainController@donate'); ?>" style="margin-top: 0;">Donate</a>
+                            <a class="donate-btn" href="<?php echo action([\App\Http\Controllers\MainController::class, 'donate']); ?>" style="margin-top: 0;">Donate</a>
                         </div>
                         <p class="footer-about-text">
                             Red Brigade Lucknow is dedicated to providing a safe, empowering, and action-focused
@@ -51,10 +51,10 @@
                     <div class="footer-links">
                         <h4 class="footer-heading">Quick Links</h4>
                         <ul>
-                            <li><a href="<?php echo action('MainController@index')?>">Home</a></li>
-                            <li><a href="<?php echo action('MainController@about')?>">About Us</a></li>
-                            <li><a href="<?php echo action('MainController@gallery')?>">Gallery</a></li>
-                            <li><a href="<?php echo action('MainController@contact')?>">Contact</a></li>
+                            <li><a href="<?php echo action([\App\Http\Controllers\MainController::class, 'index'])?>">Home</a></li>
+                            <li><a href="<?php echo action([\App\Http\Controllers\MainController::class, 'about'])?>">About Us</a></li>
+                            <li><a href="<?php echo action([\App\Http\Controllers\MainController::class, 'gallery'])?>">Gallery</a></li>
+                            <li><a href="<?php echo action([\App\Http\Controllers\MainController::class, 'contact'])?>">Contact</a></li>
                         </ul>
                     </div>
                 </div>

@@ -254,10 +254,15 @@
 }
 .rb-blog-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
     width: 100%;
     margin: 0 auto;
+}
+@media (max-width: 991px) {
+    .rb-blog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 @media (max-width: 767px) {
     .rb-blog-grid {
@@ -277,7 +282,7 @@
 
     <!-- Content & Tabs Section -->
     <section class="rb-tabs-section">
-        <div class="container" style="width: 90%; max-width: 1200px; margin: 0 auto;">
+        <div class="container" style="width: 90%; max-width: 100%; margin: 0 auto;">
             <?php
                 $ongoing = $initiatives->where('type', 'ongoing');
                 $previous = $initiatives->where('type', 'previous');
@@ -335,17 +340,7 @@
             <div id="previous" class="rb-tab-content <?php echo ($filter === 'previous') ? 'active' : ''; ?>">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <div class="rb-card-premium" style="padding: 45px; margin-bottom: 30px; border-left: 5px solid #E31E24;">
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Conducted training programs in approximately <strong style="color: #E31E24; font-weight: 700;">150 districts across 20+ states in India</strong>, with a primary focus on Lucknow. Trained over <strong style="color: #E31E24; font-weight: 700;">300,000 young women, girls, and adolescents</strong> in self-defense using the 'Nishastr' technique.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Prepared <strong style="color: #E31E24; font-weight: 700;">100 self-defense master trainers and trainers</strong> from <strong style="color: #E31E24; font-weight: 700;">40 districts</strong>, including Lucknow, in Uttar Pradesh, with over <strong style="color: #E31E24; font-weight: 700;">1,000 active volunteers</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Active in <strong style="color: #E31E24; font-weight: 700;">500+ educational institutions</strong> (schools, professional and technical institutes, universities) and <strong style="color: #E31E24; font-weight: 700;">500+ villages in Lucknow</strong>, working with adolescent girls and young women from marginalized communities in government and low-cost schools.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">Organized training workshops for safe workplaces, targeting <strong style="color: #E31E24; font-weight: 700;">women police, local institution representatives, doctors, paramedics, women helpline workers, and female teachers</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 0;">Conducted training workshops for numerous <strong style="color: #E31E24; font-weight: 700;">corporate companies</strong>.</p>
-                        </div>
+
 
                         <?php if (count($previous) > 0) { ?>
                             <!-- Previous Work Cards Grid -->

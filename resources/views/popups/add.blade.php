@@ -14,7 +14,7 @@
 <section class="content">
       <div class="row">
 	    <div class="col-md-12">
-			<a class="btn btn-app pull-right" href="<?php echo action('PopupsController@index')?>">
+			<a class="btn btn-app pull-right" href="<?php echo action([\App\Http\Controllers\PopupsController::class, 'index'])?>">
 				<i class="fa fa-barcode"></i> Popups List
 		  </a>
 		  </div>
@@ -27,7 +27,7 @@
             <!-- /.box-header -->
             <!-- form start -->
 			
-			{{ Form::open(array('action' => 'PopupsController@add','files' => true)) }}
+			{{ Form::open(array('action' => [\App\Http\Controllers\PopupsController::class, 'add'],'files' => true)) }}
            
 			{{ csrf_field() }}
               <div class="box-body">

@@ -150,7 +150,7 @@
     </section>
 
     <section class="content">
-        <a href="<?php echo action('ServiceController@viewstrategy')?>" class="back-link">
+        <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewstrategy'])?>" class="back-link">
             <i class="fa fa-arrow-left"></i> Back to Strategy List
         </a>
 
@@ -160,7 +160,7 @@
             </div>
 
             <?php $getid = $thisdata->id; ?>
-            <form action="<?php echo action('ServiceController@editstrategy', $getid); ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?php echo action([\App\Http\Controllers\ServiceController::class, 'editstrategy'], $getid); ?>" method="POST" enctype="multipart/form-data">
                 {!! csrf_field() !!}
                 <div class="form-body">
 

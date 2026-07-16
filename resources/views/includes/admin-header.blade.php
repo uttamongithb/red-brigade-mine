@@ -365,7 +365,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <header class="main-header">
-    <a href="<?php echo action('MainController@index')?>" target="_blank" class="logo-container">
+    <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'index'])?>" target="_blank" class="logo-container">
         <img src="<?php echo URL::asset('uploads/img/logo.png'); ?>" alt="Red Brigade Lucknow">
     </a>
 
@@ -382,7 +382,7 @@
                 <div style="font-weight: 700; font-size: 13px; color: #101828;"><?php echo Auth::user()->name; ?></div>
                 <div style="font-size: 11px; color: #667085;">Administrator</div>
             </div>
-            <a href="<?php echo action('DashboardController@editprofile')?>" class="dropdown-link">
+            <a href="<?php echo action([\App\Http\Controllers\DashboardController::class, 'editprofile'])?>" class="dropdown-link">
                 <i class="fa fa-edit"></i> Edit Profile
             </a>
             <a href="<?php echo URL('main-admin/logout')?>" class="dropdown-link">

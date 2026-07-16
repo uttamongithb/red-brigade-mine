@@ -80,14 +80,14 @@
 				  <?php
 					if($member->activation_status=='activated'){
 				  ?>
-					<a href="<?php echo action('DashboardController@blockuser',$idget)?>" class="actionbtn btn-danger">
+					<a href="<?php echo action([\App\Http\Controllers\DashboardController::class, 'blockuser'],$idget)?>" class="actionbtn btn-danger">
 						<i class="fa fa-ban"></i> Block this user
 					</a>
 					<?php } ?>
 					 <?php
 						if($member->activation_status=='blocked'){
 					?>
-					<a href="<?php echo action('DashboardController@activateuser',$idget)?>" class="actionbtn btn-info">
+					<a href="<?php echo action([\App\Http\Controllers\DashboardController::class, 'activateuser'],$idget)?>" class="actionbtn btn-info">
 						<i class="fa fa-check-circle"></i> Activate this user
 					</a>
 					<?php } ?>

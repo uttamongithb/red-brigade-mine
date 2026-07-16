@@ -12,7 +12,7 @@
 				<p style="margin: 10px;font-size:20px;color:#333;font-weight:600;">Dear <?php echo ucwords($name)?></p>
 				<p style="margin: 10px;font-size:14px;color:#333;font-weight:500;">Your account is created.</p> 
 				<p style="margin: 10px;font-size:14px;color:#333;font-weight:500;"> Please click on Verify Account to complete your registration process. </p>
-				<a href="<?php echo action('RegisteruserController@approve',$token)?>" target="_blank" 
+				<a href="<?php echo action([\App\Http\Controllers\RegisteruserController::class, 'approve'],$token)?>" target="_blank" 
 				style="font-weight:700;text-decoration:none;color:#fff;background:linear-gradient(#126DAD, #2995E2);padding:10px 20px;margin: 2% 0%;display: inline-block;">
 				Verify Your Account</a>
 			</div>

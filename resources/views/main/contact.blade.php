@@ -276,7 +276,7 @@
                         <h2>Get In Touch</h2>
                         <p>Fill out the form below and our team will get back to you as soon as possible.</p>
 
-                        {{ Form::open(array('action' => 'MainController@contact','files' => true)) }}
+                        {{ Form::open(array('action' => [\App\Http\Controllers\MainController::class, 'contact'],'files' => true)) }}
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-12">

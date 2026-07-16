@@ -240,17 +240,7 @@
             <div id="previous" class="rb-tab-content <?php echo ($filter === 'previous') ? 'active' : ''; ?>">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <div class="rb-card-premium" style="padding: 45px; margin-bottom: 30px; border-left: 5px solid #E31E24;">
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;"><strong style="color: #E31E24; font-weight: 700;">100 Days, 100 Schools (2017):</strong> Trained <strong style="color: #E31E24; font-weight: 700;">23,000 girls</strong>, supported by <strong style="color: #E31E24; font-weight: 700;">Times of India</strong> and <strong style="color: #E31E24; font-weight: 700;">Radio Mirchi</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;"><strong style="color: #E31E24; font-weight: 700;">War against 936 (2019-2020):</strong> Trained <strong style="color: #E31E24; font-weight: 700;">4,000 girls</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;"><strong style="color: #E31E24; font-weight: 700;">Mission Shakti and Kavach Mission (2019-2020):</strong> Trained <strong style="color: #E31E24; font-weight: 700;">57,000 young women and girls</strong> under <strong style="color: #E31E24; font-weight: 700;">Uttar Pradesh government initiatives</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;"><strong style="color: #E31E24; font-weight: 700;">Sashakt Kishori (2022-24):</strong> Trained <strong style="color: #E31E24; font-weight: 700;">20,000 adolescent girls</strong>.</p>
-                            
-                            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 0;"><strong style="color: #E31E24; font-weight: 700;">100 Days, 100 Villages (2020-21):</strong> Trained approximately <strong style="color: #E31E24; font-weight: 700;">5,000 girls</strong>.</p>
-                        </div>
+
                     </div>
                 </div>
             </div>

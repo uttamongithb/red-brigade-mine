@@ -9,12 +9,12 @@
          <h3 class="what mb-4"> &nbsp; &nbsp; &nbsp;Menu</h3>
         
          <ul class=" text-white fooli ">
-           <li><a href="<?php  echo action('MainController@index')?>" class="fooli">Home</a></li>
-           <li><a href="<?php  echo action('MainController@about')?>"class="fooli">About us</a></li>
-           <li><a href="<?php  echo action('MainController@product')?>" class="fooli">Products</a></li>
-           <li><a href="<?php  echo action('MainController@service')?>" class="fooli">Service and Support</a></li>
+           <li><a href="<?php  echo action([\App\Http\Controllers\MainController::class, 'index'])?>" class="fooli">Home</a></li>
+           <li><a href="<?php  echo action([\App\Http\Controllers\MainController::class, 'about'])?>"class="fooli">About us</a></li>
+           <li><a href="<?php  echo action([\App\Http\Controllers\MainController::class, 'product'])?>" class="fooli">Products</a></li>
+           <li><a href="<?php  echo action([\App\Http\Controllers\MainController::class, 'service'])?>" class="fooli">Service and Support</a></li>
       
-           <li><a href="<?php  echo action('MainController@contact')?>"class="fooli">Contact us</a></li>
+           <li><a href="<?php  echo action([\App\Http\Controllers\MainController::class, 'contact'])?>"class="fooli">Contact us</a></li>
          </ul>
        </div>
        <div class="col-md-3 mt-4  fooli">

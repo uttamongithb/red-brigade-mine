@@ -129,7 +129,7 @@
                 Manage the organization's executive members and staff profiles displayed on the team page.
             </div>
             <div>
-                <a href="<?php echo action('ServiceController@addtestimonial')?>" class="btn-premium">
+                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'addtestimonial'])?>" class="btn-premium">
                     <i class="fa fa-plus-circle"></i> Add Team Member
                 </a>
             </div>
@@ -166,21 +166,21 @@
                         </td>
                         <td>
                             <?php if($tt->status == 0){ ?>
-                                <a class="btn-table-action" href="<?php echo action('ServiceController@populartestimonial', [$idget, 1])?>" title="Mark Active" style="display: inline-flex; padding: 4px 8px;">
+                                <a class="btn-table-action" href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'populartestimonial'], [$idget, 1])?>" title="Mark Active" style="display: inline-flex; padding: 4px 8px;">
                                     <i class="fa fa-star-o" style="color: #98a2b3;"></i> Alumni
                                 </a>
                             <?php } else { ?>
-                                <a class="btn-table-action" href="<?php echo action('ServiceController@populartestimonial', [$idget, 0])?>" title="Mark Alumni" style="display: inline-flex; padding: 4px 8px; color: #d97706; border-color: #f59e0b;">
+                                <a class="btn-table-action" href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'populartestimonial'], [$idget, 0])?>" title="Mark Alumni" style="display: inline-flex; padding: 4px 8px; color: #d97706; border-color: #f59e0b;">
                                     <i class="fa fa-star" style="color: #f59e0b;"></i> Active
                                 </a>
                             <?php } ?>
                         </td>
                         <td>
                             <div class="action-flex">
-                                <a href="<?php echo action('ServiceController@edittestimonial', $idget)?>" class="btn-table-action" title="Edit">
+                                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'edittestimonial'], $idget)?>" class="btn-table-action" title="Edit">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="<?php echo action('ServiceController@deletetestimonial', $idget)?>" 
+                                <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'deletetestimonial'], $idget)?>" 
                                    onclick="return confirm('Are you sure you want to delete this team member?')" 
                                    class="btn-table-action btn-table-delete" title="Delete">
                                     <i class="fa fa-trash"></i>

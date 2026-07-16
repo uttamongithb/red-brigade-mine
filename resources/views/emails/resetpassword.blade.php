@@ -14,7 +14,7 @@ font-size: 13px;
 color: #333;
 font-weight: 500;
 line-height: 27px;">  We have received you request to reset your password from <?php echo Helpers::projectName();?> aacount. You dont have to worry about your forgotten password. All you have to do is reset it by following link </p>
-				<a href="<?php echo action('RegisteruserController@resetpassword',$token)?>" target="_blank" 
+				<a href="<?php echo action([\App\Http\Controllers\RegisteruserController::class, 'resetpassword'],$token)?>" target="_blank" 
 				style="font-weight:700;text-decoration:none;color:#fff;background:linear-gradient(#126DAD, #2995E2);padding:10px 20px;margin: 2% 0%;display: inline-block;">
 			Click here</a>
 			</div>

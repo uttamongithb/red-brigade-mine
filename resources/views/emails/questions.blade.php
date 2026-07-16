@@ -22,7 +22,7 @@
 							<p style="margin: 10px;font-size:14px;color:#333;font-weight:500;">We've received new question!</p>
 							<p style="margin: 10px;font-size:14px;color:#333;font-weight:500;">Someone asked a new question related to the service you offered. Response On his question soon. </p>
 							<?php } ?>
-							<a href="<?php echo action('QuestionController@singlequestion',$slug)?>" target="_blank" style="font-weight:700;text-decoration:none;color:#fff;background:linear-gradient(#126DAD, #2995E2);padding:10px 20px;margin: 2% 0%;display: inline-block;">
+							<a href="<?php echo action([\App\Http\Controllers\QuestionController::class, 'singlequestion'],$slug)?>" target="_blank" style="font-weight:700;text-decoration:none;color:#fff;background:linear-gradient(#126DAD, #2995E2);padding:10px 20px;margin: 2% 0%;display: inline-block;">
 							View Question</a>
 						</div>
 					</div>

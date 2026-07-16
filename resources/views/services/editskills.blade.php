@@ -91,7 +91,7 @@
     </section>
 
     <section class="content">
-        <a href="<?php echo action('ServiceController@viewskills')?>" class="back-link">
+        <a href="<?php echo action([\App\Http\Controllers\ServiceController::class, 'viewskills'])?>" class="back-link">
             <i class="fa fa-arrow-left"></i> Back to List
         </a>
 
