@@ -13,47 +13,17 @@
             'desc' => 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
         ];
 
-        // If admin has uploaded sliders, use them FIRST
-        if (!empty($allslider) && count($allslider) > 0) {
-            foreach ($allslider as $alle) {
-                $trimmedImage = trim($alle->image);
-                if ($trimmedImage === 'prev_work_1783160020_43.jpeg') {
-                    continue;
-                }
-                $heroSlides[] = [
-                    'src' => URL::asset('uploads/slider/'.$trimmedImage),
-                    'name' => !empty($alle->name) ? $alle->name : 'Stand With Red Brigade Lucknow',
-                    'desc' => !empty($alle->description) ? strip_tags($alle->description) : 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
-                ];
-            }
-        }
+        $heroSlides[] = [
+            'src' => URL::asset('uploads/slider/sunshine-slider-500.jpeg'),
+            'name' => 'Stand With Red Brigade Lucknow',
+            'desc' => 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
+        ];
 
-        // Fallback: If no admin sliders exist, use curated mission-relevant images
-        if (empty($heroSlides)) {
-            $relevantHeroCandidates = [
-                'uploads/slider/Redbrigade-lucknow.jpg',
-                'uploads/slider/Redbrigade-lucknow-428.jpeg',
-                'uploads/slider/Redbrigade-lucknow-552.jpeg',
-                'uploads/slider/Redbrigade-lucknow-614.jpeg'
-            ];
-
-            foreach ($relevantHeroCandidates as $heroImage) {
-                $heroSlides[] = [
-                    'src' => URL::asset($heroImage),
-                    'name' => 'Stand With Red Brigade Lucknow',
-                    'desc' => 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
-                ];
-            }
-        }
-
-        // Final Fallback: 404 image
-        if (empty($heroSlides)) {
-            $heroSlides[] = [
-                'src' => URL::asset('uploads/img/404.png'),
-                'name' => 'Stand With Red Brigade Lucknow',
-                'desc' => 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
-            ];
-        }
+        $heroSlides[] = [
+            'src' => URL::asset('uploads/slider/sunshine-slider-924.jpeg'),
+            'name' => 'Stand With Red Brigade Lucknow',
+            'desc' => 'Building courage, dignity, and leadership through self-defense, survivor support, and community action.'
+        ];
     ?>
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="4000" data-pause="false" data-wrap="true">

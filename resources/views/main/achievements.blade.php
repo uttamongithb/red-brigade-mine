@@ -231,62 +231,7 @@
     </section>
 
     <!-- Leader Recognitions -->
-    <section class="rb-leader-section">
-        <div class="container">
-            <div class="rb-gallery-header" style="text-align: center; margin-bottom: 60px;">
-                <span class="rb-kicker">Our Leaders</span>
-                <h2 style="font-size: 46px;">Individual Recognitions</h2>
-            </div>
-
-            <!-- Usha -->
-            <div class="rb-leader-card">
-                <div class="rb-leader-img">
-                    <img src="<?php echo URL::asset('uploads/img/about-left-image.jpg');?>" alt="Usha Vishwakarma">
-                </div>
-                <div class="rb-leader-content">
-                    <h3>Usha Vishwakarma — Founder</h3>
-                    <p>Named 'Woman of Action' (2013) internationally and recognized as one of India's Top 20 Self-Made Women by Forbes (2020).</p>
-                    <p>Recognized by the Govt of India and Govt of UP for pioneering the survivor-led movement in self-defense.</p>
-                </div>
-            </div>
-
-            <!-- Manshi -->
-            <div class="rb-leader-card">
-                <div class="rb-leader-img">
-                    <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-151.png');?>" alt="Manshi">
-                </div>
-                <div class="rb-leader-content">
-                    <h3>Manshi — Programme Leader</h3>
-                    <p>Transformed from a deeply traumatised survivor into a core team member and certified self-defense trainer.</p>
-                    <p>Currently leads the Chikankari Women's Economic Empowerment Programme, a model of survivor agency.</p>
-                </div>
-            </div>
-
-            <!-- Annu -->
-            <div class="rb-leader-card">
-                <div class="rb-leader-img">
-                    <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-133.png');?>" alt="Annu">
-                </div>
-                <div class="rb-leader-content">
-                    <h3>Annu — Balmanch Coordinator</h3>
-                    <p>Rescued at age 12, Annu is now a master trainer and the coordinator of Balmanch education centre.</p>
-                    <p>She is the living symbol of Red Brigade's model: victims becoming fearless leaders.</p>
-                </div>
-            </div>
-
-            <!-- Diya -->
-            <div class="rb-leader-card">
-                <div class="rb-leader-img">
-                    <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-614.jpeg');?>" alt="Diya">
-                </div>
-                <div class="rb-leader-content">
-                    <h3>Diya — Fighter for Justice</h3>
-                    <p>Fought a landmark legal battle with Red Brigade's support, resulting in the perpetrator's imprisonment.</p>
-                    <p>Her journey from survivor to a life rebuilt is a cornerstone case of our Justice Access initiative.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 </div>
 
 @include('includes.footer')

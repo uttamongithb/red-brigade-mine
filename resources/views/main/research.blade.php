@@ -110,6 +110,100 @@
 }
 .rb-research-meta-list li strong { color: #1f2f46; min-width: 120px; display: inline-block; }
 
+/* Publication Grid Layout */
+.rb-pub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.rb-pub-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #eef2f6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.rb-pub-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    border-color: #E31E24;
+}
+.rb-pub-visual {
+    width: 100%;
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+}
+.rb-pub-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.rb-pub-card:hover .rb-pub-visual img {
+    transform: scale(1.05);
+}
+.rb-pub-info {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.rb-pub-info h3 {
+    font-size: 20px;
+    margin: 15px 0;
+    line-height: 1.4;
+    color: #1f2f46;
+}
+.rb-pub-info p {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+.rb-pub-tag {
+    display: inline-block;
+    padding: 5px 12px;
+    background: rgba(227, 30, 36, 0.1);
+    color: #E31E24;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    align-self: flex-start;
+}
+.rb-pub-meta {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 15px;
+}
+.rb-pub-meta li {
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #475569;
+}
+.rb-pub-meta li strong {
+    color: #1f2f46;
+    min-width: 80px;
+    display: inline-block;
+}
+.rb-pub-btn-wrap {
+    margin-top: auto;
+}
+.rb-pub-btn-wrap .rb-btn {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    display: block;
+    box-sizing: border-box;
+}
+
 /* Media Section */
 .rb-media-section { padding: 100px 0; background: #f8fafc; }
 .rb-media-grid {
@@ -181,11 +275,13 @@
     .rb-card-visual, .rb-card-info { width: 100%; }
     .rb-card-visual { height: 350px; }
     .rb-media-grid { grid-template-columns: repeat(2, 1fr); }
+    .rb-pub-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
     .rb-research-hero h1 { font-size: 42px; }
     .rb-media-grid { grid-template-columns: 1fr; }
     .rb-intent-list { grid-template-columns: 1fr; }
+    .rb-pub-grid { grid-template-columns: 1fr; }
 }
 </style>
 
@@ -208,14 +304,18 @@
         </div>
     </section>
 
-    <!-- Main Publications -->
-    <section class="rb-publication-section">
+    <!-- Main Research Section -->
+    <section class="rb-publication-section" style="padding-bottom: 80px;">
         <div class="container">
+            <div class="text-center" style="margin-bottom: 50px;">
+                <span class="rb-kicker">Academic Evaluation</span>
+                <h2 style="font-size: 42px; margin-bottom: 15px;">Research</h2>
+            </div>
             
             <!-- Azim Premji Card -->
             <div class="rb-research-card">
                 <div class="rb-card-visual">
-                    <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-133.png'); ?>" alt="Azim Premji University Study">
+                    <img src="<?php echo URL::asset('uploads/img/shaktipreneur_13.jpeg'); ?>" alt="Azim Premji University Study">
                 </div>
                 <div class="rb-card-info">
                     <span class="rb-research-tag">Academic Study</span>
@@ -232,124 +332,137 @@
                 </div>
             </div>
 
-            <!-- Women in Red Card -->
-            <div class="rb-research-card reverse">
-                <div class="rb-card-visual">
-                    <img src="<?php echo URL::asset('uploads/img/women_in_red.jpeg'); ?>" alt="Women in Red Book">
-                </div>
-                <div class="rb-card-info">
-                    <span class="rb-research-tag">Published Book</span>
-                    <h3>'Women in Red' — The Journey</h3>
-                    <p>A deep narrative and visual documentation of Red Brigade's evolution, members, and the profound impact of our survivor-led movement.</p>
-                    <ul class="rb-research-meta-list">
-                        <li><strong>Author</strong> <span>Eva J.</span></li>
-                        <li><strong>Publisher</strong> <span>Blurb</span></li>
-                        <li><strong>Format</strong> <span>Visual & Narrative Documentation</span></li>
-                    </ul>
-                    <div class="rb-btn-wrap">
-                        <a href="<?php echo URL::asset('uploads/Women_in_Red.pdf'); ?>" target="_blank" class="rb-btn" style="font-size: 14px; padding: 12px 30px;">Download PDF</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A Celebration of Women Card -->
-            <div class="rb-research-card">
-                <div class="rb-card-visual">
-                    <img src="<?php echo URL::asset('uploads/slider/Redbrigade-lucknow-report-947.jpeg'); ?>" alt="Academic Recognition">
-                </div>
-                <div class="rb-card-info">
-                    <span class="rb-research-tag">International Profile</span>
-                    <h3>A Celebration of Women</h3>
-                    <p>Recognized on an international platform profiling global women leaders and documenting their contributions to societal change.</p>
-                    <ul class="rb-research-meta-list">
-                        <li><strong>Profile</strong> <span>Usha Vishwakarma — Woman of Action</span></li>
-                        <li><strong>Date</strong> <span>October 2013</span></li>
-                        <li><strong>Impact</strong> <span>First international academic/documentary recognition of RBL.</span></li>
-                    </ul>
-                    <div class="rb-btn-wrap">
-                        <a href="https://acelebrationofwomen.org/2013/10/usha-vishwakarma-woman-of-action/" target="_blank" class="rb-btn" style="font-size: 14px; padding: 12px 30px;">Read Profile</a>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- Researcher Intent Section -->
-    <section class="rb-intent-section">
+    <!-- Main Publications Section -->
+    <section class="rb-publication-section" style="padding-top: 80px; padding-bottom: 120px; background: #f8fafc;">
         <div class="container">
-            <div class="rb-intent-box">
-                <div class="rb-intent-text">
-                    <span class="rb-kicker" style="color: #ff8a00;">Observation & Study</span>
-                    <h2>A Rare Research Site</h2>
-                    <p>Red Brigade represents a site where the boundary between 'beneficiary' and 'change agent' is deliberately dissolved. We welcome researchers from social work, gender studies, law, and public health.</p>
-                    <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'contact']); ?>" class="rb-btn">Academic Inquiry</a>
+            <div class="text-center" style="margin-bottom: 50px;">
+                <span class="rb-kicker">Global Recognition</span>
+                <h2 style="font-size: 42px; margin-bottom: 15px;">Publications & Media</h2>
+            </div>
+
+            <div class="rb-pub-grid">
+                <!-- Women in Red Card -->
+                <div class="rb-pub-card">
+                    <div class="rb-pub-visual">
+                        <img src="<?php echo URL::asset('uploads/img/women_in_red.jpeg'); ?>" alt="Women in Red Book">
+                    </div>
+                    <div class="rb-pub-info">
+                        <span class="rb-pub-tag">Published Book</span>
+                        <h3>'Women in Red' — The Journey</h3>
+                        <p>A deep narrative and visual documentation of Red Brigade's evolution, members, and the profound impact of our survivor-led movement.</p>
+                        <ul class="rb-pub-meta">
+                            <li><strong>Author</strong> <span>Eva J.</span></li>
+                            <li><strong>Publisher</strong> <span>Blurb</span></li>
+                            <li><strong>Format</strong> <span>Visual & Narrative</span></li>
+                        </ul>
+                        <div class="rb-pub-btn-wrap">
+                            <a href="<?php echo URL::asset('uploads/Women_in_Red.pdf'); ?>" target="_blank" class="rb-btn">Download PDF</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="rb-intent-list">
-                    <div class="rb-intent-item">
-                        <i class="fas fa-search"></i>
-                        <span>Documentation of NISHASTRA training sessions.</span>
+
+                <!-- A Celebration of Women Card -->
+                <div class="rb-pub-card">
+                    <div class="rb-pub-visual">
+                        <img src="<?php echo URL::asset('uploads/slider/Redbrigade-lucknow-report-947.jpeg'); ?>" alt="Academic Recognition">
                     </div>
-                    <div class="rb-intent-item">
-                        <i class="fas fa-file-medical"></i>
-                        <span>Survivor agency and pathway to empowerment.</span>
+                    <div class="rb-pub-info">
+                        <span class="rb-pub-tag">International Profile</span>
+                        <h3>A Celebration of Women</h3>
+                        <p>Recognized on an international platform profiling global women leaders and documenting their contributions to societal change.</p>
+                        <ul class="rb-pub-meta">
+                            <li><strong>Profile</strong> <span>Usha Vishwakarma</span></li>
+                            <li><strong>Date</strong> <span>October 2013</span></li>
+                        </ul>
+                        <div class="rb-pub-btn-wrap">
+                            <a href="https://acelebrationofwomen.org/2013/10/usha-vishwakarma-woman-of-action/" target="_blank" class="rb-btn">Read Profile</a>
+                        </div>
                     </div>
-                    <div class="rb-intent-item">
-                        <i class="fas fa-users-cog"></i>
-                        <span>Analysis of survivor-led organisational structures.</span>
+                </div>
+
+                <!-- TNIE Card -->
+                <div class="rb-pub-card">
+                    <div class="rb-pub-visual">
+                        <img src="https://cf-images.assettype.com/TNIE/import/2020/9/27/original/SHE_FIREWALLS.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true" alt="TNIE News Coverage">
                     </div>
-                    <div class="rb-intent-item">
-                        <i class="fas fa-balance-scale"></i>
-                        <span>Theoretical exploration of feminist intersectionality.</span>
+                    <div class="rb-pub-info">
+                        <span class="rb-pub-tag">Media Publication</span>
+                        <h3>Led by survivor, 'Red Brigade' empowers women</h3>
+                        <p>The Red Brigade now has 100 girls, most of them survivors. It has trained over 1.57 lakh girls in martial arts since 2011.</p>
+                        <ul class="rb-pub-meta">
+                            <li><strong>Publisher</strong> <span>The New Indian Express</span></li>
+                            <li><strong>Date</strong> <span>September 2020</span></li>
+                        </ul>
+                        <div class="rb-pub-btn-wrap">
+                            <a href="https://www.newindianexpress.com/good-news/2020/Sep/27/led-by-sexual-assault-survivor-lucknows-red-brigade-empowers-women-through-martial-arts-2202288.html" target="_blank" class="rb-btn">Read Article</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DW Card -->
+                <div class="rb-pub-card">
+                    <div class="rb-pub-visual">
+                        <img src="https://static.dw.com/image/19100977_604.jpg" alt="DW News Coverage">
+                    </div>
+                    <div class="rb-pub-info">
+                        <span class="rb-pub-tag">International Media</span>
+                        <h3>India’s Red Brigade</h3>
+                        <p>Violence against women in India is widespread. But one group of girls has found a way to deal with the culprits. Meet the Red Brigade.</p>
+                        <ul class="rb-pub-meta">
+                            <li><strong>Publisher</strong> <span>Deutsche Welle (DW)</span></li>
+                            <li><strong>Date</strong> <span>March 2016</span></li>
+                        </ul>
+                        <div class="rb-pub-btn-wrap">
+                            <a href="https://www.dw.com/en/indias-red-brigade/a-19100226" target="_blank" class="rb-btn">Read Article</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forbes India Card -->
+                <div class="rb-pub-card">
+                    <div class="rb-pub-visual">
+                        <img src="https://images.forbesindia.com/blog/wp-content/uploads//media/images/2020/Mar/img_129371_ushavishwakarmas.jpg?im=FitAndFill,width=1200,height=900" alt="Forbes India Coverage">
+                    </div>
+                    <div class="rb-pub-info">
+                        <span class="rb-pub-tag">Media Publication</span>
+                        <h3>Teaching women self defence, never backing down</h3>
+                        <p>Usha Vishwakarma's Red Brigade Lucknow develops techniques to help women defend themselves from harassment or assault.</p>
+                        <ul class="rb-pub-meta">
+                            <li><strong>Publisher</strong> <span>Forbes India</span></li>
+                            <li><strong>Date</strong> <span>March 2020</span></li>
+                        </ul>
+                        <div class="rb-pub-btn-wrap">
+                            <a href="https://www.forbesindia.com/article/self-made-women-2020/usha-vishwakarma-teaching-women-self-defence-never-backing-down/58153/1" target="_blank" class="rb-btn">Read Article</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Better India Card -->
+                <div class="rb-pub-card">
+                    <div class="rb-pub-visual">
+                        <img src="https://img-cdn.publive.online/fit-in/1200x675/english-betterindia/media/media_files/uploads/2015/01/Craftsmen-3.png" alt="The Better India Coverage">
+                    </div>
+                    <div class="rb-pub-info">
+                        <span class="rb-pub-tag">Media Publication</span>
+                        <h3>Ugly Incident Ended Up Saving Thousands</h3>
+                        <p>Red Brigade, which addresses the issue of sexual violence in India, is the brainchild of gutsy Usha Vishwakarma, a survivor of attempted rape herself.</p>
+                        <ul class="rb-pub-meta">
+                            <li><strong>Publisher</strong> <span>The Better India</span></li>
+                            <li><strong>Date</strong> <span>November 2015</span></li>
+                        </ul>
+                        <div class="rb-pub-btn-wrap">
+                            <a href="https://thebetterindia.com/17937/usha-vishwakarma-red-brigade-lucknow-sexual-violence-rape-abuse-women-empowerment/" target="_blank" class="rb-btn">Read Article</a>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- Media Documentation Archive -->
-    <section class="rb-media-section">
-        <div class="container">
-            <div class="text-center">
-                <span class="rb-kicker">Public Record</span>
-                <h2 style="font-size: 42px;">Media Documentation</h2>
-                <p style="font-size: 18px; color: #64748b; margin-top: 15px;">Extensive documentation of our impact in national and international media over the years.</p>
-            </div>
-
-            <div class="rb-media-grid">
-                <div class="rb-media-brand-card">
-                    <div class="rb-media-icon"><i class="fas fa-globe"></i></div>
-                    <h4>CNN (2013)</h4>
-                    <p>'Meet India's Red Brigade: The teens fighting back against rape'</p>
-                </div>
-                <div class="rb-media-brand-card">
-                    <div class="rb-media-icon"><i class="fas fa-film"></i></div>
-                    <h4>Deutsche Welle (2016)</h4>
-                    <p>'India's Red Brigade' — International documentary coverage.</p>
-                </div>
-                <div class="rb-media-brand-card">
-                    <div class="rb-media-icon"><i class="fas fa-newspaper"></i></div>
-                    <h4>The Hindu (2017)</h4>
-                    <p>Detailed coverage of Red Brigade empowering young women.</p>
-                </div>
-                <div class="rb-media-brand-card">
-                    <div class="rb-media-icon"><i class="fas fa-microphone"></i></div>
-                    <h4>The National News</h4>
-                    <p>'Empowering women of India to fight back' — Long-form feature.</p>
-                </div>
-                <div class="rb-media-brand-card">
-                    <div class="rb-media-icon"><i class="fas fa-star"></i></div>
-                    <h4>The Things (US)</h4>
-                    <p>Featured among '15 Awesome Vigilantes That Really Fight Crime'.</p>
-                </div>
-                <div class="rb-media-brand-card">
-                    <div class="rb-media-icon"><i class="fas fa-history"></i></div>
-                    <h4>Hindustan Times (2022)</h4>
-                    <p>'Women come together to build non-violent economy'.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
 </div>
 

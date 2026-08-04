@@ -366,8 +366,8 @@
         <div class="container">
             <div class="rb-mission-grid">
                 <div class="rb-mission-images">
-                    <img src="<?php echo URL::asset('uploads/slider/prev_work_1783160021_55.jpeg');?>" alt="Red Brigade Action" class="img-tall">
-                    <img src="<?php echo URL::asset('uploads/img/about-left-image.jpg');?>" alt="Red Brigade Founder">
+                    <img src="<?php echo URL::asset('uploads/img/who_we_are.jpeg');?>" alt="Red Brigade Action" class="img-tall">
+                    <img src="<?php echo URL::asset('uploads/img/WhatsApp Image 2026-07-02 at 11.02.35.jpeg');?>" alt="Red Brigade Founder">
                     <img src="<?php echo URL::asset('uploads/slider/sunshine-slider-201.png');?>" alt="Red Brigade Team">
                 </div>
                 <div class="rb-mission-text">

@@ -38,6 +38,7 @@ Route::get('/about', [MainController::class, 'about']);
 Route::get('/research', [MainController::class, 'research']);
 Route::get('/ethics', [MainController::class, 'ethics']);
 Route::get('/ourteam', [MainController::class, 'ourteam']);
+Route::get('/team/{id}', [MainController::class, 'singleTeamMember'])->where('id', '[0-9]+');
 Route::get('/achievements', [MainController::class, 'achievements']);
 Route::get('/collaborations', [MainController::class, 'collaborations']);
 Route::get('/skills', [MainController::class, 'skills']);

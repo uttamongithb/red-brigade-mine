@@ -168,7 +168,7 @@
     <section class="rb-blog-section">
         <div class="container">
             <div class="rb-blog-grid">
-                <?php if(!empty($allblog)) { foreach($allblog as $post) { ?>
+                <?php if($allblog->isNotEmpty()) { foreach($allblog as $post) { ?>
                     <article class="rb-blog-card">
                         <a href="<?php echo action([\App\Http\Controllers\MainController::class, 'singleblog'], $post->slug); ?>" class="rb-blog-thumbnail">
                             <?php $imagePath = !empty($post->image) ? 'uploads/news/'.trim($post->image) : 'uploads/img/logo.png'; ?>

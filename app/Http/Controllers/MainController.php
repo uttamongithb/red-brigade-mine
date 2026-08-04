@@ -1,18 +1,17 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\Registeruser;
-use DB;
-use Session;
-use URL;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 use Htmlhelpers;
 use Helpers;
-use Config;
-use Redirect;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 
 class MainController extends Controller {
 	public function index()
@@ -58,6 +57,15 @@ class MainController extends Controller {
 	{
 		$alltestimonial=Db::table('testimonial')->orderBy('testimonial.id','ASC')->get();
 		return view('main.ourteam',compact('alltestimonial'));
+	}
+
+	public function singleTeamMember($id)
+	{
+		$member = Db::table('testimonial')->where('id', $id)->first();
+		if (!$member) {
+			return redirect('/ourteam');
+		}
+		return view('main.member', compact('member'));
 	}
 
 	public function achievements()

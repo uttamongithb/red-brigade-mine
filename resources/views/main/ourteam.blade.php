@@ -255,6 +255,7 @@
             
             // Normalize data
             $normMember = [
+                'id' => is_array($member) ? ($member['id'] ?? null) : ($member->id ?? null),
                 'name' => is_array($member) ? $member['name'] : $member->name,
                 'role' => is_array($member) ? ($member['role'] ?? strip_tags($member['description'] ?? '')) : (isset($member->description) ? strip_tags($member->description) : ($member->role ?? '')),
                 'image' => is_array($member) ? ($member['image'] ?? '') : ($member->image ?? '')
@@ -276,32 +277,40 @@
                     $normMember['role'] = 'CEO of Red Brigade Trust';
                 } elseif (strpos(strtolower($normMember['role']), 'trainer') !== false) {
                     $normMember['role'] = 'Lead Self-Defense Trainer';
+                } elseif (strpos(strtolower($normMember['name']), 'roshni') !== false) {
+                    $normMember['role'] = 'Inspiring Leader';
                 } else {
                     $normMember['role'] = explode('.', $normMember['role'])[0]; // first sentence
                 }
             }
             
             // Assign to category
-            if (strpos($roleDesc, 'trustee') !== false || strpos($roleDesc, 'founder') !== false || strpos($roleDesc, 'secretary') !== false || strpos($nameStr, 'usha') !== false || strpos($nameStr, 'laxmi') !== false) {
+            if ((strpos($roleDesc, 'trustee') !== false || strpos($roleDesc, 'founder') !== false || strpos($roleDesc, 'secretary') !== false || strpos($nameStr, 'usha') !== false || strpos($nameStr, 'laxmi') !== false || strpos($nameStr, 'annu') !== false || strpos($nameStr, 'pooja') !== false) && strpos($nameStr, 'suniti') === false) {
                 $board[] = $normMember;
             }
-            if (strpos($roleDesc, 'advisor') !== false) {
+            if (strpos($roleDesc, 'advisor') !== false || strpos($nameStr, 'suniti') !== false) {
                 $advisors[] = $normMember;
             }
-            if ((strpos($roleDesc, 'ceo') !== false || strpos($roleDesc, 'founder') !== false || strpos($roleDesc, 'leader') !== false || strpos($nameStr, 'usha') !== false || strpos($nameStr, 'pratishtha') !== false) && strpos($nameStr, 'usha') === false && strpos($nameStr, 'laxmi') === false) {
+            if ((strpos($roleDesc, 'ceo') !== false || strpos($roleDesc, 'founder') !== false || strpos($roleDesc, 'leader') !== false || strpos($nameStr, 'pratishtha') !== false || strpos($nameStr, 'annu') !== false || strpos($nameStr, 'roshni') !== false) && strpos($nameStr, 'usha') === false && strpos($nameStr, 'laxmi') === false) {
                 $leaders[] = $normMember;
             }
-            if (strpos($roleDesc, 'trainer') !== false || strpos($roleDesc, 'coordinator') !== false || strpos($roleDesc, 'mobilizer') !== false || strpos($nameStr, 'saloni') !== false) {
+            if ((strpos($roleDesc, 'trainer') !== false || strpos($roleDesc, 'coordinator') !== false || strpos($roleDesc, 'mobilizer') !== false || strpos($nameStr, 'saloni') !== false) && strpos($nameStr, 'annu') === false && strpos($nameStr, 'pooja') === false && strpos($nameStr, 'roshni') === false) {
                 $active[] = $normMember;
             }
         }
     }
-
-    // Advisors static fallbacks (removed as requested)
-    $advisors = [];
-
-    // Active members additional static fallbacks (removed as requested)
-    $additionalActive = [];
+    // Sort board members as requested: Usha, Laxmi, Pooja, Annu
+    usort($board, function($a, $b) {
+        $order = ['usha' => 1, 'laxmi' => 2, 'pooja' => 3, 'annu' => 4];
+        $aName = strtolower($a['name']);
+        $bName = strtolower($b['name']);
+        $aPos = 99; $bPos = 99;
+        foreach ($order as $key => $val) {
+            if (strpos($aName, $key) !== false) $aPos = $val;
+            if (strpos($bName, $key) !== false) $bPos = $val;
+        }
+        return $aPos <=> $bPos;
+    });
 @endphp
 
 <div class="rb-team-page-modern">
@@ -323,6 +332,7 @@
             <div class="rb-member-grid">
                 @forelse ($board as $member)
                     <article class="rb-member-card">
+                        <a href="{{ isset($member['id']) && $member['id'] ? url('/team/'.$member['id']) : '#' }}" style="text-decoration:none; color:inherit; display:block; height:100%;">
                         <div class="rb-member-image">
                             <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
                         </div>
@@ -330,6 +340,7 @@
                             <h4 class="rb-member-name">{{ $member['name'] }}</h4>
                             <p class="rb-member-role">{{ $member['role'] }}</p>
                         </div>
+                        </a>
                     </article>
                 @empty
                     <p style="grid-column: 1 / -1; text-align: center; color: #a0aec0; font-style: italic; margin-top: 20px;">No members listed yet.</p>
@@ -348,6 +359,7 @@
             <div class="rb-member-grid">
                 @forelse ($advisors as $member)
                     <article class="rb-member-card">
+                        <a href="{{ isset($member['id']) && $member['id'] ? url('/team/'.$member['id']) : '#' }}" style="text-decoration:none; color:inherit; display:block; height:100%;">
                         <div class="rb-member-image">
                             <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
                         </div>
@@ -355,6 +367,7 @@
                             <h4 class="rb-member-name">{{ $member['name'] }}</h4>
                             <p class="rb-member-role">{{ $member['role'] }}</p>
                         </div>
+                        </a>
                     </article>
                 @empty
                     <p style="grid-column: 1 / -1; text-align: center; color: #a0aec0; font-style: italic; margin-top: 20px;">No members listed yet.</p>
@@ -373,6 +386,7 @@
             <div class="rb-member-grid">
                 @forelse ($leaders as $member)
                     <article class="rb-member-card">
+                        <a href="{{ isset($member['id']) && $member['id'] ? url('/team/'.$member['id']) : '#' }}" style="text-decoration:none; color:inherit; display:block; height:100%;">
                         <div class="rb-member-image">
                             <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
                         </div>
@@ -380,6 +394,7 @@
                             <h4 class="rb-member-name">{{ $member['name'] }}</h4>
                             <p class="rb-member-role">{{ $member['role'] }}</p>
                         </div>
+                        </a>
                     </article>
                 @empty
                     <p style="grid-column: 1 / -1; text-align: center; color: #a0aec0; font-style: italic; margin-top: 20px;">No members listed yet.</p>
@@ -398,6 +413,7 @@
             <div class="rb-member-grid">
                 @forelse ($active as $member)
                     <article class="rb-member-card">
+                        <a href="{{ isset($member['id']) && $member['id'] ? url('/team/'.$member['id']) : '#' }}" style="text-decoration:none; color:inherit; display:block; height:100%;">
                         <div class="rb-member-image">
                             <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" onerror="this.onerror=null;this.src='{{ $teamPlaceholder }}';">
                         </div>
@@ -405,6 +421,7 @@
                             <h4 class="rb-member-name">{{ $member['name'] }}</h4>
                             <p class="rb-member-role">{{ $member['role'] }}</p>
                         </div>
+                        </a>
                     </article>
                 @empty
                     <p style="grid-column: 1 / -1; text-align: center; color: #a0aec0; font-style: italic; margin-top: 20px;">No members listed yet.</p>

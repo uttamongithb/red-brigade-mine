@@ -226,6 +226,7 @@
             <div class="rb-tab-nav">
                 <button class="rb-tab-btn active" data-target="photos">Photos</button>
                 <button class="rb-tab-btn" data-target="videos">Videos</button>
+                <button class="rb-tab-btn" data-target="awards">Awards</button>
             </div>
 
             <!-- Photos Tab -->
@@ -259,6 +260,26 @@
                 <?php } } else { ?>
                     <div class="col-12 text-center" style="grid-column: 1 / -1; padding: 40px;">
                         <p style="color: #64748b;">No videos uploaded yet.</p>
+                    </div>
+                <?php } ?>
+            </div>
+
+            <!-- Awards Tab -->
+            <div id="awards" class="rb-tab-content rb-gallery-grid-asymmetric">
+                <?php 
+                $award_images = glob(public_path('awards/*.*'));
+                if($award_images && count($award_images) > 0) { 
+                    foreach($award_images as $img_path) { 
+                        $filename = basename($img_path);
+                ?>
+                    <a href="<?php echo URL::asset('awards/'.$filename);?>" class="rb-media-card image-popup" title="Award">
+                        <div class="rb-media-thumbnail">
+                            <img src="<?php echo URL::asset('awards/'.$filename);?>" alt="Award" loading="lazy">
+                        </div>
+                    </a>			
+                <?php } } else { ?>
+                    <div class="col-12 text-center" style="padding: 40px; width: 100%;">
+                        <p style="color: #64748b;">No awards uploaded yet.</p>
                     </div>
                 <?php } ?>
             </div>
